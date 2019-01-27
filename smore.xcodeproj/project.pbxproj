@@ -13,6 +13,8 @@
 		046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7521FE63BE00E8245D /* Assets.xcassets */; };
 		046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7721FE63BE00E8245D /* LaunchScreen.storyboard */; };
 		046FDB8421FE63BE00E8245D /* smoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* smoreTests.swift */; };
+		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
+		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,12 @@
 		046FDB7F21FE63BE00E8245D /* smoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB8321FE63BE00E8245D /* smoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smoreTests.swift; sourceTree = "<group>"; };
 		046FDB8521FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
+		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.release.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.release.xcconfig"; sourceTree = "<group>"; };
+		A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABC3B4E4C553D14D641C2843 /* Pods-smoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				046FDB6D21FE63BB00E8245D /* smore */,
 				046FDB8221FE63BE00E8245D /* smoreTests */,
 				046FDB6C21FE63BB00E8245D /* Products */,
+				2A5CF294156F488E798FC2A5 /* Pods */,
+				90B7D144E9CAF3714535D4B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = smoreTests;
 			sourceTree = "<group>";
 		};
+		2A5CF294156F488E798FC2A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */,
+				A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */,
+				ABC3B4E4C553D14D641C2843 /* Pods-smoreTests.debug.xcconfig */,
+				8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90B7D144E9CAF3714535D4B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */,
+				A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 046FDB8821FE63BE00E8245D /* Build configuration list for PBXNativeTarget "smore" */;
 			buildPhases = (
+				A5F6F451441E018DDD17DAF8 /* [CP] Check Pods Manifest.lock */,
 				046FDB6721FE63BB00E8245D /* Sources */,
 				046FDB6821FE63BB00E8245D /* Frameworks */,
 				046FDB6921FE63BB00E8245D /* Resources */,
+				FE278AFCE933A4BA8BB60237 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +154,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 046FDB8B21FE63BE00E8245D /* Build configuration list for PBXNativeTarget "smoreTests" */;
 			buildPhases = (
+				755889A84AD74240766E1164 /* [CP] Check Pods Manifest.lock */,
 				046FDB7B21FE63BE00E8245D /* Sources */,
 				046FDB7C21FE63BE00E8245D /* Frameworks */,
 				046FDB7D21FE63BE00E8245D /* Resources */,
@@ -191,6 +226,83 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		755889A84AD74240766E1164 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-smoreTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5F6F451441E018DDD17DAF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-smore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE278AFCE933A4BA8BB60237 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		046FDB6721FE63BB00E8245D /* Sources */ = {
@@ -358,11 +470,13 @@
 		};
 		046FDB8921FE63BE00E8245D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
 				INFOPLIST_FILE = smore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,11 +490,13 @@
 		};
 		046FDB8A21FE63BE00E8245D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
 				INFOPLIST_FILE = smore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,6 +510,7 @@
 		};
 		046FDB8C21FE63BE00E8245D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABC3B4E4C553D14D641C2843 /* Pods-smoreTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +532,7 @@
 		};
 		046FDB8D21FE63BE00E8245D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
