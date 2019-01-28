@@ -1,0 +1,7 @@
+osx_image: xcode10.1
+language: objective-c
+xcode_workspace: smore.xcworkspace
+xcode_scheme: smore
+xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+notifications:
+  slack: smore-workspace:pzrc1TjSTuzr5gij6l5qYb2b
