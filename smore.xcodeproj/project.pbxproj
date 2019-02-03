@@ -7,12 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */; };
+		0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */; };
+		0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */; };
+		0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5B3220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift */; };
+		0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5B72207510D00CB4CDE /* UIView+Corners.swift */; };
+		0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5B9220753C600CB4CDE /* AppleMusicAuthViewController.swift */; };
+		0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5BA220753C600CB4CDE /* AppleMusicAuthViewController.xib */; };
+		0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5BE2207672500CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C02207672500CB4CDE /* TPKeyboardAvoidingScrollView.m */; };
+		0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */; };
+		0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */; };
+		0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
 		046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB6E21FE63BB00E8245D /* AppDelegate.swift */; };
 		046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB7021FE63BB00E8245D /* ViewController.swift */; };
 		046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7221FE63BB00E8245D /* Main.storyboard */; };
 		046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7521FE63BE00E8245D /* Assets.xcassets */; };
 		046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7721FE63BE00E8245D /* LaunchScreen.storyboard */; };
 		046FDB8421FE63BE00E8245D /* smoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* smoreTests.swift */; };
+		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +41,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+Rx.swift"; sourceTree = "<group>"; };
+		0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		0409D5B3220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+BackgroundColor.swift"; sourceTree = "<group>"; };
+		0409D5B72207510D00CB4CDE /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		0409D5B9220753C600CB4CDE /* AppleMusicAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAuthViewController.swift; sourceTree = "<group>"; };
+		0409D5BA220753C600CB4CDE /* AppleMusicAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleMusicAuthViewController.xib; sourceTree = "<group>"; };
+		0409D5BE2207672500CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		0409D5BF2207672500CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		0409D5C02207672500CB4CDE /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		0409D5C12207672500CB4CDE /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
+		0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotifyLoginViewController.xib; sourceTree = "<group>"; };
+		0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
 		046FDB6B21FE63BB00E8245D /* smore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB6E21FE63BB00E8245D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046FDB7021FE63BB00E8245D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +65,7 @@
 		046FDB7F21FE63BE00E8245D /* smoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB8321FE63BE00E8245D /* smoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smoreTests.swift; sourceTree = "<group>"; };
 		046FDB8521FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +94,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0409D5AC220744D500CB4CDE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */,
+				0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */,
+				0409D5B9220753C600CB4CDE /* AppleMusicAuthViewController.swift */,
+				0409D5BA220753C600CB4CDE /* AppleMusicAuthViewController.xib */,
+				0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */,
+				0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0409D5B22207469900CB4CDE /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				0409D5B3220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		0409D5B6220750F900CB4CDE /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0409D5B72207510D00CB4CDE /* UIView+Corners.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		0409D5BD220766F800CB4CDE /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				0409D5C12207672500CB4CDE /* TPKeyboardAvoidingScrollView.h */,
+				0409D5C02207672500CB4CDE /* TPKeyboardAvoidingScrollView.m */,
+				0409D5BF2207672500CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				0409D5BE2207672500CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		0409D5C8220773AF00CB4CDE /* SpotifyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */,
+			);
+			path = SpotifyAPI;
+			sourceTree = "<group>";
+		};
 		046FDB6221FE63BA00E8245D = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +165,12 @@
 		046FDB6D21FE63BB00E8245D /* smore */ = {
 			isa = PBXGroup;
 			children = (
+				0409D5BD220766F800CB4CDE /* TPKeyboardAvoiding */,
+				0409D5B6220750F900CB4CDE /* Shared */,
+				0409D5B22207469900CB4CDE /* Animation */,
+				0409D5AC220744D500CB4CDE /* Login */,
+				04FA0B27220661C40095430A /* Apple Music */,
+				0409D5C8220773AF00CB4CDE /* SpotifyAPI */,
 				046FDB6E21FE63BB00E8245D /* AppDelegate.swift */,
 				046FDB7021FE63BB00E8245D /* ViewController.swift */,
 				046FDB7221FE63BB00E8245D /* Main.storyboard */,
@@ -106,6 +188,15 @@
 				046FDB8521FE63BE00E8245D /* Info.plist */,
 			);
 			path = smoreTests;
+			sourceTree = "<group>";
+		};
+		04FA0B27220661C40095430A /* Apple Music */ = {
+			isa = PBXGroup;
+			children = (
+				04FA0B28220661DC0095430A /* AppleMusicAPI.swift */,
+				0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */,
+			);
+			path = "Apple Music";
 			sourceTree = "<group>";
 		};
 		2A5CF294156F488E798FC2A5 /* Pods */ = {
@@ -181,6 +272,15 @@
 				TargetAttributes = {
 					046FDB6A21FE63BB00E8245D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 0;
+							};
+						};
 					};
 					046FDB7E21FE63BE00E8245D = {
 						CreatedOnToolsVersion = 10.1;
@@ -213,8 +313,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */,
+				0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */,
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */,
+				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
+				0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,8 +412,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
+				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
+				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
+				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
+				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
+				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
 				046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */,
+				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
+				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
+				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
+				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +586,7 @@
 			baseConfigurationReference = 1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
 				INFOPLIST_FILE = smore/Info.plist;
@@ -483,6 +597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.smore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -493,6 +608,7 @@
 			baseConfigurationReference = A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
 				INFOPLIST_FILE = smore/Info.plist;

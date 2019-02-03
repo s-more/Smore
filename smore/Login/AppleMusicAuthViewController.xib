@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppleMusicAuthViewController" customModule="smore" customModuleProvider="target">
+            <connections>
+                <outlet property="authorizeButton" destination="aQO-IO-zJQ" id="aTU-q1-F5t"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-music-logo" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-Ba-wTF">
+                    <rect key="frame" x="78.5" y="84" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="TBm-fu-gPD"/>
+                        <constraint firstAttribute="height" constant="128" id="gYT-CE-dfW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="165-BW-9Vh">
+                    <rect key="frame" x="78.5" y="217" width="257" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="MIL-Cl-OxK"/>
+                        <constraint firstAttribute="width" constant="257" id="Ryx-dA-GTh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQO-IO-zJQ">
+                    <rect key="frame" x="78.5" y="696" width="257" height="68"/>
+                    <color key="backgroundColor" red="0.77647058823529413" green="0.65098039215686276" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="rea-iu-s96"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="AUTHORIZE"/>
+                    <connections>
+                        <action selector="authorizeButtonTapped:" destination="-1" eventType="touchUpInside" id="hzu-m6-LDD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT5-pr-erO">
+                    <rect key="frame" x="184" y="785" width="46" height="40"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                    <state key="normal" title="SKIP">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="EH8-Io-EmK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="l4F-Ba-wTF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="1bn-SU-h9q"/>
+                <constraint firstItem="aQO-IO-zJQ" firstAttribute="leading" secondItem="165-BW-9Vh" secondAttribute="leading" id="22D-sz-nwG"/>
+                <constraint firstItem="165-BW-9Vh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4Jf-tC-T7f"/>
+                <constraint firstItem="165-BW-9Vh" firstAttribute="top" secondItem="l4F-Ba-wTF" secondAttribute="bottom" constant="5" id="Ari-Zc-OWo"/>
+                <constraint firstItem="XT5-pr-erO" firstAttribute="top" secondItem="aQO-IO-zJQ" secondAttribute="bottom" constant="21" id="I7z-fO-Xph"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XT5-pr-erO" secondAttribute="bottom" constant="37" id="P9G-Am-8J3"/>
+                <constraint firstItem="XT5-pr-erO" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="eWl-Gl-DwC"/>
+                <constraint firstItem="l4F-Ba-wTF" firstAttribute="leading" secondItem="165-BW-9Vh" secondAttribute="leading" id="pIG-qe-6nC"/>
+                <constraint firstItem="aQO-IO-zJQ" firstAttribute="trailing" secondItem="165-BW-9Vh" secondAttribute="trailing" id="ptD-aC-Qr5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="apple-music-logo" width="1200" height="1200"/>
+    </resources>
+</document>
