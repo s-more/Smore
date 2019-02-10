@@ -13,23 +13,10 @@ import StoreKit
 enum AppleMusicAPI {
     private static let developerToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlY1MjU0OUs3SzYifQ.eyJpYXQiOjE1NDkxMzM3NTgsImV4cCI6MTU2NDY4NTc1OCwiaXNzIjoiTkRCVEs5OFZMMyJ9.r3a_fQH_5mAlrI9OeLHfTZ4mU486mgXRVr3xoD0yq1mR4oSlpEiQorwhaGXORZ0ESRE0xHcQzs8TOkaYCaMoKg"
     private static let cloudServiceController = SKCloudServiceController()
+    static let authHeaders = ["Authorization": "Bearer \(developerToken)"]
+    static let countryCode = "us"
     
-    static func requestData(with query: String, completion: @escaping (String) -> Void) {
-        let headers = ["Authorization": "Bearer \(developerToken)"]
-        
-        Alamofire.request(query,
-                          method: .get,
-                          parameters: nil,
-                          encoding: JSONEncoding.default,
-                          headers: headers).responseJSON { json in
-            if let stringData =  json.data,
-                let result = String(data: stringData, encoding: String.Encoding.utf8) {
-                DispatchQueue.main.async {
-                    completion(result)
-                }
-            }
-        }
-    }
+    // MARK: Authorization and Capabilities
     
     static func isAuthorized() -> Bool {
         return SKCloudServiceController.authorizationStatus() == .authorized

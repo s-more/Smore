@@ -33,15 +33,18 @@ class SpotifyLoginViewController: UIViewController {
             UIColor(red: 18/255, green: 138/255, blue: 74/255, alpha: 1)
         ]
         loginButton.layer.insertSublayer(CAGradientLayer.gradient(colors: colors,
-                                                                  frame: loginButton.frame), at: 0)
+                                                                  frame: loginButton.bounds), at: 0)
     }
     
     
     @IBAction func loginSpotifyUser(_ sender: UIButton) {
         if let username = usernameTextField.text,
             let password = passwordTextField.text {
-            SpotifyAPI.login(username: username, password: password,
-                             success: {}, error: {})
+            SpotifyAPI.login(username: username, password: password, success: {
+                // implement
+            }, error: { error in
+                // implement
+            })
         }
     }
     

@@ -10,7 +10,7 @@ import Foundation
 
 enum SpotifyAPI {
     
-    static func login(username: String, password: String, success: @escaping () -> Void, error: @escaping () -> Void ) {
+    static func login(username: String, password: String, success: @escaping () -> Void, error: @escaping (Error) -> Void ) {
         
     }
     
