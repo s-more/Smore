@@ -29,6 +29,8 @@
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
+		2728EB1F2210FAD000997823 /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2728EB1D2210FAD000997823 /* SoundcloudLoginViewController.swift */; };
+		2728EB202210FAD000997823 /* SoundcloudLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2728EB1E2210FAD000997823 /* SoundcloudLoginViewController.xib */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2728EB1D2210FAD000997823 /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
+		2728EB1E2210FAD000997823 /* SoundcloudLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundcloudLoginViewController.xib; sourceTree = "<group>"; };
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.release.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.release.xcconfig"; sourceTree = "<group>"; };
 		A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,8 @@
 				0409D5BA220753C600CB4CDE /* AppleMusicAuthViewController.xib */,
 				0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */,
 				0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */,
+				2728EB1D2210FAD000997823 /* SoundcloudLoginViewController.swift */,
+				2728EB1E2210FAD000997823 /* SoundcloudLoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */,
 				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
+				2728EB202210FAD000997823 /* SoundcloudLoginViewController.xib in Resources */,
 				0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +442,7 @@
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
 				046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				2728EB1F2210FAD000997823 /* SoundcloudLoginViewController.swift in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
