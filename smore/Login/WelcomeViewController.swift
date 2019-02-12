@@ -36,9 +36,17 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
         nextButton.addRoundCorners()
         navigationController?.delegate = self
         
-        AppleMusicAPI.searchCatalog(with: "Foster the People", types: [.albums], success: { result in
-            print(result)
-        }, error: { _ in })
+        let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+        view.addSubview(activityIndicator)
+            
+        AppleMusicAPI.topCharts(for: [.songs], genre: nil, completion: { data in
+            data.songs?.first?.data.forEach { data in
+                print(data.attributes.name + " by " + data.attributes.artistName)
+            }
+            activityIndicator.stop()
+        }, error: { error in
+            print(error.localizedDescription)
+        })
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
