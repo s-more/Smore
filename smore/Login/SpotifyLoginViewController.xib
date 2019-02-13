@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="loginButton" destination="8Nd-dX-GpP" id="WlH-oS-flt"/>
                 <outlet property="passwordTextField" destination="6DX-T0-DBV" id="mzs-u1-kUR"/>
+                <outlet property="skipButton" destination="G6B-wP-Fge" id="o3X-jA-vGq"/>
                 <outlet property="usernameTextField" destination="Zzf-oc-iXd" id="QFi-YL-nnv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -48,6 +49,9 @@
                                     <state key="normal" title="SKIP">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="8IC-fj-rBf"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zzf-oc-iXd">
                                     <rect key="frame" x="78.5" y="225" width="257" height="69"/>
