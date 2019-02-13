@@ -20,6 +20,9 @@
 		0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */; };
 		0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
 		0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */; };
+		045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09642212426100D7730E /* APMTopChartResponse.swift */; };
+		045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09662212567A00D7730E /* LottieActivityIndicator.swift */; };
+		045F09692212596500D7730E /* StrugglingAnt.json in Resources */ = {isa = PBXBuildFile; fileRef = 045F09682212596500D7730E /* StrugglingAnt.json */; };
 		046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB6E21FE63BB00E8245D /* AppDelegate.swift */; };
 		046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB7021FE63BB00E8245D /* ViewController.swift */; };
 		046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7221FE63BB00E8245D /* Main.storyboard */; };
@@ -60,6 +63,9 @@
 		0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotifyLoginViewController.xib; sourceTree = "<group>"; };
 		0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
 		0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		045F09642212426100D7730E /* APMTopChartResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMTopChartResponse.swift; sourceTree = "<group>"; };
+		045F09662212567A00D7730E /* LottieActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieActivityIndicator.swift; sourceTree = "<group>"; };
+		045F09682212596500D7730E /* StrugglingAnt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StrugglingAnt.json; sourceTree = "<group>"; };
 		046FDB6B21FE63BB00E8245D /* smore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB6E21FE63BB00E8245D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046FDB7021FE63BB00E8245D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 		0409D5B22207469900CB4CDE /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				045F09682212596500D7730E /* StrugglingAnt.json */,
+				045F09662212567A00D7730E /* LottieActivityIndicator.swift */,
 				0409D5B3220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift */,
 			);
 			path = Animation;
@@ -159,6 +167,24 @@
 				0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		045F095122121D2000D7730E /* AppleMusicAPI */ = {
+			isa = PBXGroup;
+			children = (
+				04FA0B28220661DC0095430A /* AppleMusicAPI.swift */,
+				0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */,
+				04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */,
+			);
+			path = AppleMusicAPI;
+			sourceTree = "<group>";
+		};
+		045F095222121D3F00D7730E /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				045F09642212426100D7730E /* APMTopChartResponse.swift */,
+			);
+			path = "Model Classes";
 			sourceTree = "<group>";
 		};
 		046FDB6221FE63BA00E8245D = {
@@ -212,9 +238,8 @@
 		04FA0B27220661C40095430A /* Apple Music */ = {
 			isa = PBXGroup;
 			children = (
-				04FA0B28220661DC0095430A /* AppleMusicAPI.swift */,
-				0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */,
-				04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */,
+				045F095222121D3F00D7730E /* Model Classes */,
+				045F095122121D2000D7730E /* AppleMusicAPI */,
 			);
 			path = "Apple Music";
 			sourceTree = "<group>";
@@ -333,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */,
+				045F09692212596500D7730E /* StrugglingAnt.json in Resources */,
 				0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */,
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */,
@@ -436,11 +462,13 @@
 				0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
 				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
+				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
 				046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */,
+				045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2728EB1F2210FAD000997823 /* SoundcloudLoginViewController.swift in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
