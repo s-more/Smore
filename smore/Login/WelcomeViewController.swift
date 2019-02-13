@@ -35,18 +35,6 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
         view.layer.insertSublayer(CAGradientLayer.gradient(colors: colors, frame: view.frame), at: 0)
         nextButton.addRoundCorners()
         navigationController?.delegate = self
-        
-        let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
-        view.addSubview(activityIndicator)
-            
-        AppleMusicAPI.topCharts(for: [.songs], genre: nil, completion: { data in
-            data.songs?.first?.data.forEach { data in
-                print(data.attributes.name + " by " + data.attributes.artistName)
-            }
-            activityIndicator.stop()
-        }, error: { error in
-            print(error.localizedDescription)
-        })
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

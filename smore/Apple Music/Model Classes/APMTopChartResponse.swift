@@ -1,5 +1,5 @@
 //
-//  APMResponse.swift
+//  APMTopChartResponse.swift
 //  smore
 //
 //  Created by Jing Wei Li on 2/11/19.
@@ -74,7 +74,7 @@ struct APMTopChartResponse: Codable {
                     }
 
                     struct APMAlbumEditorialNotes: Codable {
-                        let standard: String
+                        let standard: String?
                         let short: String
                     }
 

@@ -185,23 +185,16 @@ extension AppleMusicAPI {
             encoding: JSONEncoding.default,
             headers: authHeaders)
             .responseJSON { json in
-                guard json.result.isSuccess else {
-                    DispatchQueue.main.async {
-                        error(NSError(domain: "Failed to fetch json", code: 0, userInfo: nil))
-                    }
+                if let err = json.error {
+                    DispatchQueue.main.async { error(err) }
                     return
                 }
                 if let data =  json.data {
                     do {
                         let response = try JSONDecoder().decode(APMTopChartResponse.self, from: data)
-//                        DispatchQueue.main.async { completion(response.results) }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            completion(response.results)
-                        }
+                        DispatchQueue.main.async { completion(response.results) }
                     } catch let err {
-                        DispatchQueue.main.async {
-                            error(err)
-                        }
+                        DispatchQueue.main.async { error(err) }
                     }
                 } else {
                     DispatchQueue.main.async {

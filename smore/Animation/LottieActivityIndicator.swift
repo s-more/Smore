@@ -34,9 +34,9 @@ class LottieActivityIndicator: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 20.0
-        self.backgroundColor = UIColor.groupTableViewBackground
-        self.clipsToBounds = true
+        layer.cornerRadius = 20.0
+        backgroundColor = UIColor.darkGray
+        clipsToBounds = true
     }
     
     override func didMoveToSuperview() {
