@@ -69,10 +69,10 @@
                                     <color key="textColor" red="0.97003334760000004" green="0.38365513089999997" blue="0.053921386600000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundcloudLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LwE-h5-bLQ">
-                                    <rect key="frame" x="78.5" y="40" width="240" height="130"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundcloudLogo2" translatesAutoresizingMaskIntoConstraints="NO" id="LwE-h5-bLQ">
+                                    <rect key="frame" x="78.5" y="40" width="180" height="130"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="240" id="LU2-WM-b1Y"/>
+                                        <constraint firstAttribute="width" constant="180" id="LU2-WM-b1Y"/>
                                         <constraint firstAttribute="height" constant="130" id="lgf-xR-wp3"/>
                                     </constraints>
                                 </imageView>
@@ -136,6 +136,6 @@
         </view>
     </objects>
     <resources>
-        <image name="soundcloudLogo" width="372.3636474609375" height="372.3636474609375"/>
+        <image name="soundcloudLogo2" width="400" height="400"/>
     </resources>
 </document>

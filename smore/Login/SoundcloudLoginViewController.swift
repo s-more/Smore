@@ -30,7 +30,12 @@ class SoundcloudLoginViewController: UIViewController {
         usernameTextField.addRoundCorners()
         passwordTextField.addRoundCorners()
 
-        
+        let colors = [
+            UIColor(red: 247/255, green: 98/255, blue: 14/255, alpha: 1),
+            UIColor(red: 255/255, green: 61/255, blue: 0/255, alpha: 1)
+        ]
+        loginButton.layer.insertSublayer(CAGradientLayer.gradient(colors: colors,
+                                                                  frame: loginButton.bounds), at: 0)
     }
 
 
