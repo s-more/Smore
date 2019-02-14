@@ -1,21 +1,21 @@
 //
-//  SpotifyLoginViewController.swift
+//  YoutubeLoginViewController.swift
 //  smore
 //
-//  Created by Jing Wei Li on 2/3/19.
+//  Created by Nasir Pauldon-Collins on 2/13/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
 import UIKit
 
-class SpotifyLoginViewController: UIViewController {
+class YoutubeLoginViewController: UIViewController {
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
     
     init() {
-        super.init(nibName: "SpotifyLoginViewController", bundle: Bundle.main)
+        super.init(nibName: "YoutubeLoginViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,11 +30,10 @@ class SpotifyLoginViewController: UIViewController {
         passwordTextField.addRoundCorners()
         // Do any additional setup after loading the view.
         let colors = [
-            UIColor(red: 0, green: 220/255, blue: 77/255, alpha: 1),
-            UIColor(red: 18/255, green: 138/255, blue: 74/255, alpha: 1)
+            UIColor(red: 0, green: 0, blue: 0, alpha: 1), UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
+            
         ]
-        view.layer.insertSublayer(CAGradientLayer.gradient(colors: colors, frame: view.frame), at: 0)
-
+        view.addGradient(colors: colors)
     }
     
     
@@ -47,13 +46,11 @@ class SpotifyLoginViewController: UIViewController {
                 // implement
             })
         }
-        
-        navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
-    
-    
+
+
     @IBAction func skip(_ sender: UIButton) {
-        navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
     
+
 }
