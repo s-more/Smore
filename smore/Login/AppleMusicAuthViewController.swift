@@ -44,7 +44,7 @@ class AppleMusicAuthViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: UIButton) {
-        navigationController?.pushViewController(SpotifyLoginViewController(), animated: true)
+        navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
     }
     
 }
