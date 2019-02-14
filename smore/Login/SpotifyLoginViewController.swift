@@ -12,6 +12,7 @@ class SpotifyLoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     init() {
         super.init(nibName: "SpotifyLoginViewController", bundle: Bundle.main)
@@ -46,6 +47,13 @@ class SpotifyLoginViewController: UIViewController {
                 // implement
             })
         }
+        
+        navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
+    }
+    
+    
+    @IBAction func skip(_ sender: UIButton) {
+        navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
     
 }

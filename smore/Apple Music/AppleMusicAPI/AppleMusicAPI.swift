@@ -10,6 +10,10 @@ import Foundation
 import Alamofire
 import StoreKit
 
+/**
+ A set of APIs to work with Apple Music.
+ - uses the prefix `APM`
+ */
 enum AppleMusicAPI {
     private static let developerToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlY1MjU0OUs3SzYifQ.eyJpYXQiOjE1NDkxMzM3NTgsImV4cCI6MTU2NDY4NTc1OCwiaXNzIjoiTkRCVEs5OFZMMyJ9.r3a_fQH_5mAlrI9OeLHfTZ4mU486mgXRVr3xoD0yq1mR4oSlpEiQorwhaGXORZ0ESRE0xHcQzs8TOkaYCaMoKg"
     private static let cloudServiceController = SKCloudServiceController()
@@ -36,7 +40,8 @@ enum AppleMusicAPI {
     /**
      Can show subscription view **only when .musicCatalogPlayback is absent and .musicCatalogSubscriptionEligible is enabled.**
      */
-    static func requestCapabilities(needsSubscription: @escaping (SKCloudServiceSetupViewController?, Error?) -> Void) {
+    static func requestCapabilities(
+        needsSubscription: @escaping (SKCloudServiceSetupViewController?, Error?) -> Void) {
         cloudServiceController.requestCapabilities { capability, error in
             if let err = error {
                 print("🎃Error: \(err.localizedDescription)")

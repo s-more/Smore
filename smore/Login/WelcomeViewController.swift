@@ -35,10 +35,6 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
         view.layer.insertSublayer(CAGradientLayer.gradient(colors: colors, frame: view.frame), at: 0)
         nextButton.addRoundCorners()
         navigationController?.delegate = self
-        
-        AppleMusicAPI.searchCatalog(with: "Foster the People", types: [.albums], success: { result in
-            print(result)
-        }, error: { _ in })
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

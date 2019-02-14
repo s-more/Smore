@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlaylistCollectionViewCell" customModule="smore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="170"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="170"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vM2-TH-vhY">
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1u-e9-rjY">
+                        <rect key="frame" x="0.0" y="140" width="100" height="21"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="q1u-e9-rjY" firstAttribute="top" secondItem="vM2-TH-vhY" secondAttribute="bottom" constant="8" symbolic="YES" id="3AJ-Sk-4b8"/>
+                <constraint firstItem="vM2-TH-vhY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ECc-kJ-NXv"/>
+                <constraint firstAttribute="bottom" secondItem="q1u-e9-rjY" secondAttribute="bottom" constant="9" id="KY3-ui-9x7"/>
+                <constraint firstAttribute="trailing" secondItem="vM2-TH-vhY" secondAttribute="trailing" id="bFN-7g-TVv"/>
+                <constraint firstItem="vM2-TH-vhY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fJd-S0-vP2"/>
+                <constraint firstItem="vM2-TH-vhY" firstAttribute="leading" secondItem="q1u-e9-rjY" secondAttribute="leading" id="xHf-ux-W2w"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="132" height="170"/>
+            <connections>
+                <outlet property="playlistImage" destination="vM2-TH-vhY" id="ZhE-du-rOv"/>
+                <outlet property="playlistName" destination="q1u-e9-rjY" id="uMi-Np-IXP"/>
+            </connections>
+            <point key="canvasLocation" x="205.79710144927537" y="129.91071428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>
