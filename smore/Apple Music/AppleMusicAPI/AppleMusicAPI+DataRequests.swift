@@ -12,7 +12,7 @@ import Alamofire
 
 extension AppleMusicAPI {
     
-    // MARK: Data Requests Enums
+    // MARK: - Data Requests Enums
     
     enum APMLibrarySearchMode: String {
         case songs = "library-songs"
@@ -27,7 +27,7 @@ extension AppleMusicAPI {
         case albums = "albums"
         case playlists = "playlists"
         case artists = "artists"
-        case musicVideos = "music-videos"
+        //case musicVideos = "music-videos"
     }
     
     enum APMTopChartMode: String {
@@ -59,7 +59,7 @@ extension AppleMusicAPI {
         case reggae = 24
     }
     
-    // MARK: Data Requests Methods
+    // MARK: - Data Requests Methods
     
     /**
      Search the apple music catalog for relevant information.
@@ -71,9 +71,9 @@ extension AppleMusicAPI {
      */
     static func searchCatalog(
         with term: String,
-        types: [APMCatalogSearchMode],
+        types: [APMCatalogSearchMode] = [.artists, .albums, .playlists, .songs],
         limit: Int = 5,
-        success: @escaping (String) -> Void,
+        success: @escaping (APMSearch.APMSearchResults) -> Void,
         error: @escaping (Error) -> Void)
     {
         let searchQuery = ["https://api.music.apple.com/v1/catalog/\(countryCode)/search",
@@ -88,12 +88,26 @@ extension AppleMusicAPI {
             encoding: JSONEncoding.default,
             headers: authHeaders).responseJSON
             { json in
-            if let stringData =  json.data,
-                let result = String(data: stringData, encoding: String.Encoding.utf8) {
-                DispatchQueue.main.async {
-                    success(result)
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        error(NSError(domain: "JSON Request Failed", code: 0))
+                    }
+                    return
                 }
-            }
+                if let data =  json.data {
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .iso8601
+                        let result = try decoder.decode(APMSearch.self, from: data)
+                        DispatchQueue.main.async { success(result.results) }
+                    } catch let err {
+                        DispatchQueue.main.async { error(err) }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        error(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
         }
     }
     
@@ -109,7 +123,7 @@ extension AppleMusicAPI {
      - parameter error: the closure called when search fails.
      */
     static func searchHints(
-        with term: String,
+        from term: String,
         limit: Int = 10,
         success: @escaping ([String]) -> Void,
         error: @escaping (Error) -> Void)
@@ -127,6 +141,10 @@ extension AppleMusicAPI {
             headers: authHeaders).responseJSON
             { json in
             if let data =  json.data {
+                if let err = json.error {
+                    DispatchQueue.main.async { error(err) }
+                    return
+                }
                 do {
                     let jsonObj = try JSONSerialization.jsonObject(with: data, options: [])
                     guard let terms = jsonObj as? [String: [String: [String]]],
@@ -162,6 +180,14 @@ extension AppleMusicAPI {
         }
     }
     
+    /**
+     Get the top charts data for the given modes and genres using the Apple Music API.
+     - parameter modes: top chart for the songs, or top charts for the albums?
+     - parameter genre: spefify a genre for the top chart. Use `nil` when getting top charts for all genres.
+     - parameter limit: max length of items of the response. Defaults to 10.
+     - parameter success: the closure called when search succeeds.
+     - parameter error: the closure called when search fails.
+     */
     static func topCharts(
         for modes: [APMTopChartMode],
         genre: APMCatalogGenre?,

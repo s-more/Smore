@@ -21,6 +21,7 @@
 		0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
 		040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */; };
 		040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */; };
+		041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041084B02218431C00E96574 /* APMSearchResponse.swift */; };
 		0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */; };
 		045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09642212426100D7730E /* APMTopChartResponse.swift */; };
 		045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09662212567A00D7730E /* LottieActivityIndicator.swift */; };
@@ -66,6 +67,7 @@
 		0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
 		040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundcloudLoginViewController.xib; sourceTree = "<group>"; };
 		040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
+		041084B02218431C00E96574 /* APMSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchResponse.swift; sourceTree = "<group>"; };
 		0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		045F09642212426100D7730E /* APMTopChartResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMTopChartResponse.swift; sourceTree = "<group>"; };
 		045F09662212567A00D7730E /* LottieActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieActivityIndicator.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				045F09642212426100D7730E /* APMTopChartResponse.swift */,
+				041084B02218431C00E96574 /* APMSearchResponse.swift */,
 			);
 			path = "Model Classes";
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
 				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
+				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

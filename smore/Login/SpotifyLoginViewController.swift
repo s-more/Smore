@@ -33,7 +33,7 @@ class SpotifyLoginViewController: UIViewController {
             UIColor(red: 0, green: 220/255, blue: 77/255, alpha: 1),
             UIColor(red: 18/255, green: 138/255, blue: 74/255, alpha: 1)
         ]
-        view.layer.insertSublayer(CAGradientLayer.gradient(colors: colors, frame: view.frame), at: 0)
+        loginButton.addGradient(colors: colors)
 
     }
     

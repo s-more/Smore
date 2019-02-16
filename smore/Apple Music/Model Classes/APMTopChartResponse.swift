@@ -119,11 +119,11 @@ struct APMTopChartResponse: Codable {
                         let width: Int
                         let height: Int
                         let url: String
-                        let bgColor: String
-                        let textColor1: String
-                        let textColor2: String
-                        let textColor3: String
-                        let textColor4: String
+                        let bgColor: String?
+                        let textColor1: String?
+                        let textColor2: String?
+                        let textColor3: String?
+                        let textColor4: String?
                         
                         func artworkImageURL(width: Int = 500, height: Int = 500) -> URL {
                             var validDimensions = url.replacingOccurrences(of: "{w}", with: "\(width)")

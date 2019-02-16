@@ -30,10 +30,10 @@ class YoutubeLoginViewController: UIViewController {
         passwordTextField.addRoundCorners()
         // Do any additional setup after loading the view.
         let colors = [
-            UIColor(red: 0, green: 0, blue: 0, alpha: 1), UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
-            
+            UIColor(red: 0, green: 0, blue: 0, alpha: 1),
+            UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
         ]
-        view.addGradient(colors: colors)
+        loginButton.addGradient(colors: colors)
     }
     
     
@@ -50,6 +50,7 @@ class YoutubeLoginViewController: UIViewController {
 
 
     @IBAction func skip(_ sender: UIButton) {
+        
     }
     
 
