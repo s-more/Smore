@@ -11,6 +11,6 @@ import Foundation
 protocol Artist {
     var name: String { get set }
     var genre: String { get set }
-    var imageLink: URL { get set }
+    var imageLink: URL? { get set }
     var id: String { get set }
 }

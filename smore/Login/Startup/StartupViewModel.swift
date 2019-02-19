@@ -9,14 +9,14 @@
 import UIKit
 
 class StartupViewModel: NSObject {
-    var genres: [(String, UIImage)] = []
     var artists: [APMArtist] = []
+    var genres: [APMGenre] = []
     
     override init() {
         super.init()
     }
     
-    func fetchData(completion: @escaping () -> Void) {
+    func fetchData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         AppleMusicAPI.topCharts(for: [.albums], genre: .alternative, completion: { [weak self] results in
             let artists = results.albums?.first?.data.map { album in
                 return APMArtist(name: album.attributes.artistName,
@@ -25,11 +25,12 @@ class StartupViewModel: NSObject {
                                  id: "")
             } ?? []
             self?.artists = Array(Set(artists)).sorted(by: { $0.name < $1.name })
+            self?.genres = APMGenre.defaultGenres
             DispatchQueue.main.async {
                 completion()
             }
-        }, error: { error in
-            print(error.localizedDescription)
+        }, error: { err in
+            error(err)
         })
     }
 

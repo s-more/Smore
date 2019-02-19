@@ -48,7 +48,7 @@ extension AppleMusicAPI {
          We are not calling `onError()` on the observable b/c we don't want the search operation
          to abort.
          */
-        static func searchResults(from term: String) -> Observable<(APMSearch.APMSearchResults?, Error?)>{
+        static func searchResults(from term: String) -> Observable<(APMSearch.APMSearchResults?, Error?)> {
             return Observable.create { observable in
                 AppleMusicAPI.searchCatalog(with: term, success: { results in
                     observable.onNext((results, nil))

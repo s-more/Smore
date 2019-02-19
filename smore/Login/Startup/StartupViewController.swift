@@ -44,10 +44,20 @@ class StartupViewController: UIViewController {
         
         favArtistCollectionView.collectionViewLayout = FlowLayout(size: CGSize(width: 105, height: 140),
                                                                  itemSpacing: 0, lineSpacing: 10)
+        favGenreCollectionView.collectionViewLayout = FlowLayout(size: CGSize(width: 105, height: 140),
+                                                                 itemSpacing: 0, lineSpacing: 10)
         
-        viewModel.fetchData { [weak self] in
+        let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+        view.addSubview(activityIndicator)
+        
+        viewModel.fetchData(completion: { [weak self] in
+            activityIndicator.stop()
             self?.favArtistCollectionView.reloadData()
-        }
+            self?.favGenreCollectionView.reloadData()
+        }, error: { error in
+            activityIndicator.stop()
+            print(error.localizedDescription)
+        })
         
     }
     
@@ -56,27 +66,39 @@ class StartupViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
     }
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        let searchVC = StartupSearchTableViewController()
+        searchVC.completion = { [weak self] artist in
+            self?.viewModel.artists.insert(artist, at: 0)
+            self?.favArtistCollectionView.reloadData()
+        }
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
 }
 
 extension StartupViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == favGenreCollectionView {
-            return 0
+            return viewModel.genres.count
         }
         // this is then the fav artist collection view
         return viewModel.artists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == favGenreCollectionView {
-            return UICollectionViewCell()
-        }
-        // this is then the fav artist collection view
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartupCollectionViewCell.identifier, for: indexPath) as? StartupCollectionViewCell {
-            cell.startUpCellImage.kf.setImage(with: viewModel.artists[indexPath.row].imageLink,
-                                              placeholder: UIImage(named: "artistPlaceholder"))
-            cell.startupCellLabel.text = viewModel.artists[indexPath.row].name
-            
+            if collectionView == favGenreCollectionView {
+                cell.startUpCellImage.image = viewModel.genres[indexPath.row].image
+                cell.startupCellLabel.text = viewModel.genres[indexPath.row].name
+            } else {
+                // this is then the fav artist collection view
+                cell.startUpCellImage.kf.setImage(with: viewModel.artists[indexPath.row].imageLink,
+                                                  placeholder: UIImage(named: "artistPlaceholder"))
+                cell.startupCellLabel.text = viewModel.artists[indexPath.row].name
+            }
             return cell
         }
         

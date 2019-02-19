@@ -37,8 +37,8 @@
                         <action selector="doneButtonTapped:" destination="-1" eventType="touchUpInside" id="aag-qC-cDo"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wlI-te-xlc">
-                    <rect key="frame" x="59" y="431.33333333333331" width="316" height="139.99999999999994"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wlI-te-xlc">
+                    <rect key="frame" x="16" y="431.33333333333331" width="359" height="139.99999999999994"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="140" id="4rm-9s-NF5"/>
@@ -50,8 +50,8 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-V0-1aG">
-                    <rect key="frame" x="59" y="216.66666666666663" width="316" height="140"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-V0-1aG">
+                    <rect key="frame" x="16" y="216.66666666666663" width="359" height="140"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="140" id="WN3-58-tLq"/>
@@ -64,22 +64,36 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 of your fav artists:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjl-eL-DSb">
-                    <rect key="frame" x="59" y="176.66666666666666" width="164" height="24"/>
+                    <rect key="frame" x="16" y="176.66666666666666" width="164" height="24"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 of your fav genres:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fj-j8-WGz">
-                    <rect key="frame" x="59" y="396.33333333333331" width="171" height="24"/>
+                    <rect key="frame" x="16" y="396.33333333333331" width="171" height="24"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sms-fy-Pdx">
+                    <rect key="frame" x="190" y="176" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="nYr-qv-Gqi"/>
+                        <constraint firstAttribute="height" constant="25" id="zmz-2r-jdZ"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="searchIcon">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="xoG-U1-5B4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="wlI-te-xlc" firstAttribute="leading" secondItem="yfA-ts-NhL" secondAttribute="leading" id="2KP-jA-7PJ"/>
                 <constraint firstItem="yfA-ts-NhL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4bM-in-4Rm"/>
+                <constraint firstItem="Sms-fy-Pdx" firstAttribute="leading" secondItem="Vjl-eL-DSb" secondAttribute="trailing" constant="10" id="FmF-sG-Z2i"/>
                 <constraint firstItem="yfA-ts-NhL" firstAttribute="top" secondItem="wlI-te-xlc" secondAttribute="bottom" multiplier="30:28" id="ILF-XG-9mI"/>
                 <constraint firstItem="Vjl-eL-DSb" firstAttribute="leading" secondItem="J2J-V0-1aG" secondAttribute="leading" id="Ktu-dt-u21"/>
                 <constraint firstItem="1fj-j8-WGz" firstAttribute="top" secondItem="J2J-V0-1aG" secondAttribute="bottom" multiplier="30:27" id="LjM-pl-c27"/>
@@ -87,12 +101,17 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wlI-te-xlc" secondAttribute="trailing" id="dsG-gk-mnc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yfA-ts-NhL" secondAttribute="bottom" constant="98" id="h7Z-9O-v31"/>
                 <constraint firstItem="J2J-V0-1aG" firstAttribute="top" secondItem="Vjl-eL-DSb" secondAttribute="bottom" constant="15.999999999999972" id="hf6-uq-ddE"/>
+                <constraint firstItem="J2J-V0-1aG" firstAttribute="top" secondItem="Sms-fy-Pdx" secondAttribute="bottom" constant="15.666666666666629" id="iDp-BG-4Ew"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J2J-V0-1aG" secondAttribute="trailing" id="pBj-qL-9t4"/>
                 <constraint firstItem="J2J-V0-1aG" firstAttribute="leading" secondItem="1fj-j8-WGz" secondAttribute="leading" id="pKa-ax-FKC"/>
                 <constraint firstItem="wlI-te-xlc" firstAttribute="top" secondItem="1fj-j8-WGz" secondAttribute="bottom" constant="11" id="xU2-aK-mey"/>
+                <constraint firstItem="wlI-te-xlc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="xxL-io-dcK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="47.200000000000003" y="34.632683658170919"/>
+            <point key="canvasLocation" x="47.200000000000003" y="33.990147783251231"/>
         </view>
     </objects>
+    <resources>
+        <image name="searchIcon" width="128" height="128"/>
+    </resources>
 </document>

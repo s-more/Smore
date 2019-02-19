@@ -32,6 +32,12 @@
 		045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09642212426100D7730E /* APMTopChartResponse.swift */; };
 		045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09662212567A00D7730E /* LottieActivityIndicator.swift */; };
 		045F09692212596500D7730E /* StrugglingAnt.json in Resources */ = {isa = PBXBuildFile; fileRef = 045F09682212596500D7730E /* StrugglingAnt.json */; };
+		046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540EC221B99A9003AD74D /* StartupSearchTableViewController.swift */; };
+		046540EF221B99A9003AD74D /* StartupSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046540ED221B99A9003AD74D /* StartupSearchTableViewController.xib */; };
+		046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540F0221B9C26003AD74D /* StartupSearchTableViewCell.swift */; };
+		046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046540F1221B9C26003AD74D /* StartupSearchTableViewCell.xib */; };
+		046540F5221BB940003AD74D /* APMGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540F4221BB940003AD74D /* APMGenre.swift */; };
+		046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540F6221BBA3B003AD74D /* APMCatalogGenre.swift */; };
 		046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB6E21FE63BB00E8245D /* AppDelegate.swift */; };
 		046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB7021FE63BB00E8245D /* ViewController.swift */; };
 		046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7221FE63BB00E8245D /* Main.storyboard */; };
@@ -86,6 +92,12 @@
 		045F09642212426100D7730E /* APMTopChartResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMTopChartResponse.swift; sourceTree = "<group>"; };
 		045F09662212567A00D7730E /* LottieActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieActivityIndicator.swift; sourceTree = "<group>"; };
 		045F09682212596500D7730E /* StrugglingAnt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StrugglingAnt.json; sourceTree = "<group>"; };
+		046540EC221B99A9003AD74D /* StartupSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSearchTableViewController.swift; sourceTree = "<group>"; };
+		046540ED221B99A9003AD74D /* StartupSearchTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupSearchTableViewController.xib; sourceTree = "<group>"; };
+		046540F0221B9C26003AD74D /* StartupSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSearchTableViewCell.swift; sourceTree = "<group>"; };
+		046540F1221B9C26003AD74D /* StartupSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupSearchTableViewCell.xib; sourceTree = "<group>"; };
+		046540F4221BB940003AD74D /* APMGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMGenre.swift; sourceTree = "<group>"; };
+		046540F6221BBA3B003AD74D /* APMCatalogGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMCatalogGenre.swift; sourceTree = "<group>"; };
 		046FDB6B21FE63BB00E8245D /* smore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB6E21FE63BB00E8245D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046FDB7021FE63BB00E8245D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -210,18 +222,9 @@
 		0454BF0B221B7D9F0019D4F4 /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0454BF0C221B7DAD0019D4F4 /* Artist */,
+				0454BF0D221B7DC80019D4F4 /* Artist.swift */,
 			);
 			path = "Model Classes";
-			sourceTree = "<group>";
-		};
-		0454BF0C221B7DAD0019D4F4 /* Artist */ = {
-			isa = PBXGroup;
-			children = (
-				0454BF0D221B7DC80019D4F4 /* Artist.swift */,
-				0454BF0F221B7E750019D4F4 /* APMArtist.swift */,
-			);
-			path = Artist;
 			sourceTree = "<group>";
 		};
 		045F095122121D2000D7730E /* AppleMusicAPI */ = {
@@ -237,10 +240,24 @@
 		045F095222121D3F00D7730E /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0454BF0F221B7E750019D4F4 /* APMArtist.swift */,
 				045F09642212426100D7730E /* APMTopChartResponse.swift */,
 				041084B02218431C00E96574 /* APMSearchResponse.swift */,
+				046540F4221BB940003AD74D /* APMGenre.swift */,
+				046540F6221BBA3B003AD74D /* APMCatalogGenre.swift */,
 			);
 			path = "Model Classes";
+			sourceTree = "<group>";
+		};
+		046540EB221B996C003AD74D /* StartupSearch */ = {
+			isa = PBXGroup;
+			children = (
+				046540EC221B99A9003AD74D /* StartupSearchTableViewController.swift */,
+				046540ED221B99A9003AD74D /* StartupSearchTableViewController.xib */,
+				046540F0221B9C26003AD74D /* StartupSearchTableViewCell.swift */,
+				046540F1221B9C26003AD74D /* StartupSearchTableViewCell.xib */,
+			);
+			path = StartupSearch;
 			sourceTree = "<group>";
 		};
 		046FDB6221FE63BA00E8245D = {
@@ -296,6 +313,7 @@
 		04A366B0221B719C006B3D0A /* Startup */ = {
 			isa = PBXGroup;
 			children = (
+				046540EB221B996C003AD74D /* StartupSearch */,
 				04A366B1221B7279006B3D0A /* StartupViewController.swift */,
 				04A366B2221B7279006B3D0A /* StartupViewController.xib */,
 				0454BF03221B796A0019D4F4 /* StartupViewModel.swift */,
@@ -443,12 +461,14 @@
 				0454BF08221B79C50019D4F4 /* StartupCollectionViewCell.xib in Resources */,
 				045F09692212596500D7730E /* StrugglingAnt.json in Resources */,
 				0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */,
+				046540EF221B99A9003AD74D /* StartupSearchTableViewController.xib in Resources */,
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */,
 				040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */,
 				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
 				C6EFE55F22149F36001D18D2 /* YoutubeLoginViewController.xib in Resources */,
 				0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */,
+				046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,9 +565,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046540F5221BB940003AD74D /* APMGenre.swift in Sources */,
 				0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
 				0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */,
+				046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */,
 				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
 				0454BF04221B796A0019D4F4 /* StartupViewModel.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
@@ -555,6 +577,7 @@
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
+				046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */,
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
 				0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
@@ -567,6 +590,7 @@
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
 				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
+				046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */,
 				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
 				0454BF10221B7E750019D4F4 /* APMArtist.swift in Sources */,

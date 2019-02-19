@@ -75,7 +75,7 @@ struct APMTopChartResponse: Codable {
 
                     struct APMAlbumEditorialNotes: Codable {
                         let standard: String?
-                        let short: String
+                        let short: String?
                     }
 
                 }
