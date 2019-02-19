@@ -11,6 +11,7 @@ target 'smore' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'lottie-ios'
+  pod 'Kingfisher'
 
   target 'smoreTests' do
     inherit! :search_paths

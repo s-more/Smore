@@ -43,10 +43,11 @@ class SoundcloudLoginViewController: UIViewController {
         /* Do login stuff
 
         */
+        navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
     }
     
     @IBAction func skip(_ sender: UIButton) {
-        
+        navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
     }
     
 

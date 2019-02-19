@@ -30,27 +30,19 @@ class YoutubeLoginViewController: UIViewController {
         passwordTextField.addRoundCorners()
         // Do any additional setup after loading the view.
         let colors = [
-            UIColor(red: 0, green: 0, blue: 0, alpha: 1), UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
-            
+            UIColor(red: 0, green: 0, blue: 0, alpha: 1),
+            UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
         ]
-        view.addGradient(colors: colors)
+        loginButton.addGradient(colors: colors)
     }
     
-    
-    @IBAction func loginSpotifyUser(_ sender: UIButton) {
-        if let username = usernameTextField.text,
-            let password = passwordTextField.text {
-            SpotifyAPI.login(username: username, password: password, success: {
-                // implement
-            }, error: { error in
-                // implement
-            })
-        }
+    @IBAction func loginYoutubeUser(_ sender: UIButton) {
+        navigationController?.pushViewController(StartupViewController(), animated: true)
     }
-
-
+    
     @IBAction func skip(_ sender: UIButton) {
+        navigationController?.pushViewController(StartupViewController(), animated: true)
     }
     
-
+    
 }

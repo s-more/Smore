@@ -27,9 +27,16 @@ class ViewController: UIViewController {
                     .disposed(by: strongSelf.bag)
             }).disposed(by: bag)
  
-        AppleMusicAPI.requestData(with: "https://api.music.apple.com/v1/catalog/us/artists/36954") {
-            print($0)
-        }
+        let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
+        view.addSubview(ai)
+        AppleMusicAPI.searchCatalog(with: "Sabrina Carpenter", success: { result in
+            result.songs?.data.forEach { data in
+                print(data.attributes.name + " in album " + data.attributes.albumName)
+            }
+            ai.stop()
+        }, error: { error in
+            print(error.localizedDescription)
+        })
         
     }
 
