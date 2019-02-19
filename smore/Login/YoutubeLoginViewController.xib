@@ -38,6 +38,9 @@
                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="LOGIN"/>
+                                    <connections>
+                                        <action selector="loginYoutubeUser:" destination="-1" eventType="touchUpInside" id="rqY-Tg-1Ea"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTk-uP-gu7">
                                     <rect key="frame" x="164.66666666666666" y="657" width="46" height="40"/>
@@ -46,7 +49,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="yI4-kY-8xV"/>
+                                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="Rha-nP-rL4"/>
                                     </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1EA-0e-ROS">

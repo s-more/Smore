@@ -49,7 +49,7 @@ struct APMSearch: Codable {
                             let attributes: APMAlbumAttributes?
                             
                             struct APMAlbumAttributes: Codable {
-                                let artwork: APMAlbumArtwork
+                                let artwork: APMAlbumArtwork?
                                 let artistName: String
                                 let isSingle: Bool
                                 let url: URL
@@ -60,19 +60,19 @@ struct APMSearch: Codable {
                                 let releaseDate: String
                                 let name: String
                                 let recordLabel: String
-                                let copyright: String
-                                let playParams: APMAlbumPlayParams
+                                let copyright: String?
+                                let playParams: APMAlbumPlayParams?
                                 let editorialNotes: APMAlbumEditorialNotes?
                                 
                                 struct APMAlbumArtwork: Codable {
                                     let width: Int
                                     let height: Int
                                     let url: String
-                                    let bgColor: String
-                                    let textColor1: String
-                                    let textColor2: String
-                                    let textColor3: String
-                                    let textColor4: String
+                                    let bgColor: String?
+                                    let textColor1: String?
+                                    let textColor2: String?
+                                    let textColor3: String?
+                                    let textColor4: String?
                                     
                                     func artworkImageURL(width: Int = 500, height: Int = 500) -> URL {
                                         var validDimensions = url.replacingOccurrences(of: "{w}", with: "\(width)")
@@ -100,7 +100,7 @@ struct APMSearch: Codable {
         
         struct APMSearchAlbums: Codable {
             let href: String
-            let next: String
+            let next: String?
             let data: [APMAlbumData]
             
             struct APMAlbumData: Codable {
@@ -110,7 +110,7 @@ struct APMSearch: Codable {
                 let attributes: APMAlbumAttributes
                 
                 struct APMAlbumAttributes: Codable {
-                    let artwork: APMAlbumArtwork
+                    let artwork: APMAlbumArtwork?
                     let artistName: String
                     let isSingle: Bool
                     let url: URL
@@ -121,19 +121,19 @@ struct APMSearch: Codable {
                     let releaseDate: String
                     let name: String
                     let recordLabel: String
-                    let copyright: String
-                    let playParams: APMAlbumPlayParams
+                    let copyright: String?
+                    let playParams: APMAlbumPlayParams?
                     let editorialNotes: APMAlbumEditorialNotes?
                     
                     struct APMAlbumArtwork: Codable {
                         let width: Int
                         let height: Int
                         let url: String
-                        let bgColor: String
-                        let textColor1: String
-                        let textColor2: String
-                        let textColor3: String
-                        let textColor4: String
+                        let bgColor: String?
+                        let textColor1: String?
+                        let textColor2: String?
+                        let textColor3: String?
+                        let textColor4: String?
                         
                         func artworkImageURL(width: Int = 500, height: Int = 500) -> URL {
                             var validDimensions = url.replacingOccurrences(of: "{w}", with: "\(width)")
@@ -166,9 +166,9 @@ struct APMSearch: Codable {
                 let attributes: APMPlaylistAttributes
                 
                 struct APMPlaylistAttributes: Codable {
-                    let artwork: APMPlaylistArtwork
+                    let artwork: APMPlaylistArtwork?
                     let lastModifiedDate: Date?
-                    let playParams: APMPlaylistsPlayParams
+                    let playParams: APMPlaylistsPlayParams?
                     let url: URL
                     let name: String
                     let curatorName: String
@@ -201,7 +201,7 @@ struct APMSearch: Codable {
         
         struct APMSearchSongs: Codable {
             let href: String
-            let next: String
+            let next: String?
             let data: [APMSongData]
             
             struct APMSongData: Codable {
@@ -212,7 +212,7 @@ struct APMSearch: Codable {
                 
                 struct APMSongAttributes: Codable {
                     let previews: [APMSongPreviews]
-                    let artwork: APMSongArtwork
+                    let artwork: APMSongArtwork?
                     let artistName: String
                     let url: URL
                     let discNumber: Int
@@ -222,7 +222,7 @@ struct APMSearch: Codable {
                     let name: String
                     let isrc: String
                     let albumName: String
-                    let playParams: APMSongPlayParams
+                    let playParams: APMSongPlayParams?
                     let trackNumber: Int
                     let composerName: String?
                     

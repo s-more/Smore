@@ -23,6 +23,12 @@
 		040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */; };
 		041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041084B02218431C00E96574 /* APMSearchResponse.swift */; };
 		0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */; };
+		0454BF04221B796A0019D4F4 /* StartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454BF03221B796A0019D4F4 /* StartupViewModel.swift */; };
+		0454BF08221B79C50019D4F4 /* StartupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454BF06221B79C50019D4F4 /* StartupCollectionViewCell.xib */; };
+		0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454BF09221B7D670019D4F4 /* StartupCollectionViewCell.swift */; };
+		0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454BF0D221B7DC80019D4F4 /* Artist.swift */; };
+		0454BF10221B7E750019D4F4 /* APMArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454BF0F221B7E750019D4F4 /* APMArtist.swift */; };
+		0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */; };
 		045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09642212426100D7730E /* APMTopChartResponse.swift */; };
 		045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09662212567A00D7730E /* LottieActivityIndicator.swift */; };
 		045F09692212596500D7730E /* StrugglingAnt.json in Resources */ = {isa = PBXBuildFile; fileRef = 045F09682212596500D7730E /* StrugglingAnt.json */; };
@@ -32,6 +38,8 @@
 		046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7521FE63BE00E8245D /* Assets.xcassets */; };
 		046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7721FE63BE00E8245D /* LaunchScreen.storyboard */; };
 		046FDB8421FE63BE00E8245D /* smoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* smoreTests.swift */; };
+		04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A366B1221B7279006B3D0A /* StartupViewController.swift */; };
+		04A366B4221B7279006B3D0A /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A366B2221B7279006B3D0A /* StartupViewController.xib */; };
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
@@ -69,6 +77,12 @@
 		040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
 		041084B02218431C00E96574 /* APMSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchResponse.swift; sourceTree = "<group>"; };
 		0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		0454BF03221B796A0019D4F4 /* StartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewModel.swift; sourceTree = "<group>"; };
+		0454BF06221B79C50019D4F4 /* StartupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupCollectionViewCell.xib; sourceTree = "<group>"; };
+		0454BF09221B7D670019D4F4 /* StartupCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupCollectionViewCell.swift; sourceTree = "<group>"; };
+		0454BF0D221B7DC80019D4F4 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		0454BF0F221B7E750019D4F4 /* APMArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMArtist.swift; sourceTree = "<group>"; };
+		0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		045F09642212426100D7730E /* APMTopChartResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMTopChartResponse.swift; sourceTree = "<group>"; };
 		045F09662212567A00D7730E /* LottieActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieActivityIndicator.swift; sourceTree = "<group>"; };
 		045F09682212596500D7730E /* StrugglingAnt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StrugglingAnt.json; sourceTree = "<group>"; };
@@ -82,6 +96,8 @@
 		046FDB7F21FE63BE00E8245D /* smoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB8321FE63BE00E8245D /* smoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smoreTests.swift; sourceTree = "<group>"; };
 		046FDB8521FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A366B1221B7279006B3D0A /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		04A366B2221B7279006B3D0A /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
 		04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+DataRequests.swift"; sourceTree = "<group>"; };
 		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 		0409D5AC220744D500CB4CDE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				04A366B0221B719C006B3D0A /* Startup */,
 				040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */,
 				040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */,
 				0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */,
@@ -148,7 +165,9 @@
 		0409D5B6220750F900CB4CDE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0454BF0B221B7D9F0019D4F4 /* Model Classes */,
 				0423EFF8220D3CE3008D6169 /* Extensions */,
+				0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -186,6 +205,23 @@
 				0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0454BF0B221B7D9F0019D4F4 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0454BF0C221B7DAD0019D4F4 /* Artist */,
+			);
+			path = "Model Classes";
+			sourceTree = "<group>";
+		};
+		0454BF0C221B7DAD0019D4F4 /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				0454BF0D221B7DC80019D4F4 /* Artist.swift */,
+				0454BF0F221B7E750019D4F4 /* APMArtist.swift */,
+			);
+			path = Artist;
 			sourceTree = "<group>";
 		};
 		045F095122121D2000D7730E /* AppleMusicAPI */ = {
@@ -255,6 +291,18 @@
 				046FDB8521FE63BE00E8245D /* Info.plist */,
 			);
 			path = smoreTests;
+			sourceTree = "<group>";
+		};
+		04A366B0221B719C006B3D0A /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				04A366B1221B7279006B3D0A /* StartupViewController.swift */,
+				04A366B2221B7279006B3D0A /* StartupViewController.xib */,
+				0454BF03221B796A0019D4F4 /* StartupViewModel.swift */,
+				0454BF09221B7D670019D4F4 /* StartupCollectionViewCell.swift */,
+				0454BF06221B79C50019D4F4 /* StartupCollectionViewCell.xib */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 		04FA0B27220661C40095430A /* Apple Music */ = {
@@ -390,7 +438,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A366B4221B7279006B3D0A /* StartupViewController.xib in Resources */,
 				046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */,
+				0454BF08221B79C50019D4F4 /* StartupCollectionViewCell.xib in Resources */,
 				045F09692212596500D7730E /* StrugglingAnt.json in Resources */,
 				0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */,
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
@@ -466,6 +516,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -476,6 +527,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -495,14 +547,19 @@
 			files = (
 				0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
+				0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */,
 				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
+				0454BF04221B796A0019D4F4 /* StartupViewModel.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
+				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
+				0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
+				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				046FDB7121FE63BB00E8245D /* ViewController.swift in Sources */,
 				045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -512,6 +569,7 @@
 				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
 				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
+				0454BF10221B7E750019D4F4 /* APMArtist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

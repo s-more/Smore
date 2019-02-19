@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SpotifyLoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
+    let bag = DisposeBag()
     
     init() {
         super.init(nibName: "SpotifyLoginViewController", bundle: Bundle.main)
@@ -34,6 +37,21 @@ class SpotifyLoginViewController: UIViewController {
             UIColor(red: 18/255, green: 138/255, blue: 74/255, alpha: 1)
         ]
         loginButton.addGradient(colors: colors)
+        
+        usernameTextField.rx.text.orEmpty
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .filter { $0.count > 0 }
+            .flatMapLatest { AppleMusicAPI.rx.searchResults(from: $0) }
+            .subscribe(onNext: { response in
+                if let result = response.0 {
+                    let first = result.songs?.data.first?.attributes
+                    print("\(first?.name ?? "") by \(first?.artistName ?? "" )")
+                } else if let error = response.1 {
+                    print(error.localizedDescription)
+                }
+            })
+            .disposed(by: bag)
+        
 
     }
     

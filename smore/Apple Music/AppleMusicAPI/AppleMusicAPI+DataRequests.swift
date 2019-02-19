@@ -182,6 +182,7 @@ extension AppleMusicAPI {
     
     /**
      Get the top charts data for the given modes and genres using the Apple Music API.
+        - the completion closure is not called on the main thread.
      - parameter modes: top chart for the songs, or top charts for the albums?
      - parameter genre: spefify a genre for the top chart. Use `nil` when getting top charts for all genres.
      - parameter limit: max length of items of the response. Defaults to 10.
@@ -218,7 +219,7 @@ extension AppleMusicAPI {
                 if let data =  json.data {
                     do {
                         let response = try JSONDecoder().decode(APMTopChartResponse.self, from: data)
-                        DispatchQueue.main.async { completion(response.results) }
+                        completion(response.results)
                     } catch let err {
                         DispatchQueue.main.async { error(err) }
                     }

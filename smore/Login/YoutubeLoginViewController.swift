@@ -36,22 +36,13 @@ class YoutubeLoginViewController: UIViewController {
         loginButton.addGradient(colors: colors)
     }
     
-    
-    @IBAction func loginSpotifyUser(_ sender: UIButton) {
-        if let username = usernameTextField.text,
-            let password = passwordTextField.text {
-            SpotifyAPI.login(username: username, password: password, success: {
-                // implement
-            }, error: { error in
-                // implement
-            })
-        }
+    @IBAction func loginYoutubeUser(_ sender: UIButton) {
+        navigationController?.pushViewController(StartupViewController(), animated: true)
     }
-
-
+    
     @IBAction func skip(_ sender: UIButton) {
-        
+        navigationController?.pushViewController(StartupViewController(), animated: true)
     }
     
-
+    
 }
