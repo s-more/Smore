@@ -6,7 +6,6 @@
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class APMGenre {

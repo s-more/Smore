@@ -43,7 +43,9 @@
 		046FDB7421FE63BB00E8245D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7221FE63BB00E8245D /* Main.storyboard */; };
 		046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7521FE63BE00E8245D /* Assets.xcassets */; };
 		046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7721FE63BE00E8245D /* LaunchScreen.storyboard */; };
-		046FDB8421FE63BE00E8245D /* smoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* smoreTests.swift */; };
+		046FDB8421FE63BE00E8245D /* TestDuplicatesRemoval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* TestDuplicatesRemoval.swift */; };
+		04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
+		04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
 		04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A366B1221B7279006B3D0A /* StartupViewController.swift */; };
 		04A366B4221B7279006B3D0A /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A366B2221B7279006B3D0A /* StartupViewController.xib */; };
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
@@ -106,8 +108,9 @@
 		046FDB7821FE63BE00E8245D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		046FDB7A21FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046FDB7F21FE63BE00E8245D /* smoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		046FDB8321FE63BE00E8245D /* smoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smoreTests.swift; sourceTree = "<group>"; };
+		046FDB8321FE63BE00E8245D /* TestDuplicatesRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDuplicatesRemoval.swift; sourceTree = "<group>"; };
 		046FDB8521FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemoveDuplicates.swift"; sourceTree = "<group>"; };
 		04A366B1221B7279006B3D0A /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		04A366B2221B7279006B3D0A /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
 		04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+DataRequests.swift"; sourceTree = "<group>"; };
@@ -215,6 +218,7 @@
 			children = (
 				0409D5B72207510D00CB4CDE /* UIView+Corners.swift */,
 				0423EFF9220D3D1D008D6169 /* UIView+Gradient.swift */,
+				04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,7 +308,7 @@
 		046FDB8221FE63BE00E8245D /* smoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				046FDB8321FE63BE00E8245D /* smoreTests.swift */,
+				046FDB8321FE63BE00E8245D /* TestDuplicatesRemoval.swift */,
 				046FDB8521FE63BE00E8245D /* Info.plist */,
 			);
 			path = smoreTests;
@@ -578,6 +582,7 @@
 				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */,
+				04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
 				0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
@@ -601,7 +606,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046FDB8421FE63BE00E8245D /* smoreTests.swift in Sources */,
+				046FDB8421FE63BE00E8245D /* TestDuplicatesRemoval.swift in Sources */,
+				04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

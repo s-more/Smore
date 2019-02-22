@@ -24,7 +24,7 @@ class StartupViewModel: NSObject {
                                  imageLink: album.attributes.artwork.artworkImageURL(),
                                  id: "")
             } ?? []
-            self?.artists = Array(Set(artists)).sorted(by: { $0.name < $1.name })
+            self?.artists = artists.duplicatesRemoved()
             self?.genres = APMGenre.defaultGenres
             DispatchQueue.main.async {
                 completion()

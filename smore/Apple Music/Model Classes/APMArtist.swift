@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class APMArtist: Artist, Equatable, Hashable {
     var name: String
@@ -31,13 +31,18 @@ class APMArtist: Artist, Equatable, Hashable {
         && lhs.genre == rhs.genre
     }
     
-    class func convert(results: APMSearch.APMSearchResults) -> [APMArtist] {
+    class func convert(
+        results: APMSearch.APMSearchResults,
+        imageWidth: Int = 200,
+        imageHeight: Int = 200
+    ) -> [APMArtist] {
         return results.artists?.data.map { artist -> APMArtist? in
             if let genre = artist.attributes.genreNames.first {
                     return APMArtist(name: artist.attributes.name,
                                      genre: genre,
                                      imageLink: artist.relationships.albums.data.first?
-                                        .attributes?.artwork?.artworkImageURL(width: 100, height: 100),
+                                        .attributes?.artwork?.artworkImageURL(width: imageWidth,
+                                                                              height: imageHeight),
                                      id: artist.id)
                 }
                 return nil
