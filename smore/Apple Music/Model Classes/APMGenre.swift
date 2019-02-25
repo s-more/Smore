@@ -6,10 +6,10 @@
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class APMGenre {
+class APMGenre: Hashable, Equatable {
+    
     let name: String
     let image: UIImage?
     let catalogGenre: APMCatalogGenre
@@ -18,6 +18,15 @@ class APMGenre {
         self.name = name
         self.image = image
         self.catalogGenre = catalogGenre
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(catalogGenre)
+    }
+    
+    static func == (lhs: APMGenre, rhs: APMGenre) -> Bool {
+        return lhs.name == rhs.name && lhs.catalogGenre == rhs.catalogGenre
     }
     
     static let defaultGenres: [APMGenre] = {

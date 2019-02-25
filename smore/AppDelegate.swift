@@ -13,11 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let welcomeNagivation = UINavigationController(rootViewController: WelcomeViewController())
-        window?.rootViewController = welcomeNagivation
+        if UserDefaults.isFirstLaunch {
+            let welcomeNagivation = UINavigationController(rootViewController: WelcomeViewController())
+            window?.rootViewController = welcomeNagivation
+        } else {
+            window?.rootViewController = TabBarViewController()
+        }
         return true
     }
 

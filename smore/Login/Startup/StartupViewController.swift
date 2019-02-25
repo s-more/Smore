@@ -64,7 +64,10 @@ class StartupViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        
+        UserDefaults.setFirstLaunch()
+        viewModel.storeUserPreferences()
+        let tabBarVC = TabBarViewController()
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = tabBarVC
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -106,8 +109,32 @@ extension StartupViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if collectionView == favGenreCollectionView {
+            let cell = favGenreCollectionView.cellForItem(at: indexPath) as? StartupCollectionViewCell
+            if cell?.isChoosen ?? false {
+                cell?.startUpCellImage.layer.borderWidth = 0
+                cell?.startUpCellImage.layer.borderColor = UIColor.clear.cgColor
+                viewModel.removeFromSelectedGenres(with: viewModel.genres[indexPath.row])
+                cell?.isChoosen = false
+            } else {
+                cell?.startUpCellImage.layer.borderWidth = 2.0
+                cell?.startUpCellImage.layer.borderColor = UIColor.themeColor.cgColor
+                viewModel.selectedGenre.append(viewModel.genres[indexPath.row])
+                cell?.isChoosen = true
+            }
+        } else { // artists
+            let cell = favArtistCollectionView.cellForItem(at: indexPath) as? StartupCollectionViewCell
+            if cell?.isChoosen ?? false {
+                cell?.startUpCellImage.layer.borderWidth = 0.0
+                cell?.startUpCellImage.layer.borderColor = UIColor.clear.cgColor
+                viewModel.removeFromSelectedArtists(with: viewModel.artists[indexPath.row])
+                cell?.isChoosen = false
+            } else {
+                cell?.startUpCellImage.layer.borderWidth = 2.0
+                cell?.startUpCellImage.layer.borderColor = UIColor.themeColor.cgColor
+                viewModel.selectedArtist.append(viewModel.artists[indexPath.row])
+                cell?.isChoosen = true
+            }
+        }
     }
-    
-    
 }

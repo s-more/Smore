@@ -28,7 +28,7 @@ class StartupSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.placeholder = "Search for your favorite artists!"
-        searchBar.delegate = self
+        searchBar.keyboardAppearance = .dark
         navigationItem.titleView = searchBar
         
         tableView.register(UINib(nibName: "StartupSearchTableViewCell", bundle: Bundle.main),
@@ -47,6 +47,12 @@ class StartupSearchTableViewController: UITableViewController {
                 } else if let error = response.1 {
                     print(error.localizedDescription)
                 }
+            })
+            .disposed(by: bag)
+        
+        searchBar.rx.searchButtonClicked
+            .subscribe(onNext: { [weak self] _ in
+                self?.searchBar.resignFirstResponder()
             })
             .disposed(by: bag)
         
@@ -78,10 +84,4 @@ class StartupSearchTableViewController: UITableViewController {
         completion?(artists[indexPath.row])
     }
     
-}
-
-extension StartupSearchTableViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
 }

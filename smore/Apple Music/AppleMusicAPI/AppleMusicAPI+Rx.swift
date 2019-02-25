@@ -11,9 +11,7 @@ import RxSwift
 import StoreKit
 
 extension AppleMusicAPI {
-    /**
-     Reactive extensions for AppleMusicAPI.
-     */
+    /// Reactive extensions for AppleMusicAPI.
     enum rx {
         static var authorized: Observable<Bool> {
             return Observable.create { observable in
@@ -44,10 +42,9 @@ extension AppleMusicAPI {
             }
         }
         
-        /**
-         We are not calling `onError()` on the observable b/c we don't want the search operation
-         to abort.
-         */
+        
+        /// We are not calling `onError()` on the observable b/c we don't want the search operation
+        /// to abort.
         static func searchResults(from term: String) -> Observable<(APMSearch.APMSearchResults?, Error?)> {
             return Observable.create { observable in
                 AppleMusicAPI.searchCatalog(with: term, success: { results in

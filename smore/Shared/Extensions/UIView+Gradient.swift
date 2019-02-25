@@ -11,13 +11,11 @@ import UIKit
 
 extension UIView {
     
-    /**
-     Add the brown-ish smore gradient to any view.
-     ```
-     // example
-     myButton.addDefaultGradient()
-     ```
-     */
+     /// Add the brown-ish smore gradient to any view.
+     /// ```
+     /// // example
+     /// myButton.addDefaultGradient()
+     /// ```
     func addDefaultGradient() {
         let colors = [
             UIColor(red: 220/255, green: 148/255, blue: 111/255, alpha: 1),

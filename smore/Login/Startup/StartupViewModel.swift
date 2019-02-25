@@ -11,9 +11,24 @@ import UIKit
 class StartupViewModel: NSObject {
     var artists: [APMArtist] = []
     var genres: [APMGenre] = []
+    var selectedArtist: [APMArtist] = []
+    var selectedGenre: [APMGenre] = []
     
     override init() {
         super.init()
+    }
+    
+    func removeFromSelectedGenres(with genre: APMGenre) {
+        selectedGenre = selectedGenre.filter { $0 != genre }
+    }
+    
+    func removeFromSelectedArtists(with artist: APMArtist) {
+        selectedArtist = selectedArtist.filter { $0 != artist }
+    }
+    
+    func storeUserPreferences() {
+        UserDefaults.setFavGenres(with: selectedGenre.map { $0.catalogGenre })
+        APMArtistEntity.createArtists(from: selectedArtist)
     }
     
     func fetchData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
@@ -24,7 +39,7 @@ class StartupViewModel: NSObject {
                                  imageLink: album.attributes.artwork.artworkImageURL(),
                                  id: "")
             } ?? []
-            self?.artists = Array(Set(artists)).sorted(by: { $0.name < $1.name })
+            self?.artists = artists.duplicatesRemoved()
             self?.genres = APMGenre.defaultGenres
             DispatchQueue.main.async {
                 completion()

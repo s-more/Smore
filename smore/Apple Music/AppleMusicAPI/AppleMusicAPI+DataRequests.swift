@@ -38,21 +38,19 @@ extension AppleMusicAPI {
     
     // MARK: - Data Requests Methods
     
-    /**
-     Search the apple music catalog for relevant information.
-     - parameter term: the string to search the catalog.
-     - parameter types: array of types of music to search.
-     - parameter limit: max length of items of the response. Defaults to 5.
-     - parameter success: the closure called when search succeeds.
-     - parameter error: the closure called when search fails.
-     */
+     ///Search the apple music catalog for relevant information.
+     ///- parameter term: the string to search the catalog.
+     ///- parameter types: array of types of music to search.
+     ///- parameter limit: max length of items of the response. Defaults to 5.
+     ///- parameter success: the closure called when search succeeds.
+     ///- parameter error: the closure called when search fails.
     static func searchCatalog(
         with term: String,
         types: [APMCatalogSearchMode] = [.artists, .albums],
         limit: Int = 5,
         success: @escaping (APMSearch.APMSearchResults) -> Void,
-        error: @escaping (Error) -> Void)
-    {
+        error: @escaping (Error) -> Void
+    ) {
         let searchQuery = ["https://api.music.apple.com/v1/catalog/\(countryCode)/search",
                            "?term=\(term.split(separator: " ").joined(separator: "+"))",
                            "&types=\(types.map { $0.rawValue }.joined(separator: ","))",
@@ -88,23 +86,22 @@ extension AppleMusicAPI {
         }
     }
     
-    /**
-     Get search hints following the given `term` using the Apple Music API.
-     - Sample result passed into the success closure after searching for `"Halsey"`:
-     ```
-     ["halsey", "halsey without", "halsey essentials", "halsey juice wrld", "halsey without me clean"]
-     ```
-     - parameter term: the string used to get hints.
-     - parameter limit: max length of items of the response. Defaults to 10.
-     - parameter success: the closure called when search succeeds.
-     - parameter error: the closure called when search fails.
-     */
+    
+     /// Get search hints following the given `term` using the Apple Music API.
+     ///- Sample result passed into the success closure after searching for `"Halsey"`:
+     ///```
+     /// ["halsey", "halsey without", "halsey essentials", "halsey juice wrld", "halsey without me clean"]
+     ///```
+     ///- parameter term: the string used to get hints.
+     ///- parameter limit: max length of items of the response. Defaults to 10.
+     ///- parameter success: the closure called when search succeeds.
+     ///- parameter error: the closure called when search fails.
     static func searchHints(
         from term: String,
         limit: Int = 10,
         success: @escaping ([String]) -> Void,
-        error: @escaping (Error) -> Void)
-    {
+        error: @escaping (Error) -> Void
+    ) {
         let searchQuery =
             ["https://api.music.apple.com/v1/catalog/\(countryCode)/search/hints",
             "?term=\(term.split(separator: " ").joined(separator: "+"))",
@@ -157,25 +154,24 @@ extension AppleMusicAPI {
         }
     }
     
-    /**
-     Get the top charts data for the given modes and genres using the Apple Music API.
-        - the completion closure is not called on the main thread.
-     - parameter modes: top chart for the songs, or top charts for the albums?
-     - parameter genre: spefify a genre for the top chart. Use `nil` when getting top charts for all genres.
-     - parameter limit: max length of items of the response. Defaults to 10.
-     - parameter success: the closure called when search succeeds.
-     - parameter error: the closure called when search fails.
-     */
+    
+     /// Get the top charts data for the given modes and genre using the Apple Music API.
+     ///   - the completion closure is not called on the main thread.
+     ///- parameter modes: top chart for the songs, or top charts for the albums?
+     ///- parameter genre: spefify a genre for the top chart. Use `nil` when getting top charts for all genres.
+     ///- parameter limit: max length of items of the response. Defaults to 10.
+     ///- parameter success: the closure called when search succeeds.
+     ///- parameter error: the closure called when search fails.
     static func topCharts(
         for modes: [APMTopChartMode],
         genre: APMCatalogGenre?,
         limit: Int = 20,
         completion: @escaping (APMTopChartResponse.APMTopChartResonseResults) -> Void,
-        error: @escaping (Error) -> Void)
-    {
+        error: @escaping (Error) -> Void
+    ) {
         var query =
             ["https://api.music.apple.com/v1/catalog/\(countryCode)/charts",
-             "?types=\(Array(Set(modes)).map { $0.rawValue }.joined(separator: ","))",
+             "?types=\(modes.duplicatesRemoved().map { $0.rawValue }.joined(separator: ","))",
              "&limit=\(limit)"].joined()
         
         if let genre = genre {
@@ -187,8 +183,8 @@ extension AppleMusicAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: authHeaders)
-            .responseJSON { json in
+            headers: authHeaders
+        ).responseJSON { json in
                 if let err = json.error {
                     DispatchQueue.main.async { error(err) }
                     return
@@ -210,7 +206,8 @@ extension AppleMusicAPI {
     
     static func genreIDs(
         for genres: [Int],
-        completion: @escaping (String) -> Void) {
+        completion: @escaping (String) -> Void
+    ) {
         let query =
             ["https://api.music.apple.com/v1/catalog/\(countryCode)/genres",
             "?ids=\(genres.map { "\($0)" }.joined(separator: ","))"].joined()
