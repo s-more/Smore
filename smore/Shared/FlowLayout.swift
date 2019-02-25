@@ -12,11 +12,13 @@ class FlowLayout: UICollectionViewFlowLayout {
     let size: CGSize
     let itemSpacing: CGFloat
     let lineSpacing: CGFloat
+    let leftInset: CGFloat
     
-    init(size: CGSize, itemSpacing: CGFloat, lineSpacing: CGFloat) {
+    init(size: CGSize, itemSpacing: CGFloat, lineSpacing: CGFloat, leftInset: CGFloat = 0) {
         self.size = size
         self.itemSpacing = itemSpacing
         self.lineSpacing = lineSpacing
+        self.leftInset = leftInset
         super.init()
     }
     
@@ -28,7 +30,7 @@ class FlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         scrollDirection = .horizontal
-        sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
+        sectionInset = UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: 2)
         itemSize = size
         minimumInteritemSpacing = itemSpacing
         minimumLineSpacing = lineSpacing

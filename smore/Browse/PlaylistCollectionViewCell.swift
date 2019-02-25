@@ -9,14 +9,16 @@
 import UIKit
 
 class PlaylistCollectionViewCell: UICollectionViewCell {
+    static let identifier = "playlistCollectionViewCell"
 
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistName: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.addRoundCorners()
+        playlistImage.addRoundCorners()
 
     }
 
