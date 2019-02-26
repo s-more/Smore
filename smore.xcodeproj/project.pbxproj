@@ -71,6 +71,8 @@
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
+		A3A3A580222596680015BF6B /* BrowseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3A57F222596680015BF6B /* BrowseHeader.xib */; };
+		A3A3A582222596D30015BF6B /* BrowseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3A581222596D30015BF6B /* BrowseHeader.swift */; };
 		C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE55C22149F36001D18D2 /* YoutubeLoginViewController.swift */; };
 		C6EFE55F22149F36001D18D2 /* YoutubeLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6EFE55D22149F36001D18D2 /* YoutubeLoginViewController.xib */; };
 /* End PBXBuildFile section */
@@ -156,6 +158,8 @@
 		6E4F0DF52216004F005A0275 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E4F0DF62216004F005A0275 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		A3A3A57F222596680015BF6B /* BrowseHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseHeader.xib; sourceTree = "<group>"; };
+		A3A3A581222596D30015BF6B /* BrowseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseHeader.swift; sourceTree = "<group>"; };
 		A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.release.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.release.xcconfig"; sourceTree = "<group>"; };
 		A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC3B4E4C553D14D641C2843 /* Pods-smoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 				04A5D0CA2223350400774489 /* SuggestedTableViewCell.xib */,
 				04A5D0DE22237B4000774489 /* TopChartsTableViewCell.swift */,
 				04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */,
+				A3A3A57F222596680015BF6B /* BrowseHeader.xib */,
+				A3A3A581222596D30015BF6B /* BrowseHeader.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				04A5D0E122237B4000774489 /* TopChartsTableViewCell.xib in Resources */,
 				04A5D0B322230D4100774489 /* TabBarViewController.xib in Resources */,
 				0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */,
+				A3A3A580222596680015BF6B /* BrowseHeader.xib in Resources */,
 				046540EF221B99A9003AD74D /* StartupSearchTableViewController.xib in Resources */,
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
@@ -636,6 +643,7 @@
 				0419045D222390C000EB22EC /* ViewController.swift in Sources */,
 				046540F5221BB940003AD74D /* APMGenre.swift in Sources */,
 				04A5D0CF22233C3A00774489 /* PlaylistCollectionViewCell.swift in Sources */,
+				A3A3A582222596D30015BF6B /* BrowseHeader.swift in Sources */,
 				0423EFFA220D3D1D008D6169 /* UIView+Gradient.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
 				0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */,

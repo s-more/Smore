@@ -32,7 +32,7 @@ class BrowseViewModel {
                 self?.topCharts = results.songs?.first?.data.map { data in
                     return APMSong(response: data)
                 } ?? []
-                self?.headers = ["What would you like to listen?", "Top Charts"]
+                self?.headers = ["What would you like to listen to?", "Top Charts"]
                 DispatchQueue.main.async { completion() }
             }, error: { e in
                 DispatchQueue.main.async { error(e) }

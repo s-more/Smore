@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BrowseHeader" customModule="smore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mE7-je-uia">
+                    <rect key="frame" x="0.0" y="0.0" width="377" height="65"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbA-tf-kWp">
+                            <rect key="frame" x="16" y="14" width="345" height="37"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="27"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="BbA-tf-kWp" firstAttribute="leading" secondItem="mE7-je-uia" secondAttribute="leading" constant="16" id="FEv-kJ-dCa"/>
+                        <constraint firstAttribute="trailing" secondItem="BbA-tf-kWp" secondAttribute="trailing" constant="16" id="g6r-La-QPu"/>
+                        <constraint firstAttribute="bottom" secondItem="BbA-tf-kWp" secondAttribute="bottom" constant="14" id="kco-vQ-SnC"/>
+                        <constraint firstItem="BbA-tf-kWp" firstAttribute="top" secondItem="mE7-je-uia" secondAttribute="top" constant="14" id="nLh-8b-kfg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="mE7-je-uia" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9wh-Jq-vZe"/>
+                <constraint firstItem="mE7-je-uia" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ncu-tV-eUa"/>
+                <constraint firstAttribute="trailing" secondItem="mE7-je-uia" secondAttribute="trailing" id="dhB-kx-48m"/>
+                <constraint firstItem="mE7-je-uia" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jzN-jX-1eC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="titleLabel" destination="BbA-tf-kWp" id="P38-Zg-XVA"/>
+            </connections>
+            <point key="canvasLocation" x="66.400000000000006" y="-217.24137931034485"/>
+        </view>
+    </objects>
+</document>
