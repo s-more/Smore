@@ -25,7 +25,7 @@ class TopChartsTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: Bundle.main),
                                 forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.collectionViewLayout = FlowLayout(size: CGSize(width: 147, height: 202),
-                                                         itemSpacing: 0, lineSpacing: 10, leftInset: 16.0)
+                                                         itemSpacing: 0, lineSpacing: 10, inset: 16.0)
     }
 }
 

@@ -46,6 +46,7 @@
 		046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7521FE63BE00E8245D /* Assets.xcassets */; };
 		046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046FDB7721FE63BE00E8245D /* LaunchScreen.storyboard */; };
 		046FDB8421FE63BE00E8245D /* TestDuplicatesRemoval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDB8321FE63BE00E8245D /* TestDuplicatesRemoval.swift */; };
+		0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C73A2224AB5A0056C5E6 /* SmoreDatabase.swift */; };
 		04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
 		04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
 		04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A366B1221B7279006B3D0A /* StartupViewController.swift */; };
@@ -131,6 +132,7 @@
 		046FDB7F21FE63BE00E8245D /* smoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046FDB8321FE63BE00E8245D /* TestDuplicatesRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDuplicatesRemoval.swift; sourceTree = "<group>"; };
 		046FDB8521FE63BE00E8245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0497C73A2224AB5A0056C5E6 /* SmoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoreDatabase.swift; sourceTree = "<group>"; };
 		04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemoveDuplicates.swift"; sourceTree = "<group>"; };
 		04A366B1221B7279006B3D0A /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		04A366B2221B7279006B3D0A /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				04A5D0C522232FC500774489 /* APMArtistEntity.swift */,
+				0497C73A2224AB5A0056C5E6 /* SmoreDatabase.swift */,
 				04A5D0D422234CAB00774489 /* SmoreDatabase.xcdatamodeld */,
 			);
 			path = Databases;
@@ -665,6 +668,7 @@
 				04A5D0B922230E8200774489 /* UIColor+Common.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
+				0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
 				04A5D0DA222376DF00774489 /* ListeningCollectionViewCell.swift in Sources */,

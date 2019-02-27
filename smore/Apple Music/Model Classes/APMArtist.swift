@@ -36,17 +36,19 @@ class APMArtist: Artist, Equatable, Hashable {
         imageWidth: Int = 200,
         imageHeight: Int = 200
     ) -> [APMArtist] {
-        return results.artists?.data.map { artist -> APMArtist? in
+        return
+            results.artists?.data.map { artist -> APMArtist? in
             if let genre = artist.attributes.genreNames.first {
                     return APMArtist(name: artist.attributes.name,
                                      genre: genre,
                                      imageLink: artist.relationships.albums.data.first?
-                                        .attributes?.artwork?.artworkImageURL(width: imageWidth,
-                                                                              height: imageHeight),
+                                        .attributes?.artwork?
+                                        .artworkImageURL(width: imageWidth, height: imageHeight),
                                      id: artist.id)
                 }
                 return nil
             }
-            .compactMap { $0 } ?? []
+            .compactMap { $0 } // remove all nil elements
+            ?? []
     }
 }
