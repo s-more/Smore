@@ -11,20 +11,10 @@ import CoreData
 
 class APMArtistEntity: NSManagedObject {
     
-    static let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SmoreDatabase")
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
-    
     class func favArtists() -> [APMArtist] {
         let request: NSFetchRequest<APMArtistEntity> = APMArtistEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
-        if let results = try? persistentContainer.viewContext.fetch(request) {
+        if let results = try? SmoreDatabase.context.fetch(request) {
             return results.map { APMArtist(
                 name: $0.name ?? "",
                 genre: $0.genre ?? "",
@@ -35,16 +25,16 @@ class APMArtistEntity: NSManagedObject {
         return []
     }
     
-    class func createArtists(from favArtists: [APMArtist]) {
+    class func createArtists(from favArtists: [Artist]) {
         favArtists.forEach { makeArtistInstance(with: $0) }
-        try? persistentContainer.viewContext.save()
+        try? SmoreDatabase.save()
     }
     
-    private class func makeArtistInstance(with artist: APMArtist) {
-        let newArtist = APMArtistEntity(context: persistentContainer.viewContext)
+    private class func makeArtistInstance(with artist: Artist) {
+        let newArtist = APMArtistEntity(context: SmoreDatabase.context)
         newArtist.genre = artist.genre
         newArtist.identifier = artist.id
-        newArtist.imageLink = artist.imageLink?.absoluteString ?? ""
+        newArtist.imageLink = artist.imageLink?.absoluteString 
         newArtist.name = artist.name
     }
 }
