@@ -14,10 +14,6 @@ class BrowseViewModel {
     var topCharts: [APMSong]
     var headers: [String] = []
     
-    lazy var numberOfSections: Int = {
-        return headers.count
-    }()
-    
     init() {
         self.favGenres = UserDefaults.favGenres
         favArtists = APMArtistEntity.favArtists()
@@ -38,7 +34,4 @@ class BrowseViewModel {
                 DispatchQueue.main.async { error(e) }
             })
     }
-    
-    
-    
 }

@@ -13,7 +13,7 @@ class APMSong: Song {
     var genre: String
     var imageLink: URL?
     var id: String
-    var playableId: String
+    var playableString: String
     var artistName: String
     
     init(response: APMTopChartResponse.APMTopChartResonseResults.APMSong.APMSongData) {
@@ -21,7 +21,7 @@ class APMSong: Song {
         genre = response.attributes.genreNames.first ?? ""
         imageLink = response.attributes.artwork.artworkImageURL(width: 300, height: 300)
         id = response.id
-        playableId = response.attributes.playParams.id
+        playableString = response.attributes.playParams.id
         artistName = response.attributes.artistName
     }
     

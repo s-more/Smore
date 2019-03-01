@@ -13,4 +13,9 @@ protocol Artist {
     var genre: String { get set }
     var imageLink: URL? { get set }
     var id: String { get set }
+    var albums: [Album] { get set }
+    
+    /// fetch all albums from this artist.
+    /// - once done with the web request just assign the returned albums to `albums`.
+    func albums(completion: @escaping () -> Void, error: @escaping (Error) -> Void)
 }
