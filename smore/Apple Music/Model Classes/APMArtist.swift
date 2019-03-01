@@ -8,47 +8,52 @@
 
 import UIKit
 
-class APMArtist: Artist, Equatable, Hashable {
+class APMArtist: Artist {
     var name: String
     var genre: String
     var imageLink: URL?
     var id: String
+    var albums: [Album]
     
     init(name: String, genre: String, imageLink: URL?, id: String) {
         self.name = name
         self.genre = genre
         self.imageLink = imageLink
         self.id = id
+        albums = []
     }
     
+    init(response: APMSearch.APMSearchResults.APMSearchArtists.APMSearchArtistsData, imageSize: Int) {
+        name = response.attributes.name
+        genre = response.attributes.genreNames.first ?? "Unknown Genre"
+        id = response.id
+        albums = response.relationships.albums.data.map { APMAlbum(relAlbumData: $0) }
+        imageLink = response.relationships.albums.data
+            .first?.attributes?.artwork?.artworkImageURL(width: imageSize, height: imageSize)
+    }
+    
+    class func convert(results: APMSearch.APMSearchResults, imageSize: Int = 200) -> [APMArtist] {
+        return results.artists?.data.map { APMArtist(response: $0, imageSize: imageSize) } ?? []
+    }
+    
+    func albums(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
+        guard albums.isEmpty else {
+            DispatchQueue.main.async { completion() }
+            return
+        }
+    }
+}
+
+extension APMArtist: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
         hasher.combine(genre)
     }
-    
+}
+
+extension APMArtist: Equatable {
     static func == (lhs: APMArtist, rhs: APMArtist) -> Bool {
         return lhs.name == rhs.name
-        && lhs.genre == rhs.genre
-    }
-    
-    class func convert(
-        results: APMSearch.APMSearchResults,
-        imageWidth: Int = 200,
-        imageHeight: Int = 200
-    ) -> [APMArtist] {
-        return
-            results.artists?.data.map { artist -> APMArtist? in
-            if let genre = artist.attributes.genreNames.first {
-                    return APMArtist(name: artist.attributes.name,
-                                     genre: genre,
-                                     imageLink: artist.relationships.albums.data.first?
-                                        .attributes?.artwork?
-                                        .artworkImageURL(width: imageWidth, height: imageHeight),
-                                     id: artist.id)
-                }
-                return nil
-            }
-            .compactMap { $0 } // remove all nil elements
-            ?? []
+            && lhs.genre == rhs.genre
     }
 }

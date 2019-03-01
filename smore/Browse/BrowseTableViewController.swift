@@ -31,7 +31,7 @@ class BrowseTableViewController: UITableViewController {
                            forHeaderFooterViewReuseIdentifier: BrowseHeader.identifier)
         
         let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
-        view.addSubview(ai)
+        tableView.addSubview(ai)
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         viewModel.fetchData(completion: { [weak self] in
@@ -79,10 +79,6 @@ class BrowseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 210
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 70
-//    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: BrowseHeader.identifier) as? BrowseHeader

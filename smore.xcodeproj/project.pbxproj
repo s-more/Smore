@@ -22,6 +22,9 @@
 		040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */; };
 		040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */; };
 		041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041084B02218431C00E96574 /* APMSearchResponse.swift */; };
+		041746FE22272F6B0044350F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041746FD22272F6B0044350F /* Album.swift */; };
+		0417470022272F7D0044350F /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041746FF22272F7D0044350F /* Playlist.swift */; };
+		0417470222288C380044350F /* APMAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417470122288C380044350F /* APMAlbum.swift */; };
 		041904542223803E00EB22EC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041904532223803E00EB22EC /* Song.swift */; };
 		041904562223808E00EB22EC /* APMSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041904552223808E00EB22EC /* APMSong.swift */; };
 		0419045D222390C000EB22EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419045B222390C000EB22EC /* ViewController.swift */; };
@@ -106,6 +109,9 @@
 		040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundcloudLoginViewController.xib; sourceTree = "<group>"; };
 		040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
 		041084B02218431C00E96574 /* APMSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchResponse.swift; sourceTree = "<group>"; };
+		041746FD22272F6B0044350F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		041746FF22272F7D0044350F /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		0417470122288C380044350F /* APMAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMAlbum.swift; sourceTree = "<group>"; };
 		041904532223803E00EB22EC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		041904552223808E00EB22EC /* APMSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSong.swift; sourceTree = "<group>"; };
 		0419045B222390C000EB22EC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +279,8 @@
 			children = (
 				0454BF0D221B7DC80019D4F4 /* Artist.swift */,
 				041904532223803E00EB22EC /* Song.swift */,
+				041746FD22272F6B0044350F /* Album.swift */,
+				041746FF22272F7D0044350F /* Playlist.swift */,
 			);
 			path = "Model Classes";
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				046540F4221BB940003AD74D /* APMGenre.swift */,
 				046540F6221BBA3B003AD74D /* APMCatalogGenre.swift */,
 				041904552223808E00EB22EC /* APMSong.swift */,
+				0417470122288C380044350F /* APMAlbum.swift */,
 			);
 			path = "Model Classes";
 			sourceTree = "<group>";
@@ -445,6 +454,7 @@
 				046FDB6821FE63BB00E8245D /* Frameworks */,
 				046FDB6921FE63BB00E8245D /* Resources */,
 				FE278AFCE933A4BA8BB60237 /* [CP] Embed Pods Frameworks */,
+				A7667109EC3633CCEDF83B3D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -603,6 +613,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A7667109EC3633CCEDF83B3D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FE278AFCE933A4BA8BB60237 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,22 +645,34 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -666,13 +710,16 @@
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
 				0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
+				0417470222288C380044350F /* APMAlbum.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
 				04A5D0BB222310B900774489 /* UserDefaults+Extensions.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
 				04A5D0C82223347600774489 /* BrowseViewModel.swift in Sources */,
+				041746FE22272F6B0044350F /* Album.swift in Sources */,
 				045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */,
 				04A5D0D622234CAB00774489 /* SmoreDatabase.xcdatamodeld in Sources */,
+				0417470022272F7D0044350F /* Playlist.swift in Sources */,
 				04A5D0B922230E8200774489 /* UIColor+Common.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
