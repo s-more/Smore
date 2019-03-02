@@ -72,6 +72,7 @@
 		04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5D0DE22237B4000774489 /* TopChartsTableViewCell.swift */; };
 		04A5D0E122237B4000774489 /* TopChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */; };
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
+		04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
@@ -158,6 +159,7 @@
 		04A5D0DE22237B4000774489 /* TopChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopChartsTableViewCell.swift; sourceTree = "<group>"; };
 		04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopChartsTableViewCell.xib; sourceTree = "<group>"; };
 		04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+DataRequests.swift"; sourceTree = "<group>"; };
+		04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMessagesWrapper.swift; sourceTree = "<group>"; };
 		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 				0454BF0B221B7D9F0019D4F4 /* Model Classes */,
 				0423EFF8220D3CE3008D6169 /* Extensions */,
 				0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */,
+				04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */,
 				04A5D0B022230D4100774489 /* TabBarViewController.swift */,
 				04A5D0B122230D4100774489 /* TabBarViewController.xib */,
 			);
@@ -347,6 +350,7 @@
 				6E4F0DF02214B806005A0275 /* Browse */,
 				0409D5BD220766F800CB4CDE /* TPKeyboardAvoiding */,
 				0409D5B6220750F900CB4CDE /* Shared */,
+				04B760B2222B1D440095AF33 /* Search */,
 				0409D5B22207469900CB4CDE /* Animation */,
 				0409D5AC220744D500CB4CDE /* Login */,
 				04FA0B27220661C40095430A /* Apple Music */,
@@ -391,6 +395,13 @@
 				04A5D0D422234CAB00774489 /* SmoreDatabase.xcdatamodeld */,
 			);
 			path = Databases;
+			sourceTree = "<group>";
+		};
+		04B760B2222B1D440095AF33 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		04FA0B27220661C40095430A /* Apple Music */ = {
@@ -654,6 +665,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
@@ -671,6 +683,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
@@ -716,6 +729,7 @@
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
 				04A5D0C82223347600774489 /* BrowseViewModel.swift in Sources */,
+				04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */,
 				041746FE22272F6B0044350F /* Album.swift in Sources */,
 				045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */,
 				04A5D0D622234CAB00774489 /* SmoreDatabase.xcdatamodeld in Sources */,

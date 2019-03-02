@@ -17,6 +17,7 @@ target 'smore' do
   pod 'GoogleSignIn'
   pod 'MarqueeLabel/Swift'
   pod 'SwiftMessages'  
+  pod 'XLPagerTabStrip', '~> 8.1'
 
   target 'smoreTests' do
     inherit! :search_paths
