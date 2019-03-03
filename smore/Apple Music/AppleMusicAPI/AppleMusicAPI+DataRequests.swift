@@ -46,8 +46,8 @@ extension AppleMusicAPI {
      ///- parameter error: the closure called when search fails.
     static func searchCatalog(
         with term: String,
-        types: [APMCatalogSearchMode] = [.artists, .albums],
-        limit: Int = 5,
+        types: [APMCatalogSearchMode] = [.artists, .albums, .playlists, .songs],
+        limit: Int = 3,
         success: @escaping (APMSearch.APMSearchResults) -> Void,
         error: @escaping (Error) -> Void
     ) {

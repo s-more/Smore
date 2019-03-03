@@ -19,6 +19,7 @@
 		0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */; };
 		0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */; };
 		0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
+		040A0660222C672C009B37E3 /* SlidingViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A065F222C672C009B37E3 /* SlidingViewTransition.swift */; };
 		040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */; };
 		040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */; };
 		041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041084B02218431C00E96574 /* APMSearchResponse.swift */; };
@@ -73,6 +74,18 @@
 		04A5D0E122237B4000774489 /* TopChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */; };
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
 		04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */; };
+		04B760B5222B21970095AF33 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B3222B21970095AF33 /* SearchViewController.swift */; };
+		04B760B6222B21970095AF33 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B760B4222B21970095AF33 /* SearchViewController.xib */; };
+		04B760B9222B59690095AF33 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B8222B59690095AF33 /* SearchViewModel.swift */; };
+		04B760BB222B778C0095AF33 /* SearchHintDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760BA222B778C0095AF33 /* SearchHintDataSource.swift */; };
+		04B760BF222B796C0095AF33 /* GenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760BD222B796C0095AF33 /* GenericTableViewCell.swift */; };
+		04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B760BE222B796C0095AF33 /* GenericTableViewCell.xib */; };
+		04B760C2222B883A0095AF33 /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760C1222B883A0095AF33 /* SearchDataSource.swift */; };
+		04B760C4222B8A8D0095AF33 /* APMSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760C3222B8A8D0095AF33 /* APMSearchDataSource.swift */; };
+		04B760C7222B8F110095AF33 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760C5222B8F110095AF33 /* SearchTableViewCell.swift */; };
+		04B760C8222B8F110095AF33 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B760C6222B8F110095AF33 /* SearchTableViewCell.xib */; };
+		04B760CA222B95420095AF33 /* AllSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760C9222B95420095AF33 /* AllSearchDataSource.swift */; };
+		04B760CC222B99990095AF33 /* APMPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760CB222B99990095AF33 /* APMPlaylist.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
@@ -107,6 +120,7 @@
 		0409D5C42207676500CB4CDE /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotifyLoginViewController.xib; sourceTree = "<group>"; };
 		0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
+		040A065F222C672C009B37E3 /* SlidingViewTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingViewTransition.swift; sourceTree = "<group>"; };
 		040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundcloudLoginViewController.xib; sourceTree = "<group>"; };
 		040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
 		041084B02218431C00E96574 /* APMSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchResponse.swift; sourceTree = "<group>"; };
@@ -160,6 +174,18 @@
 		04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopChartsTableViewCell.xib; sourceTree = "<group>"; };
 		04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+DataRequests.swift"; sourceTree = "<group>"; };
 		04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMessagesWrapper.swift; sourceTree = "<group>"; };
+		04B760B3222B21970095AF33 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		04B760B4222B21970095AF33 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		04B760B8222B59690095AF33 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		04B760BA222B778C0095AF33 /* SearchHintDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHintDataSource.swift; sourceTree = "<group>"; };
+		04B760BD222B796C0095AF33 /* GenericTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell.swift; sourceTree = "<group>"; };
+		04B760BE222B796C0095AF33 /* GenericTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericTableViewCell.xib; sourceTree = "<group>"; };
+		04B760C1222B883A0095AF33 /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
+		04B760C3222B8A8D0095AF33 /* APMSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchDataSource.swift; sourceTree = "<group>"; };
+		04B760C5222B8F110095AF33 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		04B760C6222B8F110095AF33 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		04B760C9222B95420095AF33 /* AllSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSearchDataSource.swift; sourceTree = "<group>"; };
+		04B760CB222B99990095AF33 /* APMPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMPlaylist.swift; sourceTree = "<group>"; };
 		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +244,7 @@
 		0409D5B22207469900CB4CDE /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				040A065F222C672C009B37E3 /* SlidingViewTransition.swift */,
 				045F09682212596500D7730E /* StrugglingAnt.json */,
 				045F09662212567A00D7730E /* LottieActivityIndicator.swift */,
 				0409D5B3220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift */,
@@ -228,13 +255,12 @@
 		0409D5B6220750F900CB4CDE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				04B760BC222B79330095AF33 /* Views */,
 				04A5D0BD22232BE000774489 /* Databases */,
 				0454BF0B221B7D9F0019D4F4 /* Model Classes */,
 				0423EFF8220D3CE3008D6169 /* Extensions */,
 				0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */,
 				04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */,
-				04A5D0B022230D4100774489 /* TabBarViewController.swift */,
-				04A5D0B122230D4100774489 /* TabBarViewController.xib */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -308,6 +334,7 @@
 				046540F6221BBA3B003AD74D /* APMCatalogGenre.swift */,
 				041904552223808E00EB22EC /* APMSong.swift */,
 				0417470122288C380044350F /* APMAlbum.swift */,
+				04B760CB222B99990095AF33 /* APMPlaylist.swift */,
 			);
 			path = "Model Classes";
 			sourceTree = "<group>";
@@ -400,8 +427,36 @@
 		04B760B2222B1D440095AF33 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				04B760B7222B58E10095AF33 /* Datasources */,
+				04B760B8222B59690095AF33 /* SearchViewModel.swift */,
+				04B760B3222B21970095AF33 /* SearchViewController.swift */,
+				04B760B4222B21970095AF33 /* SearchViewController.xib */,
+				04B760C5222B8F110095AF33 /* SearchTableViewCell.swift */,
+				04B760C6222B8F110095AF33 /* SearchTableViewCell.xib */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		04B760B7222B58E10095AF33 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				04B760BA222B778C0095AF33 /* SearchHintDataSource.swift */,
+				04B760C1222B883A0095AF33 /* SearchDataSource.swift */,
+				04B760C3222B8A8D0095AF33 /* APMSearchDataSource.swift */,
+				04B760C9222B95420095AF33 /* AllSearchDataSource.swift */,
+			);
+			path = Datasources;
+			sourceTree = "<group>";
+		};
+		04B760BC222B79330095AF33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04A5D0B022230D4100774489 /* TabBarViewController.swift */,
+				04A5D0B122230D4100774489 /* TabBarViewController.xib */,
+				04B760BD222B796C0095AF33 /* GenericTableViewCell.swift */,
+				04B760BE222B796C0095AF33 /* GenericTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		04FA0B27220661C40095430A /* Apple Music */ = {
@@ -560,13 +615,16 @@
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
 				040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */,
+				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
 				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
 				C6EFE55F22149F36001D18D2 /* YoutubeLoginViewController.xib in Resources */,
 				04A5D0D022233C3E00774489 /* PlaylistCollectionViewCell.xib in Resources */,
 				0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */,
 				04A5D0DB222376E500774489 /* ListeningCollectionViewCell.xib in Resources */,
+				04B760C8222B8F110095AF33 /* SearchTableViewCell.xib in Resources */,
 				0419045E222390C000EB22EC /* Main.storyboard in Resources */,
 				046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */,
+				04B760B6222B21970095AF33 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,7 +769,9 @@
 				046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */,
 				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
 				0454BF04221B796A0019D4F4 /* StartupViewModel.swift in Sources */,
+				04B760CA222B95420095AF33 /* AllSearchDataSource.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
+				04B760C7222B8F110095AF33 /* SearchTableViewCell.swift in Sources */,
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
@@ -728,6 +788,9 @@
 				04A5D0BB222310B900774489 /* UserDefaults+Extensions.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
+				04B760BB222B778C0095AF33 /* SearchHintDataSource.swift in Sources */,
+				04B760C2222B883A0095AF33 /* SearchDataSource.swift in Sources */,
+				04B760C4222B8A8D0095AF33 /* APMSearchDataSource.swift in Sources */,
 				04A5D0C82223347600774489 /* BrowseViewModel.swift in Sources */,
 				04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */,
 				041746FE22272F6B0044350F /* Album.swift in Sources */,
@@ -737,15 +800,20 @@
 				04A5D0B922230E8200774489 /* UIColor+Common.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
+				04B760BF222B796C0095AF33 /* GenericTableViewCell.swift in Sources */,
 				0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
+				04B760B5222B21970095AF33 /* SearchViewController.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
 				04A5D0DA222376DF00774489 /* ListeningCollectionViewCell.swift in Sources */,
 				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
 				04A5D0CE2223376D00774489 /* SuggestedTableViewCell.swift in Sources */,
 				046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */,
+				040A0660222C672C009B37E3 /* SlidingViewTransition.swift in Sources */,
 				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
+				04B760CC222B99990095AF33 /* APMPlaylist.swift in Sources */,
+				04B760B9222B59690095AF33 /* SearchViewModel.swift in Sources */,
 				0454BF10221B7E750019D4F4 /* APMArtist.swift in Sources */,
 				04A5D0B222230D4100774489 /* TabBarViewController.swift in Sources */,
 			);

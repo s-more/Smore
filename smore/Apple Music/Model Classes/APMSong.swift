@@ -25,4 +25,13 @@ class APMSong: Song {
         artistName = response.attributes.artistName
     }
     
+    init(searchResponse: APMSearch.APMSearchResults.APMSearchSongs.APMSongData) {
+        name = searchResponse.attributes.name
+        genre = searchResponse.attributes.genreNames.first ?? ""
+        imageLink = searchResponse.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        id = searchResponse.id
+        playableString = searchResponse.attributes.playParams?.id ?? ""
+        artistName = searchResponse.attributes.artistName
+    }
+    
 }
