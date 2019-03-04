@@ -12,7 +12,6 @@ import RxCocoa
 
 class SearchViewModel: NSObject {
     
-    var searchHintsDataSource = SearchHintDataSource()
     let searchDataSources: [SearchDataSource]
     let sectionHeaders: [String] = ["Artists", "Albums", "Playlists", "Songs"]
     var initialSearchBarPosition: CGFloat = 0
@@ -77,8 +76,7 @@ class SearchViewModel: NSObject {
             success: { response in
                 DispatchQueue.global(qos: .userInitiated).async {
                     let ds = SearchViewModel.populateSearchDataSource(with: dataSource, data: response)
-                    ds.isSearchHinting = false
-                    DispatchQueue.main.async { completion(dataSource) }
+                    DispatchQueue.main.async { completion(ds) }
                 }
             }, error: { err in
                 DispatchQueue.main.async { error(err) }

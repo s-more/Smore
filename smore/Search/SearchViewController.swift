@@ -29,6 +29,15 @@ class SearchViewController: UIViewController {
         }
     }
     
+    var searchHintsDataSource: SearchHintDataSource? {
+        didSet {
+            if let ds = searchHintsDataSource {
+                tableView.dataSource = ds
+                tableView.reloadData()
+            }
+        }
+    }
+    
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: "SearchViewController", bundle: Bundle.main)
@@ -82,9 +91,7 @@ class SearchViewController: UIViewController {
             }
             .subscribe(onNext: { [weak self] text in
                 if let hints = text.0, let ds = self?.dataSource {
-                    ds.isSearchHinting = true
-                    ds.searchHints = hints
-                    self?.dataSource = ds
+                    self?.searchHintsDataSource = ds.searchHintDataSource(from: hints)
                 }
             })
             .disposed(by: bag)
@@ -93,9 +100,7 @@ class SearchViewController: UIViewController {
             .filter { $0.count == 0 }
             .subscribe(onNext: { [weak self] _ in
                 if let ds = self?.dataSource {
-                    ds.isSearchHinting = true
-                    ds.searchHints = []
-                    self?.dataSource = ds
+                    self?.searchHintsDataSource = ds.searchHintDataSource(from: [])
                 }
             })
             .disposed(by: bag)
@@ -119,7 +124,8 @@ class SearchViewController: UIViewController {
         viewModel.search( with: text, dataSource: dataSource, completion: { [weak self] ds in
             self?.dataSource = ds
             self?.activityIndicator.stop()
-        }, error: { error in
+        }, error: { [weak self] error in
+            self?.activityIndicator.stop()
             SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
         })
     }
@@ -136,17 +142,17 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if dataSource.isSearchHinting {
-            search(with: dataSource.searchHints[indexPath.row])
+        if let searchHints = (tableView.dataSource as? SearchHintDataSource)?.searchHints {
+            search(with: searchHints[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return dataSource.isSearchHinting ? 0 : UITableView.automaticDimension
+        return tableView.dataSource is SearchHintDataSource ? 0 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if dataSource.isSearchHinting { return 50 }
+        if tableView.dataSource is SearchHintDataSource { return 50 }
         if indexPath.section == 0 {
             if dataSource.artists.count > 0 { return 210 }
             return 0
@@ -155,7 +161,7 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard !dataSource.isSearchHinting else { return nil }
+        if tableView.dataSource is SearchHintDataSource { return nil }
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: BrowseHeader.identifier) as? BrowseHeader
         let header = viewModel.sectionHeaders[section]
         cell?.titleLabel.text = header

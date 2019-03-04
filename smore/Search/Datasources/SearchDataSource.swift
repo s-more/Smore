@@ -18,7 +18,6 @@ protocol SearchDataSource: UITableViewDataSource {
     var playlists: [Playlist] { get set }
     
     /// for search hints.
-    var isSearchHinting: Bool { get set }
-    var searchHints: [String] { get set }
     func searchHints(from term: String) -> Observable<([String]?, Error?)>
+    func searchHintDataSource(from hints: [String]) -> SearchHintDataSource
 }

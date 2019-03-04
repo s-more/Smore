@@ -96,5 +96,9 @@ class AllSearchDataSource: NSObject, SearchDataSource {
     func searchHints(from term: String) -> Observable<([String]?, Error?)> {
         return Observable.empty()
     }
+    
+    func searchHintDataSource(from hints: [String]) -> SearchHintDataSource {
+        return SearchHintDataSource(searchHints: hints)
+    }
 }
 

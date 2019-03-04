@@ -12,8 +12,8 @@ import UIKit
 class SearchHintDataSource: NSObject, UITableViewDataSource {
     var searchHints: [String]
     
-    override init() {
-        searchHints = []
+    init(searchHints: [String]) {
+        self.searchHints = searchHints
         super.init()
     }
     
