@@ -19,9 +19,11 @@ class SearchViewController: UIViewController {
     
     let viewModel: SearchViewModel
     let bag = DisposeBag()
+    let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
-    var dataSource: UITableViewDataSource = APMSearchDataSource() {
+    var dataSource: SearchDataSource = APMSearchDataSource() {
         didSet {
+            applyContentSize(from: dataSource)
             tableView.dataSource = dataSource
             tableView.reloadData()
         }
@@ -41,13 +43,14 @@ class SearchViewController: UIViewController {
         
         scrollView.delegate = self
         tableView.delegate = self
+        searchBar.delegate = self
         tableView.dataSource = dataSource
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         viewModel.initialSearchBarPosition = searchBar.frame.origin.y
         
-//        tableView.register(UINib(nibName: "GenericTableViewCell", bundle: Bundle.main),
-//                           forCellReuseIdentifier: GenericTableViewCell.identifier)
+        tableView.register(UINib(nibName: "GenericTableViewCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: GenericTableViewCell.identifier)
         tableView.register(UINib(nibName: "SuggestedTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: SuggestedTableViewCell.identifier)
         tableView.register(UINib(nibName: "SearchTableViewCell", bundle: Bundle.main),
@@ -59,9 +62,9 @@ class SearchViewController: UIViewController {
         titleLabelView.backgroundColor = .clear
         titleLabelView.textAlignment = .center
         titleLabelView.textColor = UIColor.white
-        titleLabelView.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabelView.font = UIFont.init(name: "Avenir Next Bold", size: 16.0)
         titleLabelView.text = ""
-        self.navigationItem.titleView = titleLabelView
+        navigationItem.titleView = titleLabelView
         
         serviceToggle.rx.selectedSegmentIndex
             .subscribe(onNext: { [weak self] index in
@@ -73,52 +76,27 @@ class SearchViewController: UIViewController {
         searchBar.rx.text.orEmpty
             .throttle(0.5, scheduler: MainScheduler.instance)
             .filter { $0.count > 0 }
-            .flatMapLatest { AppleMusicAPI.rx.searchResults(from: $0) }
-            .subscribe(onNext: { [weak self] response in
-                DispatchQueue.global(qos: .userInitiated).async {
-                    if let data = response.0, let dataSource = (self?.dataSource) as? SearchDataSource {
-                        let ds = SearchViewModel.populateSearchDataSource(with: dataSource, data: data)
-                        DispatchQueue.main.async {
-                            self?.scrollView.contentSize = SearchViewModel.scrollViewContentSize(from: ds)
-                            self?.tableView.contentSize = SearchViewModel.tableViewContentSize(from: ds)
-                            self?.tableViewHeight.constant = SearchViewModel.tableViewContentSize(from: ds).height
-                            self?.view.layoutIfNeeded()
-                            self?.dataSource = ds
-                        }
-                    }
-                }
-            })
-            .disposed(by: bag)
-        
-        /*
-        searchBar.rx.text.orEmpty
-            .throttle(0.5, scheduler: MainScheduler.instance)
-            .filter { $0.count > 0 }
-            .flatMapLatest { AppleMusicAPI.rx.searchHints(from: $0) }
+            .flatMapLatest { [weak self] text -> Observable<([String]?, Error?)> in
+                guard let strongSelf = self else { return Observable.empty() }
+                return strongSelf.dataSource.searchHints(from: text)
+            }
             .subscribe(onNext: { [weak self] text in
-                if let hints = text.0, let dataSource = self?.viewModel.searchHintsDataSource {
-                    dataSource.searchHints = hints
-                    self?.dataSource = dataSource
+                if let hints = text.0, let ds = self?.dataSource {
+                    ds.isSearchHinting = true
+                    ds.searchHints = hints
+                    self?.dataSource = ds
                 }
             })
             .disposed(by: bag)
-        */
         
-        /*
         searchBar.rx.text.orEmpty
             .filter { $0.count == 0 }
             .subscribe(onNext: { [weak self] _ in
-                if let dataSource = self?.viewModel.searchHintsDataSource {
-                    dataSource.searchHints = []
-                    self?.dataSource = dataSource
+                if let ds = self?.dataSource {
+                    ds.isSearchHinting = true
+                    ds.searchHints = []
+                    self?.dataSource = ds
                 }
-            })
-            .disposed(by: bag)
-        */
-        
-        searchBar.rx.searchButtonClicked
-            .subscribe(onNext: { [weak self] in
-                self?.searchBar.resignFirstResponder()
             })
             .disposed(by: bag)
     }
@@ -126,24 +104,58 @@ class SearchViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    func applyContentSize(from dataSource: SearchDataSource) {
+        scrollView.contentSize = SearchViewModel.scrollViewContentSize(from: dataSource)
+        tableView.contentSize = SearchViewModel.tableViewContentSize(from: dataSource)
+        tableViewHeight.constant = SearchViewModel.tableViewContentSize(from: dataSource).height
+        view.layoutIfNeeded()
+    }
+    
+    func search(with text: String) {
+        searchBar.resignFirstResponder()
+        searchBar.text = text
+        view.addSubview(activityIndicator)
+        viewModel.search( with: text, dataSource: dataSource, completion: { [weak self] ds in
+            self?.dataSource = ds
+            self?.activityIndicator.stop()
+        }, error: { error in
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+        })
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, !text.isEmpty {
+            search(with: text)
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if dataSource.isSearchHinting {
+            search(with: dataSource.searchHints[indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return dataSource.isSearchHinting ? 0 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if dataSource.isSearchHinting { return 50 }
         if indexPath.section == 0 {
-            if let dataSource = dataSource as? SearchDataSource, dataSource.artists.count > 0 {
-                return 210
-            }
+            if dataSource.artists.count > 0 { return 210 }
             return 0
         }
         return SearchTableViewCell.preferredHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard !dataSource.isSearchHinting else { return nil }
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: BrowseHeader.identifier) as? BrowseHeader
         let header = viewModel.sectionHeaders[section]
         cell?.titleLabel.text = header

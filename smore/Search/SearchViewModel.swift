@@ -65,4 +65,23 @@ class SearchViewModel: NSObject {
         }
         return dataSource
     }
+    
+    func search(
+        with text: String,
+        dataSource: SearchDataSource,
+        completion: @escaping (SearchDataSource) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        AppleMusicAPI.searchCatalog(
+            with: text,
+            success: { response in
+                DispatchQueue.global(qos: .userInitiated).async {
+                    let ds = SearchViewModel.populateSearchDataSource(with: dataSource, data: response)
+                    ds.isSearchHinting = false
+                    DispatchQueue.main.async { completion(dataSource) }
+                }
+            }, error: { err in
+                DispatchQueue.main.async { error(err) }
+        })
+    }
 }

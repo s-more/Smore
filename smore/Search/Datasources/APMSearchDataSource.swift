@@ -8,23 +8,27 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
 
 class APMSearchDataSource: NSObject, SearchDataSource {
+    var isSearchHinting: Bool = true
     var name: String = "Apple Music"
     var songs: [Song] = []
     var albums: [Album] = []
     var artists: [Artist] = []
     var playlists: [Playlist] = []
+    var searchHints: [String] = []
     
     override init() {
         super.init()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return isSearchHinting ? 1 : 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard !isSearchHinting else { return searchHints.count }
         switch section {
         case 0:
             return 1 // since the horizontally scrolling collection view is only 1 cell
@@ -40,6 +44,16 @@ class APMSearchDataSource: NSObject, SearchDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard !isSearchHinting else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: GenericTableViewCell.identifier,
+                                                     for: indexPath)
+            if let cell = cell as? GenericTableViewCell {
+                cell.textLabel?.text = searchHints[indexPath.row]
+            }
+            return cell
+        }
+        
+        //not search hinting
         switch indexPath.section {
         case 0: // artists
             let cell = tableView.dequeueReusableCell(withIdentifier: SuggestedTableViewCell.identifier,
@@ -86,5 +100,9 @@ class APMSearchDataSource: NSObject, SearchDataSource {
         }
         
         return UITableViewCell()
+    }
+    
+    func searchHints(from term: String) -> Observable<([String]?, Error?)> {
+        return AppleMusicAPI.rx.searchHints(from: term)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 /// - Brilliant example of protocol inheritence.
 protocol SearchDataSource: UITableViewDataSource {
@@ -15,4 +16,9 @@ protocol SearchDataSource: UITableViewDataSource {
     var albums: [Album] { get set }
     var artists: [Artist] { get set }
     var playlists: [Playlist] { get set }
+    
+    /// for search hints.
+    var isSearchHinting: Bool { get set }
+    var searchHints: [String] { get set }
+    func searchHints(from term: String) -> Observable<([String]?, Error?)>
 }

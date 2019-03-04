@@ -10,8 +10,11 @@ import Foundation
 
 import UIKit
 import Kingfisher
+import RxSwift
 
 class AllSearchDataSource: NSObject, SearchDataSource {
+    var isSearchHinting: Bool = false
+    var searchHints: [String] = []
     var name: String = "All"
     var songs: [Song] = []
     var albums: [Album] = []
@@ -88,6 +91,10 @@ class AllSearchDataSource: NSObject, SearchDataSource {
         }
         
         return UITableViewCell()
+    }
+    
+    func searchHints(from term: String) -> Observable<([String]?, Error?)> {
+        return Observable.empty()
     }
 }
 
