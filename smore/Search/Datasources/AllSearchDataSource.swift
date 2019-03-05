@@ -13,9 +13,8 @@ import Kingfisher
 import RxSwift
 
 class AllSearchDataSource: NSObject, SearchDataSource {
-    var isSearchHinting: Bool = false
     var searchHints: [String] = []
-    var name: String = "All"
+    var name: String = "Dummy"
     var songs: [Song] = []
     var albums: [Album] = []
     var artists: [Artist] = []
@@ -100,5 +99,13 @@ class AllSearchDataSource: NSObject, SearchDataSource {
     func searchHintDataSource(from hints: [String]) -> SearchHintDataSource {
         return SearchHintDataSource(searchHints: hints)
     }
+    
+    func searchCatalog(with text: String, completion: @escaping ([Artist], [Album], [Playlist], [Song]) -> Void, error: @escaping (Error) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            completion([],[],[],[])
+        }
+    }
+    
+    
 }
 

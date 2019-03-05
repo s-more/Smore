@@ -20,4 +20,10 @@ protocol SearchDataSource: UITableViewDataSource {
     /// for search hints.
     func searchHints(from term: String) -> Observable<([String]?, Error?)>
     func searchHintDataSource(from hints: [String]) -> SearchHintDataSource
+    
+    /// for catalog search.
+    /// - call the completion closure on a background thread.
+    func searchCatalog(with text: String,
+                       completion: @escaping ([Artist], [Album], [Playlist], [Song]) -> Void,
+                       error: @escaping (Error) -> Void)
 }

@@ -11,7 +11,6 @@ import Kingfisher
 import RxSwift
 
 class APMSearchDataSource: NSObject, SearchDataSource {
-    var isSearchHinting: Bool = true
     var name: String = "Apple Music"
     var songs: [Song] = []
     var albums: [Album] = []
@@ -96,5 +95,36 @@ class APMSearchDataSource: NSObject, SearchDataSource {
     
     func searchHintDataSource(from hints: [String]) -> SearchHintDataSource {
         return SearchHintDataSource(searchHints: hints)
+    }
+    
+    func searchCatalog(
+        with text: String,
+        completion: @escaping ([Artist], [Album], [Playlist], [Song]) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        AppleMusicAPI.searchCatalog( with: text, success: { data in
+            DispatchQueue.global(qos: .userInitiated).async {
+                var artists: [Artist] = []
+                var albums: [Album] = []
+                var playlists: [Playlist] = []
+                var songs: [Song] = []
+                
+                if let rawAlbums = data.albums?.data {
+                    albums = rawAlbums.map { APMAlbum(response: $0) }
+                }
+                if let rawArtists = data.artists?.data {
+                    artists = rawArtists.map { APMArtist(response: $0, imageSize: 200 )}
+                }
+                if let rawPlaylists = data.playlists?.data {
+                    playlists = rawPlaylists.map { APMPlaylist(searchResponse: $0) }
+                }
+                if let rawSongs = data.songs?.data {
+                    songs = rawSongs.map { APMSong(searchResponse: $0) }
+                }
+                completion(artists, albums, playlists, songs)
+            }
+        }, error: { e in
+            error(e)
+        })
     }
 }

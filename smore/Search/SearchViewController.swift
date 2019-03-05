@@ -71,24 +71,30 @@ class SearchViewController: UIViewController {
         titleLabelView.backgroundColor = .clear
         titleLabelView.textAlignment = .center
         titleLabelView.textColor = UIColor.white
-        titleLabelView.font = UIFont.init(name: "Avenir Next Bold", size: 16.0)
+        titleLabelView.font = UIFont.init(name: "AvenirNext-Bold", size: 18.0)
         titleLabelView.text = ""
         navigationItem.titleView = titleLabelView
         
+        serviceToggle.removeAllSegments()
+        for (index, segment) in viewModel.searchDataSources.enumerated() {
+            serviceToggle.insertSegment(withTitle: segment.name, at: index, animated: false)
+        }
+        serviceToggle.selectedSegmentIndex = 0
+
         serviceToggle.rx.selectedSegmentIndex
             .subscribe(onNext: { [weak self] index in
-                guard let strongSelf = self else { return }
+                guard let strongSelf = self, index >= 0 else { return }
                 strongSelf.dataSource = strongSelf.viewModel.searchDataSources[index]
             })
             .disposed(by: bag)
         
-        searchBar.rx.text.orEmpty
+        let dataSourceObservable = Observable.just(dataSource)
+        let hintService = searchBar.rx.text.orEmpty
             .throttle(0.5, scheduler: MainScheduler.instance)
             .filter { $0.count > 0 }
-            .flatMapLatest { [weak self] text -> Observable<([String]?, Error?)> in
-                guard let strongSelf = self else { return Observable.empty() }
-                return strongSelf.dataSource.searchHints(from: text)
-            }
+        
+        Observable.combineLatest(dataSourceObservable, hintService)
+            .flatMapLatest { $0.0.searchHints(from: $0.1) }
             .subscribe(onNext: { [weak self] text in
                 if let hints = text.0, let ds = self?.dataSource {
                     self?.searchHintsDataSource = ds.searchHintDataSource(from: hints)
@@ -121,7 +127,7 @@ class SearchViewController: UIViewController {
         searchBar.resignFirstResponder()
         searchBar.text = text
         view.addSubview(activityIndicator)
-        viewModel.search( with: text, dataSource: dataSource, completion: { [weak self] ds in
+        viewModel.search(with: text, dataSource: dataSource, completion: { [weak self] ds in
             self?.dataSource = ds
             self?.activityIndicator.stop()
         }, error: { [weak self] error in

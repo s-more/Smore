@@ -38,48 +38,20 @@ class SearchViewModel: NSObject {
                       height: headerHeights + artistsHeight + otherheights + 20)
     }
     
-    static func populateSearchDataSource(
-        with dataSource: SearchDataSource,
-        data: APMSearch.APMSearchResults) -> SearchDataSource
-    {
-        if let albums = data.albums?.data {
-            dataSource.albums = albums.map { APMAlbum(response: $0) }
-        } else {
-            dataSource.albums = []
-        }
-        if let songs = data.songs?.data {
-            dataSource.songs = songs.map { APMSong(searchResponse: $0) }
-        } else {
-            dataSource.songs = []
-        }
-        if let artists = data.artists?.data {
-            dataSource.artists = artists.map { APMArtist(response: $0, imageSize: 200) }
-        } else {
-            dataSource.artists = []
-        }
-        if let playlists = data.playlists?.data {
-            dataSource.playlists = playlists.map { APMPlaylist(searchResponse: $0) }
-        } else {
-            dataSource.playlists = []
-        }
-        return dataSource
-    }
-    
     func search(
         with text: String,
         dataSource: SearchDataSource,
         completion: @escaping (SearchDataSource) -> Void,
         error: @escaping (Error) -> Void)
     {
-        AppleMusicAPI.searchCatalog(
-            with: text,
-            success: { response in
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let ds = SearchViewModel.populateSearchDataSource(with: dataSource, data: response)
-                    DispatchQueue.main.async { completion(ds) }
-                }
-            }, error: { err in
-                DispatchQueue.main.async { error(err) }
+        dataSource.searchCatalog(with: text, completion: { artists, albums, playlists, songs in
+            dataSource.albums = albums
+            dataSource.artists = artists
+            dataSource.playlists = playlists
+            dataSource.songs = songs
+            DispatchQueue.main.async { completion(dataSource) }
+        }, error: { err in
+            DispatchQueue.main.async { error(err) }
         })
     }
 }

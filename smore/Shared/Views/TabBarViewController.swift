@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
     }
     
     func configureNavBar(on vc: UINavigationController) {
-        vc.navigationBar.barTintColor = UIColor.tabBarBackground
+        vc.navigationBar.barTintColor = UIColor.black
         vc.navigationBar.tintColor = UIColor.white
         vc.navigationBar.barStyle = .black
     }

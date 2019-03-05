@@ -51,11 +51,16 @@
                                     </segments>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </segmentedControl>
-                                <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search for anything!" translatesAutoresizingMaskIntoConstraints="NO" id="gIs-YD-4fl">
-                                    <rect key="frame" x="8" y="164" width="359" height="56"/>
+                                <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search for anything!" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIs-YD-4fl">
+                                    <rect key="frame" x="8" y="164" width="367" height="56"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                     <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
                                 </searchBar>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC8-tq-2Yu">
                                     <rect key="frame" x="16" y="85" width="114" height="48"/>
@@ -68,7 +73,7 @@
                             <constraints>
                                 <constraint firstItem="Zs2-BY-QcH" firstAttribute="leading" secondItem="VLY-PP-ohN" secondAttribute="leading" id="2g8-eV-c8M"/>
                                 <constraint firstItem="4LB-yo-TIR" firstAttribute="leading" secondItem="VLY-PP-ohN" secondAttribute="leading" constant="16" id="9wa-Vm-PBS"/>
-                                <constraint firstAttribute="trailing" secondItem="gIs-YD-4fl" secondAttribute="trailing" constant="8" id="Apj-Yj-9JP"/>
+                                <constraint firstAttribute="trailing" secondItem="gIs-YD-4fl" secondAttribute="trailing" id="Apj-Yj-9JP"/>
                                 <constraint firstItem="gIs-YD-4fl" firstAttribute="leading" secondItem="VLY-PP-ohN" secondAttribute="leading" constant="8" id="Iiy-Oy-jV3"/>
                                 <constraint firstItem="dC8-tq-2Yu" firstAttribute="leading" secondItem="4LB-yo-TIR" secondAttribute="leading" id="QEE-Hc-uN2"/>
                                 <constraint firstAttribute="height" constant="220" id="TRj-Ik-0kF"/>
