@@ -13,7 +13,7 @@ class SuggestedTableViewCell: UITableViewCell {
     static let identifier = "suggestedTableViewCell"
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var artists: [APMArtist] = [] {
+    var artists: [Artist] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -40,6 +40,7 @@ extension SuggestedTableViewCell: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath)
         
         if let cell = cell as? PlaylistCollectionViewCell {
+            cell.isCircular = true
             cell.playlistImage.kf.setImage(with: artists[indexPath.row].imageLink,
                                            placeholder: UIImage(named: "artistPlaceholder"))
             cell.playlistName.text = artists[indexPath.row].name

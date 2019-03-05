@@ -14,12 +14,21 @@ class PlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playlistImage: UIImageView!
     @IBOutlet weak var playlistName: UILabel!
     @IBOutlet weak var subtitle: UILabel!
+    var isCircular = false {
+        didSet {
+            setCornerBehavior()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        playlistImage.addRoundCorners()
-
+        setCornerBehavior()
+    }
+    
+    func setCornerBehavior() {
+        isCircular
+            ? playlistImage.addRoundCorners(cornerRadius: bounds.width / 2)
+            : playlistImage.addRoundCorners()
     }
 
 }

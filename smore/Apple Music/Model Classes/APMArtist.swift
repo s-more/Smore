@@ -53,7 +53,6 @@ extension APMArtist: Hashable {
 
 extension APMArtist: Equatable {
     static func == (lhs: APMArtist, rhs: APMArtist) -> Bool {
-        return lhs.name == rhs.name
-            && lhs.genre == rhs.genre
+        return lhs.id == rhs.id
     }
 }

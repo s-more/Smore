@@ -33,6 +33,7 @@ PODS:
   - SwiftMessages (6.0.2):
     - SwiftMessages/App (= 6.0.2)
   - SwiftMessages/App (6.0.2)
+  - XLPagerTabStrip (8.1.1)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - SwiftMessages
+  - XLPagerTabStrip (~> 8.1)
   - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC REPOS:
@@ -61,6 +63,7 @@ SPEC REPOS:
     - RxCocoa
     - RxSwift
     - SwiftMessages
+    - XLPagerTabStrip
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
@@ -76,8 +79,9 @@ SPEC CHECKSUMS:
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
+  XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: ecfa13f4b0c8a4ad354a9f2898762df6e012b5ac
+PODFILE CHECKSUM: e9aed34f053a26d0234e5829a18cccad7eee9c7f
 
 COCOAPODS: 1.5.3

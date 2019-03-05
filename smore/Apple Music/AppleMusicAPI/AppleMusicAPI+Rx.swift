@@ -57,5 +57,18 @@ extension AppleMusicAPI {
                 return Disposables.create()
             }
         }
+        
+        static func searchHints(from term: String) -> Observable<([String]?, Error?)> {
+            return Observable.create { observable in
+                AppleMusicAPI.searchHints(from: term, success: { results in
+                    observable.onNext((results, nil))
+                    observable.onCompleted()
+                }, error: { error in
+                    observable.onNext((nil, error))
+                    observable.onCompleted()
+                })
+                return Disposables.create()
+            }
+        }
     }
 }
