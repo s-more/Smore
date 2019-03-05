@@ -21,22 +21,8 @@ class SearchViewController: UIViewController {
     let bag = DisposeBag()
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
-    var dataSource: SearchDataSource = APMSearchDataSource() {
-        didSet {
-            applyContentSize(from: dataSource)
-            tableView.dataSource = dataSource
-            tableView.reloadData()
-        }
-    }
-    
-    var searchHintsDataSource: SearchHintDataSource? {
-        didSet {
-            if let ds = searchHintsDataSource {
-                tableView.dataSource = ds
-                tableView.reloadData()
-            }
-        }
-    }
+    var dataSource: Variable<SearchDataSource> = Variable(APMSearchDataSource())
+    var searchHintsDataSource: Variable<SearchHintDataSource> = Variable(SearchHintDataSource(searchHints: []))
     
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -53,7 +39,7 @@ class SearchViewController: UIViewController {
         scrollView.delegate = self
         tableView.delegate = self
         searchBar.delegate = self
-        tableView.dataSource = dataSource
+        tableView.dataSource = dataSource.value
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         viewModel.initialSearchBarPosition = searchBar.frame.origin.y
@@ -80,35 +66,48 @@ class SearchViewController: UIViewController {
             serviceToggle.insertSegment(withTitle: segment.name, at: index, animated: false)
         }
         serviceToggle.selectedSegmentIndex = 0
-
-        serviceToggle.rx.selectedSegmentIndex
-            .subscribe(onNext: { [weak self] index in
-                guard let strongSelf = self, index >= 0 else { return }
-                strongSelf.dataSource = strongSelf.viewModel.searchDataSources[index]
+        
+        dataSource.asObservable()
+            .subscribe(onNext: { [weak self] ds in
+                self?.applyContentSize(from: ds)
+                self?.tableView.dataSource = ds
+                self?.tableView.reloadData()
             })
             .disposed(by: bag)
         
-        let dataSourceObservable = Observable.just(dataSource)
-        let hintService = searchBar.rx.text.orEmpty
+        searchHintsDataSource.asObservable()
+            .subscribe(onNext: { [weak self] ds in
+                self?.tableView.dataSource = ds
+                self?.tableView.reloadData()
+            })
+            .disposed(by: bag)
+
+        serviceToggle.rx.selectedSegmentIndex
+            .filter { $0 >= 0 }
+            .flatMap { [weak self] index -> Observable<SearchDataSource> in
+                guard let strongSelf = self else { return Observable.empty() }
+                return Observable.just(strongSelf.viewModel.searchDataSources[index])
+            }
+            .bind(to: dataSource)
+            .disposed(by: bag)
+        
+        let dataSourceFunction = dataSource.value.searchHintDataSource(from:)
+        searchBar.rx.text.orEmpty
             .throttle(0.5, scheduler: MainScheduler.instance)
             .filter { $0.count > 0 }
-        
-        Observable.combineLatest(dataSourceObservable, hintService)
-            .flatMapLatest { $0.0.searchHints(from: $0.1) }
-            .subscribe(onNext: { [weak self] text in
-                if let hints = text.0, let ds = self?.dataSource {
-                    self?.searchHintsDataSource = ds.searchHintDataSource(from: hints)
-                }
-            })
+            .flatMapLatest { [weak self] term -> Observable<([String]?, Error?)> in
+                guard let ds = self?.dataSource else { return Observable.empty() }
+                return ds.value.searchHints(from: term)
+            }
+            .map { $0.0 ?? [] }
+            .flatMapLatest { Observable.just(dataSourceFunction($0)) }
+            .bind(to: searchHintsDataSource)
             .disposed(by: bag)
         
         searchBar.rx.text.orEmpty
             .filter { $0.count == 0 }
-            .subscribe(onNext: { [weak self] _ in
-                if let ds = self?.dataSource {
-                    self?.searchHintsDataSource = ds.searchHintDataSource(from: [])
-                }
-            })
+            .flatMapLatest { _ in Observable.just(SearchHintDataSource(searchHints: [])) }
+            .bind(to: searchHintsDataSource)
             .disposed(by: bag)
     }
     
@@ -127,8 +126,8 @@ class SearchViewController: UIViewController {
         searchBar.resignFirstResponder()
         searchBar.text = text
         view.addSubview(activityIndicator)
-        viewModel.search(with: text, dataSource: dataSource, completion: { [weak self] ds in
-            self?.dataSource = ds
+        viewModel.search(with: text, dataSource: dataSource.value, completion: { [weak self] ds in
+            self?.dataSource.value = ds // triggers onNext(:_) with value being set
             self?.activityIndicator.stop()
         }, error: { [weak self] error in
             self?.activityIndicator.stop()
@@ -160,7 +159,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.dataSource is SearchHintDataSource { return 50 }
         if indexPath.section == 0 {
-            if dataSource.artists.count > 0 { return 210 }
+            if dataSource.value.artists.count > 0 { return 210 }
             return 0
         }
         return SearchTableViewCell.preferredHeight
