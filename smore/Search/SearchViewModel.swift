@@ -30,7 +30,7 @@ class SearchViewModel: NSObject {
     
     static func tableViewContentSize(from dataSource: SearchDataSource) -> CGSize {
         let headerHeights = 60 * 4
-        let artistsHeight = 210
+        let artistsHeight = dataSource.artists.isEmpty ? 0 : 210
         let otherheights =
             (dataSource.albums.count + dataSource.playlists.count + dataSource.songs.count)
                 * Int(SearchTableViewCell.preferredHeight)

@@ -73,6 +73,12 @@
 		04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5D0DE22237B4000774489 /* TopChartsTableViewCell.swift */; };
 		04A5D0E122237B4000774489 /* TopChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */; };
 		04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */; };
+		04B4ADE02232D62C006E6D8A /* ArtistLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADDE2232D62C006E6D8A /* ArtistLibraryViewController.swift */; };
+		04B4ADE12232D62C006E6D8A /* ArtistLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4ADDF2232D62C006E6D8A /* ArtistLibraryViewController.xib */; };
+		04B4ADE82232EC56006E6D8A /* ArtistLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADE72232EC56006E6D8A /* ArtistLibraryViewModel.swift */; };
+		04B4ADEB22330F6F006E6D8A /* LibraryPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */; };
+		04B4ADEC22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */; };
+		04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */; };
 		04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */; };
 		04B760B5222B21970095AF33 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B3222B21970095AF33 /* SearchViewController.swift */; };
 		04B760B6222B21970095AF33 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B760B4222B21970095AF33 /* SearchViewController.xib */; };
@@ -173,6 +179,12 @@
 		04A5D0DE22237B4000774489 /* TopChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopChartsTableViewCell.swift; sourceTree = "<group>"; };
 		04A5D0DF22237B4000774489 /* TopChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopChartsTableViewCell.xib; sourceTree = "<group>"; };
 		04B3C6FD22092098008ADF9E /* AppleMusicAPI+DataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+DataRequests.swift"; sourceTree = "<group>"; };
+		04B4ADDE2232D62C006E6D8A /* ArtistLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistLibraryViewController.swift; sourceTree = "<group>"; };
+		04B4ADDF2232D62C006E6D8A /* ArtistLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistLibraryViewController.xib; sourceTree = "<group>"; };
+		04B4ADE72232EC56006E6D8A /* ArtistLibraryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistLibraryViewModel.swift; sourceTree = "<group>"; };
+		04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistTableViewController.swift; sourceTree = "<group>"; };
+		04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPlaylistTableViewController.xib; sourceTree = "<group>"; };
+		04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollHeightCalculable.swift; sourceTree = "<group>"; };
 		04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMessagesWrapper.swift; sourceTree = "<group>"; };
 		04B760B3222B21970095AF33 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04B760B4222B21970095AF33 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -374,6 +386,7 @@
 		046FDB6D21FE63BB00E8245D /* smore */ = {
 			isa = PBXGroup;
 			children = (
+				04B4ADDD2232D5FF006E6D8A /* Library */,
 				6E4F0DF02214B806005A0275 /* Browse */,
 				0409D5BD220766F800CB4CDE /* TPKeyboardAvoiding */,
 				0409D5B6220750F900CB4CDE /* Shared */,
@@ -422,6 +435,27 @@
 				04A5D0D422234CAB00774489 /* SmoreDatabase.xcdatamodeld */,
 			);
 			path = Databases;
+			sourceTree = "<group>";
+		};
+		04B4ADDD2232D5FF006E6D8A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				04B4ADE62232EAC0006E6D8A /* Artist Library */,
+				04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */,
+				04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */,
+				04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		04B4ADE62232EAC0006E6D8A /* Artist Library */ = {
+			isa = PBXGroup;
+			children = (
+				04B4ADE72232EC56006E6D8A /* ArtistLibraryViewModel.swift */,
+				04B4ADDE2232D62C006E6D8A /* ArtistLibraryViewController.swift */,
+				04B4ADDF2232D62C006E6D8A /* ArtistLibraryViewController.xib */,
+			);
+			path = "Artist Library";
 			sourceTree = "<group>";
 		};
 		04B760B2222B1D440095AF33 /* Search */ = {
@@ -606,6 +640,7 @@
 				04A5D0CC2223350400774489 /* SuggestedTableViewCell.xib in Resources */,
 				046FDB7921FE63BE00E8245D /* LaunchScreen.storyboard in Resources */,
 				0454BF08221B79C50019D4F4 /* StartupCollectionViewCell.xib in Resources */,
+				04B4ADEC22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib in Resources */,
 				045F09692212596500D7730E /* StrugglingAnt.json in Resources */,
 				04A5D0E122237B4000774489 /* TopChartsTableViewCell.xib in Resources */,
 				04A5D0B322230D4100774489 /* TabBarViewController.xib in Resources */,
@@ -616,6 +651,7 @@
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
 				040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */,
 				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
+				04B4ADE12232D62C006E6D8A /* ArtistLibraryViewController.xib in Resources */,
 				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
 				C6EFE55F22149F36001D18D2 /* YoutubeLoginViewController.xib in Resources */,
 				04A5D0D022233C3E00774489 /* PlaylistCollectionViewCell.xib in Resources */,
@@ -783,11 +819,13 @@
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
 				0454BF0A221B7D670019D4F4 /* StartupCollectionViewCell.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
+				04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */,
 				0417470222288C380044350F /* APMAlbum.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
 				04A5D0BB222310B900774489 /* UserDefaults+Extensions.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
+				04B4ADEB22330F6F006E6D8A /* LibraryPlaylistTableViewController.swift in Sources */,
 				04B760BB222B778C0095AF33 /* SearchHintDataSource.swift in Sources */,
 				04B760C2222B883A0095AF33 /* SearchDataSource.swift in Sources */,
 				04B760C4222B8A8D0095AF33 /* APMSearchDataSource.swift in Sources */,
@@ -803,9 +841,11 @@
 				04B760BF222B796C0095AF33 /* GenericTableViewCell.swift in Sources */,
 				0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,
+				04B4ADE02232D62C006E6D8A /* ArtistLibraryViewController.swift in Sources */,
 				04B760B5222B21970095AF33 /* SearchViewController.swift in Sources */,
 				0409D5BB220753C600CB4CDE /* AppleMusicAuthViewController.swift in Sources */,
 				04A5D0DA222376DF00774489 /* ListeningCollectionViewCell.swift in Sources */,
+				04B4ADE82232EC56006E6D8A /* ArtistLibraryViewModel.swift in Sources */,
 				0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */,
 				04A5D0CE2223376D00774489 /* SuggestedTableViewCell.swift in Sources */,
 				046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */,

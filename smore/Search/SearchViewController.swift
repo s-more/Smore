@@ -72,6 +72,13 @@ class SearchViewController: UIViewController {
                 self?.applyContentSize(from: ds)
                 self?.tableView.dataSource = ds
                 self?.tableView.reloadData()
+                if let artistsCell = self?.tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? SuggestedTableViewCell {
+                    artistsCell.action = { artist in
+                        let vm = ArtistLibraryViewModel(artist: artist)
+                        let vc = ArtistLibraryViewController(viewModel: vm)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             })
             .disposed(by: bag)
         

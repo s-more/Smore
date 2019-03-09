@@ -6,7 +6,8 @@
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import XLPagerTabStrip
 
 class ArtistLibraryViewModel: NSObject {
     let artist: Artist
@@ -16,13 +17,27 @@ class ArtistLibraryViewModel: NSObject {
     
     var isDataReady = false
     
+    var viewControllers: [UITableViewController & ScrollHeightCalculable] = [
+        LibraryPlaylistTableViewController()
+    ]
+    
     /// init from an Artist.
     init(artist: Artist) {
         self.artist = artist
         super.init()
     }
     
+    var details: String {
+        let items = [
+            "\(fetchedAlbums.count) albums",
+            "\(fetchedPlaylists.count) playlists",
+            "\(fetchedSongs.count) songs"
+        ]
+        return items.joined(separator: " - ")
+    }
+    
     func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
+        isDataReady = false
         AppleMusicAPI.searchCatalog(
             with: artist.name,
             types: [.albums, .playlists, .songs],
@@ -36,6 +51,13 @@ class ArtistLibraryViewModel: NSObject {
                 }
                 if let rawSongs = data.songs?.data {
                     self?.fetchedSongs = rawSongs.map { APMSong(searchResponse: $0) }
+                }
+                self?.isDataReady = true
+                if let strongSelf = self {
+                    strongSelf.viewControllers = [
+                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists),
+                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists)
+                    ]
                 }
                 completion()
             }, error: { err in

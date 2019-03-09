@@ -12,6 +12,7 @@ import Kingfisher
 class SuggestedTableViewCell: UITableViewCell {
     static let identifier = "suggestedTableViewCell"
     @IBOutlet weak var collectionView: UICollectionView!
+    var action: ((Artist) -> Void)?
     
     var artists: [Artist] = [] {
         didSet {
@@ -50,5 +51,8 @@ extension SuggestedTableViewCell: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        action?(artists[indexPath.row])
+    }
     
 }
