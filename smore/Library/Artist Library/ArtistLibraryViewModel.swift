@@ -15,6 +15,8 @@ class ArtistLibraryViewModel: NSObject {
     var fetchedPlaylists: [Playlist] = []
     var fetchedSongs: [Song] = []
     var highResImageURL: URL?
+    var isBarShown = false
+    var initialButtonBarPosition: CGFloat = 0
     
     var viewControllers: [UITableViewController & ScrollHeightCalculable] = [
         LibraryPlaylistTableViewController()

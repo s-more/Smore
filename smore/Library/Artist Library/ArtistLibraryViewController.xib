@@ -29,26 +29,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOu-JP-nP3">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="sOu-JP-nP3">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9J-Qm-2x9">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Exj-vG-rL6" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                    <rect key="frame" x="0.0" y="220" width="375" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="msh-hr-23z"/>
-                                    </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zdh-Li-igd">
-                                        <size key="itemSize" width="50" height="50"/>
-                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </collectionViewFlowLayout>
-                                </collectionView>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-cV-VA6">
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-cV-VA6">
                                     <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </scrollView>
@@ -79,13 +66,34 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparentGradientFlipped" translatesAutoresizingMaskIntoConstraints="NO" id="JQO-7w-beG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="CXC-G8-o8F"/>
+                                    </constraints>
+                                </imageView>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Exj-vG-rL6" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                    <rect key="frame" x="0.0" y="220" width="375" height="30"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="msh-hr-23z"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zdh-Li-igd">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="rY8-8J-5dc" firstAttribute="leading" secondItem="LGs-ss-OcI" secondAttribute="leading" id="0Tj-yE-R6F"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="top" secondItem="n9J-Qm-2x9" secondAttribute="top" id="1iX-8x-oqV"/>
                                 <constraint firstItem="Mf7-cV-VA6" firstAttribute="leading" secondItem="n9J-Qm-2x9" secondAttribute="leading" id="2ig-9c-kvc"/>
                                 <constraint firstItem="Exj-vG-rL6" firstAttribute="leading" secondItem="n9J-Qm-2x9" secondAttribute="leading" id="5H4-Nu-MRU"/>
+                                <constraint firstItem="JQO-7w-beG" firstAttribute="trailing" secondItem="BIu-8s-UKg" secondAttribute="trailing" id="DW0-Yh-GEw"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="leading" secondItem="n9J-Qm-2x9" secondAttribute="leading" id="EKD-8f-MhO"/>
                                 <constraint firstAttribute="trailing" secondItem="BIu-8s-UKg" secondAttribute="trailing" id="H19-ij-wmj"/>
                                 <constraint firstItem="Exj-vG-rL6" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" id="MDk-cu-3W3"/>
@@ -102,10 +110,14 @@
                                 <constraint firstItem="oCW-3r-FtR" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" constant="200" id="dl7-nF-vHp"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="trailing" secondItem="rY8-8J-5dc" secondAttribute="trailing" id="fmC-gs-pOb"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="top" secondItem="rY8-8J-5dc" secondAttribute="bottom" constant="-4" id="g6e-qf-hn2"/>
+                                <constraint firstItem="JQO-7w-beG" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" id="jCa-ix-o9s"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="trailing" secondItem="LGs-ss-OcI" secondAttribute="trailing" id="o2x-lD-61j"/>
                                 <constraint firstAttribute="bottom" secondItem="Mf7-cV-VA6" secondAttribute="bottom" id="p2a-UF-hS3"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" constant="16" id="rkc-qe-uGJ"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="JV8-UH-TY3" appends="YES" id="SCz-7d-HA9"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,6 +127,7 @@
                         <constraint firstItem="n9J-Qm-2x9" firstAttribute="leading" secondItem="sOu-JP-nP3" secondAttribute="leading" id="bQT-7j-yJH"/>
                         <constraint firstItem="n9J-Qm-2x9" firstAttribute="top" secondItem="sOu-JP-nP3" secondAttribute="top" id="dWW-s3-aPt"/>
                         <constraint firstItem="n9J-Qm-2x9" firstAttribute="bottom" secondItem="sOu-JP-nP3" secondAttribute="bottomMargin" id="lmg-kb-vPl"/>
+                        <constraint firstItem="JQO-7w-beG" firstAttribute="top" secondItem="n9J-Qm-2x9" secondAttribute="top" id="vtJ-ei-Wxs"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -128,8 +141,15 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
+        <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="JV8-UH-TY3">
+            <rectEdge key="edges" left="YES"/>
+            <connections>
+                <action selector="screenEdgeLeftSwiped:" destination="-1" id="rB3-Qo-Q8N"/>
+            </connections>
+        </screenEdgePanGestureRecognizer>
     </objects>
     <resources>
         <image name="transparentGradient" width="480" height="120"/>
+        <image name="transparentGradientFlipped" width="480" height="120"/>
     </resources>
 </document>

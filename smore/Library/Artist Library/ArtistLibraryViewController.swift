@@ -19,6 +19,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var masterView: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     
+    var index = 0
     let viewModel: ArtistLibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
@@ -33,14 +34,12 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         warningLabel.isHidden = true
+        scrollView.delegate = self
         backgroundImage.kf.setImage(with: viewModel.highResImageURL,
                                     placeholder: UIImage.imageFrom(color: UIColor.black))
         nameLabel.text = viewModel.artist.name
         
-        let statusBarHeight: CGFloat = 20
-        let navBarHeight = navigationController?.navigationBar.frame.height ?? 44
-        let contentInsetY = statusBarHeight + navBarHeight
-        scrollView.contentInset = UIEdgeInsets(top: -contentInsetY, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         
         settings.style.buttonBarBackgroundColor = .black
         settings.style.buttonBarItemBackgroundColor = .black
@@ -53,7 +52,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemLeftRightMargin = 0
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 0
-        
+                
         super.viewDidLoad()
         
         view.addSubview(activityIndicator)
@@ -74,20 +73,25 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationItem.title = viewModel.artist.name
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.initialButtonBarPosition = buttonBarView.frame.origin.y
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.backgroundColor = UIColor.black
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    // MARK: - Helpers
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     
     private func applyContentSize(index: Int) {
         let innerSize = viewModel.viewControllers[index].innerScrollViewSize()
@@ -99,6 +103,14 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         masterView.layoutIfNeeded()
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func screenEdgeLeftSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if !viewModel.isBarShown {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
     
     // MARK: - XLPagerTabStrip
     
@@ -108,8 +120,24 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         return viewModel.viewControllers
     }
     
-    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int) {
+    // MARK: UIScrollViewDelegate
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        super.scrollViewDidScroll(scrollView)
+        var headerFrame = buttonBarView.frame
+        let navBarHeight = navigationController?.navigationBar.bounds.height ?? 0
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let floatingPosition = scrollView.contentOffset.y + navBarHeight + statusBarHeight
+        headerFrame.origin.y = max(viewModel.initialButtonBarPosition, floatingPosition)
+        buttonBarView.frame = headerFrame
         
+        if floatingPosition > viewModel.initialButtonBarPosition && !viewModel.isBarShown {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+            viewModel.isBarShown = true
+        } else if floatingPosition < viewModel.initialButtonBarPosition && viewModel.isBarShown {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+            viewModel.isBarShown = false
+        }
     }
 }
 
