@@ -19,6 +19,7 @@ class APMArtistEntity: NSManagedObject {
                 name: $0.name ?? "",
                 genre: $0.genre ?? "",
                 imageLink: URL(string: $0.imageLink ?? ""),
+                originalImageLink: $0.originalImageLink,
                 id: $0.identifier ?? "")
             }
         }
@@ -36,5 +37,6 @@ class APMArtistEntity: NSManagedObject {
         newArtist.identifier = artist.id
         newArtist.imageLink = artist.imageLink?.absoluteString 
         newArtist.name = artist.name
+        newArtist.originalImageLink = artist.originalImageLink
     }
 }

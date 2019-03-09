@@ -9,6 +9,7 @@
 import Foundation
 
 class APMSong: Song {
+    var originalImageLink: String?
     var name: String
     var genre: String
     var imageLink: URL?
@@ -23,6 +24,7 @@ class APMSong: Song {
         id = response.id
         playableString = response.attributes.playParams.id
         artistName = response.attributes.artistName
+        originalImageLink = response.attributes.artwork.url
     }
     
     init(searchResponse: APMSearch.APMSearchResults.APMSearchSongs.APMSongData) {
@@ -32,6 +34,7 @@ class APMSong: Song {
         id = searchResponse.id
         playableString = searchResponse.attributes.playParams?.id ?? ""
         artistName = searchResponse.attributes.artistName
+        originalImageLink = searchResponse.attributes.artwork?.url
     }
     
 }

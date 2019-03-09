@@ -17,6 +17,8 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var masterViewHeight: NSLayoutConstraint!
     @IBOutlet weak var masterView: UIView!
+    @IBOutlet weak var warningLabel: UILabel!
+    
     let viewModel: ArtistLibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
@@ -30,8 +32,9 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewDidLoad() {
-        backgroundImage.kf.setImage(with: viewModel.artist.imageLink,
-                                    placeholder: UIImage(named: "artistPlaceholder"))
+        warningLabel.isHidden = true
+        backgroundImage.kf.setImage(with: viewModel.highResImageURL,
+                                    placeholder: UIImage.imageFrom(color: UIColor.black))
         nameLabel.text = viewModel.artist.name
         
         let statusBarHeight: CGFloat = 20
@@ -56,21 +59,16 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         view.addSubview(activityIndicator)
         
         viewModel.prepareData(completion: { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.detailLabel.text = self?.viewModel.details
-            strongSelf.activityIndicator.stop()
-            
-            let innerSize = strongSelf.viewModel.viewControllers.first?.innerScrollViewSize() ?? CGSize()
-            let wrapperSize = strongSelf.viewModel.viewControllers.first?
-                .wrapperScrollViewSize(immobileSectionHeight: 270) ?? CGSize()
-            strongSelf.containerView.contentSize = innerSize
-            strongSelf.scrollView.contentSize = wrapperSize
-            strongSelf.masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)
-            strongSelf.masterViewHeight.constant = wrapperSize.height
-            strongSelf.masterView.layoutIfNeeded()
-            strongSelf.reloadPagerTabStripView()
-        }, error: { err in
+            self?.detailLabel.text = self?.viewModel.details
+            self?.activityIndicator.stop()
+            self?.applyContentSize(index: 0)
+            self?.reloadPagerTabStripView()
+            if let vm = self?.viewModel, let vc = vm.viewControllers.first {
+                self?.warningLabel.isHidden = !vm.isVCEmpty(vc: vc)
+            }
+        }, error: { [weak self] err in
             SwiftMessagesWrapper.showErrorMessage(title: "Error", body: err.localizedDescription)
+            self?.activityIndicator.stop()
         })
     }
     
@@ -89,6 +87,18 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.black
     }
     
+    // MARK: - Helpers
+    
+    private func applyContentSize(index: Int) {
+        let innerSize = viewModel.viewControllers[index].innerScrollViewSize()
+        let wrapperSize = viewModel.viewControllers[index].wrapperScrollViewSize(immobileSectionHeight: 270)
+        containerView.contentSize = innerSize
+        scrollView.contentSize = wrapperSize
+        masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)
+        masterViewHeight.constant = wrapperSize.height
+        masterView.layoutIfNeeded()
+    }
+    
     
     // MARK: - XLPagerTabStrip
     
@@ -96,6 +106,10 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]
     {
         return viewModel.viewControllers
+    }
+    
+    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int) {
+        
     }
 }
 

@@ -79,6 +79,7 @@
 		04B4ADEB22330F6F006E6D8A /* LibraryPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */; };
 		04B4ADEC22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */; };
 		04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */; };
+		04B4ADF022335DA3006E6D8A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4ADEF22335DA3006E6D8A /* UIImage+Extensions.swift */; };
 		04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */; };
 		04B760B5222B21970095AF33 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B760B3222B21970095AF33 /* SearchViewController.swift */; };
 		04B760B6222B21970095AF33 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B760B4222B21970095AF33 /* SearchViewController.xib */; };
@@ -185,6 +186,7 @@
 		04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistTableViewController.swift; sourceTree = "<group>"; };
 		04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPlaylistTableViewController.xib; sourceTree = "<group>"; };
 		04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollHeightCalculable.swift; sourceTree = "<group>"; };
+		04B4ADEF22335DA3006E6D8A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMessagesWrapper.swift; sourceTree = "<group>"; };
 		04B760B3222B21970095AF33 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04B760B4222B21970095AF33 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				0454BF0B221B7D9F0019D4F4 /* Model Classes */,
 				0423EFF8220D3CE3008D6169 /* Extensions */,
 				0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */,
+				04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */,
 				04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */,
 			);
 			path = Shared;
@@ -311,6 +314,7 @@
 				04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */,
 				04A5D0B822230E8200774489 /* UIColor+Common.swift */,
 				04A5D0BA222310B900774489 /* UserDefaults+Extensions.swift */,
+				04B4ADEF22335DA3006E6D8A /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -443,7 +447,6 @@
 				04B4ADE62232EAC0006E6D8A /* Artist Library */,
 				04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */,
 				04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */,
-				04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				04B760CA222B95420095AF33 /* AllSearchDataSource.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
 				04B760C7222B8F110095AF33 /* SearchTableViewCell.swift in Sources */,
+				04B4ADF022335DA3006E6D8A /* UIImage+Extensions.swift in Sources */,
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,

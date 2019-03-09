@@ -37,6 +37,7 @@ class StartupViewModel: NSObject {
                 return APMArtist(name: album.attributes.artistName,
                                  genre: album.attributes.genreNames.first ?? "" ,
                                  imageLink: album.attributes.artwork.artworkImageURL(),
+                                 originalImageLink: album.attributes.artwork.url,
                                  id: "")
             } ?? []
             self?.artists = artists.duplicatesRemoved()

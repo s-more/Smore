@@ -15,13 +15,15 @@ class APMPlaylist: Playlist {
     var playableString: String
     var imageLink: URL?
     var songs: [Song] = []
+    var originalImageLink: String?
     
     init(searchResponse: APMSearch.APMSearchResults.APMSearchPlaylists.APMPlaylists) {
         id = searchResponse.id
         name = searchResponse.attributes.name
-        curatorName = searchResponse.attributes.curatorName
+        curatorName = searchResponse.attributes.curatorName ?? "Unknown Curator"
         playableString = searchResponse.attributes.playParams?.id ?? ""
         imageLink = searchResponse.attributes.artwork?.artworkImageURL()
+        originalImageLink = searchResponse.attributes.artwork?.url
     }
     
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {

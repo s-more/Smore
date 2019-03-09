@@ -14,8 +14,7 @@ class ArtistLibraryViewModel: NSObject {
     var fetchedAlbums: [Album] = []
     var fetchedPlaylists: [Playlist] = []
     var fetchedSongs: [Song] = []
-    
-    var isDataReady = false
+    var highResImageURL: URL?
     
     var viewControllers: [UITableViewController & ScrollHeightCalculable] = [
         LibraryPlaylistTableViewController()
@@ -24,6 +23,7 @@ class ArtistLibraryViewModel: NSObject {
     /// init from an Artist.
     init(artist: Artist) {
         self.artist = artist
+        highResImageURL = ArtistLibraryViewModel.highResImage(from: artist.originalImageLink)
         super.init()
     }
     
@@ -37,7 +37,6 @@ class ArtistLibraryViewModel: NSObject {
     }
     
     func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
-        isDataReady = false
         AppleMusicAPI.searchCatalog(
             with: artist.name,
             types: [.albums, .playlists, .songs],
@@ -52,10 +51,8 @@ class ArtistLibraryViewModel: NSObject {
                 if let rawSongs = data.songs?.data {
                     self?.fetchedSongs = rawSongs.map { APMSong(searchResponse: $0) }
                 }
-                self?.isDataReady = true
                 if let strongSelf = self {
                     strongSelf.viewControllers = [
-                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists),
                         LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists)
                     ]
                 }
@@ -63,6 +60,26 @@ class ArtistLibraryViewModel: NSObject {
             }, error: { err in
                 error(err)
             })
+    }
+    
+    func isVCEmpty(vc: UIViewController) -> Bool {
+        if let vc = vc as? LibraryPlaylistTableViewController {
+            return vc.playlists.isEmpty
+        }
+        return true
+    }
+    
+    // MARK: - Private
+    private static func highResImage(from url: String?) -> URL? {
+        if let url = url {
+            let availableWidth = Int(UIScreen.main.bounds.width * UIScreen.main.scale * 0.75)
+            let replaceOne = url.replacingOccurrences(of: "{w}", with: "\(availableWidth)")
+            let replaceTwo = replaceOne.replacingOccurrences(of: "{h}", with: "\(availableWidth)")
+            if let resultURL = URL(string: replaceTwo) {
+                return resultURL
+            }
+        }
+        return nil
     }
     
 }

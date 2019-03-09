@@ -13,6 +13,7 @@ protocol Playlist {
     var name: String { get set }
     var curatorName: String { get set }
     var playableString: String { get set }
+    var originalImageLink: String? { get set }
     var imageLink: URL? { get set }
     var songs: [Song] { get set }
     
