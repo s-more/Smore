@@ -42,6 +42,12 @@ class BrowseTableViewController: UITableViewController {
             print(error.localizedDescription)
         })
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.backgroundColor = UIColor.black
+    }
 
     // MARK: - Table view data source
 
@@ -59,6 +65,11 @@ class BrowseTableViewController: UITableViewController {
                                                      for: indexPath)
             if let cell = cell as? SuggestedTableViewCell {
                 cell.artists = viewModel.favArtists
+                cell.action = { [weak self] artist in
+                    let vm = ArtistLibraryViewModel(artist: artist)
+                    let vc = ArtistLibraryViewController(viewModel: vm)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
             }
             return cell
         } else if indexPath.section == 1 {

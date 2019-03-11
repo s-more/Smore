@@ -171,7 +171,7 @@ struct APMSearch: Codable {
                     let playParams: APMPlaylistsPlayParams?
                     let url: URL
                     let name: String
-                    let curatorName: String
+                    let curatorName: String?
                     let playlistType: String
                     
                     struct APMPlaylistArtwork: Codable {

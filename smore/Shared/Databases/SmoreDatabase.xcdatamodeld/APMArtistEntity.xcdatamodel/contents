@@ -5,8 +5,9 @@
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="APMArtistEntity" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="APMArtistEntity" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

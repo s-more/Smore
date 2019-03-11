@@ -16,6 +16,7 @@ class APMAlbum: Album {
     var imageLink: URL?
     var releaseDate: String
     var description: String?
+    var originalImageLink: String?
     var songs: [Song]
     
     init(response: APMSearch.APMSearchResults.APMSearchAlbums.APMAlbumData) {
@@ -26,6 +27,7 @@ class APMAlbum: Album {
         imageLink = response.attributes.artwork?.artworkImageURL(width: 300, height: 300)
         releaseDate = response.attributes.releaseDate
         description = response.attributes.editorialNotes?.standard
+        originalImageLink = response.attributes.artwork?.url
         songs = []
     }
     
@@ -40,6 +42,7 @@ class APMAlbum: Album {
         imageLink = relAlbumData.attributes?.artwork?.artworkImageURL(width: 300, height: 300)
         releaseDate = relAlbumData.attributes?.releaseDate ?? ""
         description = relAlbumData.attributes?.editorialNotes?.standard
+        originalImageLink = relAlbumData.attributes?.artwork?.url
         songs = []
     }
     

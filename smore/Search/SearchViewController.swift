@@ -42,6 +42,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = dataSource.value
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
+        navigationItem.title = "Search"
         viewModel.initialSearchBarPosition = searchBar.frame.origin.y
         
         tableView.register(UINib(nibName: "GenericTableViewCell", bundle: Bundle.main),
@@ -52,14 +53,6 @@ class SearchViewController: UIViewController {
                            forCellReuseIdentifier: SearchTableViewCell.identifier)
         tableView.register(UINib(nibName: "BrowseHeader", bundle: Bundle.main),
                            forHeaderFooterViewReuseIdentifier: BrowseHeader.identifier)
-        
-        let titleLabelView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
-        titleLabelView.backgroundColor = .clear
-        titleLabelView.textAlignment = .center
-        titleLabelView.textColor = UIColor.white
-        titleLabelView.font = UIFont.init(name: "AvenirNext-Bold", size: 18.0)
-        titleLabelView.text = ""
-        navigationItem.titleView = titleLabelView
         
         serviceToggle.removeAllSegments()
         for (index, segment) in viewModel.searchDataSources.enumerated() {
@@ -72,6 +65,13 @@ class SearchViewController: UIViewController {
                 self?.applyContentSize(from: ds)
                 self?.tableView.dataSource = ds
                 self?.tableView.reloadData()
+                if let artistsCell = self?.tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? SuggestedTableViewCell {
+                    artistsCell.action = { artist in
+                        let vm = ArtistLibraryViewModel(artist: artist)
+                        let vc = ArtistLibraryViewController(viewModel: vm)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             })
             .disposed(by: bag)
         
@@ -111,6 +111,11 @@ class SearchViewController: UIViewController {
             .disposed(by: bag)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.alpha = 0
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -126,6 +131,7 @@ class SearchViewController: UIViewController {
         searchBar.resignFirstResponder()
         searchBar.text = text
         view.addSubview(activityIndicator)
+        navigationController?.navigationBar.alpha = 0.001 // fixed a weird error where nav bar disappears
         viewModel.search(with: text, dataSource: dataSource.value, completion: { [weak self] ds in
             self?.dataSource.value = ds // triggers onNext(:_) with value being set
             self?.activityIndicator.stop()
@@ -185,24 +191,18 @@ extension SearchViewController: UIScrollViewDelegate {
         
         if floatingPosition > viewModel.initialSearchBarPosition && !viewModel.shouldNavBarBeShown {
             viewModel.shouldNavBarBeShown = true
-            searchBar.barTintColor = UIColor.tabBarBackground
-            if let labelView = navigationItem.titleView as? UILabel {
-                labelView.layer.add(SlidingViewTransition.up, forKey: "NavSlideUp")
-                labelView.text = "Search"
-            }
+            UIView.animate(
+                withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
+                    self?.navigationController?.navigationBar.alpha = 1
+                })
         }
         
         if floatingPosition <= viewModel.initialSearchBarPosition && viewModel.shouldNavBarBeShown {
             viewModel.shouldNavBarBeShown = false
-            navigationItem.title = ""
-            navigationController?.navigationBar.backgroundColor = UIColor.black
-            navigationController?.navigationBar.shadowImage = UIImage()
-            navigationController?.navigationBar.isTranslucent = true
-            
-            if let labelView = navigationItem.titleView as? UILabel {
-                labelView.layer.add(SlidingViewTransition.down, forKey: "NavSlideDown")
-                labelView.text = ""
-            }
+            UIView.animate(
+                withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
+                    self?.navigationController?.navigationBar.alpha = 0
+                })
         }
     }
 }

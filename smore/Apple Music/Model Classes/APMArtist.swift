@@ -14,13 +14,15 @@ class APMArtist: Artist {
     var imageLink: URL?
     var id: String
     var albums: [Album]
+    var originalImageLink: String?
     
-    init(name: String, genre: String, imageLink: URL?, id: String) {
+    init(name: String, genre: String, imageLink: URL?, originalImageLink: String?, id: String) {
         self.name = name
         self.genre = genre
         self.imageLink = imageLink
         self.id = id
         albums = []
+        self.originalImageLink = originalImageLink
     }
     
     init(response: APMSearch.APMSearchResults.APMSearchArtists.APMSearchArtistsData, imageSize: Int) {
@@ -28,8 +30,9 @@ class APMArtist: Artist {
         genre = response.attributes.genreNames.first ?? "Unknown Genre"
         id = response.id
         albums = response.relationships.albums.data.map { APMAlbum(relAlbumData: $0) }
-        imageLink = response.relationships.albums.data
-            .first?.attributes?.artwork?.artworkImageURL(width: imageSize, height: imageSize)
+        let artwork = response.relationships.albums.data.first?.attributes?.artwork
+        imageLink = artwork?.artworkImageURL(width: imageSize, height: imageSize)
+        originalImageLink = artwork?.url
     }
     
     class func convert(results: APMSearch.APMSearchResults, imageSize: Int = 200) -> [APMArtist] {

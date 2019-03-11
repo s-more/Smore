@@ -13,6 +13,7 @@ protocol Album {
     var name: String { get set }
     var artistName: String { get set }
     var playableString: String { get set }
+    var originalImageLink: String? { get set }
     var imageLink: URL? { get set }
     var releaseDate: String { get set }
     var description: String? { get set }
