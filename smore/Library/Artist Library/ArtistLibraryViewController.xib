@@ -115,9 +115,6 @@
                                 <constraint firstAttribute="bottom" secondItem="Mf7-cV-VA6" secondAttribute="bottom" id="p2a-UF-hS3"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" constant="16" id="rkc-qe-uGJ"/>
                             </constraints>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="JV8-UH-TY3" appends="YES" id="SCz-7d-HA9"/>
-                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,12 +138,6 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
-        <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="JV8-UH-TY3">
-            <rectEdge key="edges" left="YES"/>
-            <connections>
-                <action selector="screenEdgeLeftSwiped:" destination="-1" id="rB3-Qo-Q8N"/>
-            </connections>
-        </screenEdgePanGestureRecognizer>
     </objects>
     <resources>
         <image name="transparentGradient" width="480" height="120"/>

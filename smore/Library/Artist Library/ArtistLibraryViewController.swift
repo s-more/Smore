@@ -19,7 +19,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var masterView: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     
-    var index = 0
     let viewModel: ArtistLibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
@@ -60,7 +59,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         viewModel.prepareData(completion: { [weak self] in
             self?.detailLabel.text = self?.viewModel.details
             self?.activityIndicator.stop()
-            self?.applyContentSize(index: 0)
+            self?.applyContentSize()
             self?.reloadPagerTabStripView()
             if let vm = self?.viewModel, let vc = vm.viewControllers.first {
                 self?.warningLabel.isHidden = !vm.isVCEmpty(vc: vc)
@@ -75,7 +74,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = viewModel.artist.name
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBar.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,7 +84,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.alpha = 1
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -93,24 +92,15 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     }
     
     
-    private func applyContentSize(index: Int) {
-        let innerSize = viewModel.viewControllers[index].innerScrollViewSize()
-        let wrapperSize = viewModel.viewControllers[index].wrapperScrollViewSize(immobileSectionHeight: 270)
+    private func applyContentSize() {
+        let innerSize: CGSize, wrapperSize: CGSize
+        (wrapperSize, innerSize) = viewModel.maxScrollableSize(immobileSectionHeight: 270)
         containerView.contentSize = innerSize
         scrollView.contentSize = wrapperSize
         masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)
         masterViewHeight.constant = wrapperSize.height
         masterView.layoutIfNeeded()
     }
-    
-    // MARK: - IBActions
-    
-    @IBAction func screenEdgeLeftSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
-        if !viewModel.isBarShown {
-            navigationController?.popViewController(animated: true)
-        }
-    }
-    
     
     // MARK: - XLPagerTabStrip
     
@@ -132,10 +122,20 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         buttonBarView.frame = headerFrame
         
         if floatingPosition > viewModel.initialButtonBarPosition && !viewModel.isBarShown {
-            navigationController?.setNavigationBarHidden(false, animated: true)
+            //navigationController?.setNavigationBarHidden(false, animated: true)
+            UIView.animate(
+                withDuration: 0.2, delay: 0, options: [.curveEaseInOut],
+                animations: { [weak self] in
+                    self?.navigationController?.navigationBar.alpha = 1
+            }, completion: nil)
             viewModel.isBarShown = true
         } else if floatingPosition < viewModel.initialButtonBarPosition && viewModel.isBarShown {
-            navigationController?.setNavigationBarHidden(true, animated: true)
+            //navigationController?.setNavigationBarHidden(true, animated: true)
+            UIView.animate(
+                withDuration: 0.2, delay: 0, options: [.curveEaseInOut],
+                animations: { [weak self] in
+                    self?.navigationController?.navigationBar.alpha = 0
+                }, completion: nil)
             viewModel.isBarShown = false
         }
     }
