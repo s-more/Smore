@@ -55,7 +55,8 @@ class ArtistLibraryViewModel: NSObject {
                 }
                 if let strongSelf = self {
                     strongSelf.viewControllers = [
-                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists)
+                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists),
+                        LibraryAlbumTableViewController(albums: strongSelf.fetchedAlbums)
                     ]
                 }
                 completion()
