@@ -16,6 +16,7 @@ class APMPlaylist: Playlist {
     var imageLink: URL?
     var songs: [Song] = []
     var originalImageLink: String?
+    var streamingService: StreamingService = .appleMusic
     
     init(searchResponse: APMSearch.APMSearchResults.APMSearchPlaylists.APMPlaylists) {
         id = searchResponse.id
@@ -27,8 +28,11 @@ class APMPlaylist: Playlist {
     }
     
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
-        
+        AppleMusicAPI.playlists(with: id, completion: { [weak self] data in
+            self?.songs = data.relationships.tracks.data.map { APMSong(trackData: $0) }
+            completion()
+        }, error: { err in
+            error(err)
+        })
     }
-    
-    
 }

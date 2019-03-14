@@ -113,7 +113,11 @@ class SearchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.alpha = 0
+        if scrollView.contentOffset.y > viewModel.initialSearchBarPosition {
+            navigationController?.navigationBar.alpha = 1
+        } else {
+            navigationController?.navigationBar.alpha = 0
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -155,6 +159,14 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if let searchHints = (tableView.dataSource as? SearchHintDataSource)?.searchHints {
             search(with: searchHints[indexPath.row])
+        } else if let searchDataSource = tableView.dataSource as? SearchDataSource {
+            switch indexPath.section {
+            case 2:
+                let vm = PlaylistContentViewModel(playlist: searchDataSource.playlists[indexPath.row])
+                let vc = PlaylistContentViewController(viewModel: vm)
+                navigationController?.pushViewController(vc, animated: true)
+            default: break
+            }
         }
     }
     

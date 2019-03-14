@@ -40,6 +40,11 @@
 		045F09652212426100D7730E /* APMTopChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09642212426100D7730E /* APMTopChartResponse.swift */; };
 		045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F09662212567A00D7730E /* LottieActivityIndicator.swift */; };
 		045F09692212596500D7730E /* StrugglingAnt.json in Resources */ = {isa = PBXBuildFile; fileRef = 045F09682212596500D7730E /* StrugglingAnt.json */; };
+		0460AC50223A9CA30075D932 /* APMPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460AC4F223A9CA30075D932 /* APMPlaylistResponse.swift */; };
+		0460AC54223AA6FE0075D932 /* PlaylistContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460AC52223AA6FE0075D932 /* PlaylistContentViewController.xib */; };
+		0460AC57223AA72A0075D932 /* PlaylistContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460AC56223AA72A0075D932 /* PlaylistContentViewModel.swift */; };
+		0460AC59223AAC890075D932 /* PlaylistContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460AC58223AAC890075D932 /* PlaylistContentViewController.swift */; };
+		0460AC5B223AB3C60075D932 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460AC5A223AB3C60075D932 /* StreamingService.swift */; };
 		046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540EC221B99A9003AD74D /* StartupSearchTableViewController.swift */; };
 		046540EF221B99A9003AD74D /* StartupSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046540ED221B99A9003AD74D /* StartupSearchTableViewController.xib */; };
 		046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046540F0221B9C26003AD74D /* StartupSearchTableViewCell.swift */; };
@@ -148,6 +153,11 @@
 		045F09642212426100D7730E /* APMTopChartResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMTopChartResponse.swift; sourceTree = "<group>"; };
 		045F09662212567A00D7730E /* LottieActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieActivityIndicator.swift; sourceTree = "<group>"; };
 		045F09682212596500D7730E /* StrugglingAnt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StrugglingAnt.json; sourceTree = "<group>"; };
+		0460AC4F223A9CA30075D932 /* APMPlaylistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMPlaylistResponse.swift; sourceTree = "<group>"; };
+		0460AC52223AA6FE0075D932 /* PlaylistContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistContentViewController.xib; sourceTree = "<group>"; };
+		0460AC56223AA72A0075D932 /* PlaylistContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistContentViewModel.swift; sourceTree = "<group>"; };
+		0460AC58223AAC890075D932 /* PlaylistContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistContentViewController.swift; sourceTree = "<group>"; };
+		0460AC5A223AB3C60075D932 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		046540EC221B99A9003AD74D /* StartupSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSearchTableViewController.swift; sourceTree = "<group>"; };
 		046540ED221B99A9003AD74D /* StartupSearchTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupSearchTableViewController.xib; sourceTree = "<group>"; };
 		046540F0221B9C26003AD74D /* StartupSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +286,7 @@
 				0454BF11221B7F9D0019D4F4 /* FlowLayout.swift */,
 				04B4ADED22334166006E6D8A /* ScrollHeightCalculable.swift */,
 				04B760B0222B0F500095AF33 /* SwiftMessagesWrapper.swift */,
+				0460AC5A223AB3C60075D932 /* StreamingService.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -351,8 +362,19 @@
 				041904552223808E00EB22EC /* APMSong.swift */,
 				0417470122288C380044350F /* APMAlbum.swift */,
 				04B760CB222B99990095AF33 /* APMPlaylist.swift */,
+				0460AC4F223A9CA30075D932 /* APMPlaylistResponse.swift */,
 			);
 			path = "Model Classes";
+			sourceTree = "<group>";
+		};
+		0460AC55223AA70A0075D932 /* Library Content */ = {
+			isa = PBXGroup;
+			children = (
+				0460AC58223AAC890075D932 /* PlaylistContentViewController.swift */,
+				0460AC52223AA6FE0075D932 /* PlaylistContentViewController.xib */,
+				0460AC56223AA72A0075D932 /* PlaylistContentViewModel.swift */,
+			);
+			path = "Library Content";
 			sourceTree = "<group>";
 		};
 		046540EB221B996C003AD74D /* StartupSearch */ = {
@@ -444,6 +466,7 @@
 		04B4ADDD2232D5FF006E6D8A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0460AC55223AA70A0075D932 /* Library Content */,
 				04B4ADE62232EAC0006E6D8A /* Artist Library */,
 				04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */,
 				04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */,
@@ -661,6 +684,7 @@
 				0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */,
 				04A5D0DB222376E500774489 /* ListeningCollectionViewCell.xib in Resources */,
 				04B760C8222B8F110095AF33 /* SearchTableViewCell.xib in Resources */,
+				0460AC54223AA6FE0075D932 /* PlaylistContentViewController.xib in Resources */,
 				0419045E222390C000EB22EC /* Main.storyboard in Resources */,
 				046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */,
 				04B760B6222B21970095AF33 /* SearchViewController.xib in Resources */,
@@ -812,12 +836,14 @@
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
 				04B760C7222B8F110095AF33 /* SearchTableViewCell.swift in Sources */,
 				04B4ADF022335DA3006E6D8A /* UIImage+Extensions.swift in Sources */,
+				0460AC59223AAC890075D932 /* PlaylistContentViewController.swift in Sources */,
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
 				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */,
+				0460AC50223A9CA30075D932 /* APMPlaylistResponse.swift in Sources */,
 				04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
 				041904562223808E00EB22EC /* APMSong.swift in Sources */,
 				0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */,
@@ -826,6 +852,7 @@
 				04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */,
 				0417470222288C380044350F /* APMAlbum.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
+				0460AC5B223AB3C60075D932 /* StreamingService.swift in Sources */,
 				04A5D0BB222310B900774489 /* UserDefaults+Extensions.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
@@ -842,6 +869,7 @@
 				04A5D0B922230E8200774489 /* UIColor+Common.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
+				0460AC57223AA72A0075D932 /* PlaylistContentViewModel.swift in Sources */,
 				04B760BF222B796C0095AF33 /* GenericTableViewCell.swift in Sources */,
 				0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */,
 				046FDB6F21FE63BB00E8245D /* AppDelegate.swift in Sources */,

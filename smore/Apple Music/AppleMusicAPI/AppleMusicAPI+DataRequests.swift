@@ -204,6 +204,48 @@ extension AppleMusicAPI {
         }
     }
     
+    /// Fetch the content of a playlist, specified by its id, with the Apple Music API.
+    ///- parameter id: the id of the playlist in the Apple Music Database.
+    ///- parameter completion: the closure called when search succeeds.
+    ///- parameter error: the closure called when search fails.
+    static func playlists(
+        with id: String,
+        completion: @escaping (APMPlaylistResponse.APMPlaylistData) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        Alamofire.request(
+            "https://api.music.apple.com/v1/catalog/\(countryCode)/playlists/\(id)",
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: authHeaders).responseJSON
+        { json in
+            if let err = json.error {
+                DispatchQueue.main.async { error(err) }
+                return
+            }
+            if let data = json.data {
+                do {
+                    let decoder: JSONDecoder = {
+                        let jsonDecoder = JSONDecoder()
+                        jsonDecoder.dateDecodingStrategy = .iso8601
+                        return jsonDecoder
+                    }()
+                    let response = try decoder.decode(APMPlaylistResponse.self, from: data)
+                    if let result = response.data.first {
+                        DispatchQueue.main.async { completion(result) }
+                    }
+                } catch let err {
+                    DispatchQueue.main.async { error(err) }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    error(NSError(domain: "Invalid JSON", code: 0, userInfo: nil))
+                }
+            }
+        }
+    }
+    
     static func genreIDs(
         for genres: [Int],
         completion: @escaping (String) -> Void

@@ -59,6 +59,12 @@ class LibraryPlaylistTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SearchTableViewCell.preferredHeight
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vm = PlaylistContentViewModel(playlist: playlists[indexPath.row])
+        let vc = PlaylistContentViewController(viewModel: vm)
+        parent?.navigationController?.pushViewController(vc, animated: true)
+    }
  
     
 }
