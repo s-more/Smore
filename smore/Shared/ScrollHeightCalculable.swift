@@ -10,5 +10,4 @@ import UIKit
 
 protocol ScrollHeightCalculable {
     func wrapperScrollViewSize(immobileSectionHeight: CGFloat) -> CGSize
-    func innerScrollViewSize() -> CGSize
 }

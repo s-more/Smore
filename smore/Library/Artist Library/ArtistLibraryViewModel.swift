@@ -38,20 +38,6 @@ class ArtistLibraryViewModel: NSObject {
         return items.joined(separator: " - ")
     }
     
-    /// Provide the scrollable size that accommodates all child view controllers
-    /// by iterating through all children and finding the one with the max height.
-    func maxScrollableSize(immobileSectionHeight: CGFloat) -> (CGSize, CGSize) {
-        var size1 = CGSize()
-        var size2 = CGSize()
-        for vc in viewControllers {
-            if vc.wrapperScrollViewSize(immobileSectionHeight: immobileSectionHeight).height > size1.height {
-                size1 = vc.wrapperScrollViewSize(immobileSectionHeight: immobileSectionHeight)
-                size2 = vc.innerScrollViewSize()
-            }
-        }
-        return (size1, size2)
-    }
-    
     func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         AppleMusicAPI.searchCatalog(
             with: artist.name,

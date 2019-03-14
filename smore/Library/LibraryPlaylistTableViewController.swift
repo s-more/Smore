@@ -72,12 +72,8 @@ extension LibraryPlaylistTableViewController: IndicatorInfoProvider {
 
 extension LibraryPlaylistTableViewController: ScrollHeightCalculable {
     func wrapperScrollViewSize(immobileSectionHeight: CGFloat) -> CGSize {
-        let innerSize = innerScrollViewSize()
+        let innerSize = CGSize(width: UIScreen.main.bounds.width,
+                               height: CGFloat(playlists.count * Int(SearchTableViewCell.preferredHeight)))
         return CGSize(width: innerSize.width, height: innerSize.height + immobileSectionHeight)
-    }
-    
-    func innerScrollViewSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width,
-                      height: CGFloat(playlists.count * Int(SearchTableViewCell.preferredHeight)))
     }
 }

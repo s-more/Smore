@@ -91,11 +91,8 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         return .lightContent
     }
     
-    
     private func applyContentSize() {
-        let innerSize: CGSize, wrapperSize: CGSize
-        (wrapperSize, innerSize) = viewModel.maxScrollableSize(immobileSectionHeight: 270)
-        containerView.contentSize = innerSize
+        let wrapperSize = viewModel.viewControllers[currentIndex].wrapperScrollViewSize(immobileSectionHeight: 270)
         scrollView.contentSize = wrapperSize
         masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)
         masterViewHeight.constant = wrapperSize.height
@@ -110,6 +107,13 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         return viewModel.viewControllers
     }
     
+    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
+        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
+        if indexWasChanged {
+            applyContentSize()
+        }
+    }
+    
     // MARK: UIScrollViewDelegate
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -122,7 +126,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         buttonBarView.frame = headerFrame
         
         if floatingPosition > viewModel.initialButtonBarPosition && !viewModel.isBarShown {
-            //navigationController?.setNavigationBarHidden(false, animated: true)
             UIView.animate(
                 withDuration: 0.2, delay: 0, options: [.curveEaseInOut],
                 animations: { [weak self] in
@@ -130,7 +133,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
             }, completion: nil)
             viewModel.isBarShown = true
         } else if floatingPosition < viewModel.initialButtonBarPosition && viewModel.isBarShown {
-            //navigationController?.setNavigationBarHidden(true, animated: true)
             UIView.animate(
                 withDuration: 0.2, delay: 0, options: [.curveEaseInOut],
                 animations: { [weak self] in
