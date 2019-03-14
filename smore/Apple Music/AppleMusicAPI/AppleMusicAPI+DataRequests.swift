@@ -171,7 +171,7 @@ extension AppleMusicAPI {
     ) {
         var query =
             ["https://api.music.apple.com/v1/catalog/\(countryCode)/charts",
-             "?types=\(modes.duplicatesRemoved().map { $0.rawValue }.joined(separator: ","))",
+             "?types=\(Array(Set(modes)).map { $0.rawValue }.joined(separator: ","))",
              "&limit=\(limit)"].joined()
         
         if let genre = genre {
