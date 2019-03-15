@@ -14,6 +14,7 @@ class StartupSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var startupCellDetailLabel: UILabel!
     
     static let identifier = "startupSearchTableViewCell"
+    static let preferredHeight: CGFloat = 60
 
     override func awakeFromNib() {
         super.awakeFromNib()

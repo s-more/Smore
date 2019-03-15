@@ -19,7 +19,7 @@ class TabBarViewController: UITabBarController {
         
         let searchVM = SearchViewModel(dataSources: [APMSearchDataSource(), AllSearchDataSource()])
         let searchVC = UINavigationController(rootViewController: SearchViewController(viewModel: searchVM))
-        //searchVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        searchVC.navigationBar.tintColor = UIColor.white
         searchVC.navigationBar.shadowImage = UIImage()
         searchVC.navigationBar.barStyle = .black
         searchVC.navigationBar.isTranslucent = true

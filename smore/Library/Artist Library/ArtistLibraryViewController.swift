@@ -79,7 +79,10 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.initialButtonBarPosition = buttonBarView.frame.origin.y
+        if !viewModel.isButtonBarPositionSet {
+            viewModel.initialButtonBarPosition = buttonBarView.frame.origin.y
+            viewModel.isButtonBarPositionSet = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
