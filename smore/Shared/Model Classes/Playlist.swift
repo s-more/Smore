@@ -17,6 +17,7 @@ protocol Playlist {
     var imageLink: URL? { get set }
     var songs: [Song] { get set }
     var streamingService: StreamingService { get set }
+    var description: String? { get set }
     
     /// Fetch all songs from this playlist.
     /// - Once done with the web request just assign the returned songs to `songs`.

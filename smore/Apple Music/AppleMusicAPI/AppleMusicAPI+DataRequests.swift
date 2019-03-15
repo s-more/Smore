@@ -12,6 +12,12 @@ import Alamofire
 
 extension AppleMusicAPI {
     
+    private static let decoder: JSONDecoder = {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .iso8601
+        return jsonDecoder
+    }()
+    
     // MARK: - Data Requests Enums
     
     enum APMLibrarySearchMode: String {
@@ -71,8 +77,6 @@ extension AppleMusicAPI {
                 }
                 if let data =  json.data {
                     do {
-                        let decoder = JSONDecoder()
-                        decoder.dateDecodingStrategy = .iso8601
                         let result = try decoder.decode(APMSearch.self, from: data)
                         DispatchQueue.main.async { success(result.results) }
                     } catch let err {
@@ -191,7 +195,7 @@ extension AppleMusicAPI {
                 }
                 if let data =  json.data {
                     do {
-                        let response = try JSONDecoder().decode(APMTopChartResponse.self, from: data)
+                        let response = try decoder.decode(APMTopChartResponse.self, from: data)
                         completion(response.results)
                     } catch let err {
                         DispatchQueue.main.async { error(err) }
@@ -226,11 +230,6 @@ extension AppleMusicAPI {
             }
             if let data = json.data {
                 do {
-                    let decoder: JSONDecoder = {
-                        let jsonDecoder = JSONDecoder()
-                        jsonDecoder.dateDecodingStrategy = .iso8601
-                        return jsonDecoder
-                    }()
                     let response = try decoder.decode(APMPlaylistResponse.self, from: data)
                     if let result = response.data.first {
                         DispatchQueue.main.async { completion(result) }

@@ -27,18 +27,7 @@ class PlaylistContentViewModel: NSObject {
             DispatchQueue.main.async { error(err) }
         })
     }
-    
-    var tableViewContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width,
-                      height: CGFloat(playlist.songs.count * Int(StartupSearchTableViewCell.preferredHeight)))
-    }
-    
-    var scrollViewContentSize: CGSize {
-        let tableViewSize = tableViewContentSize
-        let screenWidth = UIScreen.main.bounds.width
-        return CGSize (width: tableViewSize.width, height: tableViewSize.height + screenWidth)
-    }
-    
+
     // MARK: - Private
     private static func highResImage(from url: String?) -> URL? {
         if let url = url {

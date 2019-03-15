@@ -17,6 +17,7 @@ class ArtistLibraryViewModel: NSObject {
     var highResImageURL: URL?
     var isBarShown = false
     var initialButtonBarPosition: CGFloat = 0
+    var isButtonBarPositionSet = false
     
     var viewControllers: [UITableViewController & ScrollHeightCalculable & IndicatorInfoProvider] = [
         LibraryPlaylistTableViewController()
