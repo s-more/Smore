@@ -18,6 +18,7 @@ protocol Album {
     var releaseDate: String { get set }
     var description: String? { get set }
     var songs: [Song] { get set }
+    var streamingService: StreamingService { get set }
     
     /// Fetch all songs from this album.
     /// - Once done with the web request just assign the returned songs to `songs`.

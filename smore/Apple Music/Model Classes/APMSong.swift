@@ -48,4 +48,15 @@ class APMSong: Song {
         originalImageLink = trackData.attributes.artwork?.url
     }
     
+    init(albumTrackData: APMAlbumResponse.APMAlbumData.APMAlbumRelationships.APMAlbumTrack.APMAlbumTrackData)
+    {
+        name = albumTrackData.attributes.name
+        genre = albumTrackData.attributes.genreNames.first ?? ""
+        imageLink = albumTrackData.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        id = albumTrackData.id
+        playableString = albumTrackData.attributes.playParams?.id ?? ""
+        artistName = albumTrackData.attributes.artistName
+        originalImageLink = albumTrackData.attributes.artwork?.url
+    }
+    
 }

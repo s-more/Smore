@@ -62,7 +62,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwi-c3-N9h">
-                            <rect key="frame" x="15" y="343" width="43" height="24"/>
+                            <rect key="frame" x="15" y="343" width="321" height="24"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -127,6 +127,7 @@
                         <constraint firstItem="jwi-c3-N9h" firstAttribute="bottom" secondItem="anm-CO-Ct2" secondAttribute="bottom" constant="-10" id="FBV-Mv-u6x"/>
                         <constraint firstItem="u7b-j3-th5" firstAttribute="leading" secondItem="dcc-Ga-qhO" secondAttribute="trailing" constant="12" id="FUH-2G-iYd"/>
                         <constraint firstItem="Vvm-97-AdO" firstAttribute="centerY" secondItem="jwi-c3-N9h" secondAttribute="centerY" id="PML-9R-urI"/>
+                        <constraint firstItem="Vvm-97-AdO" firstAttribute="leading" secondItem="jwi-c3-N9h" secondAttribute="trailing" constant="5" id="PgQ-TX-HNo"/>
                         <constraint firstItem="dcc-Ga-qhO" firstAttribute="leading" secondItem="kD3-P8-n77" secondAttribute="trailing" constant="12" id="YIK-XM-ybP"/>
                         <constraint firstAttribute="trailing" secondItem="g3t-TF-DWm" secondAttribute="trailing" id="bDz-xp-Sy5"/>
                         <constraint firstItem="u7b-j3-th5" firstAttribute="centerY" secondItem="dcc-Ga-qhO" secondAttribute="centerY" id="cJt-iM-eZ0"/>

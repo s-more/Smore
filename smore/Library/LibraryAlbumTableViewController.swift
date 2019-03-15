@@ -49,6 +49,11 @@ class LibraryAlbumTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SearchTableViewCell.preferredHeight
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = AlbumContentViewController(album: albums[indexPath.row])
+        parent?.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension LibraryAlbumTableViewController: IndicatorInfoProvider {

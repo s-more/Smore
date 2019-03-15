@@ -18,6 +18,7 @@ class APMAlbum: Album {
     var description: String?
     var originalImageLink: String?
     var songs: [Song]
+    var streamingService: StreamingService = .appleMusic
     
     init(response: APMSearch.APMSearchResults.APMSearchAlbums.APMAlbumData) {
         id = response.id
@@ -51,6 +52,17 @@ class APMAlbum: Album {
             DispatchQueue.main.async { completion() }
             return
         }
+        
+        AppleMusicAPI.album(with: id, completion: { [weak self] data in
+            DispatchQueue.global(qos: .userInitiated).async {
+                let editorialNotes = data.attributes.editorialNotes
+                self?.description = editorialNotes?.standard ?? editorialNotes?.short
+                self?.songs = data.relationships.tracks.data.map { APMSong(albumTrackData: $0) }
+                DispatchQueue.main.async { completion() }
+            }
+        }, error: { err in
+            DispatchQueue.main.async { error(err) }
+        })
     }
     
     

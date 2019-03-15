@@ -70,6 +70,9 @@ class ArtistLibraryViewModel: NSObject {
         if let vc = vc as? LibraryPlaylistTableViewController {
             return vc.playlists.isEmpty
         }
+        if let vc = vc as? LibraryAlbumTableViewController {
+            return vc.albums.isEmpty
+        }
         return true
     }
     
