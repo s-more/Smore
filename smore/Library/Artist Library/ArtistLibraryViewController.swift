@@ -74,7 +74,15 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = viewModel.artist.name
-        navigationController?.navigationBar.alpha = 0
+        if viewModel.isButtonBarPositionSet {
+            if scrollView.contentOffset.y > viewModel.initialButtonBarPosition {
+                navigationController?.navigationBar.alpha = 1
+            } else {
+                navigationController?.navigationBar.alpha = 0
+            }
+        } else {
+            navigationController?.navigationBar.alpha = 0
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,6 +122,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         if indexWasChanged {
             applyContentSize()
+            warningLabel.isHidden = !viewModel.isVCEmpty(vc: viewModel.viewControllers[currentIndex])
         }
     }
     

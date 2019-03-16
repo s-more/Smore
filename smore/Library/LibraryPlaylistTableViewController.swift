@@ -50,7 +50,7 @@ class LibraryPlaylistTableViewController: UITableViewController {
                                          placeholder: UIImage(named: "artistPlaceholder"))
             cell.masterLabel.text = playlists[indexPath.row].name
             cell.subtitleLabel.text = playlists[indexPath.row].curatorName
-            cell.serviceIcon.image = UIImage(named: "appleLogo")
+            cell.serviceIcon.image = playlists[indexPath.row].streamingService.icon
         }
 
         return cell

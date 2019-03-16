@@ -40,7 +40,7 @@ class LibraryAlbumTableViewController: UITableViewController {
             cell.masterImage.kf.setImage(with: albums[indexPath.row].imageLink, placeholder: UIImage(named: "artistPlaceholder"))
             cell.masterLabel.text = albums[indexPath.row].name
             cell.subtitleLabel.text = albums[indexPath.row].releaseDate
-            cell.serviceIcon.image = UIImage(named: "appleLogo")
+            cell.serviceIcon.image = albums[indexPath.row].streamingService.icon
         }
 
         return cell
@@ -48,6 +48,11 @@ class LibraryAlbumTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SearchTableViewCell.preferredHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = AlbumContentViewController(album: albums[indexPath.row])
+        parent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

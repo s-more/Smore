@@ -245,10 +245,47 @@ extension AppleMusicAPI {
         }
     }
     
+    /// Fetch the content of an album, specified by its id, with the Apple Music API.
+    ///- parameter id: the id of the album in the Apple Music Database.
+    ///- parameter completion: the closure called when search succeeds.
+    ///- parameter error: the closure called when search fails.
+    static func album(
+        with id: String,
+        completion: @escaping (APMAlbumResponse.APMAlbumData) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        Alamofire.request(
+            "https://api.music.apple.com/v1/catalog/\(countryCode)/albums/\(id)",
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: authHeaders).responseJSON
+        { json in
+            if let err = json.error {
+                DispatchQueue.main.async { error(err) }
+                return
+            }
+            if let data = json.data {
+                do {
+                    let response = try decoder.decode(APMAlbumResponse.self, from: data)
+                    if let result = response.data.first {
+                        DispatchQueue.main.async { completion(result) }
+                    }
+                } catch let err {
+                    DispatchQueue.main.async { error(err) }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    error(NSError(domain: "Invalid JSON", code: 0, userInfo: nil))
+                }
+            }
+        }
+    }
+    
     static func genreIDs(
         for genres: [Int],
-        completion: @escaping (String) -> Void
-    ) {
+        completion: @escaping (String) -> Void)
+    {
         let query =
             ["https://api.music.apple.com/v1/catalog/\(countryCode)/genres",
             "?ids=\(genres.map { "\($0)" }.joined(separator: ","))"].joined()

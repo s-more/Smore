@@ -1,39 +1,40 @@
 //
-//  APMPlaylistResponse.swift
+//  APMAlbumResponse.swift
 //  smore
 //
-//  Created by Jing Wei Li on 3/14/19.
+//  Created by Jing Wei Li on 3/15/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
 import Foundation
 
-struct APMPlaylistResponse: Codable {
-    let data: [APMPlaylistData]
+class APMAlbumResponse: Codable {
+    let data: [APMAlbumData]
     
-    struct APMPlaylistData: Codable {
-        let attributes: APMPlaylistAttributes
-        let href: String
+    struct APMAlbumData: Codable {
         let id: String
-        let relationships: APMPlaylistRelationships
         let type: String
+        let href: String
+        let attributes: APMAlbumAttributes
+        let relationships: APMAlbumRelationships
         
-        struct APMPlaylistAttributes: Codable {
-            let artwork: APMPlaylistArtwork?
-            let lastModifiedDate: Date?
-            let playParams: APMPlaylistsPlayParams?
+        struct APMAlbumAttributes: Codable {
+            let artwork: APMAlbumArtwork?
+            let artistName: String
+            let isSingle: Bool
             let url: URL
+            let isComplete: Bool
+            let genreNames: [String]
+            let trackCount: Int
+            let isMasteredForItunes: Bool
+            let releaseDate: String
             let name: String
-            let curatorName: String?
-            let playlistType: String
-            let description: APMPlaylistDescription?
+            let recordLabel: String
+            let copyright: String?
+            let playParams: APMAlbumPlayParams?
+            let editorialNotes: APMAlbumEditorialNotes?
             
-            struct APMPlaylistDescription: Codable {
-                let standard: String?
-                let short: String?
-            }
-            
-            struct APMPlaylistArtwork: Codable {
+            struct APMAlbumArtwork: Codable {
                 let width: Int
                 let height: Int
                 let url: String
@@ -50,37 +51,43 @@ struct APMPlaylistResponse: Codable {
                 }
             }
             
-            struct APMPlaylistsPlayParams: Codable {
+            struct APMAlbumPlayParams: Codable {
                 let id: String
                 let kind: String
             }
+            
+            struct APMAlbumEditorialNotes: Codable {
+                let standard: String?
+                let short: String?
+            }
         }
         
-        struct APMPlaylistRelationships: Codable {
-            let curator: APMPlaylistCurator
-            let tracks: APMPlaylistTracks
+        struct APMAlbumRelationships: Codable {
+            let artists: APMAlbumArtists
+            let tracks: APMAlbumTrack
             
-            struct APMPlaylistCurator: Codable {
-                let data: [APMPlaylistCuratorData]
+            struct APMAlbumArtists: Codable {
+                let data: [APMAlbumArtistData]
                 let href: String
-                
-                struct APMPlaylistCuratorData: Codable {
-                    let href: String
+        
+                struct APMAlbumArtistData: Codable {
                     let id: String
                     let type: String
+                    let href: String
                 }
             }
             
-            struct APMPlaylistTracks: Codable {
-                let data: [APMPlaylistTrackData]
+            struct APMAlbumTrack: Codable {
+                let data: [APMAlbumTrackData]
+                let href: String
                 
-                struct APMPlaylistTrackData: Codable {
-                    let attributes: APMPlaylistTrackAttribute
+                struct APMAlbumTrackData: Codable {
+                    let attributes: APMTrackAttribute
                     let href: String
                     let id: String
                     let type: String
                     
-                    struct APMPlaylistTrackAttribute: Codable  {
+                    struct APMTrackAttribute: Codable  {
                         let artistName: String
                         let artwork: APMTrackArtwork?
                         let discNumber: Int?
@@ -93,6 +100,7 @@ struct APMPlaylistResponse: Codable {
                         let releaseDate: String
                         let trackNumber: Int
                         let url: URL
+                        let composerName: String?
                         
                         struct APMTrackArtwork: Codable {
                             let width: Int

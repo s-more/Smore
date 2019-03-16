@@ -161,6 +161,9 @@ extension SearchViewController: UITableViewDelegate {
             search(with: searchHints[indexPath.row])
         } else if let searchDataSource = tableView.dataSource as? SearchDataSource {
             switch indexPath.section {
+            case 1:
+                let vc = AlbumContentViewController(album: searchDataSource.albums[indexPath.row])
+                navigationController?.pushViewController(vc, animated: true)
             case 2:
                 let vm = PlaylistContentViewModel(playlist: searchDataSource.playlists[indexPath.row])
                 let vc = PlaylistContentViewController(viewModel: vm)
