@@ -215,7 +215,7 @@ struct APMSearch: Codable {
                     let artwork: APMSongArtwork?
                     let artistName: String
                     let url: URL
-                    let discNumber: Int
+                    let discNumber: Int?
                     let genreNames: [String]
                     let durationInMillis: Int
                     let releaseDate: String

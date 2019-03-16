@@ -121,11 +121,8 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         if indexWasChanged {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.19) { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.applyContentSize()
-                strongSelf.warningLabel.isHidden = !strongSelf.viewModel.isVCEmpty(vc: strongSelf.viewModel.viewControllers[strongSelf.currentIndex])
-            }
+            applyContentSize()
+            warningLabel.isHidden = !viewModel.isVCEmpty(vc: viewModel.viewControllers[currentIndex])
         }
     }
     

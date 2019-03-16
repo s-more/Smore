@@ -40,7 +40,7 @@ class LibraryAlbumTableViewController: UITableViewController {
             cell.masterImage.kf.setImage(with: albums[indexPath.row].imageLink, placeholder: UIImage(named: "artistPlaceholder"))
             cell.masterLabel.text = albums[indexPath.row].name
             cell.subtitleLabel.text = albums[indexPath.row].releaseDate
-            cell.serviceIcon.image = UIImage(named: "appleLogo")
+            cell.serviceIcon.image = albums[indexPath.row].streamingService.icon
         }
 
         return cell

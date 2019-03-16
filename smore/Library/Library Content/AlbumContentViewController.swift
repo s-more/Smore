@@ -29,8 +29,8 @@ class AlbumContentViewController: LibraryContentViewController {
         titleLabel.text = album.name
         subtitleLabel.text = album.artistName
         serviceIcon.image = album.streamingService.icon
-        tableView.register(UINib(nibName: "SongTableViewCell", bundle: Bundle.main),
-                           forCellReuseIdentifier: SongTableViewCell.identifier)
+        tableView.register(UINib(nibName: "NumberedSongTableViewCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: NumberedSongTableViewCell.identifier)
         
         super.viewDidLoad()
         
@@ -59,20 +59,18 @@ class AlbumContentViewController: LibraryContentViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NumberedSongTableViewCell.identifier, for: indexPath)
         
-        if let cell = cell as? SongTableViewCell {
-            cell.songImageView.kf.setImage(with: album.songs[indexPath.row].imageLink,
-                                           placeholder: UIImage(named: "artistPlaceholder"))
+        if let cell = cell as? NumberedSongTableViewCell {
+            cell.songNumber.text = "\(album.songs[indexPath.row].trackNumber)"
             cell.songTitle.text = album.songs[indexPath.row].name
-            cell.songSubtitle.text = album.songs[indexPath.row].artistName
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SongTableViewCell.preferredHeight
+        return NumberedSongTableViewCell.preferredHeight
     }
     
     override func handleMoreButtonTap(_ sender: UIButton) {
@@ -82,6 +80,6 @@ class AlbumContentViewController: LibraryContentViewController {
     
     override var tableViewContentSize: CGSize {
         return CGSize(width: UIScreen.main.bounds.width,
-                      height: CGFloat(album.songs.count * Int(SongTableViewCell.preferredHeight)))
+                      height: CGFloat(album.songs.count * Int(NumberedSongTableViewCell.preferredHeight)))
     }
 }

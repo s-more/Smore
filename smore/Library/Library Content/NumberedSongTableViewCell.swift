@@ -9,16 +9,14 @@
 import UIKit
 
 class NumberedSongTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    static let preferredHeight: CGFloat = 50
+    static let identifier = "numberedSongTableViewCell"
     
+    @IBOutlet weak var songNumber: UILabel!
+    @IBOutlet weak var songTitle: UILabel!
+    
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        
+    }
 }

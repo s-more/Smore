@@ -15,6 +15,7 @@ protocol Artist {
     var originalImageLink: String? { get set }
     var id: String { get set }
     var albums: [Album] { get set }
+    var streamingService: StreamingService { get set }
     
     /// fetch all albums from this artist.
     /// - once done with the web request just assign the returned albums to `albums`.

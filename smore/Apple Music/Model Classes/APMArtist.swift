@@ -15,6 +15,7 @@ class APMArtist: Artist {
     var id: String
     var albums: [Album]
     var originalImageLink: String?
+    var streamingService: StreamingService
     
     init(name: String, genre: String, imageLink: URL?, originalImageLink: String?, id: String) {
         self.name = name
@@ -23,6 +24,7 @@ class APMArtist: Artist {
         self.id = id
         albums = []
         self.originalImageLink = originalImageLink
+        streamingService = .appleMusic
     }
     
     init(response: APMSearch.APMSearchResults.APMSearchArtists.APMSearchArtistsData, imageSize: Int) {
@@ -33,6 +35,7 @@ class APMArtist: Artist {
         let artwork = response.relationships.albums.data.first?.attributes?.artwork
         imageLink = artwork?.artworkImageURL(width: imageSize, height: imageSize)
         originalImageLink = artwork?.url
+        streamingService = .appleMusic
     }
     
     class func convert(results: APMSearch.APMSearchResults, imageSize: Int = 200) -> [APMArtist] {
