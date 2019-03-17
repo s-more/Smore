@@ -46,4 +46,9 @@ extension TopChartsTableViewCell: UICollectionViewDataSource, UICollectionViewDe
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        MiniPlayer.shared.configure(with: songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(songs[indexPath.row ..< songs.count])
+    }
 }

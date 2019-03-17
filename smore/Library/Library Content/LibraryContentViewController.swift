@@ -73,7 +73,8 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
         let screenWidth = UIScreen.main.bounds.width
         let descripHeight = descriptionLabel.frame.height
         let addButtonsHeight: CGFloat = 51
-        scrollView.contentSize = scrollViewContentSize(fixedHeight: screenWidth + descripHeight + addButtonsHeight)
+        let miniPlayerHeight: CGFloat = 60
+        scrollView.contentSize = scrollViewContentSize(fixedHeight: screenWidth + descripHeight + addButtonsHeight + miniPlayerHeight)
         tableView.contentSize = tableViewContentSize
         tableViewHeight.constant = tableViewContentSize.height
         view.layoutIfNeeded()
@@ -139,4 +140,6 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
 }

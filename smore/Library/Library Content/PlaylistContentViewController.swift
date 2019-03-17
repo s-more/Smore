@@ -71,18 +71,45 @@ class PlaylistContentViewController: LibraryContentViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SongTableViewCell.preferredHeight
     }
+    
+    override var tableViewContentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width,
+                      height: CGFloat(viewModel.playlist.songs.count * Int(SongTableViewCell.preferredHeight)))
+    }
+    
+    // MARK - Button Taps
     
     override func handleMoreButtonTap(_ sender: UIButton) {
         descriptionLabel.text = viewModel.playlist.description
         super.handleMoreButtonTap(sender)
     }
     
-    override var tableViewContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width,
-                      height: CGFloat(viewModel.playlist.songs.count * Int(SongTableViewCell.preferredHeight)))
+    override func handlePlaybuttonTap(_ sender: UIButton) {
+        if let first = viewModel.playlist.songs.first {
+            MiniPlayer.shared.configure(with: first)
+            MusicQueue.shared.queue.value = viewModel.playlist.songs
+        }
+    }
+    
+    override func handleShuffleButtonTap(_ sender: UIButton) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let first = self?.viewModel.playlist.songs.first,
+                let shuffled = self?.viewModel.playlist.songs.shuffled() {
+                DispatchQueue.main.async {
+                    MiniPlayer.shared.configure(with: first)
+                    MusicQueue.shared.queue.value = shuffled
+                }
+            }
+        }
     }
 
 }

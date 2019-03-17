@@ -42,6 +42,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = dataSource.value
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         navigationItem.title = "Search"
         viewModel.initialSearchBarPosition = searchBar.frame.origin.y
         
@@ -168,6 +169,9 @@ extension SearchViewController: UITableViewDelegate {
                 let vm = PlaylistContentViewModel(playlist: searchDataSource.playlists[indexPath.row])
                 let vc = PlaylistContentViewController(viewModel: vm)
                 navigationController?.pushViewController(vc, animated: true)
+            case 3:
+                MiniPlayer.shared.configure(with: searchDataSource.songs[indexPath.row])
+                MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
             default: break
             }
         }

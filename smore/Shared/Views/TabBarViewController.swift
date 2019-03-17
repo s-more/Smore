@@ -33,6 +33,14 @@ class TabBarViewController: UITabBarController {
         tabBar.tintColor = UIColor.themeColor
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MiniPlayer.tabBarHeight = tabBar.frame.height
+        view.addSubview(MiniPlayer.shared)
+        MiniPlayer.shared.isHidden = true 
+    }
+    
     func configureNavBar(on vc: UINavigationController) {
         vc.navigationBar.barTintColor = UIColor.black
         vc.navigationBar.tintColor = UIColor.white
