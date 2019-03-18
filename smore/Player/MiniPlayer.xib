@@ -60,6 +60,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pId-vG-cQy" firstAttribute="top" secondItem="vPd-jQ-Np2" secondAttribute="top" id="33S-Jo-wXo"/>
                             <constraint firstItem="vPd-jQ-Np2" firstAttribute="top" secondItem="Gs8-Le-nfx" secondAttribute="top" constant="8" id="8L5-gz-28X"/>
@@ -74,6 +75,9 @@
                             <constraint firstItem="B1L-eD-OcO" firstAttribute="leading" secondItem="pId-vG-cQy" secondAttribute="trailing" constant="16" id="p3c-fb-wMr"/>
                             <constraint firstAttribute="trailing" secondItem="B1L-eD-OcO" secondAttribute="trailing" constant="21" id="wIX-76-WDl"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="opB-sA-ndG" appends="YES" id="CT8-h0-X2B"/>
+                        </connections>
                     </view>
                     <blurEffect style="dark"/>
                 </visualEffectView>
@@ -89,6 +93,11 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="194.40000000000001" y="395.80209895052479"/>
         </view>
+        <swipeGestureRecognizer direction="up" id="opB-sA-ndG">
+            <connections>
+                <action selector="onSwipe:" destination="-1" id="q9z-Dg-jo4"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="PauseButton" width="211" height="211"/>

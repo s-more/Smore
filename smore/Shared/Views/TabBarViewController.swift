@@ -36,9 +36,13 @@ class TabBarViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // this is only called once
         MiniPlayer.tabBarHeight = tabBar.frame.height
         view.addSubview(MiniPlayer.shared)
-        MiniPlayer.shared.isHidden = true 
+        MiniPlayer.shared.isHidden = true
+        MiniPlayer.shared.swipeAction = { [weak self] in
+            self?.present(PlayerViewController.current, animated: true)
+        }
     }
     
     func configureNavBar(on vc: UINavigationController) {

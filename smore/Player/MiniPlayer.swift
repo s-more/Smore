@@ -23,6 +23,7 @@ class MiniPlayer: UIView {
     static let shared = MiniPlayer()
     
     var isShown = false
+    var swipeAction: (() -> Void)?
 
     private init() {
         super.init(frame: CGRect(
@@ -83,6 +84,11 @@ class MiniPlayer: UIView {
         subTitle.text = ""
         songTitle.text = "Not Playing"
         playButton.setImage(PlayerState.notPlaying.image, for: .normal)
+    }
+    
+    // MARK - IBActions
+    @IBAction func onSwipe(_ sender: UISwipeGestureRecognizer) {
+        swipeAction?()
     }
     
 }
