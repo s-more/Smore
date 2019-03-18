@@ -31,12 +31,7 @@ class TabBarViewController: UITabBarController {
         tabBar.barTintColor = UIColor.tabBarBackground
         tabBar.unselectedItemTintColor = UIColor.darkGray
         tabBar.tintColor = UIColor.themeColor
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        // this is only called once
         MiniPlayer.tabBarHeight = tabBar.frame.height
         view.addSubview(MiniPlayer.shared)
         MiniPlayer.shared.isHidden = true

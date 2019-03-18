@@ -10,9 +10,11 @@ import UIKit
 
 class PlayerViewModel: NSObject {
     var isDismissing: Bool
+    var horizontalPosition: CGFloat
     
     override init() {
         isDismissing = false
+        horizontalPosition = 0
         super.init()
     }
 

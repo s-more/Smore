@@ -16,9 +16,9 @@ enum PlayerState {
     var image: UIImage? {
         switch self {
         case .playing:
-            return UIImage(named: "PauseButton")
+            return UIImage(named: "PauseButtonLarge")
         case .paused, .notPlaying:
-            return UIImage(named: "PlayButton")
+            return UIImage(named: "PlayButtonLarge")
         }
     }
 }

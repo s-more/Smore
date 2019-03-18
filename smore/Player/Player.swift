@@ -29,7 +29,7 @@ class Player {
             for (index, song) in MusicQueue.shared.queue.value.enumerated() {
                 if let songName = self?.player.nowPlayingItem?.title, song.name == songName {
                     MiniPlayer.shared.configure(with: song)
-                    MusicQueue.shared.currentPosition = index
+                    MusicQueue.shared.currentPosition.value = index
                 }
             }
         }
@@ -49,6 +49,28 @@ class Player {
         player.setQueue(with: appleMusicIDs)
         player.play()
         state = .playing
+    }
+    
+    func skipToNext() {
+        player.skipToNextItem()
+        MusicQueue.shared.currentPosition.value += 1
+        if MusicQueue.shared.currentPosition.value >= MusicQueue.shared.queue.value.count {
+            MusicQueue.shared.currentPosition.value = MusicQueue.shared.queue.value.count - 1
+        }
+    }
+    
+    func skipToPrev() {
+        player.skipToPreviousItem()
+        MusicQueue.shared.currentPosition.value -= 1
+        if MusicQueue.shared.currentPosition.value < 0 {
+            MusicQueue.shared.currentPosition.value = 0
+        }
+    }
+    
+    func skipToCurrentPosition() {
+        let count = MusicQueue.shared.queue.value.count
+        let currentIndex = MusicQueue.shared.currentPosition.value
+        MusicQueue.shared.queue.value = Array(MusicQueue.shared.queue.value[currentIndex ..< count])
     }
     
     func playOrPause() {
