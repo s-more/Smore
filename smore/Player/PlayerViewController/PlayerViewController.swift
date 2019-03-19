@@ -13,8 +13,8 @@ import RxSwift
 
 class PlayerViewController: UIViewController {
     @IBOutlet weak var progressSlider: UISlider!
-    @IBOutlet weak var remaningTimeLabel: UILabel!
     @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var titleLabel: MarqueeLabel!
     @IBOutlet weak var subtitleLabel: MarqueeLabel!
     @IBOutlet weak var queueTableView: UITableView!
@@ -45,11 +45,24 @@ class PlayerViewController: UIViewController {
         albumArtCollectionView.dataSource = self
         scrollView.delegate = self
         
+        progressSlider.setThumbImage(UIImage(named: "smoreSliderThumb"), for: .normal)
+        progressSlider.isContinuous = false
+        currentTimeLabel.text = "0:00"
+        if let nowPlayingItemTime = Player.shared.nowPlayingItemPlaybackTime {
+            remainingTimeLabel.text = Utilities.timeIntervalToReg(from: nowPlayingItemTime)
+        }
+        
         queueTableView.register(UINib(nibName: "SongTableViewCell", bundle: Bundle.main),
                                 forCellReuseIdentifier: SongTableViewCell.identifier)
         albumArtCollectionView.register(
             UINib(nibName: "PlayerAlbumArtCollectionViewCell", bundle: Bundle.main),
             forCellWithReuseIdentifier: PlayerAlbumArtCollectionViewCell.identifier)
+        queueTableView.register(UINib(nibName: "BrowseHeader", bundle: Bundle.main),
+                               forHeaderFooterViewReuseIdentifier: BrowseHeader.identifier)
+        
+        queueTableView.sectionHeaderHeight = UITableView.automaticDimension
+        queueTableView.estimatedSectionHeaderHeight = 60
+        
         let artworkHeight = albumArtCollectionView.bounds.height
         albumArtCollectionView.collectionViewLayout = FlowLayout(
             size: CGSize(width: artworkHeight, height: artworkHeight),
@@ -76,6 +89,10 @@ class PlayerViewController: UIViewController {
         queueTableView.reloadData()
         albumArtCollectionView.reloadData()
         
+        if viewModel.timer == nil {
+            generatePlaybackUpdateTimer()
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.applyContentSize()
@@ -83,6 +100,12 @@ class PlayerViewController: UIViewController {
             
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.timer?.invalidate()
+        viewModel.timer = nil
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -107,13 +130,19 @@ class PlayerViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @IBAction func sliderSlided(_ sender: UISlider) {
+        if let totalTime = Player.shared.nowPlayingItemPlaybackTime {
+            Player.shared.player.currentPlaybackTime = Double(sender.value) * totalTime
+        }
+    }
+    
     func applyContentSize() {
         let tableViewSize = CGSize(
             width: UIScreen.main.bounds.width,
-            height: CGFloat(MusicQueue.shared.queue.value.count) * SongTableViewCell.preferredHeight)
+            height: CGFloat(MusicQueue.shared.queue.value.count - MusicQueue.shared.currentPosition.value) * SongTableViewCell.preferredHeight)
         
         scrollView.contentSize = CGSize(width: tableViewSize.width,
-                                        height: tableViewSize.height - 10 + UIScreen.main.bounds.height)
+                                        height: tableViewSize.height + 30 + UIScreen.main.bounds.height)
         queueTableView.contentSize = tableViewSize
         tableViewHeight.constant = tableViewSize.height
         view.layoutIfNeeded()
@@ -124,6 +153,16 @@ class PlayerViewController: UIViewController {
         subtitleLabel.text = MusicQueue.shared.currentSong.artistName
         albumArtCollectionView.scrollToItem(at: IndexPath(row: MusicQueue.shared.currentPosition.value, section: 0), at: .centeredHorizontally, animated: true)
         queueTableView.reloadData()
+        applyContentSize()
+    }
+    
+    // MARK: Private
+    func generatePlaybackUpdateTimer() {
+        viewModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.remainingTimeLabel.text = Player.shared.remainingPlaybackTime
+            self?.currentTimeLabel.text = Player.shared.currentPlaybackTime
+            self?.progressSlider.setValue(Player.shared.currentPlaybackPercentage, animated: false)
+        }
     }
     
 }
@@ -154,7 +193,12 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         MusicQueue.shared.currentPosition.value += (indexPath.row + 1)
         Player.shared.skipToCurrentPosition()
-        albumArtCollectionView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: BrowseHeader.identifier) as? BrowseHeader
+        cell?.titleLabel.text = "Up next"
+        return cell
     }
 }
 
@@ -168,31 +212,33 @@ extension PlayerViewController: UICollectionViewDelegate, UICollectionViewDataSo
             withReuseIdentifier: PlayerAlbumArtCollectionViewCell.identifier, for: indexPath)
         
         if let cell = cell as? PlayerAlbumArtCollectionViewCell {
-            cell.albumArtImageView.kf.setImage(with: MusicQueue.shared.queue.value[indexPath.row].imageLink,
-                                                  placeholder: UIImage(named: "artistPlaceholder"))
+            let song = MusicQueue.shared.queue.value[indexPath.row]
+            cell.albumArtImageView.kf.setImage(
+                with: Utilities.highResImage(
+                    from: song.originalImageLink, width: Int(cell.bounds.width * 0.8)),
+                placeholder: UIImage(named: "artistPlaceholder"))
         }
         return cell
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        // scrolled right
         guard scrollView == albumArtCollectionView else { return }
-        print(String(format: "%.3f", scrollView.contentOffset.x))
-        print(String(format: "%.3f", viewModel.horizontalPosition))
-        if scrollView.contentOffset.x > viewModel.horizontalPosition {
-            print("Skipped next")
+        if viewModel.scrollDirectioon == .right { // scrolled right
             Player.shared.skipToNext()
-            refresh()
-        }
-        if scrollView.contentOffset.x < viewModel.horizontalPosition { // scrolled left
+        } else if viewModel.scrollDirectioon == .left { // scrolled left
             Player.shared.skipToPrev()
-            print("Skipped prev")
-            refresh()
+        }
+        viewModel.horizontalPosition = scrollView.contentOffset.x
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == albumArtCollectionView else { return }
+        if scrollView.contentOffset.x > viewModel.horizontalPosition {
+            viewModel.scrollDirectioon = .right
+        } else if scrollView.contentOffset.x < viewModel.horizontalPosition { // scrolled left
+            viewModel.scrollDirectioon = .left
         }
         viewModel.horizontalPosition = scrollView.contentOffset.x
     }
 }
 
-extension PlayerViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) { }
-}

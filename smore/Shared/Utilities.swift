@@ -9,15 +9,26 @@
 import UIKit
 
 enum Utilities {
-    static func highResImage(from url: String?) -> URL? {
+    /// for the optional width arg, pass in the width in points, not in pixess
+    static func highResImage(
+        from url: String?,
+        width: Int = Int(UIScreen.main.bounds.width * 0.75)) -> URL?
+    {
         if let url = url {
-            let availableWidth = Int(UIScreen.main.bounds.width * UIScreen.main.scale * 0.75)
-            let replaceOne = url.replacingOccurrences(of: "{w}", with: "\(availableWidth)")
-            let replaceTwo = replaceOne.replacingOccurrences(of: "{h}", with: "\(availableWidth)")
+            let scaledWidth = width * Int(UIScreen.main.scale)
+            let replaceOne = url.replacingOccurrences(of: "{w}", with: "\(scaledWidth)")
+            let replaceTwo = replaceOne.replacingOccurrences(of: "{h}", with: "\(scaledWidth)")
             if let resultURL = URL(string: replaceTwo) {
                 return resultURL
             }
         }
         return nil
+    }
+    
+    static func timeIntervalToReg(from interval: TimeInterval) -> String {
+        let minute = String(Int(interval) / 60)
+        var seconds = String(Int(interval) % 60)
+        if seconds.count == 1 {seconds = "0" + seconds}
+        return minute + ":" + seconds
     }
 }

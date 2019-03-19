@@ -15,7 +15,7 @@ class Player {
     let player: MPMusicPlayerApplicationController
     var state: PlayerState
     
-    init() {
+    private init() {
         player = MPMusicPlayerApplicationController.applicationQueuePlayer
         player.prepareToPlay()
         player.beginGeneratingPlaybackNotifications()
@@ -42,8 +42,37 @@ class Player {
             if let state = self?.player.playbackState, state == .stopped {
                 MiniPlayer.shared.reset()
             }
+            MiniPlayer.shared.updatePlayIconImage()
         }
     }
+    
+    // MARK: - Computed Vars
+    
+    var currentPlaybackTime: String {
+        let currentTime = player.currentPlaybackTime
+        return Utilities.timeIntervalToReg(from: currentTime)
+    }
+    
+    var remainingPlaybackTime: String? {
+        if let totalTime = player.nowPlayingItem?.playbackDuration {
+            let remainingTime = totalTime - player.currentPlaybackTime
+            return Utilities.timeIntervalToReg(from: remainingTime)
+        }
+        return nil
+    }
+    
+    var nowPlayingItemPlaybackTime: TimeInterval? {
+        return player.nowPlayingItem?.playbackDuration
+    }
+    
+    var currentPlaybackPercentage: Float {
+        if let totalTime = player.nowPlayingItem?.playbackDuration {
+            return Float(player.currentPlaybackTime / totalTime)
+        }
+        return 0
+    }
+    
+    // MARK: - Methods
     
     func play(with appleMusicIDs: [String]) {
         player.setQueue(with: appleMusicIDs)
@@ -68,9 +97,11 @@ class Player {
     }
     
     func skipToCurrentPosition() {
-        let count = MusicQueue.shared.queue.value.count
-        let currentIndex = MusicQueue.shared.currentPosition.value
-        MusicQueue.shared.queue.value = Array(MusicQueue.shared.queue.value[currentIndex ..< count])
+        var index = player.indexOfNowPlayingItem
+        while index < MusicQueue.shared.currentPosition.value {
+            player.skipToNextItem()
+            index += 1
+        }
     }
     
     func playOrPause() {

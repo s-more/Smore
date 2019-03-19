@@ -86,6 +86,10 @@ class MiniPlayer: UIView {
         playButton.setImage(PlayerState.notPlaying.image, for: .normal)
     }
     
+    func updatePlayIconImage() {
+        playButton.setImage(Player.shared.state.image, for: .normal)
+    }
+    
     // MARK - IBActions
     @IBAction func onSwipe(_ sender: UISwipeGestureRecognizer) {
         swipeAction?()
