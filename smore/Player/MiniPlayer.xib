@@ -76,7 +76,7 @@
                             <constraint firstAttribute="trailing" secondItem="B1L-eD-OcO" secondAttribute="trailing" constant="21" id="wIX-76-WDl"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="opB-sA-ndG" appends="YES" id="CT8-h0-X2B"/>
+                            <outletCollection property="gestureRecognizers" destination="BMv-pt-jWf" appends="YES" id="opc-yK-mS9"/>
                         </connections>
                     </view>
                     <blurEffect style="dark"/>
@@ -93,11 +93,11 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="194.40000000000001" y="395.80209895052479"/>
         </view>
-        <swipeGestureRecognizer direction="up" id="opB-sA-ndG">
+        <panGestureRecognizer minimumNumberOfTouches="1" id="BMv-pt-jWf">
             <connections>
-                <action selector="onSwipe:" destination="-1" id="q9z-Dg-jo4"/>
+                <action selector="panned:" destination="-1" id="uIf-dn-gaA"/>
             </connections>
-        </swipeGestureRecognizer>
+        </panGestureRecognizer>
     </objects>
     <resources>
         <image name="PauseButtonLarge" width="211" height="211"/>

@@ -27,7 +27,7 @@ class AlbumContentViewController: LibraryContentViewController {
         artworkImage.kf.setImage(with: Utilities.highResImage(from: album.originalImageLink),
                                  placeholder: UIImage.imageFrom(color: UIColor.black))
         titleLabel.text = album.name
-        subtitleLabel.text = album.artistName
+        subtitleLabel.text = [album.artistName, album.releaseDate].joined(separator: " · ")
         serviceIcon.image = album.streamingService.icon
         tableView.register(UINib(nibName: "NumberedSongTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: NumberedSongTableViewCell.identifier)

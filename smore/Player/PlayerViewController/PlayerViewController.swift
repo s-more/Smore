@@ -23,11 +23,10 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playButton: UIButton!
     
-    static let current = PlayerViewController()
     let viewModel: PlayerViewModel
     let disposeBag = DisposeBag()
     
-    private init() {
+    init() {
         viewModel = PlayerViewModel()
         super.init(nibName: "PlayerViewController", bundle: Bundle.main)
     }
@@ -112,7 +111,7 @@ class PlayerViewController: UIViewController {
         return .lightContent
     }
     
-    // MARK - IBActions
+    // MARK: - IBActions
     @IBAction func playOrPause(_ sender: UIButton) {
         Player.shared.playOrPause()
         playButton.setImage(Player.shared.state.image, for: .normal)
@@ -127,6 +126,7 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func downCaretTapped(_ sender: UIButton) {
+        MiniPlayer.shared.resetLocation()
         dismiss(animated: true)
     }
     
@@ -222,13 +222,20 @@ extension PlayerViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard scrollView == albumArtCollectionView else { return }
-        if viewModel.scrollDirectioon == .right { // scrolled right
-            Player.shared.skipToNext()
-        } else if viewModel.scrollDirectioon == .left { // scrolled left
-            Player.shared.skipToPrev()
+        if scrollView == albumArtCollectionView {
+            if viewModel.scrollDirectioon == .right { // scrolled right
+                Player.shared.skipToNext()
+            } else if viewModel.scrollDirectioon == .left { // scrolled left
+                Player.shared.skipToPrev()
+            }
+            viewModel.horizontalPosition = scrollView.contentOffset.x
+        } else if scrollView == self.scrollView {
+            if scrollView.contentOffset.y < 0 && !viewModel.isDismissing {
+                viewModel.isDismissing = true
+                MiniPlayer.shared.resetLocation()
+                dismiss(animated: true, completion: nil)
+            }
         }
-        viewModel.horizontalPosition = scrollView.contentOffset.x
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

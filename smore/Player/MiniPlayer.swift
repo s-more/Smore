@@ -21,16 +21,18 @@ class MiniPlayer: UIView {
     
     static var tabBarHeight: CGFloat = 60
     static let shared = MiniPlayer()
+    var playerVCToPresent: PlayerViewController?
     
     var isShown = false
-    var swipeAction: (() -> Void)?
+    private let originalFrame: CGRect
 
     private init() {
-        super.init(frame: CGRect(
+        originalFrame = CGRect(
             x: 0,
             y: UIScreen.main.bounds.height - MiniPlayer.tabBarHeight - miniPlayerHeight,
             width: UIScreen.main.bounds.width,
-            height: miniPlayerHeight))
+            height: miniPlayerHeight)
+        super.init(frame: originalFrame)
         Bundle.main.loadNibNamed("MiniPlayer", owner: self, options: nil)
     }
     
@@ -58,11 +60,6 @@ class MiniPlayer: UIView {
         alpha = 0
     }
     
-    @IBAction func playOrPause(_ sender: UIButton) {
-        Player.shared.playOrPause()
-        playButton.setImage(Player.shared.state.image, for: .normal)
-    }
-    
     func configure(with song: Song) {
         if !isShown {
             isShown = true
@@ -74,8 +71,8 @@ class MiniPlayer: UIView {
         }
         Player.shared.state = .playing
         playButton.setImage(PlayerState.playing.image, for: .normal)
-        songTitle.text = song.name
-        subTitle.text = song.artistName
+        songTitle.text = song.name + " "
+        subTitle.text = song.artistName + " "
         thumbnail.kf.setImage(with: song.imageLink, placeholder: UIImage(named: "artistPlayholder"))
     }
     
@@ -90,9 +87,42 @@ class MiniPlayer: UIView {
         playButton.setImage(Player.shared.state.image, for: .normal)
     }
     
-    // MARK - IBActions
-    @IBAction func onSwipe(_ sender: UISwipeGestureRecognizer) {
-        swipeAction?()
+    func resetLocation() {
+        frame = originalFrame
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func playOrPause(_ sender: UIButton) {
+        Player.shared.playOrPause()
+        playButton.setImage(Player.shared.state.image, for: .normal)
+    }
+    
+    @IBAction func panned(_ sender: UIPanGestureRecognizer) {
+        frame.origin = CGPoint(x: 0, y: sender.location(in: superview).y)
+        let translation = sender.translation(in: superview).y
+        
+        switch sender.state {
+        case .ended:
+            if translation < 0 {
+                UIView.animate(withDuration: 0.2,
+                               delay: 0,
+                               options: [.curveEaseIn],
+                               animations:
+                { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.frame.origin = CGPoint(x: 0, y: -60)
+                }, completion: nil)
+                let vc = PlayerViewController()
+                (window?.rootViewController as? TabBarViewController)?.present(vc, animated: true)
+            } else {
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.frame = strongSelf.originalFrame
+                    }, completion: nil)
+            }
+        default: break
+        }
     }
     
 }

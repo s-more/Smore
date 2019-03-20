@@ -103,7 +103,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     }
     
     private func applyContentSize() {
-        let fixedHeights = UIScreen.main.bounds.width + 50
+        let fixedHeights = UIScreen.main.bounds.width + 20
         let wrapperSize = viewModel.viewControllers[currentIndex].wrapperScrollViewSize(immobileSectionHeight: fixedHeights)
         scrollView.contentSize = wrapperSize
         masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)

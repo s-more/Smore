@@ -36,8 +36,8 @@ class MusicQueue {
     
     var currentSong: Song {
         var position = currentPosition.value
-        if position < 0 { position = 0 }
         if position >= queue.value.count { position = queue.value.count - 1}
+        if position < 0 { position = 0 }
         return queue.value[position]
     }
 }
