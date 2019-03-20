@@ -16,7 +16,7 @@ class APMSong: Song {
     var id: String
     var playableString: String
     var artistName: String
-    var steamingService: StreamingService = .appleMusic
+    var streamingService: StreamingService = .appleMusic
     var trackNumber: Int
     var duration: TimeInterval
     
