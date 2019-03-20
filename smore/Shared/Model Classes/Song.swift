@@ -16,7 +16,7 @@ protocol Song {
     var id: String { get set }
     var playableString: String { get set }
     var artistName: String { get set }
-    var steamingService: StreamingService { get set }
+    var streamingService: StreamingService { get set }
     var trackNumber: Int { get set }
     var duration: TimeInterval { get set }
 }
