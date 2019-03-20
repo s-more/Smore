@@ -114,6 +114,7 @@
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 		6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */; };
 		6E311094223AEBDC00314C4F /* LibraryAlbumTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */; };
+		A31E77032242D417007B07DF /* LibraryArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */; };
 		A3A3A580222596680015BF6B /* BrowseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3A57F222596680015BF6B /* BrowseHeader.xib */; };
 		A3A3A582222596D30015BF6B /* BrowseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3A581222596D30015BF6B /* BrowseHeader.swift */; };
 		C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE55C22149F36001D18D2 /* YoutubeLoginViewController.swift */; };
@@ -243,6 +244,7 @@
 		6E4F0DF52216004F005A0275 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E4F0DF62216004F005A0275 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArtistTableViewController.swift; sourceTree = "<group>"; };
 		A3A3A57F222596680015BF6B /* BrowseHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseHeader.xib; sourceTree = "<group>"; };
 		A3A3A581222596D30015BF6B /* BrowseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseHeader.swift; sourceTree = "<group>"; };
 		A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.release.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.release.xcconfig"; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				0460AC55223AA70A0075D932 /* Library Content */,
 				04B4ADE62232EAC0006E6D8A /* Artist Library */,
 				04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */,
+				A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */,
 				277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */,
 				04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */,
 				6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */,
@@ -894,6 +897,7 @@
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
 				6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */,
 				04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */,
+				A31E77032242D417007B07DF /* LibraryArtistTableViewController.swift in Sources */,
 				0460AC6B223BFF560075D932 /* APMAlbumResponse.swift in Sources */,
 				0417470222288C380044350F /* APMAlbum.swift in Sources */,
 				0409D5B82207510D00CB4CDE /* UIView+Corners.swift in Sources */,
