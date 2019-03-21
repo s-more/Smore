@@ -17,7 +17,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var masterViewHeight: NSLayoutConstraint!
     @IBOutlet weak var masterView: UIView!
-    @IBOutlet weak var warningLabel: UILabel!
     
     let viewModel: ArtistLibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
@@ -32,7 +31,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewDidLoad() {
-        warningLabel.isHidden = true
         scrollView.delegate = self
         backgroundImage.kf.setImage(with: viewModel.highResImageURL,
                                     placeholder: UIImage.imageFrom(color: UIColor.black))
@@ -61,9 +59,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
             self?.activityIndicator.stop()
             self?.applyContentSize()
             self?.reloadPagerTabStripView()
-            if let vm = self?.viewModel, let vc = vm.viewControllers.first {
-                self?.warningLabel.isHidden = !vm.isVCEmpty(vc: vc)
-            }
         }, error: { [weak self] err in
             SwiftMessagesWrapper.showErrorMessage(title: "Error", body: err.localizedDescription)
             self?.activityIndicator.stop()
@@ -123,7 +118,6 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         if indexWasChanged {
             applyContentSize()
-            warningLabel.isHidden = !viewModel.isVCEmpty(vc: viewModel.viewControllers[currentIndex])
         }
     }
     

@@ -59,6 +59,12 @@ class LibrarySongTableViewController: UITableViewController {
         return SearchTableViewCell.preferredHeight
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        MiniPlayer.shared.configure(with: songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(songs[indexPath.row ..< songs.count])
+    }
+    
 }
 
 extension LibrarySongTableViewController: IndicatorInfoProvider {
