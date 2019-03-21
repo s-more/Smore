@@ -18,7 +18,9 @@
                 <outlet property="progressSlider" destination="UDJ-5j-oYE" id="zNg-Ix-lzc"/>
                 <outlet property="queueTableView" destination="3DD-NU-C9x" id="wIE-1b-PSf"/>
                 <outlet property="remainingTimeLabel" destination="ya7-LB-BLZ" id="OyH-aM-QvW"/>
+                <outlet property="repeatButton" destination="vbo-3o-9BZ" id="Xn1-Nc-Tdg"/>
                 <outlet property="scrollView" destination="LPw-od-Uja" id="Qcd-90-qQs"/>
+                <outlet property="shuffleButton" destination="Hsj-Rh-vmm" id="WWZ-6h-5nK"/>
                 <outlet property="subtitleLabel" destination="Nht-P1-hyk" id="S4O-U5-dfU"/>
                 <outlet property="tableViewHeight" destination="rpo-xv-nQY" id="G33-eN-2ee"/>
                 <outlet property="titleLabel" destination="Qi7-6v-GnP" id="mC2-EX-l4m"/>
@@ -155,14 +157,44 @@
                                 <action selector="downCaretTapped:" destination="-1" eventType="touchUpInside" id="zla-Nz-1yv"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLq-LC-p3b">
+                            <rect key="frame" x="292" y="575" width="33" height="33"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="plusIcon"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="0yr-cq-s5b"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsj-Rh-vmm">
+                            <rect key="frame" x="166" y="570" width="43" height="43"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="shuffleIcon"/>
+                            <connections>
+                                <action selector="shuffleButtonTapped:" destination="-1" eventType="touchUpInside" id="ZjS-MX-aqG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbo-3o-9BZ">
+                            <rect key="frame" x="50" y="575" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="aQZ-MB-hQj"/>
+                                <constraint firstAttribute="width" secondItem="vbo-3o-9BZ" secondAttribute="height" multiplier="1:1" id="hvU-cc-VHv"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="repeatIcon"/>
+                            <connections>
+                                <action selector="repeatButtonTapped:" destination="-1" eventType="touchUpInside" id="4dK-g8-hSq"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Qi7-6v-GnP" firstAttribute="leading" secondItem="LPw-od-Uja" secondAttribute="leading" constant="40" id="0AP-67-p7b"/>
                         <constraint firstItem="Qi7-6v-GnP" firstAttribute="leading" secondItem="Nht-P1-hyk" secondAttribute="leading" id="2V7-rc-Jzu"/>
                         <constraint firstItem="HNs-BG-sBF" firstAttribute="centerY" secondItem="MtW-fd-Sbo" secondAttribute="centerY" id="3n8-g1-DiY"/>
+                        <constraint firstAttribute="bottom" secondItem="DLq-LC-p3b" secondAttribute="bottom" multiplier="16:14" id="3wS-No-6rk"/>
                         <constraint firstAttribute="bottom" secondItem="GdT-wN-o29" secondAttribute="bottom" constant="380" id="5Vz-Mw-tLC"/>
                         <constraint firstItem="sya-wz-q9c" firstAttribute="leading" secondItem="LPw-od-Uja" secondAttribute="leading" constant="13" id="5nI-vg-1EN"/>
                         <constraint firstItem="ya7-LB-BLZ" firstAttribute="top" secondItem="Lnu-Is-h3i" secondAttribute="top" id="8qB-9A-rXH"/>
+                        <constraint firstItem="vbo-3o-9BZ" firstAttribute="centerX" secondItem="HNs-BG-sBF" secondAttribute="centerX" id="C25-cm-SsJ"/>
                         <constraint firstItem="GdT-wN-o29" firstAttribute="centerX" secondItem="LPw-od-Uja" secondAttribute="centerX" id="C8L-Dd-M8X"/>
                         <constraint firstItem="MtW-fd-Sbo" firstAttribute="top" secondItem="Nht-P1-hyk" secondAttribute="bottom" constant="20" id="CIN-2n-tpJ"/>
                         <constraint firstItem="GdT-wN-o29" firstAttribute="top" secondItem="LPw-od-Uja" secondAttribute="top" constant="30" id="G8V-vL-CIL"/>
@@ -170,21 +202,29 @@
                         <constraint firstItem="MtW-fd-Sbo" firstAttribute="centerY" secondItem="6WK-ni-gb9" secondAttribute="centerY" id="H3a-1e-WTe"/>
                         <constraint firstItem="Lnu-Is-h3i" firstAttribute="leading" secondItem="UDJ-5j-oYE" secondAttribute="leading" id="KOU-yP-Tk6"/>
                         <constraint firstItem="sya-wz-q9c" firstAttribute="top" secondItem="LPw-od-Uja" secondAttribute="top" constant="-15" id="OSt-8J-gfZ"/>
+                        <constraint firstItem="DLq-LC-p3b" firstAttribute="height" secondItem="6WK-ni-gb9" secondAttribute="height" id="Ren-YT-hlf"/>
+                        <constraint firstItem="Hsj-Rh-vmm" firstAttribute="centerY" secondItem="DLq-LC-p3b" secondAttribute="centerY" id="S3b-YX-LD3"/>
                         <constraint firstItem="UDJ-5j-oYE" firstAttribute="centerX" secondItem="Qi7-6v-GnP" secondAttribute="centerX" id="TWO-un-U8g"/>
                         <constraint firstItem="ya7-LB-BLZ" firstAttribute="trailing" secondItem="UDJ-5j-oYE" secondAttribute="trailing" id="Ucq-nC-6Ia"/>
                         <constraint firstItem="MtW-fd-Sbo" firstAttribute="leading" secondItem="HNs-BG-sBF" secondAttribute="trailing" constant="83" id="Wo9-Ja-DUZ"/>
+                        <constraint firstItem="DLq-LC-p3b" firstAttribute="trailing" secondItem="6WK-ni-gb9" secondAttribute="trailing" id="bEj-u1-5rW"/>
                         <constraint firstItem="3DD-NU-C9x" firstAttribute="trailing" secondItem="GdT-wN-o29" secondAttribute="trailing" id="bkC-Vu-9YJ"/>
                         <constraint firstItem="Qi7-6v-GnP" firstAttribute="trailing" secondItem="Nht-P1-hyk" secondAttribute="trailing" id="dsf-UG-iAk"/>
                         <constraint firstItem="3DD-NU-C9x" firstAttribute="top" secondItem="MtW-fd-Sbo" secondAttribute="bottom" multiplier="32:25" id="eHl-b4-3qH"/>
                         <constraint firstItem="Lnu-Is-h3i" firstAttribute="leading" secondItem="LPw-od-Uja" secondAttribute="leading" constant="25" id="eXs-Gg-lED"/>
                         <constraint firstItem="3DD-NU-C9x" firstAttribute="leading" secondItem="GdT-wN-o29" secondAttribute="leading" id="fEE-rL-3uO"/>
                         <constraint firstAttribute="trailing" secondItem="GdT-wN-o29" secondAttribute="trailing" id="hLr-gA-NB5"/>
+                        <constraint firstItem="Hsj-Rh-vmm" firstAttribute="height" secondItem="MtW-fd-Sbo" secondAttribute="height" id="jkc-cA-cYH"/>
                         <constraint firstItem="Nht-P1-hyk" firstAttribute="top" secondItem="Qi7-6v-GnP" secondAttribute="bottom" constant="8" symbolic="YES" id="mmA-gx-jwR"/>
+                        <constraint firstItem="DLq-LC-p3b" firstAttribute="width" secondItem="6WK-ni-gb9" secondAttribute="width" id="oFZ-u5-DGU"/>
+                        <constraint firstItem="vbo-3o-9BZ" firstAttribute="centerY" secondItem="Hsj-Rh-vmm" secondAttribute="centerY" id="pbF-db-E8k"/>
                         <constraint firstItem="Lnu-Is-h3i" firstAttribute="top" secondItem="GdT-wN-o29" secondAttribute="bottom" constant="15" id="pck-gT-bxs"/>
                         <constraint firstItem="6WK-ni-gb9" firstAttribute="leading" secondItem="MtW-fd-Sbo" secondAttribute="trailing" constant="83" id="qoq-Ru-7qr"/>
                         <constraint firstAttribute="bottom" secondItem="3DD-NU-C9x" secondAttribute="top" constant="10" id="rhP-Qv-czi"/>
                         <constraint firstItem="Nht-P1-hyk" firstAttribute="centerX" secondItem="MtW-fd-Sbo" secondAttribute="centerX" id="sPu-f9-hyG"/>
                         <constraint firstItem="MtW-fd-Sbo" firstAttribute="centerX" secondItem="LPw-od-Uja" secondAttribute="centerX" id="se4-h9-tvJ"/>
+                        <constraint firstItem="Hsj-Rh-vmm" firstAttribute="width" secondItem="MtW-fd-Sbo" secondAttribute="width" id="uSS-nu-Xfh"/>
+                        <constraint firstItem="Hsj-Rh-vmm" firstAttribute="centerX" secondItem="LPw-od-Uja" secondAttribute="centerX" id="ugx-RS-Y7x"/>
                         <constraint firstItem="GdT-wN-o29" firstAttribute="leading" secondItem="LPw-od-Uja" secondAttribute="leading" id="xvW-Zq-QEk"/>
                     </constraints>
                 </scrollView>
@@ -204,6 +244,9 @@
         <image name="PlayButtonLarge" width="211" height="211"/>
         <image name="downCaret" width="512" height="512"/>
         <image name="nextButton" width="211" height="211"/>
+        <image name="plusIcon" width="512" height="512"/>
         <image name="prevButton" width="211" height="211"/>
+        <image name="repeatIcon" width="512" height="512"/>
+        <image name="shuffleIcon" width="200" height="200"/>
     </resources>
 </document>

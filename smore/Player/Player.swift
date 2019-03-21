@@ -20,6 +20,8 @@ class Player {
         player.prepareToPlay()
         player.beginGeneratingPlaybackNotifications()
         state = .notPlaying
+        player.repeatMode = .none
+        player.shuffleMode = .off
         
         NotificationCenter.default.addObserver(
             forName: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
@@ -72,6 +74,14 @@ class Player {
         return 0
     }
     
+    var shuffleModeTintColor: UIColor {
+        return player.shuffleMode == .songs ? UIColor.themeColor : UIColor.white
+    }
+    
+    var repeatModeTintColor: UIColor {
+        return player.repeatMode == .one ? UIColor.themeColor : UIColor.white
+    }
+    
     // MARK: - Methods
     
     func play(with appleMusicIDs: [String]) {
@@ -120,5 +130,43 @@ class Player {
         state = .notPlaying
     }
     
+    func toggleRepeatMode() {
+        if player.repeatMode == .none || player.repeatMode == .default {
+            player.repeatMode = .one
+        } else if player.repeatMode == .one {
+            player.repeatMode = .none
+        }
+    }
     
+    func toggleShuffleMode(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
+        if player.shuffleMode == .off || player.shuffleMode == .default {
+            player.shuffleMode = .songs
+        } else if player.shuffleMode == .songs {
+            player.shuffleMode = .off
+        }
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.player.perform(queueTransaction: { queue in
+                // reorder the current [Song] queue to match the queue
+                let musicQueue = MusicQueue.shared
+                var slicedArray =
+                    Array(musicQueue.queue.value[musicQueue.currentPosition.value ..< musicQueue.queue.value.count])
+                slicedArray.sort { first, next in
+                    guard
+                        let firstItem = queue.items.first(where: { item -> Bool in
+                            return (item.title ?? "") == first.name
+                        }),
+                        let firstIndex = queue.items.firstIndex(of: firstItem),
+                        let nextItem = queue.items.first(where: { item -> Bool in
+                            return (item.title ?? "") == next.name
+                        }),
+                        let nextIndex = queue.items.firstIndex(of: nextItem) else { return false }
+                    return firstIndex < nextIndex
+                }
+                musicQueue.queue.value = slicedArray
+                completion()
+            }, completionHandler: { _ , err in
+                if let err = err { error(err) }
+            })
+        }
+    }
 }

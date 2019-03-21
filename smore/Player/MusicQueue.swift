@@ -17,6 +17,7 @@ class MusicQueue {
     
     private init() {
         queue.asObservable()
+            .subscribeOn(MainScheduler.instance)
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [weak self] songs in
                 self?.currentPosition.value = 0

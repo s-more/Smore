@@ -22,6 +22,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var repeatButton: UIButton!
+    @IBOutlet weak var shuffleButton: UIButton!
     
     let viewModel: PlayerViewModel
     let disposeBag = DisposeBag()
@@ -70,6 +72,7 @@ class PlayerViewController: UIViewController {
             inset: (UIScreen.main.bounds.width - artworkHeight) / 2)
         
         MusicQueue.shared.currentPosition.asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.refresh()
             })
@@ -85,6 +88,8 @@ class PlayerViewController: UIViewController {
         titleLabel.text = MusicQueue.shared.currentSong.name
         subtitleLabel.text = MusicQueue.shared.currentSong.artistName
         playButton.setImage(Player.shared.state.image, for: .normal)
+        shuffleButton.tintColor = Player.shared.shuffleModeTintColor
+        repeatButton.tintColor = Player.shared.repeatModeTintColor
         queueTableView.reloadData()
         albumArtCollectionView.reloadData()
         
@@ -136,6 +141,26 @@ class PlayerViewController: UIViewController {
         }
     }
     
+    @IBAction func repeatButtonTapped(_ sender: UIButton) {
+        Player.shared.toggleRepeatMode()
+        repeatButton.tintColor = Player.shared.repeatModeTintColor
+    }
+    
+    @IBAction func shuffleButtonTapped(_ sender: UIButton) {
+        Player.shared.toggleShuffleMode(completion: { [weak self] in
+            self?.albumArtCollectionView.reloadData()
+            self?.shuffleButton.tintColor = Player.shared.shuffleModeTintColor
+        }, error: { error in
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+        })
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    // MARK: - Helpers
+    
     func applyContentSize() {
         let tableViewSize = CGSize(
             width: UIScreen.main.bounds.width,
@@ -156,7 +181,7 @@ class PlayerViewController: UIViewController {
         applyContentSize()
     }
     
-    // MARK: Private
+    // MARK: - Private
     func generatePlaybackUpdateTimer() {
         viewModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.remainingTimeLabel.text = Player.shared.remainingPlaybackTime
@@ -230,7 +255,7 @@ extension PlayerViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             viewModel.horizontalPosition = scrollView.contentOffset.x
         } else if scrollView == self.scrollView {
-            if scrollView.contentOffset.y < 0 && !viewModel.isDismissing {
+            if scrollView.contentOffset.y < -20 && !viewModel.isDismissing {
                 viewModel.isDismissing = true
                 MiniPlayer.shared.resetLocation()
                 dismiss(animated: true, completion: nil)
