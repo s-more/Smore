@@ -27,7 +27,7 @@ class AlbumContentViewController: LibraryContentViewController {
         artworkImage.kf.setImage(with: Utilities.highResImage(from: album.originalImageLink),
                                  placeholder: UIImage.imageFrom(color: UIColor.black))
         titleLabel.text = album.name
-        subtitleLabel.text = album.artistName
+        subtitleLabel.text = [album.artistName, album.releaseDate].joined(separator: " · ")
         serviceIcon.image = album.streamingService.icon
         tableView.register(UINib(nibName: "NumberedSongTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: NumberedSongTableViewCell.identifier)
@@ -73,13 +73,39 @@ class AlbumContentViewController: LibraryContentViewController {
         return NumberedSongTableViewCell.preferredHeight
     }
     
+    override var tableViewContentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width,
+                      height: CGFloat(album.songs.count * Int(NumberedSongTableViewCell.preferredHeight)))
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        MiniPlayer.shared.configure(with: album.songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(album.songs[indexPath.row ..< album.songs.count])
+    }
+    
+    // MARK - Button Taps
+    
     override func handleMoreButtonTap(_ sender: UIButton) {
         descriptionLabel.text = album.description
         super.handleMoreButtonTap(sender)
     }
     
-    override var tableViewContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width,
-                      height: CGFloat(album.songs.count * Int(NumberedSongTableViewCell.preferredHeight)))
+    override func handlePlaybuttonTap(_ sender: UIButton) {
+        if let first = album.songs.first {
+            MiniPlayer.shared.configure(with: first)
+            MusicQueue.shared.queue.value = album.songs
+        }
+    }
+    
+    override func handleShuffleButtonTap(_ sender: UIButton) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let first = self?.album.songs.first, let shuffled = self?.album.songs.shuffled() {
+                DispatchQueue.main.async {
+                    MiniPlayer.shared.configure(with: first)
+                    MusicQueue.shared.queue.value = shuffled
+                }
+            }
+        }
     }
 }

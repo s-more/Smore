@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class ArtistLibraryViewModel: NSObject {
     let artist: Artist
     var fetchedAlbums: [Album] = []
+    var fetchedSingles: [Album] = []
     var fetchedPlaylists: [Playlist] = []
     var fetchedSongs: [Song] = []
     var highResImageURL: URL?
@@ -36,7 +37,7 @@ class ArtistLibraryViewModel: NSObject {
             "\(fetchedPlaylists.count) playlists",
             "\(fetchedSongs.count) songs"
         ]
-        return items.joined(separator: " - ")
+        return items.joined(separator: " · ")
     }
     
     func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
@@ -46,7 +47,9 @@ class ArtistLibraryViewModel: NSObject {
             limit: 20,
             success: { [weak self] data in
                 if let rawAlbums = data.albums?.data {
-                    self?.fetchedAlbums = rawAlbums.map { APMAlbum(response: $0) }
+                    let albums =  rawAlbums.map { APMAlbum(response: $0) }
+                    self?.fetchedAlbums = albums.filter { !$0.isSingle }
+                    self?.fetchedSingles = albums.filter { $0.isSingle }
                 }
                 if let rawPlaylists = data.playlists?.data {
                     self?.fetchedPlaylists = rawPlaylists.map { APMPlaylist(searchResponse: $0) }
@@ -57,7 +60,8 @@ class ArtistLibraryViewModel: NSObject {
                 if let strongSelf = self {
                     strongSelf.viewControllers = [
                         LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists),
-                        LibraryAlbumTableViewController(albums: strongSelf.fetchedAlbums)
+                        LibraryAlbumTableViewController(albums: strongSelf.fetchedAlbums, buttonBarTitle: "Albums"),
+                        LibraryAlbumTableViewController(albums: strongSelf.fetchedSingles, buttonBarTitle: "Singles")
                     ]
                 }
                 completion()

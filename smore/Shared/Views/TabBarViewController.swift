@@ -31,6 +31,10 @@ class TabBarViewController: UITabBarController {
         tabBar.barTintColor = UIColor.tabBarBackground
         tabBar.unselectedItemTintColor = UIColor.darkGray
         tabBar.tintColor = UIColor.themeColor
+        
+        MiniPlayer.tabBarHeight = tabBar.frame.height
+        view.addSubview(MiniPlayer.shared)
+        MiniPlayer.shared.isHidden = true
     }
     
     func configureNavBar(on vc: UINavigationController) {

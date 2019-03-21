@@ -34,6 +34,7 @@ class BrowseTableViewController: UITableViewController {
         tableView.addSubview(ai)
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         viewModel.fetchData(completion: { [weak self] in
             ai.stop()
             self?.tableView.reloadData()

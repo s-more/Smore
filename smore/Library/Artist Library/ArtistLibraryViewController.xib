@@ -36,32 +36,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-cV-VA6">
-                                    <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                                    <rect key="frame" x="0.0" y="375" width="375" height="292"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </scrollView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIu-8s-UKg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="BIu-8s-UKg" secondAttribute="height" multiplier="1:1" id="zyH-3k-pEt"/>
+                                    </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparentGradient" translatesAutoresizingMaskIntoConstraints="NO" id="O1D-9f-Jok">
-                                    <rect key="frame" x="0.0" y="148" width="375" height="72"/>
+                                    <rect key="frame" x="0.0" y="245" width="375" height="100"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="72" id="rce-ma-31H"/>
+                                        <constraint firstAttribute="height" constant="100" id="rce-ma-31H"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rY8-8J-5dc">
-                                    <rect key="frame" x="16" y="155" width="359" height="41"/>
+                                    <rect key="frame" x="16" y="280" width="359" height="41"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGs-ss-OcI">
-                                    <rect key="frame" x="16" y="192" width="359" height="24"/>
+                                    <rect key="frame" x="16" y="317" width="359" height="24"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCW-3r-FtR">
-                                    <rect key="frame" x="140" y="420" width="95" height="24"/>
+                                    <rect key="frame" x="140" y="475" width="95" height="24"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -73,8 +76,8 @@
                                     </constraints>
                                 </imageView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Exj-vG-rL6" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                    <rect key="frame" x="0.0" y="220" width="375" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="0.0" y="345" width="375" height="30"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="msh-hr-23z"/>
                                     </constraints>
@@ -96,24 +99,23 @@
                                 <constraint firstItem="JQO-7w-beG" firstAttribute="trailing" secondItem="BIu-8s-UKg" secondAttribute="trailing" id="DW0-Yh-GEw"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="leading" secondItem="n9J-Qm-2x9" secondAttribute="leading" id="EKD-8f-MhO"/>
                                 <constraint firstAttribute="trailing" secondItem="BIu-8s-UKg" secondAttribute="trailing" id="H19-ij-wmj"/>
-                                <constraint firstItem="Exj-vG-rL6" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" id="MDk-cu-3W3"/>
                                 <constraint firstAttribute="height" constant="667" id="MaB-1Y-cs2"/>
-                                <constraint firstItem="Mf7-cV-VA6" firstAttribute="top" secondItem="Exj-vG-rL6" secondAttribute="bottom" id="Rsi-Uo-8TY"/>
+                                <constraint firstItem="BIu-8s-UKg" firstAttribute="bottom" secondItem="Exj-vG-rL6" secondAttribute="bottom" id="Rsi-Uo-8TY"/>
                                 <constraint firstItem="O1D-9f-Jok" firstAttribute="leading" secondItem="Exj-vG-rL6" secondAttribute="leading" id="RtF-zf-6xe"/>
-                                <constraint firstItem="O1D-9f-Jok" firstAttribute="bottom" secondItem="BIu-8s-UKg" secondAttribute="bottom" id="RvX-DN-n2r"/>
+                                <constraint firstItem="O1D-9f-Jok" firstAttribute="bottom" secondItem="Exj-vG-rL6" secondAttribute="top" id="RvX-DN-n2r"/>
                                 <constraint firstItem="oCW-3r-FtR" firstAttribute="centerX" secondItem="n9J-Qm-2x9" secondAttribute="centerX" id="Vgv-Q9-mLe"/>
                                 <constraint firstItem="O1D-9f-Jok" firstAttribute="trailing" secondItem="LGs-ss-OcI" secondAttribute="trailing" id="Xmi-vE-CMx"/>
                                 <constraint firstAttribute="trailing" secondItem="Exj-vG-rL6" secondAttribute="trailing" id="bQM-Kh-Bjm"/>
-                                <constraint firstItem="Mf7-cV-VA6" firstAttribute="top" secondItem="n9J-Qm-2x9" secondAttribute="top" constant="250" id="bgX-Ni-SKJ"/>
                                 <constraint firstAttribute="trailing" secondItem="Mf7-cV-VA6" secondAttribute="trailing" id="ccc-bb-MWe"/>
                                 <constraint firstItem="Exj-vG-rL6" firstAttribute="top" secondItem="LGs-ss-OcI" secondAttribute="bottom" constant="4" id="dFx-7K-UlM"/>
-                                <constraint firstItem="oCW-3r-FtR" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" constant="200" id="dl7-nF-vHp"/>
+                                <constraint firstItem="oCW-3r-FtR" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" constant="100" id="dl7-nF-vHp"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="trailing" secondItem="rY8-8J-5dc" secondAttribute="trailing" id="fmC-gs-pOb"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="top" secondItem="rY8-8J-5dc" secondAttribute="bottom" constant="-4" id="g6e-qf-hn2"/>
                                 <constraint firstItem="JQO-7w-beG" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" id="jCa-ix-o9s"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="trailing" secondItem="LGs-ss-OcI" secondAttribute="trailing" id="o2x-lD-61j"/>
                                 <constraint firstAttribute="bottom" secondItem="Mf7-cV-VA6" secondAttribute="bottom" id="p2a-UF-hS3"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" constant="16" id="rkc-qe-uGJ"/>
+                                <constraint firstItem="Mf7-cV-VA6" firstAttribute="top" secondItem="Exj-vG-rL6" secondAttribute="bottom" id="xol-PH-P3b"/>
                             </constraints>
                         </view>
                     </subviews>

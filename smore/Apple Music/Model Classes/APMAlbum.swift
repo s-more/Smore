@@ -19,6 +19,7 @@ class APMAlbum: Album {
     var originalImageLink: String?
     var songs: [Song]
     var streamingService: StreamingService = .appleMusic
+    var isSingle: Bool
     
     init(response: APMSearch.APMSearchResults.APMSearchAlbums.APMAlbumData) {
         id = response.id
@@ -29,6 +30,7 @@ class APMAlbum: Album {
         releaseDate = response.attributes.releaseDate
         description = response.attributes.editorialNotes?.standard
         originalImageLink = response.attributes.artwork?.url
+        isSingle = response.attributes.isSingle
         songs = []
     }
     
@@ -44,6 +46,7 @@ class APMAlbum: Album {
         releaseDate = relAlbumData.attributes?.releaseDate ?? ""
         description = relAlbumData.attributes?.editorialNotes?.standard
         originalImageLink = relAlbumData.attributes?.artwork?.url
+        isSingle = relAlbumData.attributes?.isSingle ?? false
         songs = []
     }
     

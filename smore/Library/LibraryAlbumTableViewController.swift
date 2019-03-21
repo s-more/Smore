@@ -12,8 +12,10 @@ import XLPagerTabStrip
 
 class LibraryAlbumTableViewController: UITableViewController {
     let albums: [Album]
+    let buttonBarTitle: String
     
-    init(albums: [Album]) {
+    init(albums: [Album], buttonBarTitle: String) {
+        self.buttonBarTitle = buttonBarTitle
         self.albums = albums
         super.init(nibName: "LibraryAlbumTableViewController", bundle: Bundle.main)
     }
@@ -58,7 +60,7 @@ class LibraryAlbumTableViewController: UITableViewController {
 
 extension LibraryAlbumTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Albums")
+        return IndicatorInfo(title: buttonBarTitle)
     }
 }
 
