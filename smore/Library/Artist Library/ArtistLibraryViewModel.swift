@@ -35,6 +35,7 @@ class ArtistLibraryViewModel: NSObject {
         let items = [
             "\(fetchedAlbums.count) albums",
             "\(fetchedPlaylists.count) playlists",
+            "\(fetchedSingles.count) singles",
             "\(fetchedSongs.count) songs"
         ]
         return items.joined(separator: " · ")
@@ -58,26 +59,24 @@ class ArtistLibraryViewModel: NSObject {
                     self?.fetchedSongs = rawSongs.map { APMSong(searchResponse: $0) }
                 }
                 if let strongSelf = self {
-                    strongSelf.viewControllers = [
-                        LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists),
-                        LibraryAlbumTableViewController(albums: strongSelf.fetchedAlbums, buttonBarTitle: "Albums"),
-                        LibraryAlbumTableViewController(albums: strongSelf.fetchedSingles, buttonBarTitle: "Singles")
-                    ]
+                    strongSelf.viewControllers.removeAll()
+                    if !strongSelf.fetchedPlaylists.isEmpty {
+                        strongSelf.viewControllers.append(LibraryPlaylistTableViewController(playlists: strongSelf.fetchedPlaylists))
+                    }
+                    if !strongSelf.fetchedAlbums.isEmpty {
+                        strongSelf.viewControllers.append(LibraryAlbumTableViewController(albums: strongSelf.fetchedAlbums, buttonBarTitle: "Albums"))
+                    }
+                    if !strongSelf.fetchedSingles.isEmpty {
+                        strongSelf.viewControllers.append(LibraryAlbumTableViewController(albums: strongSelf.fetchedSingles, buttonBarTitle: "Singles"))
+                    }
+                    if !strongSelf.fetchedSongs.isEmpty {
+                        strongSelf.viewControllers.append(LibrarySongTableViewController(songs: strongSelf.fetchedSongs))
+                    }
                 }
                 completion()
             }, error: { err in
                 error(err)
             })
-    }
-    
-    func isVCEmpty(vc: UIViewController) -> Bool {
-        if let vc = vc as? LibraryPlaylistTableViewController {
-            return vc.playlists.isEmpty
-        }
-        if let vc = vc as? LibraryAlbumTableViewController {
-            return vc.albums.isEmpty
-        }
-        return true
     }
     
     // MARK: - Private

@@ -21,7 +21,6 @@
                 <outlet property="nameLabel" destination="rY8-8J-5dc" id="U7z-fP-GVK"/>
                 <outlet property="scrollView" destination="sOu-JP-nP3" id="h7O-hv-7mb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="warningLabel" destination="oCW-3r-FtR" id="S7h-z0-Ixc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -63,12 +62,6 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCW-3r-FtR">
-                                    <rect key="frame" x="140" y="475" width="95" height="24"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparentGradientFlipped" translatesAutoresizingMaskIntoConstraints="NO" id="JQO-7w-beG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <constraints>
@@ -103,12 +96,10 @@
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="bottom" secondItem="Exj-vG-rL6" secondAttribute="bottom" id="Rsi-Uo-8TY"/>
                                 <constraint firstItem="O1D-9f-Jok" firstAttribute="leading" secondItem="Exj-vG-rL6" secondAttribute="leading" id="RtF-zf-6xe"/>
                                 <constraint firstItem="O1D-9f-Jok" firstAttribute="bottom" secondItem="Exj-vG-rL6" secondAttribute="top" id="RvX-DN-n2r"/>
-                                <constraint firstItem="oCW-3r-FtR" firstAttribute="centerX" secondItem="n9J-Qm-2x9" secondAttribute="centerX" id="Vgv-Q9-mLe"/>
                                 <constraint firstItem="O1D-9f-Jok" firstAttribute="trailing" secondItem="LGs-ss-OcI" secondAttribute="trailing" id="Xmi-vE-CMx"/>
                                 <constraint firstAttribute="trailing" secondItem="Exj-vG-rL6" secondAttribute="trailing" id="bQM-Kh-Bjm"/>
                                 <constraint firstAttribute="trailing" secondItem="Mf7-cV-VA6" secondAttribute="trailing" id="ccc-bb-MWe"/>
                                 <constraint firstItem="Exj-vG-rL6" firstAttribute="top" secondItem="LGs-ss-OcI" secondAttribute="bottom" constant="4" id="dFx-7K-UlM"/>
-                                <constraint firstItem="oCW-3r-FtR" firstAttribute="top" secondItem="BIu-8s-UKg" secondAttribute="bottom" constant="100" id="dl7-nF-vHp"/>
                                 <constraint firstItem="BIu-8s-UKg" firstAttribute="trailing" secondItem="rY8-8J-5dc" secondAttribute="trailing" id="fmC-gs-pOb"/>
                                 <constraint firstItem="LGs-ss-OcI" firstAttribute="top" secondItem="rY8-8J-5dc" secondAttribute="bottom" constant="-4" id="g6e-qf-hn2"/>
                                 <constraint firstItem="JQO-7w-beG" firstAttribute="leading" secondItem="BIu-8s-UKg" secondAttribute="leading" id="jCa-ix-o9s"/>
