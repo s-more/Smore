@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 
 class SpotifyLoginViewController: UIViewController {
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     let bag = DisposeBag()
@@ -29,8 +27,6 @@ class SpotifyLoginViewController: UIViewController {
         super.viewDidLoad()
         
         loginButton.addRoundCorners()
-        usernameTextField.addRoundCorners()
-        passwordTextField.addRoundCorners()
         // Do any additional setup after loading the view.
         let colors = [
             UIColor(red: 0, green: 220/255, blue: 77/255, alpha: 1),
@@ -41,15 +37,6 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func loginSpotifyUser(_ sender: UIButton) {
-        if let username = usernameTextField.text,
-            let password = passwordTextField.text {
-            SpotifyAPI.login(username: username, password: password, success: {
-                // implement
-            }, error: { error in
-                // implement
-            })
-        }
-        
         navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
     
