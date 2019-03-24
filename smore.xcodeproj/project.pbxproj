@@ -118,11 +118,15 @@
 		04B859B2223DE97700D5382C /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B859B1223DE97700D5382C /* PlayerState.swift */; };
 		04B859B4223DEA9200D5382C /* MusicQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B859B3223DEA9200D5382C /* MusicQueue.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
-		2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		277EEAEE2242C31100839CFD /* LibrarySongTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 		6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */; };
 		6E311094223AEBDC00314C4F /* LibraryAlbumTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */; };
+		6E4859282246CFCE00E0A78E /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
+		6E48592C2246D0ED00E0A78E /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E48592B2246D0ED00E0A78E /* SpotifyiOS.framework */; };
+		6EE89CE92247F7C000DFE580 /* SPTSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CE82247F7C000DFE580 /* SPTSearchResponse.swift */; };
+		6EE89CEB22480B1C00DFE580 /* SpotifyRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */; };
+		6EE89CED22480EF100DFE580 /* SpotifyRemoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEC22480EF100DFE580 /* SpotifyRemoteDelegate.swift */; };
 		A31E77032242D417007B07DF /* LibraryArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */; };
 		A3A3A580222596680015BF6B /* BrowseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3A57F222596680015BF6B /* BrowseHeader.xib */; };
 		A3A3A582222596D30015BF6B /* BrowseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3A581222596D30015BF6B /* BrowseHeader.swift */; };
@@ -258,10 +262,17 @@
 		277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySongTableViewController.swift; sourceTree = "<group>"; };
 		6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryAlbumTableViewController.swift; path = smore/Library/LibraryAlbumTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LibraryAlbumTableViewController.xib; path = smore/Library/LibraryAlbumTableViewController.xib; sourceTree = SOURCE_ROOT; };
+		6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E48592B2246D0ED00E0A78E /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		6E4F0DF12214B83B005A0275 /* ListeningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E4F0DF22214B83B005A0275 /* ListeningCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListeningCollectionViewCell.xib; sourceTree = "<group>"; };
 		6E4F0DF52216004F005A0275 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E4F0DF62216004F005A0275 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
+		6ECF07F12246CAC700D20099 /* Smore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smore-Bridging-Header.h"; sourceTree = "<group>"; };
+		6ECF07F22246CF0A00D20099 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = smore/SpotifyiOS.framework; sourceTree = "<group>"; };
+		6EE89CE82247F7C000DFE580 /* SPTSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTSearchResponse.swift; sourceTree = "<group>"; };
+		6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyRemote.swift; sourceTree = "<group>"; };
+		6EE89CEC22480EF100DFE580 /* SpotifyRemoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyRemoteDelegate.swift; sourceTree = "<group>"; };
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArtistTableViewController.swift; sourceTree = "<group>"; };
 		A3A3A57F222596680015BF6B /* BrowseHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseHeader.xib; sourceTree = "<group>"; };
@@ -278,7 +289,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2545D941E23ECB5C605957C2 /* Pods_smore.framework in Frameworks */,
+				6E48592C2246D0ED00E0A78E /* SpotifyiOS.framework in Frameworks */,
+				6E4859282246CFCE00E0A78E /* Pods_smore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +364,10 @@
 		0409D5C8220773AF00CB4CDE /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				6EE89CE72247F7A300DFE580 /* Model Classes */,
 				0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */,
+				6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */,
+				6EE89CEC22480EF100DFE580 /* SpotifyRemoteDelegate.swift */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -479,6 +494,7 @@
 		046FDB6D21FE63BB00E8245D /* smore */ = {
 			isa = PBXGroup;
 			children = (
+				6ECF07F12246CAC700D20099 /* Smore-Bridging-Header.h */,
 				0492570E223DB3A600500F1A /* Player */,
 				04B4ADDD2232D5FF006E6D8A /* Library */,
 				6E4F0DF02214B806005A0275 /* Browse */,
@@ -644,9 +660,20 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
+		6EE89CE72247F7A300DFE580 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6EE89CE82247F7C000DFE580 /* SPTSearchResponse.swift */,
+			);
+			path = "Model Classes";
+			sourceTree = "<group>";
+		};
 		90B7D144E9CAF3714535D4B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E48592B2246D0ED00E0A78E /* SpotifyiOS.framework */,
+				6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */,
+				6ECF07F22246CF0A00D20099 /* SpotifyiOS.framework */,
 				1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */,
 				A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */,
 			);
@@ -921,6 +948,7 @@
 				0492570B223C6C0500500F1A /* NumberedSongTableViewCell.swift in Sources */,
 				0460AC67223BFB6B0075D932 /* AlbumContentViewController.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
+				6EE89CEB22480B1C00DFE580 /* SpotifyRemote.swift in Sources */,
 				0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */,
 				04A5D0C622232FC500774489 /* APMArtistEntity.swift in Sources */,
 				046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */,
@@ -929,6 +957,7 @@
 				04B760CA222B95420095AF33 /* AllSearchDataSource.swift in Sources */,
 				041E4CD6223F55D00038447C /* PlayerViewModel.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,
+				6EE89CE92247F7C000DFE580 /* SPTSearchResponse.swift in Sources */,
 				04B760C7222B8F110095AF33 /* SearchTableViewCell.swift in Sources */,
 				04B4ADF022335DA3006E6D8A /* UIImage+Extensions.swift in Sources */,
 				0460AC59223AAC890075D932 /* LibraryContentViewController.swift in Sources */,
@@ -960,6 +989,7 @@
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
 				04B4ADEB22330F6F006E6D8A /* LibraryPlaylistTableViewController.swift in Sources */,
 				04B760BB222B778C0095AF33 /* SearchHintDataSource.swift in Sources */,
+				6EE89CED22480EF100DFE580 /* SpotifyRemoteDelegate.swift in Sources */,
 				04B760C2222B883A0095AF33 /* SearchDataSource.swift in Sources */,
 				04B760C4222B8A8D0095AF33 /* APMSearchDataSource.swift in Sources */,
 				04A5D0C82223347600774489 /* BrowseViewModel.swift in Sources */,
@@ -1087,6 +1117,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Smore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1141,6 +1172,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Smore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1154,6 +1186,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/smore",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = smore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1162,6 +1199,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.smore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Smore/Smore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1176,6 +1214,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NDBTK98VL3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/smore",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = smore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1184,6 +1227,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.smore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Smore/Smore-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
