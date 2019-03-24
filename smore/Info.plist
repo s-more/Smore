@@ -7,7 +7,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>Smore</string>
+				<string>spotify-login-sdk-test-app</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string>com.jingweili.smore</string>

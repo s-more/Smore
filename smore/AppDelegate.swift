@@ -46,6 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Player.shared.stop()
     }
 
-
+    //    Successful login auth callback
+    lazy var spotifyVC = SpotifyLoginViewController()
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("successful login auth")
+        spotifyVC.sessionManager.application(app, open: url, options: options)
+        return true
+    }
 }
 
