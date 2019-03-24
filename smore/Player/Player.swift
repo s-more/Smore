@@ -169,4 +169,69 @@ class Player {
             })
         }
     }
+    
+    /*
+    
+    // MARK: - Remote Commands
+    private func setupRemoteTransportControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { [weak self] event in
+            switch self?.state ?? .notPlaying {
+            case .paused, .notPlaying:
+                self?.playOrPause()
+                return .success
+            default: break
+            }
+            return .commandFailed
+        }
+        
+        commandCenter.pauseCommand.addTarget { [weak self] event in
+            switch self?.state ?? .notPlaying {
+            case .playing:
+                self?.playOrPause()
+                return .success
+            default: break
+            }
+            return .commandFailed
+        }
+ 
+        commandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
+            self?.playOrPause()
+            return .success
+        }
+        
+        commandCenter.nextTrackCommand.addTarget { [weak self] _  in
+            self?.skipToNext()
+            return .success
+        }
+        
+        commandCenter.previousTrackCommand.addTarget { [weak self] _  in
+            self?.skipToPrev()
+            return .success
+        }
+        
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setActive(true, options: [])
+        } catch let err {
+            print(err.localizedDescription)
+        }
+    }
+    
+    func setupRemoteInfoCenter() {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyTitle: player.nowPlayingItem?.title ?? "Thumbs",
+            MPMediaItemPropertyArtist: player.nowPlayingItem?.artist ?? "Sabrina Carpenter",
+            MPMediaItemPropertyAlbumTitle: player.nowPlayingItem?.albumTitle ?? "EVOLution",
+            MPNowPlayingInfoPropertyElapsedPlaybackTime:  player.currentPlaybackTime,
+            MPMediaItemPropertyPlaybackDuration: player.nowPlayingItem?.playbackDuration ?? 0,
+            MPNowPlayingInfoPropertyPlaybackRate: 1.0
+        ]
+    }
+ 
+     */
 }

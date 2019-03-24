@@ -29,7 +29,7 @@ class APMSong: Song {
         artistName = response.attributes.artistName
         originalImageLink = response.attributes.artwork.url
         trackNumber = response.attributes.trackNumber
-        duration = TimeInterval(response.attributes.durationInMillis / 1000)
+        duration = TimeInterval(response.attributes.durationInMillis ?? 0 / 1000)
     }
     
     init(searchResponse: APMSearch.APMSearchResults.APMSearchSongs.APMSongData) {
@@ -41,7 +41,7 @@ class APMSong: Song {
         artistName = searchResponse.attributes.artistName
         originalImageLink = searchResponse.attributes.artwork?.url
         trackNumber = searchResponse.attributes.trackNumber
-        duration = TimeInterval(searchResponse.attributes.durationInMillis / 1000)
+        duration = TimeInterval(searchResponse.attributes.durationInMillis ?? 0 / 1000)
     }
     
     init(trackData: APMPlaylistResponse.APMPlaylistData
@@ -54,7 +54,7 @@ class APMSong: Song {
         artistName = trackData.attributes.artistName
         originalImageLink = trackData.attributes.artwork?.url
         trackNumber = trackData.attributes.trackNumber
-        duration = TimeInterval(trackData.attributes.durationInMillis / 1000)
+        duration = TimeInterval(trackData.attributes.durationInMillis ?? 0 / 1000)
     }
     
     init(albumTrackData: APMAlbumResponse.APMAlbumData.APMAlbumRelationships.APMAlbumTrack.APMAlbumTrackData)
@@ -67,7 +67,7 @@ class APMSong: Song {
         artistName = albumTrackData.attributes.artistName
         originalImageLink = albumTrackData.attributes.artwork?.url
         trackNumber = albumTrackData.attributes.trackNumber
-        duration = TimeInterval(albumTrackData.attributes.durationInMillis / 1000)
+        duration = TimeInterval(albumTrackData.attributes.durationInMillis ?? 0 / 1000)
     }
     
 }

@@ -102,7 +102,7 @@ struct APMTopChartResponse: Codable {
                     let url: URL
                     let discNumber: Int?
                     let genreNames: [String]
-                    let durationInMillis: Int
+                    let durationInMillis: Int?
                     let releaseDate: String
                     let name: String
                     let isrc: String
