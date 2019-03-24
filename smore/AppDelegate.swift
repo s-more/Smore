@@ -24,9 +24,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        print("reign active")
+        if SpotifyRemote.shared.appRemote.isConnected {
+            print("is connected")
+            SpotifyRemote.shared.appRemote.disconnect()
+        }
+    }
+    
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("did become active")
+
+        if let _ = SpotifyRemote.shared.appRemote.connectionParameters.accessToken {
+            print("accessToken")
+            SpotifyRemote.shared.appRemote.connect()
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -38,19 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
     func applicationWillTerminate(_ application: UIApplication) {
         Player.shared.stop()
     }
 
     //    Successful login auth callback
-    lazy var spotifyVC = SpotifyLoginViewController()
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         print("successful login auth")
-        spotifyVC.sessionManager.application(app, open: url, options: options)
+        SpotifyRemote.shared.sessionManager.application(app, open: url, options: options)
+        SpotifyRemote.shared.delegate?.remote(spotifyRemote: SpotifyRemote.shared, didAuthenticate: true)
         return true
     }
 }
