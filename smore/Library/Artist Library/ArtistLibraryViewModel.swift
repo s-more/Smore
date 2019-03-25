@@ -33,9 +33,8 @@ class ArtistLibraryViewModel: NSObject {
     
     var details: String {
         let items = [
-            "\(fetchedAlbums.count) albums",
             "\(fetchedPlaylists.count) playlists",
-            "\(fetchedSingles.count) singles",
+            "\(fetchedAlbums.count + fetchedSingles.count) albums",
             "\(fetchedSongs.count) songs"
         ]
         return items.joined(separator: " · ")
@@ -77,6 +76,12 @@ class ArtistLibraryViewModel: NSObject {
             }, error: { err in
                 error(err)
             })
+    }
+    
+    func followCurrentArtist() {
+        if !APMArtistEntity.doesArtistExist(artist: artist) {
+            APMArtistEntity.createArtists(from: [artist])
+        }
     }
     
     // MARK: - Private

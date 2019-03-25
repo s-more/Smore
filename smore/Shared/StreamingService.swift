@@ -8,11 +8,11 @@
 
 import UIKit
 
-enum StreamingService {
-    case appleMusic
-    case spotify
-    case youtube
-    case none
+enum StreamingService: Int {
+    case appleMusic = 0
+    case spotify = 1
+    case youtube = 2
+    case none = 3
     
     var icon: UIImage? {
         switch self {

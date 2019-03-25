@@ -11,7 +11,7 @@ import CoreData
 
 class APMArtistEntity: NSManagedObject {
     
-    class func favArtists() -> [APMArtist] {
+    class func favArtists() -> [Artist] {
         let request: NSFetchRequest<APMArtistEntity> = APMArtistEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
         if let results = try? SmoreDatabase.context.fetch(request) {
@@ -26,6 +26,17 @@ class APMArtistEntity: NSManagedObject {
         return []
     }
     
+    class func doesArtistExist(artist: Artist) -> Bool {
+        let request: NSFetchRequest<APMArtistEntity> = APMArtistEntity.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "name = %@ && genre = %@ && identifier = %@",
+            artist.name, artist.genre, artist.id)
+        if let results = try? SmoreDatabase.context.fetch(request), !results.isEmpty {
+            return true
+        }
+        return false
+    }
+    
     class func createArtists(from favArtists: [Artist]) {
         favArtists.forEach { makeArtistInstance(with: $0) }
         try? SmoreDatabase.save()
@@ -38,5 +49,6 @@ class APMArtistEntity: NSManagedObject {
         newArtist.imageLink = artist.imageLink?.absoluteString 
         newArtist.name = artist.name
         newArtist.originalImageLink = artist.originalImageLink
+        newArtist.streamingService = Int16(artist.streamingService.rawValue)
     }
 }

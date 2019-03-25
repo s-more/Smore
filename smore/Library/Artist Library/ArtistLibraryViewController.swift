@@ -17,6 +17,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var masterViewHeight: NSLayoutConstraint!
     @IBOutlet weak var masterView: UIView!
+    @IBOutlet weak var followButton: UIButton!
     
     let viewModel: ArtistLibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
@@ -49,6 +50,13 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemLeftRightMargin = 0
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 0
+        
+        followButton.addSmoreBoder(withWhiteBorder: true)
+        if APMArtistEntity.doesArtistExist(artist: viewModel.artist) {
+            followButton.disable()
+        } else {
+            followButton.setTitle("  Follow  ", for: .normal)
+        }
                 
         super.viewDidLoad()
         
@@ -104,6 +112,14 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         masterView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: wrapperSize)
         masterViewHeight.constant = wrapperSize.height
         masterView.layoutIfNeeded()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func followButtonTapped(_ sender: UIButton) {
+        followButton.setTitle("Following", for: .normal)
+        followButton.disable()
+        viewModel.followCurrentArtist()
     }
     
     // MARK: - XLPagerTabStrip
