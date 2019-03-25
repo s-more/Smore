@@ -17,7 +17,12 @@ class SpotifyAPI {
         return jsonDecoder
     }()
     
-    static func getCategories(token: String) {
+    static func getCategories(
+        token: String,
+        limit: Int?,
+        offset: Int?,
+        success: @escaping (SPTCategoryResponse) -> Void,
+        error: @escaping (Error) -> Void) {
         let searchQuery = "https://api.spotify.com/v1/browse/categories"
         Alamofire.request(
             searchQuery,
@@ -34,12 +39,12 @@ class SpotifyAPI {
                 }
                 if let data = json.data {
                     do {
-                        print(data)
-                        let result = try decoder.decode(SPTCategory.self, from: data)
-                        DispatchQueue.main.async { print(result) }
+                        let result = try decoder.decode(SPTCategoryResponse.self, from: data)
+                        DispatchQueue.main.async { success(result) }
                     } catch let err {
-                        print(data)
-                        print(err)
+                        DispatchQueue.main.async {
+                            error(err)
+                        }
                     }
                 } else {
                     DispatchQueue.main.async {
@@ -49,4 +54,216 @@ class SpotifyAPI {
         }
     }
     
+    
+    static func getNewReleases(token: String) {
+        let searchQuery = "https://api.spotify.com/v1/browse/new-releases"
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        let result = try decoder.decode(SPTNewReleasesResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
+    
+    
+    static func getArtist(token: String, artistID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/artists/", artistID].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        let result = try decoder.decode(SPTArtistResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
+    
+    static func getArtistAlbums(token: String, artistID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/artists/", artistID, "/albums"].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        let result = try decoder.decode(SPTArtistAlbumsResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
+    
+    static func getArtistTopTracks(token: String, artistID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/artists/", artistID, "/top-tracks?country=US"].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                        print(json)
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        
+                        let result = try decoder.decode(SPTArtistTopTracksResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
+    
+    
+    static func getAlbum(token: String, albumID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/albums/", albumID].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                        print(json)
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        
+                        let result = try decoder.decode(SPTAlbumResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
+    
+    static func getTrack(token: String, trackID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/tracks/", trackID].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                        print(json)
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        
+                        let result = try decoder.decode(SPTTrackResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
 }
