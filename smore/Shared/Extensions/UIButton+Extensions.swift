@@ -9,10 +9,18 @@
 import UIKit
 
 extension UIButton {
-    func addSmoreBoder() {
+    func addSmoreBoder(withWhiteBorder: Bool = false) {
         self.clipsToBounds = true
         self.layer.cornerRadius = 10.0
-        self.layer.borderColor = UIColor.themeColor.cgColor
+        if withWhiteBorder {
+            layer.borderColor = UIColor.white.cgColor
+        } else {
+            layer.borderColor = UIColor.themeColor.cgColor
+        }
         self.layer.borderWidth = 0.75
+    }
+    
+    func disable() {
+        isUserInteractionEnabled = false
     }
 }

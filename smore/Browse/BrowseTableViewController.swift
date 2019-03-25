@@ -30,6 +30,11 @@ class BrowseTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "BrowseHeader", bundle: Bundle.main),
                            forHeaderFooterViewReuseIdentifier: BrowseHeader.identifier)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
         let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
         tableView.addSubview(ai)
         tableView.sectionHeaderHeight = UITableView.automaticDimension
@@ -97,5 +102,16 @@ class BrowseTableViewController: UITableViewController {
         let header = viewModel.headers[section]
         cell?.titleLabel.text = header
         return cell
+    }
+    
+    // MARK: - Private
+    @objc func refresh() {
+        viewModel.fetchData(completion: { [weak self] in
+            self?.tableView.reloadData()
+            self?.tableView.refreshControl?.endRefreshing()
+        }, error: { [weak self] error in
+            self?.tableView.refreshControl?.endRefreshing()
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+        })
     }
 }

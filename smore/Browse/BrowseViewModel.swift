@@ -10,13 +10,13 @@ import Foundation
 
 class BrowseViewModel {
     let favGenres: [APMCatalogGenre]
-    let favArtists: [APMArtist]
+    var favArtists: [Artist]
     var topCharts: [APMSong]
     var headers: [String] = []
     
     init() {
         self.favGenres = UserDefaults.favGenres
-        favArtists = APMArtistEntity.favArtists()
+        favArtists = []
         topCharts = []
     }
     
@@ -29,6 +29,7 @@ class BrowseViewModel {
                     return APMSong(response: data)
                 } ?? []
                 self?.headers = ["What would you like to listen to?", "Top Charts"]
+                self?.favArtists = APMArtistEntity.favArtists()
                 DispatchQueue.main.async { completion() }
             }, error: { e in
                 DispatchQueue.main.async { error(e) }

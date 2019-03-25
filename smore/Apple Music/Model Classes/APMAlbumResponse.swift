@@ -91,7 +91,7 @@ class APMAlbumResponse: Codable {
                         let artistName: String
                         let artwork: APMTrackArtwork?
                         let discNumber: Int?
-                        let durationInMillis: Int
+                        let durationInMillis: Int?
                         let genreNames: [String]
                         let isrc: String
                         let name: String
