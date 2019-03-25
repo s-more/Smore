@@ -21,7 +21,7 @@ class SpotifyAPI {
         token: String,
         limit: Int?,
         offset: Int?,
-        success: @escaping (SPTCatResponse) -> Void,
+        success: @escaping (SPTCategoryResponse) -> Void,
         error: @escaping (Error) -> Void) {
         let searchQuery = "https://api.spotify.com/v1/browse/categories"
         Alamofire.request(
