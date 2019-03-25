@@ -2,7 +2,7 @@
 //  PlaylistCollectionViewCell.swift
 //  smore
 //
-//  Created by Vignesh Babu on 2/14/19.
+//  Created by Colin Williamson on 2/14/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 

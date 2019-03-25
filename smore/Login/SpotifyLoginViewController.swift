@@ -40,7 +40,6 @@ class SpotifyLoginViewController: UIViewController {
     @IBAction func skip(_ sender: UIButton) {
         navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
-    
     //    OnClick of Auth button, initiate spotify session
     @IBAction func loginSpotifyUser(_ sender: UIButton) {
         SpotifyRemote.shared.spotifyLogin()
