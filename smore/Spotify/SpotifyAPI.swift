@@ -230,4 +230,40 @@ class SpotifyAPI {
                 }
         }
     }
+    
+    static func getTrack(token: String, trackID: String) {
+        let searchQuery = ["https://api.spotify.com/v1/tracks/", trackID].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                        print(json)
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        
+                        let result = try decoder.decode(SPTTrackResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            print(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            print(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
 }

@@ -18,6 +18,8 @@ enum StreamingService {
         switch self {
         case .appleMusic:
             return UIImage(named: "appleLogo")
+        case .spotify:
+            return UIImage(named: "spotLogo")
         default:
             return nil
         }
