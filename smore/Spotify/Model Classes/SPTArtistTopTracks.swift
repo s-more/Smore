@@ -41,15 +41,6 @@ struct SPTArtistTopTracksResponse: Codable {
             let type: String?
             let uri: String?
             
-            struct SPTArtist: Codable {
-                let external_urls: SPTURL?
-                let href: String?
-                let id: String?
-                let name: String?
-                let type: String?
-                let uri: String?
-            }
-            
             struct SPTImage: Codable {
                 let height: Int?
                 let url: String?
@@ -57,6 +48,14 @@ struct SPTArtistTopTracksResponse: Codable {
             }
         }
         
+        struct SPTArtist: Codable {
+            let external_urls: SPTURL?
+            let href: String?
+            let id: String?
+            let name: String?
+            let type: String?
+            let uri: String?
+        }
         struct SPTID: Codable {
             let isrc: String?
         }
