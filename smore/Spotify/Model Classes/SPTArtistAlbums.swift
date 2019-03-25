@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTArtistAlbums: Codable {
+struct SPTArtistAlbumsResponse: Codable {
     let href: String?
     let items: [SPTItem]?
     let limit: Int?

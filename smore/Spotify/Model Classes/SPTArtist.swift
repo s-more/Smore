@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTArtist: Codable {
+struct SPTArtistResponse: Codable {
     let external_urls: SPTURL?
     let followers: SPTFollowers?
     let genres: [String]?

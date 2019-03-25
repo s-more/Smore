@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTNewReleases: Codable {
+struct SPTNewReleasesResponse: Codable {
     let albums: SPTNRAlbum?
     struct SPTNRAlbum: Codable {
         let href: String?

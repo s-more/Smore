@@ -39,7 +39,7 @@ class SpotifyAPI {
                 }
                 if let data = json.data {
                     do {
-                        let result = try decoder.decode(SPTCatResponse.self, from: data)
+                        let result = try decoder.decode(SPTCategoryResponse.self, from: data)
                         DispatchQueue.main.async { success(result) }
                     } catch let err {
                         DispatchQueue.main.async {
@@ -72,7 +72,7 @@ class SpotifyAPI {
                 }
                 if let data = json.data {
                     do {
-                        let result = try decoder.decode(SPTNewReleases.self, from: data)
+                        let result = try decoder.decode(SPTNewReleasesResponse.self, from: data)
                         DispatchQueue.main.async {
                             print(result)
                         }
@@ -107,7 +107,7 @@ class SpotifyAPI {
                 }
                 if let data = json.data {
                     do {
-                        let result = try decoder.decode(SPTArtist.self, from: data)
+                        let result = try decoder.decode(SPTArtistResponse.self, from: data)
                         DispatchQueue.main.async {
                             print(result)
                         }
@@ -141,7 +141,7 @@ class SpotifyAPI {
                 }
                 if let data = json.data {
                     do {
-                        let result = try decoder.decode(SPTArtistAlbums.self, from: data)
+                        let result = try decoder.decode(SPTArtistAlbumsResponse.self, from: data)
                         DispatchQueue.main.async {
                             print(result)
                         }
@@ -177,7 +177,7 @@ class SpotifyAPI {
                 if let data = json.data {
                     do {
                         
-                        let result = try decoder.decode(SPTArtistTopTracks.self, from: data)
+                        let result = try decoder.decode(SPTArtistTopTracksResponse.self, from: data)
                         DispatchQueue.main.async {
                             print(result)
                         }
@@ -214,7 +214,7 @@ class SpotifyAPI {
                 if let data = json.data {
                     do {
                         
-                        let result = try decoder.decode(SPTAlbum.self, from: data)
+                        let result = try decoder.decode(SPTAlbumResponse.self, from: data)
                         DispatchQueue.main.async {
                             print(result)
                         }

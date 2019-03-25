@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTAlbum: Codable {
+struct SPTAlbumResponse: Codable {
     let album_type: String?
     let artists: [SPTArtist]?
     let available_markets: [String]?

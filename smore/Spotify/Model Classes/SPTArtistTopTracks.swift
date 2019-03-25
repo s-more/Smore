@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTArtistTopTracks: Codable {
+struct SPTArtistTopTracksResponse: Codable {
     let tracks: [SPTTrack]?
     
     struct SPTTrack: Codable {

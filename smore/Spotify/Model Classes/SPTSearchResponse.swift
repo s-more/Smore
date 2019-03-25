@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SPTCatResponse: Codable {
+struct SPTCategoryResponse: Codable {
     let categories: SPTCategory?
     struct SPTCategory: Codable {
         let href: String?
