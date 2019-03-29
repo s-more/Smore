@@ -9,29 +9,32 @@
 import UIKit
 import XLPagerTabStrip
 
-class ArtistLibraryViewModel: NSObject {
+class ArtistLibraryViewModel: LibraryViewModel {
     let artist: Artist
-    var fetchedAlbums: [Album] = []
-    var fetchedSingles: [Album] = []
-    var fetchedPlaylists: [Playlist] = []
-    var fetchedSongs: [Song] = []
-    var highResImageURL: URL?
-    var isBarShown = false
-    var initialButtonBarPosition: CGFloat = 0
-    var isButtonBarPositionSet = false
-    
-    var viewControllers: [UITableViewController & ScrollHeightCalculable & IndicatorInfoProvider] = [
-        LibraryPlaylistTableViewController()
-    ]
     
     /// init from an Artist.
     init(artist: Artist) {
         self.artist = artist
-        highResImageURL = ArtistLibraryViewModel.highResImage(from: artist.originalImageLink)
         super.init()
     }
     
-    var details: String {
+    override var highResImageURL: URL? {
+        return Utilities.highResImage(from: artist.originalImageLink)
+    }
+    
+    override var hideFollowButton: Bool {
+        return false
+    }
+    
+    override var disableFollowButton: Bool {
+        return APMArtistEntity.doesArtistExist(artist: artist)
+    }
+    
+    override var titleText: String {
+        return artist.name
+    }
+    
+    override var details: String {
         let items = [
             "\(fetchedPlaylists.count) playlists",
             "\(fetchedAlbums.count + fetchedSingles.count) albums",
@@ -40,7 +43,7 @@ class ArtistLibraryViewModel: NSObject {
         return items.joined(separator: " · ")
     }
     
-    func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
+    override func prepareData(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         AppleMusicAPI.searchCatalog(
             with: artist.name,
             types: [.albums, .playlists, .songs],
@@ -78,23 +81,9 @@ class ArtistLibraryViewModel: NSObject {
             })
     }
     
-    func followCurrentArtist() {
+    override func followButtonTapped() {
         if !APMArtistEntity.doesArtistExist(artist: artist) {
             APMArtistEntity.createArtists(from: [artist])
         }
     }
-    
-    // MARK: - Private
-    private static func highResImage(from url: String?) -> URL? {
-        if let url = url {
-            let availableWidth = Int(UIScreen.main.bounds.width * UIScreen.main.scale * 0.75)
-            let replaceOne = url.replacingOccurrences(of: "{w}", with: "\(availableWidth)")
-            let replaceTwo = replaceOne.replacingOccurrences(of: "{h}", with: "\(availableWidth)")
-            if let resultURL = URL(string: replaceTwo) {
-                return resultURL
-            }
-        }
-        return nil
-    }
-    
 }

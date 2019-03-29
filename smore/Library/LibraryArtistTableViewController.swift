@@ -50,6 +50,7 @@ class LibraryArtistTableViewController: UITableViewController {
             cell.masterLabel.text = artists[indexPath.row].name
             cell.subtitleLabel.text = artists[indexPath.row].genre
             cell.serviceIcon.image = artists[indexPath.row].streamingService.icon
+            cell.masterImage.addRoundCorners(cornerRadius: 37)
         }
         
         return cell
@@ -57,6 +58,13 @@ class LibraryArtistTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SearchTableViewCell.preferredHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vm = ArtistLibraryViewModel(artist: artists[indexPath.row])
+        let vc = LibraryViewController(viewModel: vm)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
