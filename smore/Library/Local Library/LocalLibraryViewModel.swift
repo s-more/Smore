@@ -44,7 +44,14 @@ class LocalLibraryViewModel: LibraryViewModel {
             guard let strongSelf = self else { return }
             strongSelf.fetchedArtists = APMArtistEntity.favArtists()
             strongSelf.viewControllers.removeAll()
-            strongSelf.viewControllers.append(LibraryArtistTableViewController(artists: strongSelf.fetchedArtists))
+            SmoreDatabase.context.perform {
+                do {
+                    try APMArtistEntity.fetchedResultsController.performFetch()
+                } catch let error {
+                    SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+                }
+            }
+            strongSelf.viewControllers.append(LibraryArtistTableViewController())
             DispatchQueue.main.async {
                 completion()
             }

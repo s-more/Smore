@@ -121,7 +121,7 @@ class LibraryViewController: ButtonBarPagerTabStripViewController {
         return .lightContent
     }
     
-    private func applyContentSize() {
+    func applyContentSize() {
         let fixedHeights = UIScreen.main.bounds.width + 20
         let wrapperSize = viewModel.viewControllers[currentIndex].wrapperScrollViewSize(immobileSectionHeight: fixedHeights)
         scrollView.contentSize = wrapperSize

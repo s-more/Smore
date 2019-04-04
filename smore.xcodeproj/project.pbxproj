@@ -582,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				04B0D090224DDD9F00AA7B20 /* LocalLibraryViewModel.swift */,
+				A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */,
 			);
 			path = "Local Library";
 			sourceTree = "<group>";
@@ -593,7 +594,6 @@
 				0460AC55223AA70A0075D932 /* Library Content */,
 				04B4ADE62232EAC0006E6D8A /* Artist Library */,
 				04B4ADE922330F6F006E6D8A /* LibraryPlaylistTableViewController.swift */,
-				A31E77022242D417007B07DF /* LibraryArtistTableViewController.swift */,
 				277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */,
 				04B4ADEA22330F6F006E6D8A /* LibraryPlaylistTableViewController.xib */,
 				6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */,

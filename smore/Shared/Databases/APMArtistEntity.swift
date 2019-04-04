@@ -11,6 +11,17 @@ import CoreData
 
 class APMArtistEntity: NSManagedObject {
     
+    static let fetchedResultsController: NSFetchedResultsController<APMArtistEntity> = {
+        let request: NSFetchRequest<APMArtistEntity> = APMArtistEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        let frc = NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: SmoreDatabase.context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        return frc
+    }()
+    
     class func favArtists() -> [Artist] {
         let request: NSFetchRequest<APMArtistEntity> = APMArtistEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
