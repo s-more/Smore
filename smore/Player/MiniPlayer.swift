@@ -27,11 +27,21 @@ class MiniPlayer: UIView {
     private let originalFrame: CGRect
 
     private init() {
-        originalFrame = CGRect(
-            x: 0,
-            y: UIScreen.main.bounds.height - MiniPlayer.tabBarHeight - miniPlayerHeight,
-            width: UIScreen.main.bounds.width,
-            height: miniPlayerHeight)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            originalFrame = CGRect(
+                x: 0,
+                y: UIScreen.main.bounds.height - MiniPlayer.tabBarHeight - miniPlayerHeight,
+                width: UIScreen.main.bounds.width,
+                height: miniPlayerHeight)
+        } else { // ipads
+            let screenHeight = UIScreen.main.bounds.height
+            originalFrame = CGRect(
+                x: 0,
+                y: screenHeight - (screenHeight - 667)/2 - MiniPlayer.tabBarHeight - miniPlayerHeight,
+                width: 667, // ipads use iphone apps in a 4.7 inch screen size
+                height: miniPlayerHeight)
+            print(originalFrame)
+        }
         super.init(frame: originalFrame)
         Bundle.main.loadNibNamed("MiniPlayer", owner: self, options: nil)
     }

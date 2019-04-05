@@ -47,11 +47,15 @@ class LocalLibraryViewModel: LibraryViewModel {
             SmoreDatabase.context.perform {
                 do {
                     try APMArtistEntity.fetchedResultsController.performFetch()
+                    try AlbumEntity.fetchedResultsController.performFetch()
+                    try SongEntity.fetchedResultsController.performFetch()
                 } catch let error {
                     SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
                 }
             }
-            strongSelf.viewControllers.append(LibraryArtistTableViewController())
+            strongSelf.viewControllers.append(LocalArtistTableViewController())
+            strongSelf.viewControllers.append(LocalAlbumTableViewController())
+            strongSelf.viewControllers.append(LocalSongTableViewController())
             DispatchQueue.main.async {
                 completion()
             }

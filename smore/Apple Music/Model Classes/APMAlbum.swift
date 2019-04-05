@@ -21,6 +21,24 @@ class APMAlbum: Album {
     var streamingService: StreamingService = .appleMusic
     var isSingle: Bool
     
+    init(albumEntity: AlbumEntity) {
+        id = albumEntity.id ?? ""
+        name = albumEntity.name ?? ""
+        artistName = albumEntity.artistName ?? ""
+        playableString = albumEntity.playableString ?? ""
+        imageLink = albumEntity.imageLink
+        releaseDate = albumEntity.releaseDate ?? ""
+        description = albumEntity.editorDescription ?? ""
+        originalImageLink = albumEntity.originalImageLink ?? ""
+        streamingService = .appleMusic
+        isSingle = albumEntity.isSingle
+        if let fetchedSongs = albumEntity.songs?.array as? [SongEntity] {
+            songs = fetchedSongs.map { APMSong(songEntity: $0) }
+        } else {
+            songs = []
+        }
+    }
+    
     init(response: APMSearch.APMSearchResults.APMSearchAlbums.APMAlbumData) {
         id = response.id
         name = response.attributes.name

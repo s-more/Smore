@@ -70,4 +70,17 @@ class APMSong: Song {
         duration = TimeInterval(albumTrackData.attributes.durationInMillis ?? 0 / 1000)
     }
     
+    init(songEntity: SongEntity) {
+        name = songEntity.name ?? ""
+        genre = songEntity.genre ?? ""
+        imageLink = songEntity.imageLink
+        originalImageLink = songEntity.originalImageLink
+        id = songEntity.id ?? ""
+        playableString = songEntity.playableString ?? ""
+        artistName = songEntity.artistName ?? ""
+        streamingService = .appleMusic
+        trackNumber = Int(songEntity.trackNumer)
+        duration = songEntity.duration
+    }
+    
 }

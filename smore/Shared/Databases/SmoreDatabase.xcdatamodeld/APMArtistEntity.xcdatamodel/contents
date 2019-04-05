@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlbumEntity" representedClassName=".AlbumEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="editorDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageLink" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="isSingle" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playableString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streamingService" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SongEntity" syncable="YES"/>
+    </entity>
     <entity name="APMArtistEntity" representedClassName=".APMArtistEntity" syncable="YES" codeGenerationType="category">
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,7 +21,21 @@
         <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamingService" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="SongEntity" representedClassName=".SongEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageLink" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playableString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streamingService" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="trackNumer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="AlbumEntity" positionX="-91.71875" positionY="181.2578125" width="128" height="208"/>
         <element name="APMArtistEntity" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="SongEntity" positionX="122.234375" positionY="207.56640625" width="128" height="193"/>
     </elements>
 </model>

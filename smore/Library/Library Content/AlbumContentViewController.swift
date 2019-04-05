@@ -32,6 +32,10 @@ class AlbumContentViewController: LibraryContentViewController {
         tableView.register(UINib(nibName: "NumberedSongTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: NumberedSongTableViewCell.identifier)
         
+        if AlbumEntity.doesAlbumExist(album: album) {
+            disableAddButton()
+        }
+        
         super.viewDidLoad()
         
         view.addSubview(ai)
@@ -107,5 +111,16 @@ class AlbumContentViewController: LibraryContentViewController {
                 }
             }
         }
+    }
+    
+    override func handleAddButtonTap(_ sender: UIButton) {
+        AlbumEntity.makeAlbum(with: album)
+        disableAddButton()
+    }
+    
+    func disableAddButton() {
+        addToLibraryButton.setTitle("  Added to Library  ", for: .normal)
+        addToLibraryButton.alpha = 0.6
+        addToLibraryButton.isEnabled = false
     }
 }
