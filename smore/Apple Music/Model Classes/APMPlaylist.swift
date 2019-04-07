@@ -29,7 +29,22 @@ class APMPlaylist: Playlist {
         description = nil
     }
     
+    init(playlistEntity: PlaylistEntity) {
+        id = playlistEntity.id ?? ""
+        name = playlistEntity.name ?? ""
+        curatorName = playlistEntity.curatorName ?? ""
+        playableString = playlistEntity.playableString ?? ""
+        imageLink = playlistEntity.imageLink
+        originalImageLink = playlistEntity.originalImageLink
+        description = playlistEntity.editorDescription
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
+        guard songs.isEmpty else {
+            DispatchQueue.main.async { completion() }
+            return
+        }
+        
         AppleMusicAPI.playlists(with: id, completion: { [weak self] data in
             self?.songs = data.relationships.tracks.data.map { APMSong(trackData: $0) }
             let description = data.attributes.description

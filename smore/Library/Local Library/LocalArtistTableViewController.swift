@@ -17,7 +17,7 @@ class LocalArtistTableViewController: LocalLibrayTableViewController {
         return APMArtistEntity.fetchedResultsController as? NSFetchedResultsController<NSFetchRequestResult>
     }
     
-    override var burButtonTitle: String { return "Artists" }
+    override var barButtonTitle: String { return "Artists" }
     
     
     // MARK: - Table view data source

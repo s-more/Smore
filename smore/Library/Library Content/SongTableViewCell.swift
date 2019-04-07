@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SongTableViewCell: UITableViewCell {
     static let identifier = "songTableViewCell"
@@ -16,12 +17,27 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var songSubtitle: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
+    var song: Song?
+    var animationBlock: (() -> Void)?
+    
+    func configure(with song: Song) {
+        songImageView.kf.setImage(with: song.imageLink, placeholder: UIImage(named: "artistPlaceholder"))
+        songTitle.text = song.name
+        songSubtitle.text = song.artistName
+        addButton.isHidden = SongEntity.doesSongExist(song: song)
+        self.song = song
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         songImageView.addRoundCorners(cornerRadius: 5.0)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        // implement
+        if let song = song {
+            SongEntity.makeSong(from: song)
+            addButton.isHidden = true
+            animationBlock?()
+        }
     }
 }

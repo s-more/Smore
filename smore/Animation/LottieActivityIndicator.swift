@@ -16,16 +16,24 @@ import Lottie
  */
 class LottieActivityIndicator: UIView {
     private var animationView: LOTAnimationView?
-    var animationName: String
+    let animationName: String
     /** The ratio of width / height. Defaults to 1.0. */
     var aspectRatio: CGFloat = 1.0
+    let loop: Bool
+    let stopOnCompletion: Bool
     
     private lazy var screenCenter: CGPoint = {
         return CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
     }()
     
-    init(animationName: String, frame: CGRect = CGRect(x: 0, y: 0, width: 200, height: 200)) {
+    init(animationName: String,
+         frame: CGRect = CGRect(x: 0, y: 0, width: 200, height: 200),
+         loop: Bool = true,
+         stopOnCompletion: Bool = false)
+    {
         self.animationName = animationName
+        self.loop = loop
+        self.stopOnCompletion = stopOnCompletion
         super.init(frame: frame)
     }
     
@@ -56,9 +64,14 @@ class LottieActivityIndicator: UIView {
         animationView = LOTAnimationView(name: animationName)
         animationView?.frame = CGRect(x: 0, y: 0, width: width, height: height)
         animationView?.center = screenCenter
-        animationView?.loopAnimation = true
+        animationView?.loopAnimation = loop
         animationView?.layer.cornerRadius = 20.0
         animationView?.clipsToBounds = true
+        if stopOnCompletion {
+            animationView?.completionBlock = { [weak self] _ in
+                self?.stop()
+            }
+        }
         superView.addSubview(animationView!)
         animationView?.play()
         
@@ -88,4 +101,11 @@ class LottieActivityIndicator: UIView {
         layer.shadowPath = shadowPath.cgPath
     }
     
+}
+
+extension LottieActivityIndicator {
+    // MARK: - Predefined Animations
+    static let checkmark: LottieActivityIndicator = {
+        return LottieActivityIndicator(animationName: "Checkmark", loop: false, stopOnCompletion: true)
+    }()
 }

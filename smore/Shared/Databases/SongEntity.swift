@@ -21,6 +21,7 @@ class SongEntity: NSManagedObject {
         return frc
     }()
     
+    /// Insert a new song into the database.
     /// Returns a new song if it doesn't exist yet
     /// otherwise return the existing song
     @discardableResult

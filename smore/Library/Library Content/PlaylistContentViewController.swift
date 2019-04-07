@@ -35,6 +35,10 @@ class PlaylistContentViewController: LibraryContentViewController {
         
         super.viewDidLoad()
         
+        if PlaylistEntity.doesPlaylistExist(playlist: viewModel.playlist) {
+            disableAddButton()
+        }
+        
         view.addSubview(ai)
         viewModel.prepareData(completion: { [weak self] in
             self?.ai.stop()
@@ -62,10 +66,8 @@ class PlaylistContentViewController: LibraryContentViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? SongTableViewCell {
-            cell.songImageView.kf.setImage(with: viewModel.playlist.songs[indexPath.row].imageLink,
-                                           placeholder: UIImage(named: "artistPlaceholder"))
-            cell.songTitle.text = viewModel.playlist.songs[indexPath.row].name
-            cell.songSubtitle.text = viewModel.playlist.songs[indexPath.row].artistName
+            cell.animationBlock = addCheckmark
+            cell.configure(with: viewModel.playlist.songs[indexPath.row])
         }
         
         return cell
@@ -98,6 +100,18 @@ class PlaylistContentViewController: LibraryContentViewController {
             MiniPlayer.shared.configure(with: first)
             MusicQueue.shared.queue.value = viewModel.playlist.songs
         }
+    }
+    
+    override func handleAddButtonTap(_ sender: UIButton) {
+        PlaylistEntity.makePlaylist(with: viewModel.playlist)
+        disableAddButton()
+        super.handleAddButtonTap(sender)
+    }
+    
+    func disableAddButton() {
+        addToLibraryButton.setTitle("  Added to Library  ", for: .normal)
+        addToLibraryButton.alpha = 0.6
+        addToLibraryButton.isEnabled = false
     }
     
     override func handleShuffleButtonTap(_ sender: UIButton) {

@@ -17,7 +17,7 @@ class LocalAlbumTableViewController: LocalLibrayTableViewController {
         return AlbumEntity.fetchedResultsController as? NSFetchedResultsController<NSFetchRequestResult>
     }
     
-    override var burButtonTitle: String { return "Albums" }
+    override var barButtonTitle: String { return "Albums" }
 
     // MARK: - Table view data source
 

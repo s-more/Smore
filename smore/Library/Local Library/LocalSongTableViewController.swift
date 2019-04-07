@@ -23,7 +23,7 @@ class LocalSongTableViewController: LocalLibrayTableViewController {
         return SongEntity.fetchedResultsController as? NSFetchedResultsController<NSFetchRequestResult>
     }
     
-    override var burButtonTitle: String { return "Songs" }
+    override var barButtonTitle: String { return "Songs" }
     
     override var rowHeight: CGFloat { return SongTableViewCell.preferredHeight }
     
@@ -36,11 +36,8 @@ class LocalSongTableViewController: LocalLibrayTableViewController {
         
         let songEntity = SongEntity.fetchedResultsController.object(at: indexPath)
         let song = SongEntity.standardSong(from: songEntity)
-        if let cell = cell as? SongTableViewCell {
-            cell.songImageView.kf.setImage(with: song?.imageLink,
-                                           placeholder: UIImage(named: "artistPlaceholder"))
-            cell.songTitle.text = song?.name
-            cell.songSubtitle.text = song?.artistName
+        if let cell = cell as? SongTableViewCell, let song = song {
+            cell.configure(with: song)
             cell.songImageView.addRoundCorners(cornerRadius: 10)
         }
         

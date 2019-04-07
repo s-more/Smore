@@ -66,8 +66,8 @@ class AlbumContentViewController: LibraryContentViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: NumberedSongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? NumberedSongTableViewCell {
-            cell.songNumber.text = "\(album.songs[indexPath.row].trackNumber)"
-            cell.songTitle.text = album.songs[indexPath.row].name
+            cell.animationBlock = addCheckmark
+            cell.configure(with: album.songs[indexPath.row])
         }
         
         return cell
@@ -116,6 +116,7 @@ class AlbumContentViewController: LibraryContentViewController {
     override func handleAddButtonTap(_ sender: UIButton) {
         AlbumEntity.makeAlbum(with: album)
         disableAddButton()
+        super.handleAddButtonTap(sender)
     }
     
     func disableAddButton() {

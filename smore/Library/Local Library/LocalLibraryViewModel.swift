@@ -46,6 +46,7 @@ class LocalLibraryViewModel: LibraryViewModel {
             strongSelf.viewControllers.removeAll()
             SmoreDatabase.context.perform {
                 do {
+                    try PlaylistEntity.fetchedResultsController.performFetch()
                     try APMArtistEntity.fetchedResultsController.performFetch()
                     try AlbumEntity.fetchedResultsController.performFetch()
                     try SongEntity.fetchedResultsController.performFetch()
@@ -54,6 +55,7 @@ class LocalLibraryViewModel: LibraryViewModel {
                 }
             }
             strongSelf.viewControllers.append(LocalArtistTableViewController())
+            strongSelf.viewControllers.append(LocalPlaylistTableViewController())
             strongSelf.viewControllers.append(LocalAlbumTableViewController())
             strongSelf.viewControllers.append(LocalSongTableViewController())
             DispatchQueue.main.async {

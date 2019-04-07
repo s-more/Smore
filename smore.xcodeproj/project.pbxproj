@@ -123,6 +123,9 @@
 		04B859AF223DD0DF00D5382C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B859AE223DD0DF00D5382C /* Player.swift */; };
 		04B859B2223DE97700D5382C /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B859B1223DE97700D5382C /* PlayerState.swift */; };
 		04B859B4223DEA9200D5382C /* MusicQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B859B3223DEA9200D5382C /* MusicQueue.swift */; };
+		04B957912259A8B700BA7D74 /* Checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 04B957902259A8B700BA7D74 /* Checkmark.json */; };
+		04B957932259AD8900BA7D74 /* PlaylistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B957922259AD8900BA7D74 /* PlaylistEntity.swift */; };
+		04B957952259B42400BA7D74 /* LocalPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B957942259B42400BA7D74 /* LocalPlaylistTableViewController.swift */; };
 		04D504AB2256F4280049C9E6 /* LocalSongTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D504AA2256F4280049C9E6 /* LocalSongTableViewController.swift */; };
 		04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA0B28220661DC0095430A /* AppleMusicAPI.swift */; };
 		124E818B00A073206503F6CE /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */; };
@@ -276,6 +279,9 @@
 		04B859AE223DD0DF00D5382C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		04B859B1223DE97700D5382C /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		04B859B3223DEA9200D5382C /* MusicQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicQueue.swift; sourceTree = "<group>"; };
+		04B957902259A8B700BA7D74 /* Checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Checkmark.json; sourceTree = "<group>"; };
+		04B957922259AD8900BA7D74 /* PlaylistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistEntity.swift; sourceTree = "<group>"; };
+		04B957942259B42400BA7D74 /* LocalPlaylistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlaylistTableViewController.swift; sourceTree = "<group>"; };
 		04D504AA2256F4280049C9E6 /* LocalSongTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSongTableViewController.swift; sourceTree = "<group>"; };
 		04FA0B28220661DC0095430A /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +360,7 @@
 		0409D5B22207469900CB4CDE /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				04B957902259A8B700BA7D74 /* Checkmark.json */,
 				040A065F222C672C009B37E3 /* SlidingViewTransition.swift */,
 				045F09682212596500D7730E /* StrugglingAnt.json */,
 				045F09662212567A00D7730E /* LottieActivityIndicator.swift */,
@@ -586,6 +593,7 @@
 				04A5D0D422234CAB00774489 /* SmoreDatabase.xcdatamodeld */,
 				04A1694122568B4700E7A71F /* AlbumEntity.swift */,
 				04A1694322568E9D00E7A71F /* SongEntity.swift */,
+				04B957922259AD8900BA7D74 /* PlaylistEntity.swift */,
 			);
 			path = Databases;
 			sourceTree = "<group>";
@@ -598,6 +606,7 @@
 				A31E77022242D417007B07DF /* LocalArtistTableViewController.swift */,
 				04A169452256A8AE00E7A71F /* LocalAlbumLibraryTableViewController.swift */,
 				04D504AA2256F4280049C9E6 /* LocalSongTableViewController.swift */,
+				04B957942259B42400BA7D74 /* LocalPlaylistTableViewController.swift */,
 			);
 			path = "Local Library";
 			sourceTree = "<group>";
@@ -839,6 +848,7 @@
 				046FDB7621FE63BE00E8245D /* Assets.xcassets in Resources */,
 				0460AC65223B63520075D932 /* SongTableViewCell.xib in Resources */,
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
+				04B957912259A8B700BA7D74 /* Checkmark.json in Resources */,
 				040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */,
 				041E4CD4223F4E3B0038447C /* PlayerAlbumArtCollectionViewCell.xib in Resources */,
 				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
@@ -1043,6 +1053,7 @@
 				04D504AB2256F4280049C9E6 /* LocalSongTableViewController.swift in Sources */,
 				04A5D0BB222310B900774489 /* UserDefaults+Extensions.swift in Sources */,
 				041E4CCF223F44D70038447C /* PlayerViewController.swift in Sources */,
+				04B957932259AD8900BA7D74 /* PlaylistEntity.swift in Sources */,
 				04925710223DB3DC00500F1A /* MiniPlayer.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
@@ -1078,6 +1089,7 @@
 				0460AC64223B63520075D932 /* SongTableViewCell.swift in Sources */,
 				04A5D0CE2223376D00774489 /* SuggestedTableViewCell.swift in Sources */,
 				6EE89CF822487ED400DFE580 /* SPTAlbumResponse.swift in Sources */,
+				04B957952259B42400BA7D74 /* LocalPlaylistTableViewController.swift in Sources */,
 				046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */,
 				040A0660222C672C009B37E3 /* SlidingViewTransition.swift in Sources */,
 				04B859AF223DD0DF00D5382C /* Player.swift in Sources */,

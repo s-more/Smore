@@ -21,6 +21,17 @@
         <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamingService" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="PlaylistEntity" representedClassName=".PlaylistEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="curatorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="editorDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageLink" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalImageLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playableString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streamingService" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SongEntity" syncable="YES"/>
+    </entity>
     <entity name="SongEntity" representedClassName=".SongEntity" syncable="YES" codeGenerationType="category">
         <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -34,8 +45,9 @@
         <attribute name="trackNumer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AlbumEntity" positionX="-91.71875" positionY="181.2578125" width="128" height="208"/>
-        <element name="APMArtistEntity" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="AlbumEntity" positionX="-67.7265625" positionY="64.34765625" width="128" height="208"/>
+        <element name="APMArtistEntity" positionX="119.87890625" positionY="56.0546875" width="128" height="135"/>
         <element name="SongEntity" positionX="122.234375" positionY="207.56640625" width="128" height="193"/>
+        <element name="PlaylistEntity" positionX="-64.05859375" positionY="289.9140625" width="128" height="178"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  LocalLibrayTableViewController.swift
 //  smore
 //
-//  Created by Jing Wei Li on 4/4/19.
+//  Created by Lil on 4/4/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
@@ -23,7 +23,7 @@ class LocalLibrayTableViewController: UITableViewController {
         return nil
     }
     
-    open var burButtonTitle: String { return "" }
+    open var barButtonTitle: String { return "" }
     
     open var rowHeight: CGFloat {
         return SearchTableViewCell.preferredHeight
@@ -69,7 +69,7 @@ class LocalLibrayTableViewController: UITableViewController {
 
 extension LocalLibrayTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: burButtonTitle)
+        return IndicatorInfo(title: barButtonTitle)
     }
     
 }
