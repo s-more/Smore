@@ -1,0 +1,416 @@
+{
+    "data": [
+        {
+            "id": "310730204",
+            "type": "albums",
+            "href": "/v1/catalog/us/albums/310730204",
+            "attributes": {
+                "artwork": {
+                    "width": 6000,
+                    "height": 6000,
+                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                    "bgColor": "ffffff",
+                    "textColor1": "121210",
+                    "textColor2": "282a29",
+                    "textColor3": "414240",
+                    "textColor4": "535554"
+                },
+                "artistName": "Bruce Springsteen",
+                "isSingle": false,
+                "url": "https://itunes.apple.com/us/album/born-to-run/310730204",
+                "isComplete": true,
+                "genreNames": [
+                    "Rock",
+                    "Music",
+                    "Pop",
+                    "Pop/Rock",
+                    "Arena Rock",
+                    "Rock & Roll"
+                ],
+                "trackCount": 8,
+                "isMasteredForItunes": true,
+                "releaseDate": "1975-08-25",
+                "name": "Born to Run",
+                "recordLabel": "Columbia",
+                "copyright": "℗ 1975 Bruce Springsteen",
+                "playParams": {
+                    "id": "310730204",
+                    "kind": "album"
+                },
+                "editorialNotes": {
+                    "standard": "Springsteen's third album was the one that broke it all open for him, planting his tales of Jersey girls, cars, and nights spent sleeping on the beach firmly in the Top Five. He shot for an unholy hybrid of Orbison, Dylan and Spector — and actually reached it. \"Come take my hand,\" he invited in the opening lines. \"We're ridin' out tonight to case the Promised Land.\" Soon after this album, he'd discover the limits of such dreams, but here, it's a wide-open road: Even the tales of petty crime (\"Meeting Across the River\") and teen-gang violence (\"Jungleland\") are invested with all the wit and charm you can handle. Bruce's catalog is filled with one-of-a-kind albums from <i>The Wild, The Innocent and the E Street Shuffle</i> to <i>The Ghost of Tom Joad</i>. Forty years on, <i>Born to Run</i> still sits near the very top of that stack.",
+                    "short": "Springsteen's third album was the one that broke it all open for him."
+                }
+            },
+            "relationships": {
+                "artists": {
+                    "data": [
+                        {
+                            "id": "178834",
+                            "type": "artists",
+                            "href": "/v1/catalog/us/artists/178834"
+                        }
+                    ],
+                    "href": "/v1/catalog/us/albums/310730204/artists"
+                },
+                "tracks": {
+                    "data": [
+                        {
+                            "id": "310730206",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730206",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music4/v4/a2/4f/a7/a24fa727-36e4-c870-973b-00704c80187a/mzaf_7083782255622091857.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/thunder-road/310730204?i=310730206",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 289186,
+                                "releaseDate": "1975-08-25",
+                                "name": "Thunder Road",
+                                "isrc": "USSM19904335",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730206",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 1,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730208",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730208",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music6/v4/4a/f4/d8/4af4d82e-4f37-744a-e57c-d215d4d33e7f/mzaf_5059518566033756247.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/tenth-avenue-freeze-out/310730204?i=310730208",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 191315,
+                                "releaseDate": "1975-08-25",
+                                "name": "Tenth Avenue Freeze-Out",
+                                "isrc": "USSM19904336",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730208",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 2,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730209",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730209",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music6/v4/86/f0/48/86f048fe-0540-341d-23e4-af964a47accc/mzaf_5312429574489384302.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/night/310730204?i=310730209",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 181341,
+                                "releaseDate": "1975-08-25",
+                                "name": "Night",
+                                "isrc": "USSM19904337",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730209",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 3,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730213",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730213",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music4/v4/be/5e/c2/be5ec2f4-4a2d-bebe-2673-c561184b2e00/mzaf_6738395021881076522.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/backstreets/310730204?i=310730213",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 391764,
+                                "releaseDate": "1975-08-25",
+                                "name": "Backstreets",
+                                "isrc": "USSM19904338",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730213",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 4,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730214",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730214",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music6/v4/e7/11/61/e7116151-918a-d38b-1f19-18c5e9fde68d/mzaf_6408655963451084497.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/born-to-run/310730204?i=310730214",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 269933,
+                                "releaseDate": "1975-08-25",
+                                "name": "Born to Run",
+                                "isrc": "USSM17500423",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730214",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 5,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730220",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730220",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music4/v4/7f/a7/98/7fa798ce-6961-a8eb-36f2-1ba5a6edb633/mzaf_1598287630853821436.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/shes-the-one/310730204?i=310730220",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 270261,
+                                "releaseDate": "1975-08-25",
+                                "name": "She's the One",
+                                "isrc": "USSM19904339",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730220",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 6,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730222",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730222",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music/v4/5c/57/79/5c57797c-1eaa-cc52-c09e-92a0ae5640bc/mzaf_8885046370683433204.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/meeting-across-the-river/310730204?i=310730222",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 198721,
+                                "releaseDate": "1975-08-25",
+                                "name": "Meeting Across the River",
+                                "isrc": "USSM19904340",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730222",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 7,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        },
+                        {
+                            "id": "310730227",
+                            "type": "songs",
+                            "href": "/v1/catalog/us/songs/310730227",
+                            "attributes": {
+                                "previews": [
+                                    {
+                                        "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music4/v4/0a/23/cb/0a23cb27-471d-5b38-1c19-1fd5bff63811/mzaf_1376553896271654019.plus.aac.p.m4a"
+                                    }
+                                ],
+                                "artwork": {
+                                    "width": 6000,
+                                    "height": 6000,
+                                    "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+                                    "bgColor": "ffffff",
+                                    "textColor1": "121210",
+                                    "textColor2": "282a29",
+                                    "textColor3": "414240",
+                                    "textColor4": "535554"
+                                },
+                                "artistName": "Bruce Springsteen",
+                                "url": "https://itunes.apple.com/us/album/jungleland/310730204?i=310730227",
+                                "discNumber": 1,
+                                "genreNames": [
+                                    "Rock",
+                                    "Music",
+                                    "Arena Rock",
+                                    "Rock & Roll",
+                                    "Pop",
+                                    "Pop/Rock"
+                                ],
+                                "durationInMillis": 573496,
+                                "releaseDate": "1975-08-25",
+                                "name": "Jungleland",
+                                "isrc": "USSM19904341",
+                                "albumName": "Born to Run",
+                                "playParams": {
+                                    "id": "310730227",
+                                    "kind": "song"
+                                },
+                                "trackNumber": 8,
+                                "composerName": "Bruce Springsteen"
+                            }
+                        }
+                    ],
+                    "href": "/v1/catalog/us/albums/310730204/tracks"
+                }
+            }
+        }
+    ]
+}

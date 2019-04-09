@@ -1,0 +1,44 @@
+{
+    "id": "310730220",
+    "type": "songs",
+    "href": "/v1/catalog/us/songs/310730220",
+    "attributes": {
+        "previews": [
+            {
+                "url": "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music4/v4/7f/a7/98/7fa798ce-6961-a8eb-36f2-1ba5a6edb633/mzaf_1598287630853821436.plus.aac.p.m4a"
+            }
+        ],
+        "artwork": {
+            "width": 6000,
+            "height": 6000,
+            "url": "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/bf/48/b7/bf48b7cb-6886-b77d-dbd5-c4999cd2a739/884977157031.jpg/{w}x{h}bb.jpeg",
+            "bgColor": "ffffff",
+            "textColor1": "121210",
+            "textColor2": "282a29",
+            "textColor3": "414240",
+            "textColor4": "535554"
+        },
+        "artistName": "Bruce Springsteen",
+        "url": "https://itunes.apple.com/us/album/shes-the-one/310730204?i=310730220",
+        "discNumber": 1,
+        "genreNames": [
+            "Rock",
+            "Music",
+            "Arena Rock",
+            "Rock & Roll",
+            "Pop",
+            "Pop/Rock"
+        ],
+        "durationInMillis": 270261,
+        "releaseDate": "1975-08-25",
+        "name": "She's the One",
+        "isrc": "USSM19904339",
+        "albumName": "Born to Run",
+        "playParams": {
+            "id": "310730220",
+            "kind": "song"
+        },
+        "trackNumber": 6,
+        "composerName": "Bruce Springsteen"
+    }
+}

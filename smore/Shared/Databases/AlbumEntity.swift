@@ -10,20 +10,23 @@ import CoreData
 
 class AlbumEntity: NSManagedObject {
     
+    static var context = SmoreDatabase.context
+    
     static let fetchedResultsController: NSFetchedResultsController<AlbumEntity> = {
         let request: NSFetchRequest<AlbumEntity> = AlbumEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         let frc = NSFetchedResultsController(
             fetchRequest: request,
-            managedObjectContext: SmoreDatabase.context,
+            managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: nil)
         return frc
     }()
 
-    class func makeAlbum(with album: Album) {
+    @discardableResult
+    class func makeAlbum(with album: Album, save: Bool = true) -> AlbumEntity {
         guard !album.songs.isEmpty else { fatalError("Album should have songs when adding to DB")}
-        let albumEntity = AlbumEntity(context: SmoreDatabase.context)
+        let albumEntity = AlbumEntity(context: context)
         albumEntity.artistName = album.artistName
         albumEntity.name = album.name
         albumEntity.id = album.id
@@ -39,14 +42,16 @@ class AlbumEntity: NSManagedObject {
             SongEntity.makeSong(from: $0, save: false)
         }))
         
-        try? SmoreDatabase.save()
+        if context.hasChanges && save { try? context.save() }
+        
+        return albumEntity
     }
     
     class func albums() -> [Album] {
         let request: NSFetchRequest<AlbumEntity> = AlbumEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
-        if let results = try? SmoreDatabase.context.fetch(request) {
+        if let results = try? context.fetch(request) {
             return results.reduce([], { tempResult, newEntity -> [Album] in
                 if let streamingService = StreamingService(rawValue: Int(newEntity.streamingService)) {
                     switch streamingService {
@@ -66,7 +71,7 @@ class AlbumEntity: NSManagedObject {
         request.predicate = NSPredicate(
             format: "name = %@ && artistName = %@ && id = %@",
             album.name, album.artistName, album.id)
-        if let results = try? SmoreDatabase.context.fetch(request), !results.isEmpty {
+        if let results = try? context.fetch(request), !results.isEmpty {
             return true
         }
         return false

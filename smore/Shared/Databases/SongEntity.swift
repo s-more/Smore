@@ -10,12 +10,15 @@ import CoreData
 
 class SongEntity: NSManagedObject {
     
+    /// Can change the context for the setting of unit tests.
+    static var context: NSManagedObjectContext = SmoreDatabase.context
+    
     static let fetchedResultsController: NSFetchedResultsController<SongEntity> = {
         let request: NSFetchRequest<SongEntity> = SongEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let frc = NSFetchedResultsController(
             fetchRequest: request,
-            managedObjectContext: SmoreDatabase.context,
+            managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: nil)
         return frc
@@ -31,12 +34,12 @@ class SongEntity: NSManagedObject {
         request.predicate = NSPredicate(
             format: "name = %@ && artistName = %@ && id = %@",
             song.name, song.artistName, song.id)
-        if let results = try? SmoreDatabase.context.fetch(request), let first = results.first {
+        if let results = try? context.fetch(request), let first = results.first {
             return first
         }
         
         // otherwise create new sing
-        let entity = SongEntity(context: SmoreDatabase.context)
+        let entity = SongEntity(context: context)
         entity.name = song.name
         entity.genre = song.genre
         entity.imageLink = song.imageLink
@@ -48,7 +51,7 @@ class SongEntity: NSManagedObject {
         entity.trackNumer = Int16(song.trackNumber)
         entity.duration = song.duration
         
-        if save { try? SmoreDatabase.save() }
+        if save && context.hasChanges { try? context.save() }
         return entity
     }
     
@@ -56,7 +59,7 @@ class SongEntity: NSManagedObject {
         let request: NSFetchRequest<SongEntity> = SongEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        if let results = try? SmoreDatabase.context.fetch(request) {
+        if let results = try? context.fetch(request) {
             return results.reduce([], { tempResult, newEntity -> [Song] in
                 if let streamingService = StreamingService(rawValue: Int(newEntity.streamingService)) {
                     switch streamingService {
@@ -76,7 +79,7 @@ class SongEntity: NSManagedObject {
         request.predicate = NSPredicate(
             format: "name = %@ && artistName = %@ && id = %@",
             song.name, song.artistName, song.id)
-        if let results = try? SmoreDatabase.context.fetch(request), !results.isEmpty {
+        if let results = try? context.fetch(request), !results.isEmpty {
             return true
         }
         return false

@@ -68,6 +68,19 @@ class APMAlbum: Album {
         songs = []
     }
     
+    init(albumResponse: APMAlbumResponse.APMAlbumData) {
+        id = albumResponse.id
+        name = albumResponse.attributes.name
+        artistName = albumResponse.attributes.artistName
+        playableString = albumResponse.attributes.playParams?.id ?? ""
+        imageLink = albumResponse.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        releaseDate = albumResponse.attributes.releaseDate
+        description = albumResponse.attributes.editorialNotes?.standard
+        originalImageLink = albumResponse.attributes.artwork?.url
+        isSingle = albumResponse.attributes.isSingle
+        songs = albumResponse.relationships.tracks.data.map { APMSong(albumTrackData: $0) }
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
             DispatchQueue.main.async { completion() }

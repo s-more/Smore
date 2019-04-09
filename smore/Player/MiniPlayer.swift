@@ -125,6 +125,7 @@ class MiniPlayer: UIView {
                 }, completion: nil)
                 let vc = PlayerViewController()
                 (window?.rootViewController as? TabBarViewController)?.present(vc, animated: true)
+                Haptic.current.beep()
             } else {
                 UIView.animate(withDuration: 0.3, animations: { [weak self] in
                     guard let strongSelf = self else { return }
