@@ -17,6 +17,16 @@ class APMArtist: Artist {
     var originalImageLink: String?
     var streamingService: StreamingService
     
+    init(artistEntity: APMArtistEntity) {
+        name = artistEntity.name ?? ""
+        genre = artistEntity.genre ?? ""
+        imageLink = URL(string: artistEntity.imageLink ?? "")
+        originalImageLink = artistEntity.originalImageLink
+        albums = []
+        id = artistEntity.identifier ?? ""
+        streamingService = StreamingService(rawValue: Int(artistEntity.streamingService)) ?? .none
+    }
+    
     init(name: String, genre: String, imageLink: URL?, originalImageLink: String?, id: String) {
         self.name = name
         self.genre = genre

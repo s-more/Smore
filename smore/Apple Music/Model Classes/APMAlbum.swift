@@ -21,6 +21,24 @@ class APMAlbum: Album {
     var streamingService: StreamingService = .appleMusic
     var isSingle: Bool
     
+    init(albumEntity: AlbumEntity) {
+        id = albumEntity.id ?? ""
+        name = albumEntity.name ?? ""
+        artistName = albumEntity.artistName ?? ""
+        playableString = albumEntity.playableString ?? ""
+        imageLink = albumEntity.imageLink
+        releaseDate = albumEntity.releaseDate ?? ""
+        description = albumEntity.editorDescription ?? ""
+        originalImageLink = albumEntity.originalImageLink ?? ""
+        streamingService = .appleMusic
+        isSingle = albumEntity.isSingle
+        if let fetchedSongs = albumEntity.songs?.array as? [SongEntity] {
+            songs = fetchedSongs.map { APMSong(songEntity: $0) }
+        } else {
+            songs = []
+        }
+    }
+    
     init(response: APMSearch.APMSearchResults.APMSearchAlbums.APMAlbumData) {
         id = response.id
         name = response.attributes.name
@@ -48,6 +66,19 @@ class APMAlbum: Album {
         originalImageLink = relAlbumData.attributes?.artwork?.url
         isSingle = relAlbumData.attributes?.isSingle ?? false
         songs = []
+    }
+    
+    init(albumResponse: APMAlbumResponse.APMAlbumData) {
+        id = albumResponse.id
+        name = albumResponse.attributes.name
+        artistName = albumResponse.attributes.artistName
+        playableString = albumResponse.attributes.playParams?.id ?? ""
+        imageLink = albumResponse.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        releaseDate = albumResponse.attributes.releaseDate
+        description = albumResponse.attributes.editorialNotes?.standard
+        originalImageLink = albumResponse.attributes.artwork?.url
+        isSingle = albumResponse.attributes.isSingle
+        songs = albumResponse.relationships.tracks.data.map { APMSong(albumTrackData: $0) }
     }
     
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {

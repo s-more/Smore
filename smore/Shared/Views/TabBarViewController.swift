@@ -24,9 +24,17 @@ class TabBarViewController: UITabBarController {
         searchVC.navigationBar.barStyle = .black
         searchVC.navigationBar.isTranslucent = true
         searchVC.navigationBar.backgroundColor = UIColor.black
-        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "searchIcon"), tag: 1)
+        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "searchIcon"), tag: 2)
         
-        viewControllers = [browseVC, searchVC]
+        let localLibraryVC = LibraryViewController(viewModel: LocalLibraryViewModel())
+        let localLibraryNavController = UINavigationController(rootViewController: localLibraryVC)
+        configureNavBar(on: localLibraryNavController)
+        localLibraryNavController.navigationBar.setBackgroundImage(nil, for: .default)
+        localLibraryNavController.navigationBar.backgroundColor = UIColor.black
+        localLibraryNavController.tabBarItem = UITabBarItem(
+            title: "Library", image: UIImage(named: "LibraryIcon"), tag: 1)
+        
+        viewControllers = [browseVC, localLibraryNavController, searchVC]
         
         tabBar.barTintColor = UIColor.tabBarBackground
         tabBar.unselectedItemTintColor = UIColor.darkGray

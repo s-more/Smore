@@ -24,9 +24,14 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
+    @IBOutlet weak var addToLibraryButton: UIButton!
     
     let viewModel: PlayerViewModel
     let disposeBag = DisposeBag()
+    
+    private lazy var checkmarkAnimation: () -> Void = { [weak self] in
+        self?.view.addSubview(LottieActivityIndicator.checkmark)
+    }
     
     init() {
         viewModel = PlayerViewModel()
@@ -156,7 +161,9 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        
+        addToLibraryButton.setImage(UIImage(named: "checkmarkIcon"), for: .normal)
+        addToLibraryButton.isUserInteractionEnabled = false
+        checkmarkAnimation()
     }
     
     // MARK: - Helpers
@@ -174,6 +181,13 @@ class PlayerViewController: UIViewController {
     }
     
     func refresh() {
+        if SongEntity.doesSongExist(song: MusicQueue.shared.currentSong) {
+            addToLibraryButton.setImage(UIImage(named: "checkmarkIcon"), for: .normal)
+            addToLibraryButton.isUserInteractionEnabled = false
+        } else {
+            addToLibraryButton.setImage(UIImage(named: "plusIcon"), for: .normal)
+            addToLibraryButton.isUserInteractionEnabled = true
+        }
         titleLabel.text = MusicQueue.shared.currentSong.name
         subtitleLabel.text = MusicQueue.shared.currentSong.artistName
         albumArtCollectionView.scrollToItem(at: IndexPath(row: MusicQueue.shared.currentPosition.value, section: 0), at: .centeredHorizontally, animated: true)
@@ -202,10 +216,8 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
         
         let currentSong = MusicQueue.shared.queue.value[MusicQueue.shared.currentPosition.value + indexPath.row + 1]
         if let cell = cell as? SongTableViewCell {
-            cell.songImageView.kf.setImage(with: currentSong.imageLink,
-                                           placeholder: UIImage(named: "artistPlaceholder"))
-            cell.songSubtitle.text = currentSong.artistName
-            cell.songTitle.text = currentSong.name
+            cell.animationBlock = checkmarkAnimation
+            cell.configure(with: currentSong)
         }
         
         return cell

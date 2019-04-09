@@ -73,7 +73,7 @@ class BrowseTableViewController: UITableViewController {
                 cell.artists = viewModel.favArtists
                 cell.action = { [weak self] artist in
                     let vm = ArtistLibraryViewModel(artist: artist)
-                    let vc = ArtistLibraryViewController(viewModel: vm)
+                    let vc = LibraryViewController(viewModel: vm)
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }

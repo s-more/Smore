@@ -26,6 +26,13 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
     
     private var nameLabelPosition: CGFloat = 0
     private var isNavBarShown = false
+    private var checkmarkAnimation = LottieActivityIndicator.checkmark
+    
+    final lazy var addCheckmark: () -> Void = { [weak self] in
+        if let animation = self?.checkmarkAnimation {
+            self?.view.addSubview(animation)
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -62,8 +69,6 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.alpha = 0
-        bottomGradientHeight.constant = titleLabel.frame.size.height + 40
-        view.layoutIfNeeded()
         nameLabelPosition = titleLabel.frame.origin.y + titleLabel.frame.height
     }
     
@@ -74,7 +79,9 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
         let descripHeight = descriptionLabel.frame.height
         let addButtonsHeight: CGFloat = 51
         let miniPlayerHeight: CGFloat = 60
-        scrollView.contentSize = scrollViewContentSize(fixedHeight: screenWidth + descripHeight + addButtonsHeight + miniPlayerHeight)
+        let detailTextHeight = subtitleLabel.frame.height + 10
+        let titleTextHeight = titleLabel.frame.height
+        scrollView.contentSize = scrollViewContentSize(fixedHeight: screenWidth + descripHeight + addButtonsHeight + miniPlayerHeight + detailTextHeight + titleTextHeight)
         tableView.contentSize = tableViewContentSize
         tableViewHeight.constant = tableViewContentSize.height
         view.layoutIfNeeded()
@@ -123,7 +130,12 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    @objc open func handleAddButtonTap(_ sender: UIButton) {}
+    /// Call `super.handleAddButtonTap(_:)` at the end to refresh the table view to reflect add button's
+    /// changes. It also shows a checkmark animation.
+    @objc open func handleAddButtonTap(_ sender: UIButton) {
+        view.addSubview(checkmarkAnimation)
+        tableView.reloadData()
+    }
     
     @objc open func handlePlaybuttonTap(_ sender: UIButton) {}
     

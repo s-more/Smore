@@ -1,5 +1,5 @@
 //
-//  ArtistLibraryViewController.swift
+//  LibraryViewController.swift
 //  smore
 //
 //  Created by Jing Wei Li on 3/8/19.
@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import Kingfisher
 
-class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
+class LibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -19,12 +19,12 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var masterView: UIView!
     @IBOutlet weak var followButton: UIButton!
     
-    let viewModel: ArtistLibraryViewModel
+    let viewModel: LibraryViewModel
     let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
     
-    init(viewModel: ArtistLibraryViewModel) {
+    init(viewModel: LibraryViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: "ArtistLibraryViewController", bundle: Bundle.main)
+        super.init(nibName: "LibraryViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,11 +33,18 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         scrollView.delegate = self
-        backgroundImage.kf.setImage(with: viewModel.highResImageURL,
-                                    placeholder: UIImage.imageFrom(color: UIColor.black))
-        nameLabel.text = viewModel.artist.name
         
-        scrollView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+        if let image = viewModel.highResImage {
+            backgroundImage.image = image
+        } else {
+            backgroundImage.kf.setImage(with: viewModel.highResImageURL,
+                                        placeholder: UIImage.imageFrom(color: UIColor.black))
+        }
+        
+        nameLabel.text = viewModel.titleText
+    
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         
         settings.style.buttonBarBackgroundColor = .black
         settings.style.buttonBarItemBackgroundColor = .black
@@ -51,11 +58,15 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 0
         
-        followButton.addSmoreBoder(withWhiteBorder: true)
-        if APMArtistEntity.doesArtistExist(artist: viewModel.artist) {
-            followButton.disable()
+        if viewModel.hideFollowButton {
+            followButton.isHidden = true
         } else {
-            followButton.setTitle("  Follow  ", for: .normal)
+            followButton.addSmoreBoder(withWhiteBorder: true)
+            if viewModel.disableFollowButton {
+                followButton.disable()
+            } else {
+                followButton.setTitle("  Follow  ", for: .normal)
+            }
         }
                 
         super.viewDidLoad()
@@ -76,23 +87,28 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationItem.title = viewModel.artist.name
-        if viewModel.isButtonBarPositionSet {
-            if scrollView.contentOffset.y > viewModel.initialButtonBarPosition {
-                navigationController?.navigationBar.alpha = 1
+        navigationItem.title = viewModel.titleText//viewModel.artist.name
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [weak self] in
+            if self?.viewModel.isButtonBarPositionSet ?? false {
+                if self?.scrollView.contentOffset.y ?? 0 > self?.viewModel.initialButtonBarPosition ?? 0 {
+                    self?.navigationController?.navigationBar.alpha = 1
+                } else {
+                    self?.navigationController?.navigationBar.alpha = 0
+                }
             } else {
-                navigationController?.navigationBar.alpha = 0
+                self?.navigationController?.navigationBar.alpha = 0
             }
-        } else {
-            navigationController?.navigationBar.alpha = 0
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !viewModel.isButtonBarPositionSet {
-            viewModel.initialButtonBarPosition = buttonBarView.frame.origin.y
-            viewModel.isButtonBarPositionSet = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self ] in
+            guard let strongSelf = self else { return }
+            if !strongSelf.viewModel.isButtonBarPositionSet {
+                strongSelf.viewModel.initialButtonBarPosition = strongSelf.buttonBarView.frame.origin.y
+                strongSelf.viewModel.isButtonBarPositionSet = true
+            }
         }
     }
     
@@ -105,7 +121,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
         return .lightContent
     }
     
-    private func applyContentSize() {
+    func applyContentSize() {
         let fixedHeights = UIScreen.main.bounds.width + 20
         let wrapperSize = viewModel.viewControllers[currentIndex].wrapperScrollViewSize(immobileSectionHeight: fixedHeights)
         scrollView.contentSize = wrapperSize
@@ -119,7 +135,7 @@ class ArtistLibraryViewController: ButtonBarPagerTabStripViewController {
     @IBAction func followButtonTapped(_ sender: UIButton) {
         followButton.setTitle("Following", for: .normal)
         followButton.disable()
-        viewModel.followCurrentArtist()
+        viewModel.followButtonTapped()
     }
     
     // MARK: - XLPagerTabStrip
