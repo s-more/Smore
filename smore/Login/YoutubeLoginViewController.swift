@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class YoutubeLoginViewController: UIViewController {
+class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
     
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: GIDSignInButton!
     
     init() {
         super.init(nibName: "YoutubeLoginViewController", bundle: Bundle.main)
@@ -25,9 +24,9 @@ class YoutubeLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
         loginButton.addRoundCorners()
-        usernameTextField.addRoundCorners()
-        passwordTextField.addRoundCorners()
         // Do any additional setup after loading the view.
         let colors = [
             UIColor(red: 0, green: 0, blue: 0, alpha: 1),
@@ -37,6 +36,7 @@ class YoutubeLoginViewController: UIViewController {
     }
     
     @IBAction func loginYoutubeUser(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.signIn()
         navigationController?.pushViewController(StartupViewController(), animated: true)
     }
     
