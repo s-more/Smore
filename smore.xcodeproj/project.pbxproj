@@ -20,8 +20,6 @@
 		0409D5C72207676500CB4CDE /* SpotifyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */; };
 		0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
 		040A0660222C672C009B37E3 /* SlidingViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A065F222C672C009B37E3 /* SlidingViewTransition.swift */; };
-		040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */; };
-		040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */; };
 		041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041084B02218431C00E96574 /* APMSearchResponse.swift */; };
 		041746FE22272F6B0044350F /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041746FD22272F6B0044350F /* Album.swift */; };
 		0417470022272F7D0044350F /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041746FF22272F7D0044350F /* Playlist.swift */; };
@@ -159,6 +157,8 @@
 		04FBBA58225C4CDC001A8D75 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBBA57225C4CDC001A8D75 /* Haptic.swift */; };
 		124E818B00A073206503F6CE /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */; };
 		277EEAEE2242C31100839CFD /* LibrarySongTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */; };
+		27919C9D225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
+		27919C9E225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 		6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */; };
 		6E311094223AEBDC00314C4F /* LibraryAlbumTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */; };
@@ -206,8 +206,6 @@
 		0409D5C52207676500CB4CDE /* SpotifyLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotifyLoginViewController.xib; sourceTree = "<group>"; };
 		0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
 		040A065F222C672C009B37E3 /* SlidingViewTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingViewTransition.swift; sourceTree = "<group>"; };
-		040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundcloudLoginViewController.xib; sourceTree = "<group>"; };
-		040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudLoginViewController.swift; sourceTree = "<group>"; };
 		041084B02218431C00E96574 /* APMSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMSearchResponse.swift; sourceTree = "<group>"; };
 		041746FD22272F6B0044350F /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		041746FF22272F7D0044350F /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
@@ -321,6 +319,7 @@
 		1BBD29F9565F1666615D7EE9 /* Pods-smore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySongTableViewController.swift; sourceTree = "<group>"; };
+		27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryAlbumTableViewController.swift; path = smore/Library/LibraryAlbumTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LibraryAlbumTableViewController.xib; path = smore/Library/LibraryAlbumTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,8 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				04A366B0221B719C006B3D0A /* Startup */,
-				040D287F22161FE900BE7B1A /* SoundcloudLoginViewController.swift */,
-				040D287E22161FE900BE7B1A /* SoundcloudLoginViewController.xib */,
 				0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */,
 				0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */,
 				0409D5B9220753C600CB4CDE /* AppleMusicAuthViewController.swift */,
@@ -543,6 +540,7 @@
 		046FDB6221FE63BA00E8245D = {
 			isa = PBXGroup;
 			children = (
+				27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */,
 				046FDB6D21FE63BB00E8245D /* smore */,
 				046FDB8221FE63BE00E8245D /* smoreTests */,
 				046FDB6C21FE63BB00E8245D /* Products */,
@@ -896,7 +894,6 @@
 				0460AC65223B63520075D932 /* SongTableViewCell.xib in Resources */,
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
 				04B957912259A8B700BA7D74 /* Checkmark.json in Resources */,
-				040D288022161FE900BE7B1A /* SoundcloudLoginViewController.xib in Resources */,
 				041E4CD4223F4E3B0038447C /* PlayerAlbumArtCollectionViewCell.xib in Resources */,
 				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
 				04B4ADE12232D62C006E6D8A /* LibraryViewController.xib in Resources */,
@@ -908,6 +905,7 @@
 				04A5D0DB222376E500774489 /* ListeningCollectionViewCell.xib in Resources */,
 				04B760C8222B8F110095AF33 /* SearchTableViewCell.xib in Resources */,
 				0460AC54223AA6FE0075D932 /* LibraryContentViewController.xib in Resources */,
+				27919C9D225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */,
 				0419045E222390C000EB22EC /* Main.storyboard in Resources */,
 				046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */,
 				041E4CD0223F44D70038447C /* PlayerViewController.xib in Resources */,
@@ -921,6 +919,7 @@
 			files = (
 				04FBBA52225BE81A001A8D75 /* SampleSongData.json in Resources */,
 				04EC41CF225AB08900156FA6 /* SampleAlbumData.json in Resources */,
+				27919C9E225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,7 +978,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-smore/Pods-smore-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -990,7 +989,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-smore/Pods-smore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE278AFCE933A4BA8BB60237 /* [CP] Embed Pods Frameworks */ = {
@@ -1001,11 +1000,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-smore/Pods-smore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -1014,6 +1014,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1024,6 +1025,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1032,11 +1034,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-smore/Pods-smore-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-smore/Pods-smore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1082,7 +1085,6 @@
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
-				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */,
 				0460AC50223A9CA30075D932 /* APMPlaylistResponse.swift in Sources */,
