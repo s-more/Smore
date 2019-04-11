@@ -73,6 +73,7 @@
 		04925710223DB3DC00500F1A /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492570F223DB3DC00500F1A /* MiniPlayer.swift */; };
 		04925712223DB3ED00500F1A /* MiniPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04925711223DB3ED00500F1A /* MiniPlayer.xib */; };
 		0497C73B2224AB5A0056C5E6 /* SmoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C73A2224AB5A0056C5E6 /* SmoreDatabase.swift */; };
+		049CEA0F225EFB25004CA0B3 /* UIAlertAction+MoreActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CEA0E225EFB25004CA0B3 /* UIAlertAction+MoreActions.swift */; };
 		04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
 		04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */; };
 		04A1694222568B4700E7A71F /* AlbumEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1694122568B4700E7A71F /* AlbumEntity.swift */; };
@@ -263,6 +264,7 @@
 		0492570F223DB3DC00500F1A /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 		04925711223DB3ED00500F1A /* MiniPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayer.xib; sourceTree = "<group>"; };
 		0497C73A2224AB5A0056C5E6 /* SmoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoreDatabase.swift; sourceTree = "<group>"; };
+		049CEA0E225EFB25004CA0B3 /* UIAlertAction+MoreActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+MoreActions.swift"; sourceTree = "<group>"; };
 		04A0A720221F902B000EC0BF /* Array+RemoveDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemoveDuplicates.swift"; sourceTree = "<group>"; };
 		04A1694122568B4700E7A71F /* AlbumEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumEntity.swift; sourceTree = "<group>"; };
 		04A1694322568E9D00E7A71F /* SongEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEntity.swift; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				04A5D0BA222310B900774489 /* UserDefaults+Extensions.swift */,
 				04B4ADEF22335DA3006E6D8A /* UIImage+Extensions.swift */,
 				0460AC60223B5A0B0075D932 /* UIButton+Extensions.swift */,
+				049CEA0E225EFB25004CA0B3 /* UIAlertAction+MoreActions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1068,6 +1071,7 @@
 				046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */,
 				04FA0B29220661DC0095430A /* AppleMusicAPI.swift in Sources */,
 				0454BF04221B796A0019D4F4 /* StartupViewModel.swift in Sources */,
+				049CEA0F225EFB25004CA0B3 /* UIAlertAction+MoreActions.swift in Sources */,
 				04B760CA222B95420095AF33 /* AllSearchDataSource.swift in Sources */,
 				041E4CD6223F55D00038447C /* PlayerViewModel.swift in Sources */,
 				045F09672212567A00D7730E /* LottieActivityIndicator.swift in Sources */,

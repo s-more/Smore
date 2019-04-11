@@ -66,7 +66,10 @@ class PlaylistContentViewController: LibraryContentViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? SongTableViewCell {
-            cell.animationBlock = addCheckmark
+            cell.didSelectMoreButton = { [weak self] song in
+                guard let strongSelf = self else { return }
+                UIAlertController.showMoreAction(from: song, on: strongSelf)
+            }
             cell.configure(with: viewModel.playlist.songs[indexPath.row])
         }
         
