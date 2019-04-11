@@ -49,16 +49,16 @@ class ArtistLibraryViewModel: LibraryViewModel {
             types: [.albums, .playlists, .songs],
             limit: 20,
             success: { [weak self] data in
-                if let rawAlbums = data.albums?.data {
-                    let albums =  rawAlbums.map { APMAlbum(response: $0) }
+                if let rawAlbums = data.albums?.items {
+                    let albums =  rawAlbums.map { SPTAlbum(searchAlbumData: $0) }
                     self?.fetchedAlbums = albums.filter { !$0.isSingle }
                     self?.fetchedSingles = albums.filter { $0.isSingle }
                 }
-                if let rawPlaylists = data.playlists?.data {
-                    self?.fetchedPlaylists = rawPlaylists.map { APMPlaylist(searchResponse: $0) }
-                }
-                if let rawSongs = data.songs?.data {
-                    self?.fetchedSongs = rawSongs.map { APMSong(searchResponse: $0) }
+//                if let rawPlaylists = data.playlists?.data {
+//                    self?.fetchedPlaylists = rawPlaylists.map { APMPlaylist(searchResponse: $0) }
+//                }
+                if let rawSongs = data.tracks?.items {
+                    self?.fetchedSongs = rawSongs.map { SPTSong(searchResponse: $0) }
                 }
                 if let strongSelf = self {
                     strongSelf.viewControllers.removeAll()

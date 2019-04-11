@@ -38,6 +38,7 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func skip(_ sender: UIButton) {
+//        SpotifyAPI.searchCatalog(token: SpotifyRemote.shared.appRemote.connectionParameters.accessToken!, term: "hozier")
         navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
     }
     //    OnClick of Auth button, initiate spotify session
