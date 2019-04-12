@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04051420225FE0C8006A71AB /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405141E225FE0C8006A71AB /* AddToPlaylistViewController.swift */; };
+		04051421225FE0C8006A71AB /* AddToPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0405141F225FE0C8006A71AB /* AddToPlaylistViewController.xib */; };
+		04051423225FFA3D006A71AB /* AddToPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051422225FFA3D006A71AB /* AddToPlaylistViewModel.swift */; };
+		04051426226018DE006A71AB /* CombinedPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04051425226018DE006A71AB /* CombinedPlaylist.swift */; };
 		0409D5AB22067A9700CB4CDE /* AppleMusicAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */; };
 		0409D5AF2207458900CB4CDE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */; };
 		0409D5B02207458900CB4CDE /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */; };
@@ -192,6 +196,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0405141E225FE0C8006A71AB /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
+		0405141F225FE0C8006A71AB /* AddToPlaylistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToPlaylistViewController.xib; sourceTree = "<group>"; };
+		04051422225FFA3D006A71AB /* AddToPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddToPlaylistViewModel.swift; path = "smore/Library/Add to Playlist/AddToPlaylistViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		04051425226018DE006A71AB /* CombinedPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedPlaylist.swift; sourceTree = "<group>"; };
 		0409D5AA22067A9700CB4CDE /* AppleMusicAPI+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleMusicAPI+Rx.swift"; sourceTree = "<group>"; };
 		0409D5AD2207458900CB4CDE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		0409D5AE2207458900CB4CDE /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -375,6 +383,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04051424226018BE006A71AB /* Add to Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				0405141E225FE0C8006A71AB /* AddToPlaylistViewController.swift */,
+				0405141F225FE0C8006A71AB /* AddToPlaylistViewController.xib */,
+				04051422225FFA3D006A71AB /* AddToPlaylistViewModel.swift */,
+				04051425226018DE006A71AB /* CombinedPlaylist.swift */,
+			);
+			path = "Add to Playlist";
+			sourceTree = "<group>";
+		};
 		0409D5AC220744D500CB4CDE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -654,6 +673,7 @@
 		04B4ADDD2232D5FF006E6D8A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				04051424226018BE006A71AB /* Add to Playlist */,
 				04B0D08F224DDD7F00AA7B20 /* Local Library */,
 				0460AC55223AA70A0075D932 /* Library Content */,
 				04B4ADE62232EAC0006E6D8A /* Artist Library */,
@@ -903,6 +923,7 @@
 				041E4CD4223F4E3B0038447C /* PlayerAlbumArtCollectionViewCell.xib in Resources */,
 				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
 				04B4ADE12232D62C006E6D8A /* LibraryViewController.xib in Resources */,
+				04051421225FE0C8006A71AB /* AddToPlaylistViewController.xib in Resources */,
 				0409D5BC220753C600CB4CDE /* AppleMusicAuthViewController.xib in Resources */,
 				C6EFE55F22149F36001D18D2 /* YoutubeLoginViewController.xib in Resources */,
 				04925712223DB3ED00500F1A /* MiniPlayer.xib in Resources */,
@@ -1066,6 +1087,7 @@
 				0460AC67223BFB6B0075D932 /* AlbumContentViewController.swift in Sources */,
 				0409D5C62207676500CB4CDE /* SpotifyLoginViewController.swift in Sources */,
 				6EE89CEB22480B1C00DFE580 /* SpotifyRemote.swift in Sources */,
+				04051420225FE0C8006A71AB /* AddToPlaylistViewController.swift in Sources */,
 				0454BF12221B7F9D0019D4F4 /* FlowLayout.swift in Sources */,
 				04A5D0C622232FC500774489 /* APMArtistEntity.swift in Sources */,
 				046540EE221B99A9003AD74D /* StartupSearchTableViewController.swift in Sources */,
@@ -1088,6 +1110,7 @@
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
 				040D288122161FE900BE7B1A /* SoundcloudLoginViewController.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
+				04051423225FFA3D006A71AB /* AddToPlaylistViewModel.swift in Sources */,
 				046540F7221BBA3B003AD74D /* APMCatalogGenre.swift in Sources */,
 				0460AC50223A9CA30075D932 /* APMPlaylistResponse.swift in Sources */,
 				04A0A721221F902B000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
@@ -1127,6 +1150,7 @@
 				0417470022272F7D0044350F /* Playlist.swift in Sources */,
 				04A5D0B922230E8200774489 /* UIColor+Common.swift in Sources */,
 				041E4CD3223F4E3B0038447C /* PlayerAlbumArtCollectionViewCell.swift in Sources */,
+				04051426226018DE006A71AB /* CombinedPlaylist.swift in Sources */,
 				0409D5C22207672600CB4CDE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				04B3C6FE22092098008ADF9E /* AppleMusicAPI+DataRequests.swift in Sources */,
 				0460AC57223AA72A0075D932 /* PlaylistContentViewModel.swift in Sources */,

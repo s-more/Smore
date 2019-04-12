@@ -31,8 +31,13 @@ class LocalPlaylistTableViewController: LocalLibrayTableViewController {
         
         if let cell = cell as? SearchTableViewCell,
             let playlist = PlaylistEntity.standardPlaylist(from: playlistEntity) {
-            cell.masterImage.kf.setImage(with: playlist.imageLink,
-                                         placeholder: UIImage(named: "artistPlaceholder"))
+            if let url = playlistEntity.imageLink, url.absoluteString.starts(with: "assets-library") {
+                let width = UIScreen.main.bounds.width * 0.2 * UIScreen.main.scale
+                cell.masterImage.setImageWithAssetURL(url, size: CGSize(width: width, height: width))
+            } else {
+                cell.masterImage.kf.setImage(with: playlist.imageLink,
+                                             placeholder: UIImage(named: "artistPlaceholder"))
+            }
             cell.masterLabel.text = playlist.name
             cell.subtitleLabel.text = playlist.curatorName
             cell.serviceIcon.image = playlist.streamingService.icon

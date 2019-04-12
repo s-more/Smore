@@ -27,7 +27,9 @@ extension UIAlertController {
             title: "Add to Playlist",
             style: .default,
             handler: { _ in
-                // implement
+                let vm = AddToPlaylistViewModel(songToAdd: song)
+                let viewController = AddToPlaylistViewController(viewModel: vm)
+                 vc.present(viewController, animated: true, completion: nil)
             }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actionSheet.view.tintColor = .themeColor

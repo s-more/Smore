@@ -42,6 +42,26 @@ class PlaylistEntity: NSManagedObject {
         try? SmoreDatabase.save()
     }
     
+    class func add(song: Song, to playlist: Playlist) -> Error? {
+        let request: NSFetchRequest<PlaylistEntity> = PlaylistEntity.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "name = %@ && curatorName = %@ && id = %@",
+            playlist.name, playlist.curatorName, playlist.id)
+        do {
+            let result = try SmoreDatabase.context.fetch(request)
+            if result.count != 1 {
+                return NSError(domain: "DB inconsistency or playlist do not exist in DB",
+                               code: 0, userInfo: nil)
+            }
+            let entity = SongEntity.makeSong(from: song)
+            result.first?.addToSongs(entity)
+            try SmoreDatabase.save()
+        } catch let error {
+            return error
+        }
+        return nil
+    }
+    
     class func playlists() -> [Playlist] {
         let request: NSFetchRequest<PlaylistEntity> = PlaylistEntity.fetchRequest()
         request.predicate = NSPredicate(value: true)
@@ -52,6 +72,8 @@ class PlaylistEntity: NSManagedObject {
                     switch streamingService {
                     case .appleMusic:
                         return tempResult + [APMPlaylist(playlistEntity: newEntity)]
+                    case .combined:
+                        return tempResult + [CombinedPlaylist(playlistEntity: newEntity)]
                     default: break
                     }
                 }
@@ -77,6 +99,8 @@ class PlaylistEntity: NSManagedObject {
             switch streamingService {
             case .appleMusic:
                 return APMPlaylist(playlistEntity: entity)
+            case .combined:
+                return CombinedPlaylist(playlistEntity: entity)
             default: break
             }
         }

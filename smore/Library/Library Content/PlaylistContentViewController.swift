@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PlaylistContentViewController: LibraryContentViewController {
     
@@ -25,8 +26,15 @@ class PlaylistContentViewController: LibraryContentViewController {
     override func viewDidLoad() {
 
         navigationItem.title = viewModel.playlist.name
-        artworkImage.kf.setImage(with: viewModel.highResImageURL,
-                                 placeholder: UIImage.imageFrom(color: UIColor.black))
+        
+        if let url = viewModel.playlist.imageLink, url.absoluteString.starts(with: "assets-library") {
+            let width = UIScreen.main.bounds.width * 0.8 * UIScreen.main.scale
+            artworkImage.setImageWithAssetURL(url, size: CGSize(width: width, height: width))
+        } else {
+            artworkImage.kf.setImage(with: viewModel.highResImageURL,
+                                     placeholder: UIImage.imageFrom(color: UIColor.black))
+        }
+        
         titleLabel.text = viewModel.playlist.name
         subtitleLabel.text = viewModel.playlist.curatorName
         serviceIcon.image = viewModel.playlist.streamingService.icon
