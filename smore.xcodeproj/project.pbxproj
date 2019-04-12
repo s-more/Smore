@@ -160,7 +160,6 @@
 		27919C9D225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
 		27919C9E225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
 		27919CA0226002FB00A005B1 /* YTSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919C9F226002FB00A005B1 /* YTSearchDataSource.swift */; };
-		27919CA1226002FB00A005B1 /* YTSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919C9F226002FB00A005B1 /* YTSearchDataSource.swift */; };
 		27919CA52260052600A005B1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA42260052600A005B1 /* YouTubeAPI.swift */; };
 		27919CA62260052600A005B1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA42260052600A005B1 /* YouTubeAPI.swift */; };
 		27919CA822600ABF00A005B1 /* YTSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA722600ABF00A005B1 /* YTSearchResponse.swift */; };
@@ -1217,7 +1216,6 @@
 				04B957A5225AAEA500BA7D74 /* APMSong.swift in Sources */,
 				04B957A4225AAEA300BA7D74 /* APMCatalogGenre.swift in Sources */,
 				04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
-				27919CA1226002FB00A005B1 /* YTSearchDataSource.swift in Sources */,
 				04B9579B225AAD8400BA7D74 /* Artist.swift in Sources */,
 				27919CA62260052600A005B1 /* YouTubeAPI.swift in Sources */,
 				04B9579E225AAD8C00BA7D74 /* Playlist.swift in Sources */,

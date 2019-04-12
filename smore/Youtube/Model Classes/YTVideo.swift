@@ -10,25 +10,22 @@ import Foundation
 
 class YTVideo: Song {
     var name: String
-    var genre: String
+    var genre: String = ""
     var imageLink: URL?
     var originalImageLink: String?
     var id: String
     var playableString: String
     var artistName: String
     var streamingService: StreamingService = .youtube
-    var trackNumber: Int
-    var duration: TimeInterval
+    var trackNumber: Int = 0
+    var duration: TimeInterval = 1
     
     init(resource: YTSearchResults.YTResource) {
         name = resource.snippet.title
-        genre = ""
-        imageLink = resource.snippet.thumbnails.medium.url
-        originalImageLink = resource.snippet.thumbnails.medium.url.absoluteString
+        imageLink = resource.snippet.thumbnails.default.url
+        originalImageLink = resource.snippet.thumbnails.default.url.absoluteString
         id = "" // TODO
         playableString = "" // TODO
         artistName = resource.snippet.channelTitle
-        trackNumber = 0
-        duration = 1
     }
 }

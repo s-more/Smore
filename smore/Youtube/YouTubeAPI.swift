@@ -20,12 +20,14 @@ class YouTubeAPI {
     }()
     
     class func search(
-        with search_text: String,
+        with text: String,
         limit: Int = 10,
         success: @escaping (YTSearchResults) -> Void,
         error: @escaping (Error) -> Void
     ) {
 
+        let search_text = text.replacingOccurrences(of: " ", with: "%20")
+        
         let searchQuery = ["https://www.googleapis.com/youtube/v3/search?part=snippet&q=", search_text, "&maxResults=", String(limit), "&key=", api_key ].joined()
         
         print("====== Attempting lookup ====")
