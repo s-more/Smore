@@ -60,7 +60,7 @@ class YTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = albums[indexPath.row].name
                 cell.subtitleLabel.text = albums[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "youtubeIcon")
             }
             return cell
         case 2: // playlists
@@ -71,7 +71,7 @@ class YTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = playlists[indexPath.row].name
                 cell.subtitleLabel.text = playlists[indexPath.row].curatorName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "youtubeIcon")
             }
             return cell
         case 3: // songs
@@ -82,7 +82,7 @@ class YTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = songs[indexPath.row].name
                 cell.subtitleLabel.text = songs[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "youtubeIcon")
             }
             return cell
         default: break
@@ -110,7 +110,8 @@ class YTSearchDataSource: NSObject, SearchDataSource {
             DispatchQueue.global(qos: .userInitiated).async {
                 var songs: [Song] = []
                 
-                songs = data.items.map { YTVideo( resource: $0 ) }
+                let tempRawSongs = data.items.filter { ($0).id.kind == "youtube#video" }
+                songs = tempRawSongs.map { YTVideo( resource: $0 ) }
                 
                 completion([], [], [], songs)
             }

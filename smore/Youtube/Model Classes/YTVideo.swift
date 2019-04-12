@@ -23,8 +23,8 @@ class YTVideo: Song {
     init(resource: YTSearchResults.YTResource) {
         name = resource.snippet.title
         genre = ""
-        imageLink = resource.snippet.thumbnails.default.url
-        originalImageLink = ""
+        imageLink = resource.snippet.thumbnails.medium.url
+        originalImageLink = resource.snippet.thumbnails.medium.url.absoluteString
         id = "" // TODO
         playableString = "" // TODO
         artistName = resource.snippet.channelTitle

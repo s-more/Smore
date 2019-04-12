@@ -9,38 +9,38 @@
 import Foundation
 
 struct YTSearchResults: Codable {
-    let kind: String
-    let etag: String
-    let nextPageToken: String
+    let kind: String?
+    let etag: String?
+    let nextPageToken: String?
     let prevPageToken: String?
-    let regionCode: String
+    let regionCode: String?
     let pageInfo: YTPageInfo
     let items: [YTResource]
     
     struct YTPageInfo: Codable {
-        let totalResults: Int
-        let resultsPerPage: Int
+        let totalResults: Int?
+        let resultsPerPage: Int?
     }
     
     struct YTResource: Codable {
-        let kind: String
-        let etag: String
+        let kind: String?
+        let etag: String?
         let id: YTResourceInfo
         let snippet: YTResourceData
         
         struct YTResourceInfo: Codable {
             let kind: String
-            let playlistId: String
+            let playlistId: String?
         }
         
         struct YTResourceData: Codable {
-            let publishedAt: Date
-            let channelId: String
+            //let publishedAt: Date?
+            let channelId: String?
             let title: String
-            let description: String
+            let description: String?
             let thumbnails: YTThumbnailList
             let channelTitle: String
-            let liveBroadcastContent: String
+            let liveBroadcastContent: String?
             
             struct YTThumbnailList : Codable {
                 let `default`: YTThumbnail
@@ -49,8 +49,8 @@ struct YTSearchResults: Codable {
                 
                 struct YTThumbnail: Codable {
                     let url: URL
-                    let width: Int
-                    let height: Int
+                    let width: Int?
+                    let height: Int?
                 }
             }
         }
