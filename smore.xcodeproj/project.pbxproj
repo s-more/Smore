@@ -159,6 +159,13 @@
 		277EEAEE2242C31100839CFD /* LibrarySongTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */; };
 		27919C9D225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
 		27919C9E225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */; };
+		27919CA0226002FB00A005B1 /* YTSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919C9F226002FB00A005B1 /* YTSearchDataSource.swift */; };
+		27919CA52260052600A005B1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA42260052600A005B1 /* YouTubeAPI.swift */; };
+		27919CA62260052600A005B1 /* YouTubeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA42260052600A005B1 /* YouTubeAPI.swift */; };
+		27919CA822600ABF00A005B1 /* YTSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA722600ABF00A005B1 /* YTSearchResponse.swift */; };
+		27919CA922600ABF00A005B1 /* YTSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CA722600ABF00A005B1 /* YTSearchResponse.swift */; };
+		27919CAC22601E9F00A005B1 /* YTVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CAB22601E9F00A005B1 /* YTVideo.swift */; };
+		27919CAD22601E9F00A005B1 /* YTVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27919CAB22601E9F00A005B1 /* YTVideo.swift */; };
 		330144AF292E51F024A5320C /* Pods_smoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DC5439260F80E3277E8F17 /* Pods_smoreTests.framework */; };
 		6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */; };
 		6E311094223AEBDC00314C4F /* LibraryAlbumTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */; };
@@ -320,6 +327,10 @@
 		1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277EEAED2242C31100839CFD /* LibrarySongTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySongTableViewController.swift; sourceTree = "<group>"; };
 		27919C9C225FDC9A00A005B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27919C9F226002FB00A005B1 /* YTSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTSearchDataSource.swift; sourceTree = "<group>"; };
+		27919CA42260052600A005B1 /* YouTubeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPI.swift; sourceTree = "<group>"; };
+		27919CA722600ABF00A005B1 /* YTSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTSearchResponse.swift; sourceTree = "<group>"; };
+		27919CAB22601E9F00A005B1 /* YTVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTVideo.swift; sourceTree = "<group>"; };
 		6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryAlbumTableViewController.swift; path = smore/Library/LibraryAlbumTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LibraryAlbumTableViewController.xib; path = smore/Library/LibraryAlbumTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -573,6 +584,7 @@
 				0409D5AC220744D500CB4CDE /* Login */,
 				04FA0B27220661C40095430A /* Apple Music */,
 				0409D5C8220773AF00CB4CDE /* Spotify */,
+				27919CA22260049600A005B1 /* Youtube */,
 				046FDB6E21FE63BB00E8245D /* AppDelegate.swift */,
 				0419045C222390C000EB22EC /* Main.storyboard */,
 				0419045B222390C000EB22EC /* ViewController.swift */,
@@ -691,6 +703,7 @@
 				04B760BA222B778C0095AF33 /* SearchHintDataSource.swift */,
 				04B760C1222B883A0095AF33 /* SearchDataSource.swift */,
 				04B760C3222B8A8D0095AF33 /* APMSearchDataSource.swift */,
+				27919C9F226002FB00A005B1 /* YTSearchDataSource.swift */,
 				04B760C9222B95420095AF33 /* AllSearchDataSource.swift */,
 			);
 			path = Datasources;
@@ -724,6 +737,24 @@
 				045F095222121D3F00D7730E /* Model Classes */,
 			);
 			path = "Apple Music";
+			sourceTree = "<group>";
+		};
+		27919CA22260049600A005B1 /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				27919CA3226004D100A005B1 /* Model Classes */,
+				27919CA42260052600A005B1 /* YouTubeAPI.swift */,
+			);
+			path = Youtube;
+			sourceTree = "<group>";
+		};
+		27919CA3226004D100A005B1 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				27919CA722600ABF00A005B1 /* YTSearchResponse.swift */,
+				27919CAB22601E9F00A005B1 /* YTVideo.swift */,
+			);
+			path = "Model Classes";
 			sourceTree = "<group>";
 		};
 		2A5CF294156F488E798FC2A5 /* Pods */ = {
@@ -1082,6 +1113,7 @@
 				04B4ADF022335DA3006E6D8A /* UIImage+Extensions.swift in Sources */,
 				0460AC59223AAC890075D932 /* LibraryContentViewController.swift in Sources */,
 				0460AC5E223B46B80075D932 /* PlaylistContentViewController.swift in Sources */,
+				27919CA0226002FB00A005B1 /* YTSearchDataSource.swift in Sources */,
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
@@ -1095,6 +1127,7 @@
 				04B859B2223DE97700D5382C /* PlayerState.swift in Sources */,
 				C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */,
 				6E311093223AEBDC00314C4F /* LibraryAlbumTableViewController.swift in Sources */,
+				27919CA822600ABF00A005B1 /* YTSearchResponse.swift in Sources */,
 				04B4ADEE22334166006E6D8A /* ScrollHeightCalculable.swift in Sources */,
 				A31E77032242D417007B07DF /* LocalArtistTableViewController.swift in Sources */,
 				0460AC6B223BFF560075D932 /* APMAlbumResponse.swift in Sources */,
@@ -1107,6 +1140,7 @@
 				04B957932259AD8900BA7D74 /* PlaylistEntity.swift in Sources */,
 				04925710223DB3DC00500F1A /* MiniPlayer.swift in Sources */,
 				0454BF0E221B7DC80019D4F4 /* Artist.swift in Sources */,
+				27919CAC22601E9F00A005B1 /* YTVideo.swift in Sources */,
 				04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */,
 				6EE89D02224892C100DFE580 /* SPTTrackResponse.swift in Sources */,
 				04B4ADEB22330F6F006E6D8A /* LibraryPlaylistTableViewController.swift in Sources */,
@@ -1145,6 +1179,7 @@
 				046540F2221B9C26003AD74D /* StartupSearchTableViewCell.swift in Sources */,
 				040A0660222C672C009B37E3 /* SlidingViewTransition.swift in Sources */,
 				04B859AF223DD0DF00D5382C /* Player.swift in Sources */,
+				27919CA52260052600A005B1 /* YouTubeAPI.swift in Sources */,
 				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
 				0460AC6D223C05AA0075D932 /* Utilities.swift in Sources */,
@@ -1170,16 +1205,19 @@
 				04EC41D2225AB12B00156FA6 /* AppleMusicAPI+DataRequests.swift in Sources */,
 				04B9579F225AAD9800BA7D74 /* StreamingService.swift in Sources */,
 				04B95799225AAD5800BA7D74 /* SongEntity.swift in Sources */,
+				27919CAD22601E9F00A005B1 /* YTVideo.swift in Sources */,
 				04EC41D1225AB12800156FA6 /* AppleMusicAPI+Rx.swift in Sources */,
 				04B957A9225AAEAF00BA7D74 /* APMAlbumResponse.swift in Sources */,
 				046BB91E225B930600A1F84F /* NSManagedObjectContext+Tests.swift in Sources */,
 				04B95798225AAD5500BA7D74 /* AlbumEntity.swift in Sources */,
 				04B957A6225AAEA700BA7D74 /* APMAlbum.swift in Sources */,
+				27919CA922600ABF00A005B1 /* YTSearchResponse.swift in Sources */,
 				04B957A3225AAEA000BA7D74 /* APMGenre.swift in Sources */,
 				04B957A5225AAEA500BA7D74 /* APMSong.swift in Sources */,
 				04B957A4225AAEA300BA7D74 /* APMCatalogGenre.swift in Sources */,
 				04A0A722221F96BC000EC0BF /* Array+RemoveDuplicates.swift in Sources */,
 				04B9579B225AAD8400BA7D74 /* Artist.swift in Sources */,
+				27919CA62260052600A005B1 /* YouTubeAPI.swift in Sources */,
 				04B9579E225AAD8C00BA7D74 /* Playlist.swift in Sources */,
 				04EC41D0225AB12600156FA6 /* AppleMusicAPI.swift in Sources */,
 				04B957A1225AAE9A00BA7D74 /* APMTopChartResponse.swift in Sources */,
