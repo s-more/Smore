@@ -23,8 +23,8 @@ class YouTubeAPI {
         with text: String,
         limit: Int = 10,
         success: @escaping (YTSearchResults) -> Void,
-        error: @escaping (Error) -> Void
-    ) {
+        error: @escaping (Error) -> Void)
+    {
 
         let search_text = text.replacingOccurrences(of: " ", with: "%20")
         
@@ -43,7 +43,6 @@ class YouTubeAPI {
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
                         print(NSError(domain: "YT JSON Request Failed", code: 0))
-                        //print(json)
                     }
                     return
                 }
@@ -53,25 +52,16 @@ class YouTubeAPI {
                         let result = try
                             decoder.decode(YTSearchResults.self, from: data)
                         DispatchQueue.main.async {
-                            print("Success")
-                            //print(result)
-                            
-                            if let str_data = json.data, let utf8Text = String(data: str_data, encoding: .utf8) {
-                                print("Data \(utf8Text)")
-                            }
-                            
                             success(result)
                         }
                     } catch let err {
                         DispatchQueue.main.async {
-                            print("YT Error!")
-                            print(err)
-                            //print(json)
+                            error(err)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        print(NSError(domain: "YT JSON Corrupted", code: 0))
+                        error(NSError(domain: "YT JSON Corrupted", code: 0))
                     }
                 }
             }

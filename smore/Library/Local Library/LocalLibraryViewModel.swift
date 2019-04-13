@@ -32,9 +32,10 @@ class LocalLibraryViewModel: LibraryViewModel {
     
     override var details: String {
         let items = [
-            "\(fetchedPlaylists.count) playlists",
-            "\(fetchedAlbums.count + fetchedSingles.count) albums",
-            "\(fetchedSongs.count) songs"
+            "\(APMArtistEntity.fetchedResultsController.fetchedObjects?.count ?? 0) artists",
+            "\(PlaylistEntity.fetchedResultsController.fetchedObjects?.count ?? 0) playlists",
+            "\(AlbumEntity.fetchedResultsController.fetchedObjects?.count ?? 0) albums",
+            "\(SongEntity.fetchedResultsController.fetchedObjects?.count ?? 0) songs"
         ]
         return items.joined(separator: " · ")
     }
@@ -50,8 +51,9 @@ class LocalLibraryViewModel: LibraryViewModel {
                     try APMArtistEntity.fetchedResultsController.performFetch()
                     try AlbumEntity.fetchedResultsController.performFetch()
                     try SongEntity.fetchedResultsController.performFetch()
-                } catch let error {
-                    SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+                } catch let err {
+                    error(err)
+                    return
                 }
             }
             strongSelf.viewControllers.append(LocalArtistTableViewController())

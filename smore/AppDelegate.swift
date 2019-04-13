@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         
-        //if UserDefaults.isFirstLaunch || true {
+        if UserDefaults.isFirstLaunch {
         // Skipping the YT Login Screen breaks the search
             let welcomeNagivation = UINavigationController(rootViewController: WelcomeViewController())
             window?.rootViewController = welcomeNagivation
-        /*} else {
+        } else {
             window?.rootViewController = TabBarViewController()
-        }*/
+        }
         return true
     }
 
