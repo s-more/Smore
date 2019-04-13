@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songServiceIconTableViewCell" id="KGk-i7-Jjw" customClass="SongServiceIconTableViewCell" customModule="smore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZYq-oj-pGl">
+                        <rect key="frame" x="16" y="5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="7Jw-bU-GR4"/>
+                            <constraint firstAttribute="width" secondItem="ZYq-oj-pGl" secondAttribute="height" multiplier="1:1" id="qCa-V9-3r3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMV-Po-Hgl">
+                        <rect key="frame" x="78.5" y="5" width="157.5" height="23.5"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amP-gC-XC1">
+                        <rect key="frame" x="78.5" y="31.5" width="157.5" height="18"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vY-Lu-wCF">
+                        <rect key="frame" x="274" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Lw9-yy-Pvn"/>
+                            <constraint firstAttribute="width" secondItem="2vY-Lu-wCF" secondAttribute="height" multiplier="1:1" id="VcX-Kr-fZ5"/>
+                        </constraints>
+                        <color key="tintColor" red="0.86274509799999999" green="0.58039215690000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="moreDots">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="moreIconTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qkq-KN-v4p"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-pp-1gW">
+                        <rect key="frame" x="241" y="17.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="bYU-pp-1gW" secondAttribute="height" multiplier="1:1" id="R1P-L3-J0A"/>
+                            <constraint firstAttribute="width" constant="25" id="xJY-NO-kd4"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="amP-gC-XC1" firstAttribute="top" secondItem="mMV-Po-Hgl" secondAttribute="bottom" constant="3" id="3Va-sr-e6Z"/>
+                    <constraint firstItem="amP-gC-XC1" firstAttribute="leading" secondItem="mMV-Po-Hgl" secondAttribute="leading" id="5Zs-yD-7GB"/>
+                    <constraint firstItem="mMV-Po-Hgl" firstAttribute="top" secondItem="ZYq-oj-pGl" secondAttribute="top" id="Awn-2k-odc"/>
+                    <constraint firstItem="2vY-Lu-wCF" firstAttribute="leading" secondItem="bYU-pp-1gW" secondAttribute="trailing" constant="8" id="VrR-Tu-l0B"/>
+                    <constraint firstItem="ZYq-oj-pGl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="dum-vl-Xvz"/>
+                    <constraint firstItem="bYU-pp-1gW" firstAttribute="centerY" secondItem="ZYq-oj-pGl" secondAttribute="centerY" id="gNm-yY-2Bd"/>
+                    <constraint firstItem="mMV-Po-Hgl" firstAttribute="leading" secondItem="ZYq-oj-pGl" secondAttribute="trailing" constant="12.5" id="hxh-4G-vVW"/>
+                    <constraint firstItem="ZYq-oj-pGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oZs-QW-NqX"/>
+                    <constraint firstItem="bYU-pp-1gW" firstAttribute="leading" secondItem="mMV-Po-Hgl" secondAttribute="trailing" constant="5" id="vrd-yY-VzN"/>
+                    <constraint firstItem="bYU-pp-1gW" firstAttribute="leading" secondItem="amP-gC-XC1" secondAttribute="trailing" constant="5" id="xG4-bP-w7o"/>
+                    <constraint firstItem="2vY-Lu-wCF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="yFz-Gh-GLY"/>
+                    <constraint firstAttribute="trailing" secondItem="2vY-Lu-wCF" secondAttribute="trailing" constant="16" id="zcH-jw-7V9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="78" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="moreButton" destination="2vY-Lu-wCF" id="1HD-wK-rr5"/>
+                <outlet property="serviceIconImageView" destination="bYU-pp-1gW" id="S7S-NB-viM"/>
+                <outlet property="songImageView" destination="ZYq-oj-pGl" id="K7U-Bx-GHs"/>
+                <outlet property="songSubtitle" destination="amP-gC-XC1" id="NU2-cX-bdN"/>
+                <outlet property="songTitle" destination="mMV-Po-Hgl" id="QBF-BP-kpz"/>
+            </connections>
+            <point key="canvasLocation" x="-24.637681159420293" y="49.553571428571423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="moreDots" width="32" height="32"/>
+    </resources>
+</document>

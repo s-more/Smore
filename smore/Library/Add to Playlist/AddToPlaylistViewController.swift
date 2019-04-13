@@ -65,6 +65,13 @@ class AddToPlaylistViewController: UIViewController {
         return .lightContent
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardDidShowNotification,
+            object: nil)
+    }
+    
     // MARK: - IBActions
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
@@ -84,7 +91,7 @@ class AddToPlaylistViewController: UIViewController {
                                         description: description, songs: [viewModel.songToAdd])
         PlaylistEntity.makePlaylist(with: playlist)
         view.addSubview(LottieActivityIndicator.checkmark)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
     }

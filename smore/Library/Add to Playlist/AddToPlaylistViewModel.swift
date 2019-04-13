@@ -49,9 +49,9 @@ extension UIImageView {
             targetSize: size,
             contentMode: PHImageContentMode.aspectFill,
             options: nil)
-        { image, dict in
+        { [weak self ] image, dict in
             if let image = image {
-                self.image = image
+                self?.image = image
             }
         }
     }

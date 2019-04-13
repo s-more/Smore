@@ -40,6 +40,8 @@ class PlaylistContentViewController: LibraryContentViewController {
         serviceIcon.image = viewModel.playlist.streamingService.icon
         tableView.register(UINib(nibName: "SongTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: SongTableViewCell.identifier)
+        tableView.register(UINib(nibName: "SongServiceIconTableViewCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: SongServiceIconTableViewCell.identifier)
         
         super.viewDidLoad()
         
@@ -71,6 +73,20 @@ class PlaylistContentViewController: LibraryContentViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.playlist.streamingService == .combined {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SongServiceIconTableViewCell.identifier,
+                                                     for: indexPath)
+            
+            if let cell = cell as? SongServiceIconTableViewCell {
+                cell.didSelectMoreButton = { [weak self] song in
+                    guard let strongSelf = self else { return }
+                    UIAlertController.showMoreAction(from: song, on: strongSelf)
+                }
+                cell.configure(with: viewModel.playlist.songs[indexPath.row])
+            }
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? SongTableViewCell {
