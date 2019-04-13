@@ -1,22 +1,24 @@
 //
-//  SongTableViewCell.swift
+//  SongServiceIconTableViewCell.swift
 //  smore
 //
-//  Created by Jing Wei Li on 3/15/19.
+//  Created by Jing Wei Li on 4/12/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
-class SongTableViewCell: UITableViewCell {
-    static let identifier = "songTableViewCell"
+class SongServiceIconTableViewCell: UITableViewCell {
+    
+    static let identifier = "songServiceIconTableViewCell"
     static let preferredHeight: CGFloat = 60
     @IBOutlet weak var songImageView: UIImageView!
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var songSubtitle: UILabel!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var serviceIconImageView: UIImageView!
     
+
     var song: Song?
     var didSelectMoreButton: ((Song) -> Void)?
     
@@ -24,6 +26,7 @@ class SongTableViewCell: UITableViewCell {
         songImageView.kf.setImage(with: song.imageLink, placeholder: UIImage(named: "artistPlaceholder"))
         songTitle.text = song.name
         songSubtitle.text = song.artistName
+        serviceIconImageView.image = song.streamingService.icon
         self.song = song
     }
     
@@ -32,7 +35,7 @@ class SongTableViewCell: UITableViewCell {
         songImageView.addRoundCorners(cornerRadius: 5.0)
     }
     
-    @IBAction func moreButtonTapped(_ sender: UIButton) {
+    @IBAction func moreIconTapped(_ sender: UIButton) {
         if let song = song {
             didSelectMoreButton?(song)
         }

@@ -12,6 +12,7 @@ extension UserDefaults {
     private static let isFirstLaunchIdenfier = "isFirstLaunch-1"
     private static let favGenreKey = "favGenreKey"
     private static let favArtistsKey = "favArtistsKey"
+    private static let userPlaylistID = "userDefinedPlaylist"
     
     // MARK: - First Launch
     
@@ -33,6 +34,13 @@ extension UserDefaults {
             (standard.array(forKey: favGenreKey) as? [Int])?
             .map { APMCatalogGenre(rawValue: $0) ?? .alternative } ?? []
             //.map { APMCatalogGenre(rawValue: $0)} ?? []
+    }
+    
+    public static func newestUserPlaylistID() -> Int {
+        var id = standard.integer(forKey: userPlaylistID)
+        id += 1
+        standard.set(id, forKey: userPlaylistID)
+        return id
     }
     
 }

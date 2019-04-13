@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PlaylistContentViewController: LibraryContentViewController {
     
@@ -25,13 +26,22 @@ class PlaylistContentViewController: LibraryContentViewController {
     override func viewDidLoad() {
 
         navigationItem.title = viewModel.playlist.name
-        artworkImage.kf.setImage(with: viewModel.highResImageURL,
-                                 placeholder: UIImage.imageFrom(color: UIColor.black))
+        
+        if let url = viewModel.playlist.imageLink, url.absoluteString.starts(with: "assets-library") {
+            let width = UIScreen.main.bounds.width * 0.8 * UIScreen.main.scale
+            artworkImage.setImageWithAssetURL(url, size: CGSize(width: width, height: width))
+        } else {
+            artworkImage.kf.setImage(with: viewModel.highResImageURL,
+                                     placeholder: UIImage.imageFrom(color: UIColor.black))
+        }
+        
         titleLabel.text = viewModel.playlist.name
         subtitleLabel.text = viewModel.playlist.curatorName
         serviceIcon.image = viewModel.playlist.streamingService.icon
         tableView.register(UINib(nibName: "SongTableViewCell", bundle: Bundle.main),
                            forCellReuseIdentifier: SongTableViewCell.identifier)
+        tableView.register(UINib(nibName: "SongServiceIconTableViewCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: SongServiceIconTableViewCell.identifier)
         
         super.viewDidLoad()
         
@@ -63,10 +73,27 @@ class PlaylistContentViewController: LibraryContentViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.playlist.streamingService == .combined {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SongServiceIconTableViewCell.identifier,
+                                                     for: indexPath)
+            
+            if let cell = cell as? SongServiceIconTableViewCell {
+                cell.didSelectMoreButton = { [weak self] song in
+                    guard let strongSelf = self else { return }
+                    UIAlertController.showMoreAction(from: song, on: strongSelf)
+                }
+                cell.configure(with: viewModel.playlist.songs[indexPath.row])
+            }
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? SongTableViewCell {
-            cell.animationBlock = addCheckmark
+            cell.didSelectMoreButton = { [weak self] song in
+                guard let strongSelf = self else { return }
+                UIAlertController.showMoreAction(from: song, on: strongSelf)
+            }
             cell.configure(with: viewModel.playlist.songs[indexPath.row])
         }
         

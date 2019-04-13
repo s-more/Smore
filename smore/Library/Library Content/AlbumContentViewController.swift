@@ -66,7 +66,10 @@ class AlbumContentViewController: LibraryContentViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: NumberedSongTableViewCell.identifier, for: indexPath)
         
         if let cell = cell as? NumberedSongTableViewCell {
-            cell.animationBlock = addCheckmark
+            cell.didSelectMoreButton = { [weak self] song in
+                guard let strongSelf = self else { return }
+                UIAlertController.showMoreAction(from: song, on: strongSelf)
+            }
             cell.configure(with: album.songs[indexPath.row])
         }
         

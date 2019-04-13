@@ -41,9 +41,9 @@
                             <constraint firstAttribute="width" constant="30" id="eiu-mq-poi"/>
                         </constraints>
                         <color key="tintColor" red="0.86274509799999999" green="0.58039215690000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <state key="normal" image="plusIcon"/>
+                        <state key="normal" image="moreDots"/>
                         <connections>
-                            <action selector="addButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n9O-N1-gqP"/>
+                            <action selector="moreButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n9O-N1-gqP"/>
                         </connections>
                     </button>
                 </subviews>
@@ -62,7 +62,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="54" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="addButton" destination="jpR-ca-Eyz" id="wL0-IM-jQc"/>
+                <outlet property="moreButton" destination="jpR-ca-Eyz" id="wL0-IM-jQc"/>
                 <outlet property="songNumber" destination="lGW-my-9C7" id="4EG-xY-95r"/>
                 <outlet property="songTitle" destination="SKa-Cr-kLp" id="1Ej-cH-53H"/>
             </connections>
@@ -70,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="plusIcon" width="512" height="512"/>
+        <image name="moreDots" width="32" height="32"/>
     </resources>
 </document>
