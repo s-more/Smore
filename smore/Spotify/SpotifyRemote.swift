@@ -37,7 +37,6 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
         get {
             return {[weak self] _, error in
                 if let error = error {
-                    print("APPREMOTE CALLBACK ERROR")
                     print(error as NSError)
                 }
             }

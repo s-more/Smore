@@ -22,7 +22,6 @@ class SpotifyAPI {
         case albums = "album"
         case artists = "artist"
         case playlists = "playlist"
-        //case musicVideos = "music-videos"
     }
     
     private static let developerToken = "BQDOAh52dyr_8nbDmGZ-hfySj4xbs-BsbvngWJCUjzRKOQ3h6lVBDS4xQztxcpAHH1G2pYY_fG9EGJvIbDbZNnGijV8CAAZkCf5LmjqpKaaAQ4KOsFle7FUdyKvqUJtl1jiZa_8Tsn-XttIQLtvnjmFMyig-w5fb3KMy-FuiF8CSpD0eyjf40YoJe2DWUjU_H1cwOkG1Vr8-zZQzP0FrjQhx5CqXXi30AizMAdFJlD-WLkHxK-R2Jc3dFK-CBHw"
@@ -39,7 +38,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -72,7 +71,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -107,7 +106,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -141,7 +140,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -175,7 +174,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -205,7 +204,8 @@ class SpotifyAPI {
     }
     
     
-    static func getAlbum(token: String, albumID: String,
+    static func getAlbum(token: String,
+                         albumID: String,
                          success: @escaping (SPTAlbumResponse) -> Void,
                          error: @escaping (Error) -> Void) {
         let searchQuery = ["https://api.spotify.com/v1/albums/", albumID].joined()
@@ -214,7 +214,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -250,7 +250,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -323,7 +323,10 @@ class SpotifyAPI {
         }
     }
     
-    static func getPlaylists(token: String, playlistID: String, completion: @escaping (SPTPlaylistResponse) -> Void, error: @escaping (Error) -> Void) {
+    static func getPlaylists(token: String,
+                             playlistID: String,
+                             completion: @escaping (SPTPlaylistResponse) -> Void,
+                             error: @escaping (Error) -> Void) {
         let searchQuery = ["https://api.spotify.com/v1/playlists/", playlistID].joined()
         Alamofire.request(
             searchQuery,

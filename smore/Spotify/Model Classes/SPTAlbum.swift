@@ -68,8 +68,8 @@ class SPTAlbum: Album {
             DispatchQueue.main.async { completion() }
             return
         }
-        
-        SpotifyAPI.getAlbum(token: id, albumID: id, success: { [weak self] data in
+        let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? ""
+        SpotifyAPI.getAlbum(token: SPTToken, albumID: id, success: { [weak self] data in
             DispatchQueue.global(qos: .userInitiated).async {
 //                print(data.tracks?.items?.first)
                 self?.songs = data.tracks?.items?.map { SPTSong(albumTrackData: $0) } ?? []
