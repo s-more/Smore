@@ -282,7 +282,7 @@ class SpotifyAPI {
     
     static func searchCatalog(token: String,
                               term: String,
-                              types: [SPTCatalogSearchMode] = [.artists, .albums, .tracks],
+                              types: [SPTCatalogSearchMode] = [.artists, .albums, .tracks, .playlists],
                               limit: Int = 3,
                               success: @escaping (SPTSearchResponse) -> Void,
                               error: @escaping (Error) -> Void) {
@@ -294,7 +294,7 @@ class SpotifyAPI {
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
@@ -323,19 +323,18 @@ class SpotifyAPI {
         }
     }
     
-    static func getPlaylists(playlistID: String, completion: @escaping (SPTPlaylistResponse) -> Void, error: @escaping (Error) -> Void) {
+    static func getPlaylists(token: String, playlistID: String, completion: @escaping (SPTPlaylistResponse) -> Void, error: @escaping (Error) -> Void) {
         let searchQuery = ["https://api.spotify.com/v1/playlists/", playlistID].joined()
         Alamofire.request(
             searchQuery,
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: ["Authorization": "Bearer \(developerToken)"]).responseJSON
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
             { json in
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
                         print(NSError(domain: "JSON Request Failed", code: 0))
-//                        print(json)
                     }
                     return
                 }

@@ -54,8 +54,8 @@ class SPTPlaylist: Playlist {
             DispatchQueue.main.async { completion() }
             return
         }
-        
-        SpotifyAPI.getPlaylists(playlistID: id, completion: { [weak self] data in
+        let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? ""
+        SpotifyAPI.getPlaylists(token: SPTToken, playlistID: id, completion: { [weak self] data in
             self?.songs = data.tracks?.items?.map { SPTSong(trackData: $0) } ?? []
             completion()
             }, error: { err in
