@@ -93,7 +93,7 @@ class YTSearchDataSource: NSObject, SearchDataSource {
     }
     
     func searchHints(from term: String) -> Observable<([String]?, Error?)> {
-        return Observable.empty()
+        return AppleMusicAPI.rx.searchHints(from: term)
     }
     
     func searchHintDataSource(from hints: [String]) -> SearchHintDataSource {

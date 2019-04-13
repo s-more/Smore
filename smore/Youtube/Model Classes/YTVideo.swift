@@ -24,8 +24,20 @@ class YTVideo: Song {
         name = resource.snippet.title
         imageLink = resource.snippet.thumbnails.default.url
         originalImageLink = resource.snippet.thumbnails.default.url.absoluteString
-        id = "" // TODO
+        id = resource.id.videoId ?? ""
         playableString = "" // TODO
         artistName = resource.snippet.channelTitle
+    }
+    
+    init(songEntity: SongEntity) {
+        name = songEntity.name ?? ""
+        genre = songEntity.genre ?? ""
+        imageLink = songEntity.imageLink
+        originalImageLink = songEntity.originalImageLink
+        id = songEntity.id ?? ""
+        playableString = songEntity.playableString ?? ""
+        artistName = songEntity.artistName ?? ""
+        trackNumber = Int(songEntity.trackNumer)
+        duration = songEntity.duration
     }
 }
