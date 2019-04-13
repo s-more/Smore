@@ -16,6 +16,16 @@ class LibraryViewModel: NSObject {
     final var fetchedPlaylists: [Playlist] = []
     final var fetchedSongs: [Song] = []
     final var fetchedArtists: [Artist] = []
+    final var fetchedAPMAlbums: [Album] = []
+    final var fetchedAPMSingles: [Album] = []
+    final var fetchedAPMPlaylists: [Playlist] = []
+    final var fetchedAPMSongs: [Song] = []
+    final var fetchedAPMArtists: [Artist] = []
+    final var fetchedSPTAlbums: [Album] = []
+    final var fetchedSPTSingles: [Album] = []
+    final var fetchedSPTPlaylists: [Playlist] = []
+    final var fetchedSPTSongs: [Song] = []
+    final var fetchedSPTArtists: [Artist] = []
     final var isBarShown = false
     final var initialButtonBarPosition: CGFloat = 0
     final var isButtonBarPositionSet = false

@@ -56,19 +56,17 @@ class SPTSong: Song {
         duration = TimeInterval(searchResponse.duration_ms ?? 0 / 1000)
     }
     
-//    Implement after playlists
-//    init(trackData: APMPlaylistResponse.APMPlaylistData
-//        .APMPlaylistRelationships.APMPlaylistTracks.APMPlaylistTrackData) {
-//        name = trackData.attributes.name
-//        genre = trackData.attributes.genreNames.first ?? ""
-//        imageLink = trackData.attributes.artwork?.artworkImageURL(width: 300, height: 300)
-//        id = trackData.id
-//        playableString = trackData.attributes.playParams?.id ?? ""
-//        artistName = trackData.attributes.artistName
-//        originalImageLink = trackData.attributes.artwork?.url
-//        trackNumber = trackData.attributes.trackNumber
-//        duration = TimeInterval(trackData.attributes.durationInMillis / 1000)
-//    }
+    init(trackData: SPTPlaylistResponse.SPTTrack.SPTPlaylistTrack) {
+        name = trackData.track?.name ?? ""
+        genre = ""
+        imageLink = URL(string: trackData.track?.album?.images?.first?.url ?? "")
+        id = trackData.track?.id ?? ""
+        playableString = trackData.track?.uri ?? ""
+        artistName = trackData.track?.artists?.first?.name ?? ""
+        originalImageLink = trackData.track?.album?.images?.first?.url ?? ""
+        trackNumber = trackData.track?.track_number ?? 0
+        duration = TimeInterval(trackData.track?.duration_ms ?? 0 / 1000)
+    }
     
     init(albumTrackData: SPTAlbumResponse.SPTTrack.SPTItem)
     {

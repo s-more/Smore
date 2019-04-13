@@ -12,6 +12,7 @@ struct SPTSearchResponse: Codable {
     let albums: SPTAlbum?
     let artists: SPTArtist?
     let tracks: SPTTrack?
+    let playlists: SPTPlaylist?
     
     
     struct SPTAlbum: Codable {
@@ -159,6 +160,56 @@ struct SPTSearchResponse: Codable {
             
             struct SPTURL: Codable {
                 let spotify: String?
+            }
+        }
+    }
+    
+    struct SPTPlaylist: Codable {
+        let href: String?
+        let items: [SPTPlaylistItem]?
+        let limit: Int?
+        let next: String?
+        let offset: Int?
+        let previous: String?
+        let total: Int?
+        
+        struct SPTPlaylistItem: Codable {
+            let collaborative: Bool?
+            let external_urls: SPTURL?
+            let href: String?
+            let id: String?
+            let images: [SPTImage]?
+            let name: String?
+            let owner: SPTOwner?
+            let primary_color: String?
+            let `public`: String?
+            let snapshot_id: String?
+            let tracks: SPTTracks?
+            let type: String?
+            let uri: String?
+            
+            struct SPTURL: Codable {
+                let spotify: String?
+            }
+            
+            struct SPTImage: Codable {
+                let height: Int?
+                let url: String?
+                let width: Int?
+            }
+            
+            struct SPTOwner: Codable {
+                let display_name: String?
+                let external_urls: SPTURL?
+                let href: String?
+                let id: String?
+                let type: String?
+                let uri: String?
+            }
+            
+            struct SPTTracks: Codable {
+                let href: String?
+                let total: Int?
             }
         }
     }

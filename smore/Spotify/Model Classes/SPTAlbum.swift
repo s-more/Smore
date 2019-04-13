@@ -64,13 +64,15 @@ class SPTAlbum: Album {
     
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
+            
             DispatchQueue.main.async { completion() }
             return
         }
         
         SpotifyAPI.getAlbum(token: id, albumID: id, success: { [weak self] data in
             DispatchQueue.global(qos: .userInitiated).async {
-//                self?.songs = data.tracks?.items.map { SPTSong(albumTrackData: $0) }
+//                print(data.tracks?.items?.first)
+                self?.songs = data.tracks?.items?.map { SPTSong(albumTrackData: $0) } ?? []
                 DispatchQueue.main.async { completion() }
             }
             }, error: { err in

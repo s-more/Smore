@@ -33,6 +33,17 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
         return manager
     }()
     
+    var defaultCallback: SPTAppRemoteCallback {
+        get {
+            return {[weak self] _, error in
+                if let error = error {
+                    print("APPREMOTE CALLBACK ERROR")
+                    print(error as NSError)
+                }
+            }
+        }
+    }
+    
     private lazy var configuration: SPTConfiguration = {
         let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURL)
         // Set the playURI to a non-nil value so that Spotify plays music after authenticating and App Remote can connect
