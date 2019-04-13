@@ -12,9 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="smore" customModuleProvider="target">
             <connections>
-                <outlet property="addToLibraryButton" destination="DLq-LC-p3b" id="PNk-lG-gCH"/>
                 <outlet property="albumArtCollectionView" destination="GdT-wN-o29" id="fDv-dd-aqJ"/>
                 <outlet property="currentTimeLabel" destination="Lnu-Is-h3i" id="qE6-5A-sDP"/>
+                <outlet property="moreButton" destination="DLq-LC-p3b" id="PNk-lG-gCH"/>
                 <outlet property="playButton" destination="MtW-fd-Sbo" id="hpN-OK-RGn"/>
                 <outlet property="progressSlider" destination="UDJ-5j-oYE" id="zNg-Ix-lzc"/>
                 <outlet property="queueTableView" destination="3DD-NU-C9x" id="wIE-1b-PSf"/>
@@ -161,9 +161,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLq-LC-p3b">
                             <rect key="frame" x="292" y="575" width="33" height="33"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="plusIcon"/>
+                            <state key="normal" image="moreIcon"/>
                             <connections>
-                                <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="0yr-cq-s5b"/>
+                                <action selector="moreButtonTapped:" destination="-1" eventType="touchUpInside" id="0yr-cq-s5b"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsj-Rh-vmm">
@@ -244,8 +244,8 @@
     <resources>
         <image name="PlayButtonLarge" width="211" height="211"/>
         <image name="downCaret" width="512" height="512"/>
+        <image name="moreIcon" width="32" height="32"/>
         <image name="nextButton" width="211" height="211"/>
-        <image name="plusIcon" width="512" height="512"/>
         <image name="prevButton" width="211" height="211"/>
         <image name="repeatIcon" width="512" height="512"/>
         <image name="shuffleIcon" width="200" height="200"/>

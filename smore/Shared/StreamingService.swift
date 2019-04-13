@@ -13,6 +13,7 @@ enum StreamingService: Int {
     case spotify = 1
     case youtube = 2
     case none = 3
+    case combined = 4
     
     var icon: UIImage? {
         switch self {

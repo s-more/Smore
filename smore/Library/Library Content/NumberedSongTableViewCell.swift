@@ -14,24 +14,21 @@ class NumberedSongTableViewCell: UITableViewCell {
     
     @IBOutlet weak var songNumber: UILabel!
     @IBOutlet weak var songTitle: UILabel!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
     var song: Song?
-    var animationBlock: (() -> Void)?
+    var didSelectMoreButton: ((Song) -> Void)?
     
     func configure(with song: Song) {
         songNumber.text = "\(song.trackNumber)"
         songTitle.text = "\(song.name)"
-        addButton.isHidden = SongEntity.doesSongExist(song: song)
         self.song = song
     }
     
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
         if let song = song {
-            SongEntity.makeSong(from: song)
-            addButton.isHidden = true
-            animationBlock?()
+            didSelectMoreButton?(song)
         }
     }
 }

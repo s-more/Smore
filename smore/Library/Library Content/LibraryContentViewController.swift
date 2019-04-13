@@ -26,13 +26,6 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
     
     private var nameLabelPosition: CGFloat = 0
     private var isNavBarShown = false
-    private var checkmarkAnimation = LottieActivityIndicator.checkmark
-    
-    final lazy var addCheckmark: () -> Void = { [weak self] in
-        if let animation = self?.checkmarkAnimation {
-            self?.view.addSubview(animation)
-        }
-    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -98,7 +91,7 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
         }
         return nil
     }
-    
+        
     // MARK: UIScrollViewDelegate
     
     final func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -133,7 +126,7 @@ class LibraryContentViewController: UIViewController, UITableViewDelegate, UITab
     /// Call `super.handleAddButtonTap(_:)` at the end to refresh the table view to reflect add button's
     /// changes. It also shows a checkmark animation.
     @objc open func handleAddButtonTap(_ sender: UIButton) {
-        view.addSubview(checkmarkAnimation)
+        view.addSubview(LottieActivityIndicator.checkmark)
         tableView.reloadData()
     }
     

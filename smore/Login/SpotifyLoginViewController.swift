@@ -38,8 +38,7 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func skip(_ sender: UIButton) {
-//        SpotifyAPI.searchCatalog(token: SpotifyRemote.shared.appRemote.connectionParameters.accessToken!, term: "hozier")
-        navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
+        navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
     }
     //    OnClick of Auth button, initiate spotify session
     @IBAction func loginSpotifyUser(_ sender: UIButton) {
@@ -50,7 +49,7 @@ class SpotifyLoginViewController: UIViewController {
 extension SpotifyLoginViewController: SpotifyRemoteDelegate {
     func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
         if status {
-            navigationController?.pushViewController(SoundcloudLoginViewController(), animated: true)
+            navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
         }
     }
     

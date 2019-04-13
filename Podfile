@@ -15,6 +15,7 @@ target 'smore' do
   pod "youtube-ios-player-helper", "~> 0.1.4"
   pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
   pod 'GoogleSignIn'
+  pod 'Firebase'
   pod 'MarqueeLabel/Swift'
   pod 'SwiftMessages'  
   pod 'XLPagerTabStrip', '~> 8.1'

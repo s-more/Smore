@@ -15,16 +15,15 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var songImageView: UIImageView!
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var songSubtitle: UILabel!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
     var song: Song?
-    var animationBlock: (() -> Void)?
+    var didSelectMoreButton: ((Song) -> Void)?
     
     func configure(with song: Song) {
         songImageView.kf.setImage(with: song.imageLink, placeholder: UIImage(named: "artistPlaceholder"))
         songTitle.text = song.name
         songSubtitle.text = song.artistName
-        addButton.isHidden = SongEntity.doesSongExist(song: song)
         self.song = song
     }
     
@@ -33,11 +32,9 @@ class SongTableViewCell: UITableViewCell {
         songImageView.addRoundCorners(cornerRadius: 5.0)
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
         if let song = song {
-            SongEntity.makeSong(from: song)
-            addButton.isHidden = true
-            animationBlock?()
+            didSelectMoreButton?(song)
         }
     }
 }

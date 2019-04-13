@@ -24,7 +24,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
-    @IBOutlet weak var addToLibraryButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
     let viewModel: PlayerViewModel
     let disposeBag = DisposeBag()
@@ -160,10 +160,8 @@ class PlayerViewController: UIViewController {
         })
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        addToLibraryButton.setImage(UIImage(named: "checkmarkIcon"), for: .normal)
-        addToLibraryButton.isUserInteractionEnabled = false
-        checkmarkAnimation()
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+        UIAlertController.showMoreAction(from: MusicQueue.shared.currentSong, on: self)
     }
     
     // MARK: - Helpers
@@ -181,13 +179,6 @@ class PlayerViewController: UIViewController {
     }
     
     func refresh() {
-        if SongEntity.doesSongExist(song: MusicQueue.shared.currentSong) {
-            addToLibraryButton.setImage(UIImage(named: "checkmarkIcon"), for: .normal)
-            addToLibraryButton.isUserInteractionEnabled = false
-        } else {
-            addToLibraryButton.setImage(UIImage(named: "plusIcon"), for: .normal)
-            addToLibraryButton.isUserInteractionEnabled = true
-        }
         titleLabel.text = MusicQueue.shared.currentSong.name
         subtitleLabel.text = MusicQueue.shared.currentSong.artistName
         albumArtCollectionView.scrollToItem(at: IndexPath(row: MusicQueue.shared.currentPosition.value, section: 0), at: .centeredHorizontally, animated: true)
@@ -216,7 +207,10 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
         
         let currentSong = MusicQueue.shared.queue.value[MusicQueue.shared.currentPosition.value + indexPath.row + 1]
         if let cell = cell as? SongTableViewCell {
-            cell.animationBlock = checkmarkAnimation
+            cell.didSelectMoreButton = { [weak self] song in
+                guard let strongSelf = self else { return }
+                UIAlertController.showMoreAction(from: song, on: strongSelf)
+            }
             cell.configure(with: currentSong)
         }
         
