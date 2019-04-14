@@ -86,7 +86,7 @@ class AddToPlaylistViewController: UIViewController {
         } else {
             description = descriptionTextView.text
         }
-        
+        if viewModel.imageURL == nil { viewModel.imageURL = viewModel.songToAdd.imageLink }
         let playlist = CombinedPlaylist(name: name, imageLink: viewModel.imageURL,
                                         description: description, songs: [viewModel.songToAdd])
         PlaylistEntity.makePlaylist(with: playlist)

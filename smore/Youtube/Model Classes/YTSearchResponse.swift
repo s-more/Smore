@@ -31,6 +31,7 @@ struct YTSearchResults: Codable {
         struct YTResourceInfo: Codable {
             let kind: String
             let playlistId: String?
+            let videoId: String?
         }
         
         struct YTResourceData: Codable {

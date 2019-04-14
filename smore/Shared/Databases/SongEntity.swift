@@ -65,6 +65,8 @@ class SongEntity: NSManagedObject {
                     switch streamingService {
                     case .appleMusic:
                         return tempResult + [APMSong(songEntity: newEntity)]
+                    case .youtube:
+                        return tempResult + [YTVideo(songEntity: newEntity)]
                     default: break
                     }
                 }
@@ -90,6 +92,8 @@ class SongEntity: NSManagedObject {
             switch streamingService {
             case .appleMusic:
                 return APMSong(songEntity: entity)
+            case .youtube:
+                return YTVideo(songEntity: entity)
             default: break
             }
         }
