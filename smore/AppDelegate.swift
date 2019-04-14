@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = welcomeNagivation
         } else {
             window?.rootViewController = TabBarViewController()
+            SpotifyRemote.shared.spotifyLogin()
         }
         return true
     }
@@ -81,6 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                  annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         }
+    }
+    
+    // Background fetch
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
     }
     
     

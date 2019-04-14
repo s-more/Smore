@@ -104,7 +104,6 @@ class ArtistLibraryViewModel: LibraryViewModel {
                     }, error: { err in
                         error(err)
                 })
-                completion()
             }, error: { err in
                 error(err)
         })

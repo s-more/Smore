@@ -12,226 +12,147 @@ import MediaPlayer
 class Player {
     static let shared = Player()
 
-    let player: MPMusicPlayerApplicationController
-    var state: PlayerState
+    private var currentPlayer: PlayerProtocol
+    let appleMusicPlayer: APMPlayer
+    let spotifyPlayer: SPTPlayer
+    
+    private var subQueues: [[Song]]
     
     private init() {
-        player = MPMusicPlayerApplicationController.applicationQueuePlayer
-        player.prepareToPlay()
-        player.beginGeneratingPlaybackNotifications()
-        state = .notPlaying
-        player.repeatMode = .none
-        player.shuffleMode = .off
+        appleMusicPlayer = APMPlayer()
+        spotifyPlayer = SPTPlayer()
+        currentPlayer = appleMusicPlayer
+        subQueues = []
         
         NotificationCenter.default.addObserver(
-            forName: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
-            object: player,
+            forName: .skipToNextQueue,
+            object: nil,
             queue: OperationQueue.main)
         { [weak self] _ in
-            for (index, song) in MusicQueue.shared.queue.value.enumerated() {
-                if let songName = self?.player.nowPlayingItem?.title, song.name == songName {
-                    MiniPlayer.shared.configure(with: song)
-                    MusicQueue.shared.currentPosition.value = index
-                }
+            guard let strongSelf = self else { return }
+            if !strongSelf.subQueues.isEmpty {
+                strongSelf.playSongsWithCorrectPlayer(using: strongSelf.subQueues.removeFirst())
             }
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange,
-            object: player,
-            queue: OperationQueue.main)
-        { [weak self] _ in
-            if let state = self?.player.playbackState, state == .stopped {
-                MiniPlayer.shared.reset()
-            }
-            MiniPlayer.shared.updatePlayIconImage()
         }
     }
     
     // MARK: - Computed Vars
     
+    var state: PlayerState {
+        set {
+           currentPlayer.state = state
+        } get {
+            return currentPlayer.state
+        }
+    }
+    
     var currentPlaybackTime: String {
-        let currentTime = player.currentPlaybackTime
-        return Utilities.timeIntervalToReg(from: currentTime)
+        return currentPlayer.currentPlaybackTime
     }
     
     var remainingPlaybackTime: String? {
-        if let totalTime = player.nowPlayingItem?.playbackDuration {
-            let remainingTime = totalTime - player.currentPlaybackTime
-            return Utilities.timeIntervalToReg(from: remainingTime)
-        }
-        return nil
+        return currentPlayer.remainingPlaybackTime
     }
     
     var nowPlayingItemPlaybackTime: TimeInterval? {
-        return player.nowPlayingItem?.playbackDuration
+        return currentPlayer.nowPlayingItemPlaybackTime
     }
     
     var currentPlaybackPercentage: Float {
-        if let totalTime = player.nowPlayingItem?.playbackDuration {
-            return Float(player.currentPlaybackTime / totalTime)
-        }
-        return 0
+        return currentPlayer.currentPlaybackPercentage
     }
     
     var shuffleModeTintColor: UIColor {
-        return player.shuffleMode == .songs ? UIColor.themeColor : UIColor.white
+        return currentPlayer.shuffleModeTintColor
     }
     
     var repeatModeTintColor: UIColor {
-        return player.repeatMode == .one ? UIColor.themeColor : UIColor.white
+        return currentPlayer.repeatModeTintColor
     }
     
     // MARK: - Methods
     
-    func play(with appleMusicIDs: [String]) {
-        player.setQueue(with: appleMusicIDs)
-        player.play()
-        state = .playing
+    /// Divide up the queue to a double array where each child array contains songs of the same kind
+    /// ```
+    /// [APMSong, APMSong, SPTSong, SPTSong, APMSong]
+    ///                      |
+    ///                      |
+    ///                     \/
+    /// [APMSong, APMSong], [SPTSong, SPTSong], [APMSong]
+    /// ```
+    /// Feed each sub-queue to the correct player. If the playback of the queue ends we check if there
+    /// exists a subsequent queue. If so we tell the player to play that queue with the right player
+    /// as well
+    func play(with songs: [Song]) {
+        subQueues.removeAll()
+        var temp: [Song] = []
+        for (index, song) in songs.enumerated() {
+            if index == 0 {
+                temp.append(song)
+                continue
+            }
+            
+            if (song.streamingService != songs[index - 1].streamingService) {
+                subQueues.append(temp)
+                temp = [song]
+            } else {
+                temp.append(song)
+            }
+            
+            if(index == songs.count - 1) { subQueues.append(temp) }
+        }
+        
+        if !subQueues.isEmpty {
+            playSongsWithCorrectPlayer(using: subQueues.removeFirst())
+        }
+        
     }
     
-    func skipToNext() {
-        player.skipToNextItem()
-        MusicQueue.shared.currentPosition.value += 1
-        if MusicQueue.shared.currentPosition.value >= MusicQueue.shared.queue.value.count {
-            MusicQueue.shared.currentPosition.value = MusicQueue.shared.queue.value.count - 1
+    func playSongsWithCorrectPlayer(using queue: [Song]) {
+        if let firstSong = queue.first {
+            switch firstSong.streamingService {
+            case .appleMusic:
+                currentPlayer = appleMusicPlayer
+                currentPlayer.play(with: queue)
+            case .spotify:
+                SpotifyRemote.shared.reconnect()
+                currentPlayer = spotifyPlayer
+                currentPlayer.play(with: queue)
+            default: break
+            }
         }
+    }
+    
+    
+    func skipToNext() {
+        currentPlayer.skipToNext()
     }
     
     func skipToPrev() {
-        player.skipToPreviousItem()
-        MusicQueue.shared.currentPosition.value -= 1
-        if MusicQueue.shared.currentPosition.value < 0 {
-            MusicQueue.shared.currentPosition.value = 0
-        }
+        currentPlayer.skipToPrev()
     }
     
     func skipToCurrentPosition() {
-        var index = player.indexOfNowPlayingItem
-        while index < MusicQueue.shared.currentPosition.value {
-            player.skipToNextItem()
-            index += 1
-        }
+        currentPlayer.skipToCurrentPosition()
     }
     
     func playOrPause() {
-        switch state {
-        case .playing:
-            state = .paused
-            player.pause()
-        case .paused, .notPlaying:
-            state = .playing
-            player.play()
-        }
+        currentPlayer.playOrPause()
     }
     
     func stop() {
-        player.stop()
-        state = .notPlaying
+        currentPlayer.stop()
     }
     
     func toggleRepeatMode() {
-        if player.repeatMode == .none || player.repeatMode == .default {
-            player.repeatMode = .one
-        } else if player.repeatMode == .one {
-            player.repeatMode = .none
-        }
+        currentPlayer.toggleRepeatMode()
     }
     
     func toggleShuffleMode(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
-        if player.shuffleMode == .off || player.shuffleMode == .default {
-            player.shuffleMode = .songs
-        } else if player.shuffleMode == .songs {
-            player.shuffleMode = .off
-        }
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.player.perform(queueTransaction: { queue in
-                // reorder the current [Song] queue to match the queue
-                let musicQueue = MusicQueue.shared
-                var slicedArray =
-                    Array(musicQueue.queue.value[musicQueue.currentPosition.value ..< musicQueue.queue.value.count])
-                slicedArray.sort { first, next in
-                    guard
-                        let firstItem = queue.items.first(where: { item -> Bool in
-                            return (item.title ?? "") == first.name
-                        }),
-                        let firstIndex = queue.items.firstIndex(of: firstItem),
-                        let nextItem = queue.items.first(where: { item -> Bool in
-                            return (item.title ?? "") == next.name
-                        }),
-                        let nextIndex = queue.items.firstIndex(of: nextItem) else { return false }
-                    return firstIndex < nextIndex
-                }
-                musicQueue.queue.value = slicedArray
-                completion()
-            }, completionHandler: { _ , err in
-                if let err = err { error(err) }
-            })
-        }
+        currentPlayer.toggleShuffleMode(completion: completion, error: error)
     }
     
-    /*
-    
-    // MARK: - Remote Commands
-    private func setupRemoteTransportControls() {
-        let commandCenter = MPRemoteCommandCenter.shared()
-        UIApplication.shared.beginReceivingRemoteControlEvents()
-        
-        commandCenter.playCommand.isEnabled = true
-        commandCenter.playCommand.addTarget { [weak self] event in
-            switch self?.state ?? .notPlaying {
-            case .paused, .notPlaying:
-                self?.playOrPause()
-                return .success
-            default: break
-            }
-            return .commandFailed
-        }
-        
-        commandCenter.pauseCommand.addTarget { [weak self] event in
-            switch self?.state ?? .notPlaying {
-            case .playing:
-                self?.playOrPause()
-                return .success
-            default: break
-            }
-            return .commandFailed
-        }
- 
-        commandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
-            self?.playOrPause()
-            return .success
-        }
-        
-        commandCenter.nextTrackCommand.addTarget { [weak self] _  in
-            self?.skipToNext()
-            return .success
-        }
-        
-        commandCenter.previousTrackCommand.addTarget { [weak self] _  in
-            self?.skipToPrev()
-            return .success
-        }
-        
-        commandCenter.togglePlayPauseCommand.isEnabled = true
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default, options: [])
-            try AVAudioSession.sharedInstance().setActive(true, options: [])
-        } catch let err {
-            print(err.localizedDescription)
-        }
+    func setCurrentPlaybackTime(with time: TimeInterval) {
+        currentPlayer.setCurrentPlaybackTime(with: time)
     }
-    
-    func setupRemoteInfoCenter() {
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyTitle: player.nowPlayingItem?.title ?? "Thumbs",
-            MPMediaItemPropertyArtist: player.nowPlayingItem?.artist ?? "Sabrina Carpenter",
-            MPMediaItemPropertyAlbumTitle: player.nowPlayingItem?.albumTitle ?? "EVOLution",
-            MPNowPlayingInfoPropertyElapsedPlaybackTime:  player.currentPlaybackTime,
-            MPMediaItemPropertyPlaybackDuration: player.nowPlayingItem?.playbackDuration ?? 0,
-            MPNowPlayingInfoPropertyPlaybackRate: 1.0
-        ]
-    }
- 
-     */
 }

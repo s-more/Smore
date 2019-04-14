@@ -9,7 +9,7 @@
 import Foundation
 
 
-class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
+class SpotifyRemote: NSObject {
     
     let SpotifyClientID = "239230def9e84becac4333eaa80161df"
     let SpotifyRedirectURL = URL(string: "smore://return")!
@@ -17,7 +17,7 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
     
     static let shared = SpotifyRemote()
     
-    override init () {
+    private override init () {
         super.init()
     }
     
@@ -34,11 +34,9 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
     }()
     
     var defaultCallback: SPTAppRemoteCallback {
-        get {
-            return {[weak self] _, error in
-                if let error = error {
-                    print(error as NSError)
-                }
+        return { _, error in
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
     }
@@ -56,19 +54,21 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
         return configuration
     }()
     
+    // MARK: - Public Methods
     
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        print("Connected")
-        // Connection was successful, you can begin issuing commands
-        appRemote.playerAPI?.delegate = self
-        appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-            }
-        })
+    func spotifyLogin() {
+        let requestedScopes: SPTScope = [.appRemoteControl]
+        sessionManager.initiateSession(with: requestedScopes, options: .default)
     }
     
-    //    Connect to spotify after successful auth
+    func reconnect() {
+        if !appRemote.isConnected { appRemote.connect() } 
+    }
+}
+
+extension SpotifyRemote: SPTSessionManagerDelegate {
+    // MARK: - SPTSessionManagerDelegate
+    ///    Connect to spotify after successful auth
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
@@ -77,6 +77,21 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
         print("fail", error)
     }
+}
+
+extension SpotifyRemote: SPTAppRemoteDelegate {
+    // MARK: - SPTAppRemoteDelegate
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+        print("Connected")
+        // Connection was successful, you can begin issuing commands
+        appRemote.playerAPI?.delegate = Player.shared.spotifyPlayer
+        appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+        })
+        //appRemote.playerAPI?.pause(nil)
+    }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
         print("failed")
@@ -84,15 +99,5 @@ class SpotifyRemote: NSObject, SPTSessionManagerDelegate, SPTAppRemoteDelegate, 
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("disconnected")
-    }
-    
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        print("player state changed")
-        debugPrint("Track name: %@", playerState.track.name)
-    }
-    
-    func spotifyLogin() {
-        let requestedScopes: SPTScope = [.appRemoteControl]
-        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
     }
 }

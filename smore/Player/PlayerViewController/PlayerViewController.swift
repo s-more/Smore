@@ -142,7 +142,7 @@ class PlayerViewController: UIViewController {
     
     @IBAction func sliderSlided(_ sender: UISlider) {
         if let totalTime = Player.shared.nowPlayingItemPlaybackTime {
-            Player.shared.player.currentPlaybackTime = Double(sender.value) * totalTime
+            Player.shared.setCurrentPlaybackTime(with: Double(sender.value) * totalTime)
         }
     }
     

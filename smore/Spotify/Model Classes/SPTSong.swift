@@ -81,4 +81,16 @@ class SPTSong: Song {
         duration = TimeInterval(albumTrackData.duration_ms ?? 0 / 1000)
     }
     
+    init(songEntity: SongEntity) {
+        name = songEntity.name ?? ""
+        genre = songEntity.genre ?? ""
+        imageLink = songEntity.imageLink
+        originalImageLink = songEntity.originalImageLink
+        id = songEntity.id ?? ""
+        playableString = songEntity.playableString ?? ""
+        artistName = songEntity.artistName ?? ""
+        trackNumber = Int(songEntity.trackNumer)
+        duration = songEntity.duration
+    }
+    
 }
