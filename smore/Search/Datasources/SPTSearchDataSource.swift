@@ -2,7 +2,7 @@
 //  SPTSearchDataSource.swift
 //  smore
 //
-//  Created by Vignesh Babu on 4/13/19.
+//  Created by Colin Williamson on 4/13/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 

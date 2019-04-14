@@ -2,7 +2,7 @@
 //  SPTPlaylist.swift
 //  smore
 //
-//  Created by Vignesh Babu on 4/11/19.
+//  Created by Colin Williamson on 4/11/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
