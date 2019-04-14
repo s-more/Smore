@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 import YoutubeKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         YoutubeKit.shared.setAPIKey("AIzaSyCLdSHGPi7LVvN8V2hwJiM2gUuWpbONjHM")
-        
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+//            try AVAudioSession.sharedInstance().setActive(true)
+            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true)
+        }
+        catch {
+            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+        }
+
         
         //if UserDefaults.isFirstLaunch || true {
         // Skipping the YT Login Screen breaks the search

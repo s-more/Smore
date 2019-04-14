@@ -9,6 +9,8 @@
 import Foundation
 import WebKit
 import YoutubeKit
+import AVKit
+import AVFoundation
 
 final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
@@ -38,8 +40,8 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
         
         // Create a new player
         player = YTSwiftyPlayer(
-            frame: CGRect(x: 0, y: 100, width: myWidth, height: myHeight),
-            playerVars: [.videoID(vid_id), .showRelatedVideo(false)])
+            frame: CGRect(x: 0, y: 100, width: 1, height: 1),
+            playerVars: [.videoID(vid_id), .showRelatedVideo(false), .playsInline(true), .autoplay(true), .showControls(.hidden)])
         
         //screen = YTSwiftyPlayer(
         // Enable auto playback when video is loaded
@@ -74,8 +76,34 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
     
     @IBAction func pressPlay(_ sender: UIButton ) {
+        let url = "https://www.youtube.com/watch?v=wfF0zHeU3Zs"
+        
+        YouTubeAPI.getMP4(with: url, success: { [weak self] data in
+//            print(data)
+            let newURL = data.first?.url
+            let avplayer = AVPlayer(url: newURL!)
+            let controller = AVPlayerViewController()
+            controller.player = avplayer
+            self?.present(controller, animated: true) {
+                avplayer.play()
+            }
+            }, error: { err in
+                print(err)
+        })
+//        YouTubeAPI.getMP4(with: url, success: <#T##(YTMP4Response) -> Void#>, error: <#T##(Error) -> Void#>))
+        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
+//        let avplayer = AVPlayer(url: url)
+        
+        // Create a new AVPlayerViewController and pass it a reference to the player.
+//        let controller = AVPlayerViewController()
+//        controller.player = avplayer
+        
+        // Modally present the player and call the player's play() method when complete.
+//        present(controller, animated: true) {
+//            avplayer.play()
+//        }
         print("Play/Pause")
-        player.pauseVideo()
+//        player.pauseVideo()
     }
     
     @IBAction func pressForward(_ sender: UIButton) {
