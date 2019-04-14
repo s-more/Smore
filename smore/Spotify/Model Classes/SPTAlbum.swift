@@ -22,8 +22,8 @@ class SPTAlbum: Album {
     var isSingle: Bool
     
     init(response: SPTAlbumResponse) {
-        id = response.id!
-        name = response.name!
+        id = response.id ?? ""
+        name = response.name ?? ""
         artistName = response.artists?.first?.name ?? ""
         playableString = response.uri ?? ""
         imageLink = URL(string: response.images?.first?.url ?? "")
@@ -36,7 +36,7 @@ class SPTAlbum: Album {
     
     init(relAlbumData: SPTArtistAlbumsResponse.SPTItem) {
         
-        id = relAlbumData.id!
+        id = relAlbumData.id ?? ""
         name = relAlbumData.name ?? ""
         artistName = relAlbumData.artists.first?.name ?? ""
         playableString = relAlbumData.uri ?? ""

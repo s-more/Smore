@@ -21,11 +21,11 @@ class SPTSong: Song {
     var duration: TimeInterval
     
     init(response: SPTTrackResponse) {
-        name = response.name!
+        name = response.name ?? ""
         genre = ""
         imageLink = URL(string: response.album?.images?.first?.url ?? "")
-        id = response.id!
-        playableString = response.uri!
+        id = response.id ?? ""
+        playableString = response.uri ?? ""
         artistName = response.artists?.first?.name ?? ""
         originalImageLink = response.album?.images?.first?.url ?? ""
         trackNumber = response.track_number ?? 0
@@ -33,11 +33,11 @@ class SPTSong: Song {
     }
     
     init(topResponse: SPTArtistTopTracksResponse.SPTTrack) {
-        name = topResponse.name!
+        name = topResponse.name ?? ""
         genre = ""
         imageLink = URL(string: topResponse.album?.images?.first?.url ?? "")
-        id = topResponse.id!
-        playableString = topResponse.uri!
+        id = topResponse.id ?? ""
+        playableString = topResponse.uri ?? ""
         artistName = topResponse.artists?.first?.name ?? ""
         originalImageLink = topResponse.album?.images?.first?.url ?? ""
         trackNumber = topResponse.track_number ?? 0
@@ -48,8 +48,8 @@ class SPTSong: Song {
         name = searchResponse.name ?? ""
         genre = ""
         imageLink = URL(string: searchResponse.album?.images?.first?.url ?? "")
-        id = searchResponse.id!
-        playableString = searchResponse.uri!
+        id = searchResponse.id ?? ""
+        playableString = searchResponse.uri ?? ""
         artistName = searchResponse.artists?.first?.name ?? ""
         originalImageLink = searchResponse.album?.images?.first?.url ?? ""
         trackNumber = searchResponse.track_number ?? 0
@@ -70,10 +70,10 @@ class SPTSong: Song {
     
     init(albumTrackData: SPTAlbumResponse.SPTTrack.SPTItem)
     {
-        name = albumTrackData.name!
+        name = albumTrackData.name ?? ""
         genre = ""
         imageLink = nil
-        id = albumTrackData.id!
+        id = albumTrackData.id ?? ""
         playableString = albumTrackData.uri ?? ""
         artistName = albumTrackData.artists?.first?.name ?? ""
         originalImageLink = ""
