@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YoutubePlayerController" customModule="smore" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="o4R-Rn-16S" id="Ab1-vX-Z1X"/>
+                <outlet property="exitButton" destination="6JG-WF-tLE" id="pWa-v1-bNF"/>
+                <outlet property="forwardButton" destination="fIV-re-iOA" id="SHh-wl-w3g"/>
+                <outlet property="playButton" destination="Uha-R2-fYq" id="ORx-k4-s29"/>
+                <outlet property="view" destination="vrT-jp-fhv" id="Wd8-Re-u5a"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vrT-jp-fhv">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uha-R2-fYq">
+                    <rect key="frame" x="146" y="424" width="43" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="BhE-Al-KYR"/>
+                        <constraint firstAttribute="width" secondItem="Uha-R2-fYq" secondAttribute="height" multiplier="1:1" id="bBc-nL-9Kn"/>
+                        <constraint firstAttribute="height" constant="43" id="v8r-tC-LdD"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="zOc-Ul-U9B"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="PlayButtonLarge"/>
+                    <connections>
+                        <action selector="pressPlay:" destination="-1" eventType="touchUpInside" id="rIw-lK-Uiy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4R-Rn-16S">
+                    <rect key="frame" x="23" y="429" width="33" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="33" id="Kde-5C-huX"/>
+                        <constraint firstAttribute="height" constant="33" id="L9P-bt-E9i"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="Q9U-P5-ZZW"/>
+                        <constraint firstAttribute="width" secondItem="o4R-Rn-16S" secondAttribute="height" multiplier="1:1" id="T9Y-fm-mW1"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="prevButton"/>
+                    <connections>
+                        <action selector="pressBack:" destination="-1" eventType="touchUpInside" id="BAD-ns-pbf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIV-re-iOA">
+                    <rect key="frame" x="279" y="429" width="33" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fIV-re-iOA" secondAttribute="height" multiplier="1:1" id="J7c-GD-B6B"/>
+                        <constraint firstAttribute="width" constant="33" id="YqW-W0-7H0"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="aMy-H6-iez"/>
+                        <constraint firstAttribute="height" constant="33" id="nmE-JJ-WQ4"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="nextButton"/>
+                    <connections>
+                        <action selector="pressForward:" destination="-1" eventType="touchUpInside" id="zbP-W8-xwZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JG-WF-tLE">
+                    <rect key="frame" x="0.0" y="30" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="6JG-WF-tLE" secondAttribute="height" multiplier="1:1" id="AwI-DS-xNT"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="BLw-tZ-js7"/>
+                        <constraint firstAttribute="height" constant="50" id="Fmo-JV-aKs"/>
+                        <constraint firstAttribute="width" constant="50" id="i6q-S1-cff"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="downCaret"/>
+                    <connections>
+                        <action selector="pressExit:" destination="-1" eventType="touchUpInside" id="NKb-Tv-uE0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="skp-Pa-eQe" firstAttribute="trailing" secondItem="fIV-re-iOA" secondAttribute="trailing" constant="63" id="2nJ-Xv-wjO"/>
+                <constraint firstItem="fIV-re-iOA" firstAttribute="leading" secondItem="Uha-R2-fYq" secondAttribute="trailing" constant="90" id="60Y-f8-uti"/>
+                <constraint firstItem="o4R-Rn-16S" firstAttribute="leading" secondItem="skp-Pa-eQe" secondAttribute="leading" constant="23" id="PJw-Qo-Ycu"/>
+                <constraint firstItem="fIV-re-iOA" firstAttribute="top" secondItem="o4R-Rn-16S" secondAttribute="top" id="X3z-sZ-Pvo"/>
+                <constraint firstItem="6JG-WF-tLE" firstAttribute="leading" secondItem="vrT-jp-fhv" secondAttribute="leading" id="XJc-1e-JEe"/>
+                <constraint firstItem="6JG-WF-tLE" firstAttribute="top" secondItem="skp-Pa-eQe" secondAttribute="top" constant="10" id="kZe-NU-7m4"/>
+                <constraint firstItem="skp-Pa-eQe" firstAttribute="bottom" secondItem="fIV-re-iOA" secondAttribute="bottom" constant="205" id="m6m-Y1-ABb"/>
+                <constraint firstItem="fIV-re-iOA" firstAttribute="centerY" secondItem="Uha-R2-fYq" secondAttribute="centerY" id="zBU-fo-opQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="skp-Pa-eQe"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="PlayButtonLarge" width="211" height="211"/>
+        <image name="downCaret" width="512" height="512"/>
+        <image name="nextButton" width="211" height="211"/>
+        <image name="prevButton" width="211" height="211"/>
+    </resources>
+</document>

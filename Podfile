@@ -13,6 +13,7 @@ target 'smore' do
   pod 'lottie-ios'
   pod 'Kingfisher'
   pod "youtube-ios-player-helper", "~> 0.1.4"
+  pod 'YoutubeKit'
   pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
   pod 'GoogleSignIn'
   pod 'Firebase'
