@@ -2,7 +2,7 @@
 //  SPTArtist.swift
 //  smore
 //
-//  Created by Vignesh Babu on 3/25/19.
+//  Created by Colin Williamson on 3/25/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
 
@@ -30,13 +30,24 @@ class SPTArtist: Artist {
     }
     
     init(response: SPTArtistResponse) {
-        name = response.name!
+        name = response.name ?? ""
         genres = response.genres ?? []
         genre = response.genres?.first ?? ""
-        id = response.id!
+        id = response.id ?? ""
         albums = []
         imageLink = URL(string: response.images?.first?.url ?? "")
         originalImageLink = response.images?.first?.url
+        streamingService = .spotify
+    }
+    
+    init(searchResponse: SPTSearchResponse.SPTArtist.SPTArtistItem) {
+        name = searchResponse.name ?? ""
+        genres = searchResponse.genres ?? []
+        genre = searchResponse.genres?.first ?? ""
+        id = searchResponse.id ?? ""
+        albums = []
+        imageLink = URL(string: searchResponse.images?.first?.url ?? "")
+        originalImageLink = searchResponse.images?.first?.url
         streamingService = .spotify
     }
     
