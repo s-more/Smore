@@ -170,8 +170,14 @@ extension SearchViewController: UITableViewDelegate {
                 let vc = PlaylistContentViewController(viewModel: vm)
                 navigationController?.pushViewController(vc, animated: true)
             case 3:
-                MiniPlayer.shared.configure(with: searchDataSource.songs[indexPath.row])
-                MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
+                if searchDataSource.songs[indexPath.row].streamingService == StreamingService.spotify {
+                    Player.shared.stop()
+                    SpotifyRemote.shared.appRemote.playerAPI?.play(searchDataSource.songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
+                }else {
+                    SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
+                    MiniPlayer.shared.configure(with: searchDataSource.songs[indexPath.row])
+                    MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
+                }
             default: break
             }
         }

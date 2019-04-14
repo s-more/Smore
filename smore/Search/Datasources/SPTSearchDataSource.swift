@@ -1,20 +1,17 @@
 //
-//  AllSearchDataSource.swift
+//  SPTSearchDataSource.swift
 //  smore
 //
-//  Created by Jing Wei Li on 3/2/19.
+//  Created by Colin Williamson on 4/13/19.
 //  Copyright © 2019 Jing Wei Li. All rights reserved.
 //
-
-import Foundation
 
 import UIKit
 import Kingfisher
 import RxSwift
 
-class AllSearchDataSource: NSObject, SearchDataSource {
-    var searchHints: [String] = []
-    var name: String = "Dummy"
+class SPTSearchDataSource: NSObject, SearchDataSource {
+    var name: String = "Spotify"
     var songs: [Song] = []
     var albums: [Album] = []
     var artists: [Artist] = []
@@ -60,7 +57,7 @@ class AllSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = albums[indexPath.row].name
                 cell.subtitleLabel.text = albums[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "spotLogo")
             }
             return cell
         case 2: // playlists
@@ -71,7 +68,7 @@ class AllSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = playlists[indexPath.row].name
                 cell.subtitleLabel.text = playlists[indexPath.row].curatorName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "spotLogo")
             }
             return cell
         case 3: // songs
@@ -82,7 +79,7 @@ class AllSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = songs[indexPath.row].name
                 cell.subtitleLabel.text = songs[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = UIImage(named: "spotLogo")
             }
             return cell
         default: break
@@ -93,19 +90,42 @@ class AllSearchDataSource: NSObject, SearchDataSource {
     }
     
     func searchHints(from term: String) -> Observable<([String]?, Error?)> {
-        return Observable.empty()
+        return AppleMusicAPI.rx.searchHints(from: term)
     }
     
     func searchHintDataSource(from hints: [String]) -> SearchHintDataSource {
         return SearchHintDataSource(searchHints: hints)
     }
     
-    func searchCatalog(with text: String, completion: @escaping ([Artist], [Album], [Playlist], [Song]) -> Void, error: @escaping (Error) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            completion([],[],[],[])
-        }
+    func searchCatalog(
+        with text: String,
+        completion: @escaping ([Artist], [Album], [Playlist], [Song]) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? ""
+        SpotifyAPI.searchCatalog(token: SPTToken, term: text, success: { data in
+            DispatchQueue.global(qos: .userInitiated).async {
+                var artists: [Artist] = []
+                var albums: [Album] = []
+                var playlists: [Playlist] = []
+                var songs: [Song] = []
+                
+                if let rawAlbums = data.albums?.items {
+                    albums = rawAlbums.map { SPTAlbum(searchAlbumData: $0) }
+                }
+                if let rawArtists = data.artists?.items {
+                    artists = rawArtists.map { SPTArtist(searchResponse: $0)}
+                }
+                if let rawPlaylists = data.playlists?.items {
+                    playlists = rawPlaylists.map { SPTPlaylist(playlistSearchResponse: $0) }
+                }
+                if let rawSongs = data.tracks?.items {
+                    songs = rawSongs.map { SPTSong(searchResponse: $0) }
+                }
+                completion(artists, albums, playlists, songs)
+            }
+        }, error: { e in
+            error(e)
+        })
     }
-    
-    
 }
-

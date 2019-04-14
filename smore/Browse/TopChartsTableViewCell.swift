@@ -48,7 +48,13 @@ extension TopChartsTableViewCell: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        MiniPlayer.shared.configure(with: songs[indexPath.row])
-        MusicQueue.shared.queue.value = Array(songs[indexPath.row ..< songs.count])
+        if songs[indexPath.row].streamingService == StreamingService.spotify {
+            Player.shared.stop()
+            SpotifyRemote.shared.appRemote.playerAPI?.play(songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
+        }else {
+            SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
+            MiniPlayer.shared.configure(with: songs[indexPath.row])
+            MusicQueue.shared.queue.value = Array(songs[indexPath.row ..< songs.count])
+        }
     }
 }

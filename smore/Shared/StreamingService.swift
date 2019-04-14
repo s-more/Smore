@@ -21,6 +21,8 @@ enum StreamingService: Int {
             return UIImage(named: "appleLogo")
         case .spotify:
             return UIImage(named: "spotLogo")
+        case .youtube:
+            return UIImage(named: "youtubeIcon")
         default:
             return nil
         }
