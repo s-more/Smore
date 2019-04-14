@@ -14,7 +14,7 @@ import AVFoundation
 
 final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
-    private var player: YTSwiftyPlayer!
+    private var yt_player: YTSwiftyPlayer!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
@@ -45,23 +45,16 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
         
         //screen = YTSwiftyPlayer(
         // Enable auto playback when video is loaded
-        player.autoplay = false
+        yt_player.autoplay = false
         
         // Set player view.
-        //view = player
-        view.addSubview(player)
-//        player.snp.makeConstraints { (make) in
-//            make.centerX.equalTo(self.view)
-//            make.centerY.equalTo(self.view).offset(-NavBarHeight / 2.0)
-//            make.width.equalTo(ScreenWidth)
-//            make.height.equalTo(playHeight)
-//        }
+        view.addSubview(yt_player)
         
         // Set delegate for detect callback information from the player.
-        player.delegate = self
+        yt_player.delegate = self
         
         // Load the video.
-        player.loadPlayer()
+        yt_player.loadPlayer()
     }
     
     func playerReady(_ player: YTSwiftyPlayer) {}
@@ -108,8 +101,7 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
     @IBAction func pressForward(_ sender: UIButton) {
         print("Forward")
-        player.seek(to: 15, allowSeekAhead: true)
-        
+        yt_player.seek(to: 15, allowSeekAhead: true)
     }
     
     @IBAction func pressBack(_ sender: UIButton) {

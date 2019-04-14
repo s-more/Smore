@@ -49,9 +49,15 @@ class LocalSongTableViewController: LocalLibrayTableViewController {
         let song = SongEntity.standardSong(
             from: SongEntity.fetchedResultsController.object(at: indexPath))
         if let song = song, let objects = SongEntity.fetchedResultsController.fetchedObjects {
-            MiniPlayer.shared.configure(with: song)
-            MusicQueue.shared.queue.value = Array(objects[indexPath.row ..< objects.count])
-                                            .compactMap { SongEntity.standardSong(from: $0) }
+            if song.streamingService == StreamingService.spotify {
+                Player.shared.stop()
+                SpotifyRemote.shared.appRemote.playerAPI?.play(song.playableString, callback: SpotifyRemote.shared.defaultCallback)
+            }else {
+                SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
+                MiniPlayer.shared.configure(with: song)
+                MusicQueue.shared.queue.value = Array(objects[indexPath.row ..< objects.count])
+                    .compactMap { SongEntity.standardSong(from: $0) }
+            }
         }
         // Array(album.songs
     }

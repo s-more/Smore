@@ -17,7 +17,7 @@ class TabBarViewController: UITabBarController {
         configureNavBar(on: browseVC)
         browseVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 0)
         
-        let searchVM = SearchViewModel(dataSources: [APMSearchDataSource(), YTSearchDataSource(), AllSearchDataSource()])
+        let searchVM = SearchViewModel(dataSources: [APMSearchDataSource(), YTSearchDataSource(), SPTSearchDataSource()])
         let searchVC = UINavigationController(rootViewController: SearchViewController(viewModel: searchVM))
         searchVC.navigationBar.tintColor = UIColor.white
         searchVC.navigationBar.shadowImage = UIImage()
