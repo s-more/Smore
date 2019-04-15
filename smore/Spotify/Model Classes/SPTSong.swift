@@ -29,7 +29,7 @@ class SPTSong: Song {
         artistName = response.artists?.first?.name ?? ""
         originalImageLink = response.album?.images?.first?.url ?? ""
         trackNumber = response.track_number ?? 0
-        duration = TimeInterval(response.duration_ms ?? 0 / 1000)
+        duration = TimeInterval((response.duration_ms ?? 0) / 1000)
     }
     
     init(topResponse: SPTArtistTopTracksResponse.SPTTrack) {
@@ -41,7 +41,7 @@ class SPTSong: Song {
         artistName = topResponse.artists?.first?.name ?? ""
         originalImageLink = topResponse.album?.images?.first?.url ?? ""
         trackNumber = topResponse.track_number ?? 0
-        duration = TimeInterval(topResponse.duration_ms ?? 0 / 1000)
+        duration = TimeInterval((topResponse.duration_ms ?? 0) / 1000)
     }
     
     init(searchResponse: SPTSearchResponse.SPTTrack.SPTTrackItem) {
@@ -53,7 +53,7 @@ class SPTSong: Song {
         artistName = searchResponse.artists?.first?.name ?? ""
         originalImageLink = searchResponse.album?.images?.first?.url ?? ""
         trackNumber = searchResponse.track_number ?? 0
-        duration = TimeInterval(searchResponse.duration_ms ?? 0 / 1000)
+        duration = TimeInterval((searchResponse.duration_ms ?? 0) / 1000)
     }
     
     init(trackData: SPTPlaylistResponse.SPTTrack.SPTPlaylistTrack) {
@@ -65,7 +65,7 @@ class SPTSong: Song {
         artistName = trackData.track?.artists?.first?.name ?? ""
         originalImageLink = trackData.track?.album?.images?.first?.url ?? ""
         trackNumber = trackData.track?.track_number ?? 0
-        duration = TimeInterval(trackData.track?.duration_ms ?? 0 / 1000)
+        duration = TimeInterval((trackData.track?.duration_ms ?? 0) / 1000)
     }
     
     init(albumTrackData: SPTAlbumResponse.SPTTrack.SPTItem)
@@ -78,7 +78,7 @@ class SPTSong: Song {
         artistName = albumTrackData.artists?.first?.name ?? ""
         originalImageLink = ""
         trackNumber = albumTrackData.track_number ?? 0
-        duration = TimeInterval(albumTrackData.duration_ms ?? 0 / 1000)
+        duration = TimeInterval((albumTrackData.duration_ms ?? 0) / 1000)
     }
     
     init(songEntity: SongEntity) {

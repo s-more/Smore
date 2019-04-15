@@ -18,11 +18,14 @@ class Player {
     
     private var subQueues: [[Song]]
     
+    private var currentPositionIncremented = false
+    
     private init() {
         appleMusicPlayer = APMPlayer()
         spotifyPlayer = SPTPlayer()
         currentPlayer = appleMusicPlayer
         subQueues = []
+        SpotifyRemote.shared.delegate = self
         
         NotificationCenter.default.addObserver(
             forName: .skipToNextQueue,
@@ -31,7 +34,13 @@ class Player {
         { [weak self] _ in
             guard let strongSelf = self else { return }
             if !strongSelf.subQueues.isEmpty {
+                if strongSelf.subQueues.first?.first?.streamingService ?? .none != .spotify { MusicQueue.shared.currentPosition.value += 1
+                }
+                strongSelf.currentPositionIncremented = true
                 strongSelf.playSongsWithCorrectPlayer(using: strongSelf.subQueues.removeFirst())
+                
+            } else {
+                MiniPlayer.shared.reset()
             }
         }
     }
@@ -89,6 +98,7 @@ class Player {
         for (index, song) in songs.enumerated() {
             if index == 0 {
                 temp.append(song)
+                if (index == songs.count - 1) { subQueues.append(temp) }
                 continue
             }
             
@@ -154,5 +164,15 @@ class Player {
     
     func setCurrentPlaybackTime(with time: TimeInterval) {
         currentPlayer.setCurrentPlaybackTime(with: time)
+    }
+}
+
+extension Player: SpotifyRemoteDelegate {
+    func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
+        if currentPositionIncremented && status {
+            currentPositionIncremented = false
+            MusicQueue.shared.currentPosition.value += 1
+            spotifyPlayer.updateMiniPlayer()
+        }
     }
 }
