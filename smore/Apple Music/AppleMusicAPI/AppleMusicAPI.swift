@@ -14,8 +14,13 @@ import StoreKit
 /// - uses the prefix `APM`
 enum AppleMusicAPI {
     private static let developerToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlY1MjU0OUs3SzYifQ.eyJpYXQiOjE1NDkxMzM3NTgsImV4cCI6MTU2NDY4NTc1OCwiaXNzIjoiTkRCVEs5OFZMMyJ9.r3a_fQH_5mAlrI9OeLHfTZ4mU486mgXRVr3xoD0yq1mR4oSlpEiQorwhaGXORZ0ESRE0xHcQzs8TOkaYCaMoKg"
+    private static let userToken = "Ag1F1wB1M6jt5NUNg/uOZAn6lprh34jQ8D1cQ3+338y/ZhVuzwcKA0CCrpaDUOHyiR1Jh0nb2XLtLdU613d99KsVh4m4JBDWirPxLRa4XrYVkg9i2QwR0LfYx+K/RwS4kT8a3A2PGPxiTOcCZWikJjLHGmKQqkX0+o+0dFWI1iNmFUl+q/WeqPDg5KjI1DQNL2MfvcP4ZrBH6he6hUED9HqRFdOMZfpQSkd9RUoIgW9tGI0U5A=="
     private static let cloudServiceController = SKCloudServiceController()
     static let authHeaders = ["Authorization": "Bearer \(developerToken)"]
+    static let authHeaderWithUserToken = [
+        "Authorization": "Bearer \(developerToken)",
+        "Music-User-Token": userToken
+    ]
     static let countryCode = "us"
     
     // MARK: Authorization and Capabilities
@@ -66,6 +71,21 @@ enum AppleMusicAPI {
                 })
             } else {
                 needsSubscription(nil, nil)
+            }
+        }
+    }
+    
+    static func requestUserToken(completion: @escaping (String) -> Void, error: @escaping (Error) -> Void) {
+        cloudServiceController.requestUserToken(forDeveloperToken: developerToken) { token, err in
+            if let err = err {
+                error(err)
+                return
+            }
+            
+            if let token = token {
+                completion(token)
+            } else {
+                error(NSError(domain: "Invalid user token obtained", code: 0, userInfo: nil))
             }
         }
     }

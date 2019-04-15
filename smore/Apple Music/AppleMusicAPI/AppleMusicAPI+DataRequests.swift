@@ -304,4 +304,54 @@ extension AppleMusicAPI {
                 }
         }
     }
+    
+    static func recentPlayed(
+        completion: @escaping ([APMRecentlyPlayedResponse.APMRecentlyPlayedResponseData]) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        Alamofire.request(
+            "https://api.music.apple.com/v1/me/recent/played",
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: authHeaderWithUserToken)
+            .responseJSON { json in
+                if let err = json.error {
+                    DispatchQueue.main.async { error(err) }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        let response = try decoder.decode(APMRecentlyPlayedResponse.self, from: data)
+                        DispatchQueue.main.async { completion(response.data) }
+                    } catch let err {
+                        DispatchQueue.main.async { error(err) }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        error(NSError(domain: "Invalid JSON", code: 0, userInfo: nil))
+                    }
+                }
+        }
+    }
+    
+    static func recommendations(
+        completion: @escaping (String) -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        Alamofire.request(
+            "https://api.music.apple.com/v1/me/recommendations",
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: authHeaderWithUserToken)
+            .responseJSON { json in
+                if let stringData =  json.data,
+                    let result = String(data: stringData, encoding: String.Encoding.utf8) {
+                    DispatchQueue.main.async {
+                        completion(result)
+                    }
+                }
+        }
+    }
 }

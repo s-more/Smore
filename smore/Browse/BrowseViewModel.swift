@@ -13,6 +13,7 @@ class BrowseViewModel {
     var favArtists: [Artist]
     var topCharts: [APMSong]
     var headers: [String] = []
+    var recentPlayedData: [Any] = []
     
     init() {
         self.favGenres = UserDefaults.favGenres
@@ -28,8 +29,19 @@ class BrowseViewModel {
                 self?.topCharts = results.songs?.first?.data.map { data in
                     return APMSong(response: data)
                 } ?? []
-                self?.headers = ["What would you like to listen to?", "Top Charts"]
                 self?.favArtists = APMArtistEntity.favArtists()
+                
+                // fetch recent played data
+                AppleMusicAPI.recentPlayed(completion: { data in
+                    self?.recentPlayedData =
+                        data.compactMap { APMAlbum(recentPlayedData: $0) } +
+                        data.compactMap { APMPlaylist(recentPlayedData: $0) }
+                    self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
+                    DispatchQueue.main.async { completion() }
+                }, error: { e in
+                    DispatchQueue.main.async { error(e) }
+                })
+                
                 DispatchQueue.main.async { completion() }
             }, error: { e in
                 DispatchQueue.main.async { error(e) }
