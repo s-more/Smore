@@ -83,7 +83,8 @@ class YoutubePlayerController: UIViewController {
     
     @IBAction func pressForward(_ sender: UIButton) {
         print("Forward")
-        loadVideo(videoID: "fYGPcfUqzL0")
+        //loadVideo(videoID: "fYGPcfUqzL0")
+        Player.shared.skipToNext()
     }
     
     @IBAction func pressBack(_ sender: UIButton) {
@@ -119,6 +120,7 @@ class YoutubePlayerController: UIViewController {
     
     @objc func endOfVideo(){
         print("End of vid @!#!@$@#")
+        Player.shared.skipToNext()
     }
     
 }

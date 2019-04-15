@@ -80,9 +80,12 @@
                         <action selector="pressExit:" destination="-1" eventType="touchUpInside" id="NKb-Tv-uE0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-5T-COF">
-                    <rect key="frame" x="151" y="580" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-5T-COF">
+                    <rect key="frame" x="157" y="538" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="8JD-e5-LJd"/>
+                        <constraint firstAttribute="width" constant="32" id="mwI-U6-De7"/>
+                    </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="moreDots"/>
                     <connections>
@@ -94,11 +97,15 @@
             <constraints>
                 <constraint firstItem="skp-Pa-eQe" firstAttribute="trailing" secondItem="fIV-re-iOA" secondAttribute="trailing" constant="63" id="2nJ-Xv-wjO"/>
                 <constraint firstItem="fIV-re-iOA" firstAttribute="leading" secondItem="Uha-R2-fYq" secondAttribute="trailing" constant="90" id="60Y-f8-uti"/>
+                <constraint firstItem="C8q-5T-COF" firstAttribute="top" secondItem="Uha-R2-fYq" secondAttribute="bottom" constant="71" id="BRI-r3-OPY"/>
+                <constraint firstItem="C8q-5T-COF" firstAttribute="leading" secondItem="skp-Pa-eQe" secondAttribute="leading" constant="157" id="Mpl-29-vxN"/>
                 <constraint firstItem="o4R-Rn-16S" firstAttribute="leading" secondItem="skp-Pa-eQe" secondAttribute="leading" constant="23" id="PJw-Qo-Ycu"/>
                 <constraint firstItem="fIV-re-iOA" firstAttribute="top" secondItem="o4R-Rn-16S" secondAttribute="top" id="X3z-sZ-Pvo"/>
                 <constraint firstItem="6JG-WF-tLE" firstAttribute="leading" secondItem="vrT-jp-fhv" secondAttribute="leading" id="XJc-1e-JEe"/>
+                <constraint firstItem="skp-Pa-eQe" firstAttribute="trailing" secondItem="C8q-5T-COF" secondAttribute="trailing" constant="186" id="dfZ-NQ-hzb"/>
                 <constraint firstItem="6JG-WF-tLE" firstAttribute="top" secondItem="skp-Pa-eQe" secondAttribute="top" constant="10" id="kZe-NU-7m4"/>
                 <constraint firstItem="skp-Pa-eQe" firstAttribute="bottom" secondItem="fIV-re-iOA" secondAttribute="bottom" constant="205" id="m6m-Y1-ABb"/>
+                <constraint firstItem="skp-Pa-eQe" firstAttribute="bottom" secondItem="C8q-5T-COF" secondAttribute="bottom" constant="97" id="oiC-Kl-9oz"/>
                 <constraint firstItem="fIV-re-iOA" firstAttribute="centerY" secondItem="Uha-R2-fYq" secondAttribute="centerY" id="zBU-fo-opQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="skp-Pa-eQe"/>
