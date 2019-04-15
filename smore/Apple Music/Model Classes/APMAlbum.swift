@@ -81,6 +81,20 @@ class APMAlbum: Album {
         songs = albumResponse.relationships.tracks.data.map { APMSong(albumTrackData: $0) }
     }
     
+    init?(recentPlayedData: APMRecentlyPlayedResponse.APMRecentlyPlayedResponseData) {
+        id = recentPlayedData.id
+        name = recentPlayedData.attributes.name
+        artistName = recentPlayedData.attributes.artistName ?? ""
+        playableString = recentPlayedData.attributes.playParams?.id ?? ""
+        imageLink = recentPlayedData.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        releaseDate = recentPlayedData.attributes.releaseDate ?? ""
+        description = recentPlayedData.attributes.editorialNotes?.standard ?? recentPlayedData.attributes.editorialNotes?.short
+        originalImageLink = recentPlayedData.attributes.artwork?.url
+        isSingle = recentPlayedData.attributes.isSingle ?? false
+        songs = []
+        guard recentPlayedData.attributes.artistName != nil else { return nil }
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
             DispatchQueue.main.async { completion() }
