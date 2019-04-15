@@ -49,6 +49,7 @@ class YTPlayer: NSObject, PlayerProtocol{
             YoutubeRemote.shared.play(videoID: subQueue[positionInSubQueue].playableString)
             
         } else {
+            YoutubeRemote.shared.stop()
             NotificationCenter.default.post(name: .skipToNextQueue, object: Player.shared)
         }
     }

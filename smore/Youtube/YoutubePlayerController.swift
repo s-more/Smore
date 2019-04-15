@@ -53,6 +53,7 @@ class YoutubePlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         YoutubeRemote.shared.vc = self
+        
         loadImage()
     }
 
@@ -62,7 +63,7 @@ class YoutubePlayerController: UIViewController {
         self.addChild(self.avcontroller)
         self.avcontroller.player?.play()
         
-        loadImage()
+        //loadImage()
     }
     
     func loadVideo(videoID: String ){
@@ -81,8 +82,10 @@ class YoutubePlayerController: UIViewController {
     }
     
     func loadImage() {
+        print("Loading new image")
         let imageLink = MusicQueue.shared.currentSong.imageLink
-        thumbnail.kf.setImage(with: imageLink)
+        thumbnail.image = nil
+        thumbnail.kf.setImage(with: imageLink, placeholder: UIImage(named: "youtubePlaceholder"))
     }
     
     
@@ -133,6 +136,7 @@ class YoutubePlayerController: UIViewController {
     
     func stop(){
          self.avcontroller.player?.pause()
+        dismiss(animated: true)
     }
     
     @objc func endOfVideo(){
