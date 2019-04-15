@@ -11,34 +11,47 @@ import Foundation
 class YoutubeRemote: NSObject {
     static let shared = YoutubeRemote()
     
+    var vc: YoutubePlayerController?
+    
+    var started: Bool
+    
     private override init() {
+        started = false
         super.init()
     }
     
     var playerRemote: YoutubePlayerController?
     
-    func play( videoID: String ){
+    func start() {
+        if !started {
+            //navigationController?.pushViewController(YoutubePlayerController(), animated: true)
+            started = true
+        }
         
+    }
+    
+    func play( videoID: String ){
+        vc?.play(videoID: videoID)
     }
     
     func pause(){
-        
+        vc?.pause()
     }
     
     func resume(){
-        
+        vc?.resume()
     }
     
     func stop(){
-        
+        vc?.stop()
     }
     
     func setRepeatMode(){
-        
+        // TODO
     }
     
     func setShuffle(state: Bool){
-    
+        // TODO
     }
     
     

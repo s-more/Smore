@@ -15,6 +15,7 @@ class Player {
     private var currentPlayer: PlayerProtocol
     let appleMusicPlayer: APMPlayer
     let spotifyPlayer: SPTPlayer
+    let youtubePlayer: YTPlayer
     
     private var subQueues: [[Song]]
     
@@ -23,6 +24,7 @@ class Player {
     private init() {
         appleMusicPlayer = APMPlayer()
         spotifyPlayer = SPTPlayer()
+        youtubePlayer = YTPlayer()
         currentPlayer = appleMusicPlayer
         subQueues = []
         SpotifyRemote.shared.delegate = self
@@ -127,6 +129,10 @@ class Player {
             case .spotify:
                 SpotifyRemote.shared.reconnect()
                 currentPlayer = spotifyPlayer
+                currentPlayer.play(with: queue)
+            case .youtube:
+                currentPlayer = youtubePlayer
+                YoutubeRemote.shared.start()
                 currentPlayer.play(with: queue)
             default: break
             }

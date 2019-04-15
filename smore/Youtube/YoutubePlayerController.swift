@@ -28,9 +28,19 @@ class YoutubePlayerController: UIViewController {
         self.avcontroller.player = self.avplayer
         NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
-        loadVideo(videoID: "wfF0zHeU3Zs")
+        //loadVideo(videoID: "wfF0zHeU3Zs")
         
     }
+    
+    init( videoID: String ) {
+        super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
+        self.avcontroller.player = self.avplayer
+        NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
+        loadVideo(videoID: videoID)
+    }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,6 +48,7 @@ class YoutubePlayerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        YoutubeRemote.shared.vc = self
     }
     func displayVideo(){
         let newItem = AVPlayerItem(url: self.vid_url)
@@ -82,6 +93,7 @@ class YoutubePlayerController: UIViewController {
     
     @IBAction func pressExit(_ sender: UIButton) {
         print("exiting")
+        dismiss(animated: true)
     }
     
     

@@ -104,6 +104,9 @@ class PlaylistContentViewController: LibraryContentViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
         MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
+        if viewModel.playlist.songs[indexPath.row].streamingService == .youtube {
+          present(YoutubePlayerController(), animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

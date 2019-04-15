@@ -16,7 +16,6 @@ class YTPlayer: NSObject, PlayerProtocol{
     
     var state: PlayerState = .notPlaying
     var isShuffling: Bool = false
-    var repeatMode: SPTAppRemotePlaybackOptionsRepeatMode = .off
     var subQueue: [Song]
     var positionInSubQueue: Int
     
@@ -25,7 +24,7 @@ class YTPlayer: NSObject, PlayerProtocol{
     }
     
     var repeatModeTintColor: UIColor {
-        return repeatMode == .off ? UIColor.white : UIColor.themeColor
+        return UIColor.white
     }
     
     override init() {
@@ -40,7 +39,6 @@ class YTPlayer: NSObject, PlayerProtocol{
             YoutubeRemote.shared.play(videoID: subQueue[positionInSubQueue].playableString)
             
         } else {
-            // TODO: post notification to skip to next queue
             NotificationCenter.default.post(name: .skipToNextQueue, object: nil)
         }
     }
@@ -67,34 +65,38 @@ class YTPlayer: NSObject, PlayerProtocol{
     }
     
     func skipToCurrentPosition() {
-        //a
+        // TODO
     }
     
     func playOrPause() {
         switch state {
         case .playing:
             state = .paused
-            //YoutubeRemote.shared.appRemote.playerAPI?.pause(nil)
+            YoutubeRemote.shared.pause()
         case .paused, .notPlaying:
             state = .playing
-            //YoutubeRemote.shared.appRemote.playerAPI?.resume(nil)
+            YoutubeRemote.shared.resume()
         }
     }
     
     func stop() {
-        //a
+        YoutubeRemote.shared.stop()
     }
     
     func toggleRepeatMode() {
-        //a
     }
     
     func toggleShuffleMode(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
-        //a
+        if !isShuffling {
+            isShuffling = true
+            YoutubeRemote.shared.setShuffle(state: true)
+        } else {
+            isShuffling = false
+            YoutubeRemote.shared.setShuffle(state: false)
+        }
     }
     
     func setCurrentPlaybackTime(with time: TimeInterval) {
-        //a
     }
     
 
