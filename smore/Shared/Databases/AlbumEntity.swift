@@ -57,6 +57,8 @@ class AlbumEntity: NSManagedObject {
                     switch streamingService {
                     case .appleMusic:
                         return tempResult + [APMAlbum(albumEntity: newEntity)]
+                    case .spotify:
+                        return tempResult + [SPTAlbum(albumEntity: newEntity)]
                     default: break
                     }
                 }
@@ -82,6 +84,8 @@ class AlbumEntity: NSManagedObject {
             switch streamingService {
             case .appleMusic:
                 return APMAlbum(albumEntity: entity)
+            case .spotify:
+                return SPTAlbum(albumEntity: entity)
             default: break
             }
         }

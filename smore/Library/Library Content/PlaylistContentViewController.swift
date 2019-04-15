@@ -102,14 +102,8 @@ class PlaylistContentViewController: LibraryContentViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if viewModel.playlist.songs[indexPath.row].streamingService == StreamingService.spotify {
-            Player.shared.stop()
-            SpotifyRemote.shared.appRemote.playerAPI?.play(viewModel.playlist.songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
-        }else {
-            SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
-            MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
-            MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
-        }
+        MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

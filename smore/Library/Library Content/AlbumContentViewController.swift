@@ -87,14 +87,8 @@ class AlbumContentViewController: LibraryContentViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if album.songs[indexPath.row].streamingService == StreamingService.spotify {
-            Player.shared.stop()
-            SpotifyRemote.shared.appRemote.playerAPI?.play(album.songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
-        }else {
-            SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
-            MiniPlayer.shared.configure(with: album.songs[indexPath.row])
-            MusicQueue.shared.queue.value = Array(album.songs[indexPath.row ..< album.songs.count])
-        }
+        MiniPlayer.shared.configure(with: album.songs[indexPath.row])
+        MusicQueue.shared.queue.value = Array(album.songs[indexPath.row ..< album.songs.count])
     }
     
     // MARK - Button Taps

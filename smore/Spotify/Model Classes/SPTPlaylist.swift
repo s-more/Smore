@@ -37,6 +37,9 @@ class SPTPlaylist: Playlist {
         imageLink = playlistEntity.imageLink
         originalImageLink = playlistEntity.originalImageLink
         description = playlistEntity.editorDescription
+        songs = (playlistEntity.songs?.array as? [SongEntity])?
+            .compactMap { SongEntity.standardSong(from: $0) }
+            ?? []
     }
     
     init(playlistSearchResponse: SPTSearchResponse.SPTPlaylist.SPTPlaylistItem) {
