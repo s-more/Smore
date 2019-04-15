@@ -360,4 +360,42 @@ class SpotifyAPI {
                 }
         }
     }
+    
+    static func getTopArtists(token: String,
+                        typeIsArtist: String,
+                        completion: @escaping (SPTTopArtistResponse) -> Void,
+                        error: @escaping (Error) -> Void) {
+        let searchQuery = ["https://api.spotify.com/v1/me/top/", typeIsArtist].joined()
+        Alamofire.request(
+            searchQuery,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["Authorization": "Bearer \(token)"]).responseJSON
+            { json in
+                guard json.result.isSuccess else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Request Failed", code: 0))
+                    }
+                    return
+                }
+                if let data = json.data {
+                    do {
+                        
+                        let result = try decoder.decode(SPTTopArtistResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            completion(result)
+                        }
+                    } catch let err {
+                        DispatchQueue.main.async {
+                            error(err)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print(NSError(domain: "JSON Corrupted", code: 0))
+                    }
+                }
+        }
+    }
 }

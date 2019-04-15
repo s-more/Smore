@@ -49,7 +49,17 @@ class SpotifyLoginViewController: UIViewController {
 extension SpotifyLoginViewController: SpotifyRemoteDelegate {
     func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
         if status {
-            navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
+            SpotifyAPI.getTopArtists(
+                token: SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? "",
+                typeIsArtist: "artist",
+                completion: { data in
+                    print("TOP ARTISTS DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                    print(data)
+            }, error: {err in
+                print("TOP ARTISTS ERRORRRRRRORRRRRRORRRRRRORRRRRRORRRRRRORRRRRRORRRRRRORRRRRRORRRRRR")
+                print(err)
+            })
+//            navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
         }
     }
     
