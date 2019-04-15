@@ -62,6 +62,23 @@ class SPTAlbum: Album {
         songs = []
     }
     
+    init(albumEntity: AlbumEntity) {
+        id = albumEntity.id ?? ""
+        name = albumEntity.name ?? ""
+        artistName = albumEntity.artistName ?? ""
+        playableString = albumEntity.playableString ?? ""
+        imageLink = albumEntity.imageLink
+        releaseDate = albumEntity.releaseDate ?? ""
+        description = albumEntity.editorDescription ?? ""
+        originalImageLink = albumEntity.originalImageLink ?? ""
+        isSingle = albumEntity.isSingle
+        if let fetchedSongs = albumEntity.songs?.array as? [SongEntity] {
+            songs = fetchedSongs.compactMap { SongEntity.standardSong(from: $0) }
+        } else {
+            songs = []
+        }
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
             

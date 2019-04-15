@@ -74,6 +74,8 @@ class PlaylistEntity: NSManagedObject {
                         return tempResult + [APMPlaylist(playlistEntity: newEntity)]
                     case .combined:
                         return tempResult + [CombinedPlaylist(playlistEntity: newEntity)]
+                    case .spotify:
+                        return tempResult + [SPTPlaylist(playlistEntity: newEntity)]
                     default: break
                     }
                 }
@@ -101,6 +103,8 @@ class PlaylistEntity: NSManagedObject {
                 return APMPlaylist(playlistEntity: entity)
             case .combined:
                 return CombinedPlaylist(playlistEntity: entity)
+            case .spotify:
+                return SPTPlaylist(playlistEntity: entity)
             default: break
             }
         }

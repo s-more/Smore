@@ -21,7 +21,7 @@ class MusicQueue {
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [weak self] songs in
                 self?.currentPosition.value = 0
-                Player.shared.play(with: songs.map { $0.playableString })
+                Player.shared.play(with: songs)
             })
             .disposed(by: bag)
     }

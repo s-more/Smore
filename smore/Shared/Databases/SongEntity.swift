@@ -67,6 +67,8 @@ class SongEntity: NSManagedObject {
                         return tempResult + [APMSong(songEntity: newEntity)]
                     case .youtube:
                         return tempResult + [YTVideo(songEntity: newEntity)]
+                    case .spotify:
+                        return tempResult + [SPTSong(songEntity: newEntity)]
                     default: break
                     }
                 }
@@ -94,6 +96,8 @@ class SongEntity: NSManagedObject {
                 return APMSong(songEntity: entity)
             case .youtube:
                 return YTVideo(songEntity: entity)
+            case .spotify:
+                return SPTSong(songEntity: entity)
             default: break
             }
         }
