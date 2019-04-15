@@ -27,4 +27,5 @@ protocol PlayerProtocol: NSObjectProtocol {
     func toggleRepeatMode()
     func toggleShuffleMode(completion: @escaping () -> Void, error: @escaping (Error) -> Void)
     func setCurrentPlaybackTime(with time: TimeInterval)
+    func updateMiniPlayer()
 }

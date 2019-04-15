@@ -10,16 +10,15 @@ import Foundation
 
 class SPTPlayer: NSObject, PlayerProtocol {
     
-    var currentPlaybackTime: String = ""
-    var remainingPlaybackTime: String? = nil
     var nowPlayingItemPlaybackTime: TimeInterval? = 0
-    var currentPlaybackPercentage: Float = 0
     
     var state: PlayerState = .notPlaying
     var isShuffling: Bool = false
     var repeatMode: SPTAppRemotePlaybackOptionsRepeatMode = .off
     var subQueue: [Song]
+    
     var positionInSubQueue: Int
+    var timeStamp: TimeInterval = -1
     
     
     var shuffleModeTintColor: UIColor {
@@ -28,6 +27,26 @@ class SPTPlayer: NSObject, PlayerProtocol {
     
     var repeatModeTintColor: UIColor {
         return repeatMode == .off ? UIColor.white : UIColor.themeColor
+    }
+    
+    var currentPlaybackTime: String {
+        timeStamp += 1
+        return Utilities.timeIntervalToReg(from: timeStamp)
+    }
+    
+    var remainingPlaybackTime: String? {
+        if let totalTime = nowPlayingItemPlaybackTime {
+            return Utilities.timeIntervalToReg(from: totalTime - timeStamp)
+        }
+        return nil
+    }
+    
+    var currentPlaybackPercentage: Float {
+        if let totalTime = nowPlayingItemPlaybackTime {
+            let percentage = Float(timeStamp / totalTime)
+            return percentage
+        }
+        return 0
     }
     
     override init() {
@@ -40,8 +59,15 @@ class SPTPlayer: NSObject, PlayerProtocol {
     
     func play(with songs: [Song]) {
         subQueue = songs
-        if positionInSubQueue < subQueue.count - 1 {
-            SpotifyRemote.shared.appRemote.playerAPI?.play(subQueue[positionInSubQueue].playableString, callback: nil)
+        positionInSubQueue = 0
+        timeStamp = 0
+        if positionInSubQueue <= subQueue.count - 1 {
+            if !SpotifyRemote.shared.appRemote.isConnected {
+                SpotifyRemote.shared.appRemote.authorizeAndPlayURI(subQueue[positionInSubQueue].playableString)
+            } else {
+                SpotifyRemote.shared.appRemote.playerAPI?.play(subQueue[positionInSubQueue].playableString, callback: nil)
+            }
+            nowPlayingItemPlaybackTime = subQueue[positionInSubQueue].duration
         } else {
             // TODO: post notification to skip to next queue
             NotificationCenter.default.post(name: .skipToNextQueue, object: nil)
@@ -53,6 +79,7 @@ class SPTPlayer: NSObject, PlayerProtocol {
         //SpotifyRemote.shared.appRemote.playerAPI?.skip(toNext: nil)
         if positionInSubQueue < subQueue.count - 1 {
             positionInSubQueue += 1
+            MusicQueue.shared.currentPosition.value += 1
             SpotifyRemote.shared.appRemote.playerAPI?.play(subQueue[positionInSubQueue].playableString, callback: nil)
         } else {
            NotificationCenter.default.post(name: .skipToNextQueue, object: Player.shared)
@@ -62,9 +89,10 @@ class SPTPlayer: NSObject, PlayerProtocol {
     func skipToPrev() {
         if positionInSubQueue > 0 {
             positionInSubQueue -= 1
+            MusicQueue.shared.currentPosition.value -= 1
             SpotifyRemote.shared.appRemote.playerAPI?.play(subQueue[positionInSubQueue].playableString, callback: nil)
         } else {
-            // post notification to skip to next queue
+            // post notification to skip to previous queue
             NotificationCenter.default.post(name: .skipToPreviousQueue, object: nil)
         }
     }
@@ -121,7 +149,12 @@ class SPTPlayer: NSObject, PlayerProtocol {
     }
     
     func setCurrentPlaybackTime(with time: TimeInterval) {
+        timeStamp = time
         SpotifyRemote.shared.appRemote.playerAPI?.seek(toPosition: Int(time * 1000), callback: nil)
+    }
+    
+    func updateMiniPlayer() {
+        MiniPlayer.shared.configure(with: subQueue[positionInSubQueue])
     }
 }
 
@@ -135,11 +168,20 @@ extension SPTPlayer: SPTAppRemotePlayerStateDelegate {
             print("🚗 Completed playback of current song 🚗")
             if positionInSubQueue < subQueue.count - 1 {
                 positionInSubQueue += 1
-                SpotifyRemote.shared.appRemote.playerAPI?.play(subQueue[positionInSubQueue].playableString, callback: nil)
-                MusicQueue.shared.currentPosition.value += 1
+                if !SpotifyRemote.shared.appRemote.isConnected {
+                        SpotifyRemote.shared.appRemote.authorizeAndPlayURI(
+                            subQueue[positionInSubQueue].playableString)
+                } else {
+                    SpotifyRemote.shared.appRemote.playerAPI?.play(
+                        subQueue[positionInSubQueue].playableString,
+                        callback: nil)
+                    MusicQueue.shared.currentPosition.value += 1
+                }
+                timeStamp = 0
             } else {
                 // TODO: post notification to skip to next queue
                 NotificationCenter.default.post(name: .skipToNextQueue, object: nil)
+                timeStamp = 0
             }
         }
     }

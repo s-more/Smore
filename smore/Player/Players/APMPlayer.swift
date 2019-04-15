@@ -46,12 +46,13 @@ class APMPlayer: NSObject, PlayerProtocol {
             guard let strongSelf = self else { return }
             let state = strongSelf.player.playbackState
             if state == .stopped {
-                MiniPlayer.shared.reset()
+//                MiniPlayer.shared.reset()
                 NotificationCenter.default.post(name: .skipToNextQueue, object: nil)
             }
             
-            if state == .paused && strongSelf.player.indexOfNowPlayingItem == 0 {
-                MiniPlayer.shared.reset()
+            let durationDiff = (strongSelf.player.nowPlayingItem?.playbackDuration ?? 0) - strongSelf.player.currentPlaybackTime
+            if state == .paused && abs(durationDiff) < 15 {
+                // shouldn't reset as this does not signify the end of playback
                 NotificationCenter.default.post(name: .skipToNextQueue, object: nil)
             }
         
@@ -184,6 +185,10 @@ class APMPlayer: NSObject, PlayerProtocol {
     
     func setCurrentPlaybackTime(with time: TimeInterval) {
         player.currentPlaybackTime = time
+    }
+    
+    func updateMiniPlayer() {
+        MiniPlayer.shared.configure(with: subQueue[player.indexOfNowPlayingItem])
     }
 }
 
