@@ -9,6 +9,7 @@
 import Foundation
 import AVKit
 import AVFoundation
+import Kingfisher
 
 class YoutubePlayerController: UIViewController {
     
@@ -16,6 +17,7 @@ class YoutubePlayerController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var thumbnail: UIImageView!
     
     var vid_id: String!
     var vid_url: URL!
@@ -23,13 +25,15 @@ class YoutubePlayerController: UIViewController {
     let avplayer = AVPlayer()
     let avcontroller = AVPlayerViewController()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     init() {
         super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
         self.avcontroller.player = self.avplayer
         NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
-        //loadVideo(videoID: "wfF0zHeU3Zs")
-        
     }
     
     init( videoID: String ) {
@@ -49,18 +53,24 @@ class YoutubePlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         YoutubeRemote.shared.vc = self
+        loadImage()
     }
+
     func displayVideo(){
         let newItem = AVPlayerItem(url: self.vid_url)
         self.avcontroller.player?.replaceCurrentItem(with: newItem)
         self.addChild(self.avcontroller)
         self.avcontroller.player?.play()
+        
+        loadImage()
     }
     
     func loadVideo(videoID: String ){
         vid_id = videoID
         print("THIS IS THE VIDEO ID: \(videoID) !@#@$%$#^")
         let temp_vid_url = "https://www.youtube.com/watch?v=\(videoID)"
+        
+        loadImage()
         
         YouTubeAPI.getMP4(with: temp_vid_url, success: { data in
             self.vid_url = data.first?.url
@@ -69,6 +79,12 @@ class YoutubePlayerController: UIViewController {
             print(err)
         })
     }
+    
+    func loadImage() {
+        let imageLink = MusicQueue.shared.currentSong.imageLink
+        thumbnail.kf.setImage(with: imageLink)
+    }
+    
     
     @IBAction func pressPlay(_ sender: UIButton ) {
         print("Play/Pause")
@@ -89,7 +105,8 @@ class YoutubePlayerController: UIViewController {
     
     @IBAction func pressBack(_ sender: UIButton) {
         print("Backward")
-        loadVideo(videoID: "2ZIpFytCSVc")
+        Player.shared.skipToPrev()
+        //loadVideo(videoID: "2ZIpFytCSVc")
     }
     
     @IBAction func pressExit(_ sender: UIButton) {
