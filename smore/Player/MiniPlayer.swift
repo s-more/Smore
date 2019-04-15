@@ -125,7 +125,7 @@ class MiniPlayer: UIView {
                 }, completion: nil)
                 var vc: UIViewController
                 if MusicQueue.shared.currentSong.streamingService == .youtube {
-                    vc = YoutubePlayerController()
+                    vc = YoutubePlayerController(song: MusicQueue.shared.currentSong)
                 } else {
                     vc = PlayerViewController()
                 }

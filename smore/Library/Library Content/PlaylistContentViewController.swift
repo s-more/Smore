@@ -104,8 +104,9 @@ class PlaylistContentViewController: LibraryContentViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
         MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
-        if viewModel.playlist.songs[indexPath.row].streamingService == .youtube {
-          present(YoutubePlayerController(), animated: true, completion: nil)
+        let currentSong = viewModel.playlist.songs[indexPath.row]
+        if currentSong.streamingService == .youtube {
+          present(YoutubePlayerController(song: currentSong), animated: true, completion: nil)
         }
     }
     

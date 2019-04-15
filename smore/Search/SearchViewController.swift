@@ -176,7 +176,7 @@ extension SearchViewController: UITableViewDelegate {
                 } else if searchDataSource.songs[indexPath.row].streamingService == StreamingService.youtube {
                     Player.shared.stop()
                     MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
-                    present(YoutubePlayerController(), animated: true)
+                    present(YoutubePlayerController(song: searchDataSource.songs[indexPath.row]), animated: true)
                     YoutubeRemote.shared.play(videoID: searchDataSource.songs[indexPath.row].playableString)
                 } else {
                     SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)

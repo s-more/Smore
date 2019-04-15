@@ -22,8 +22,8 @@ class YouTubeAPI {
     class func getMP4(
         with URL: String,
         success: @escaping ([YTMP4Response]) -> Void,
-        error: @escaping (Error) -> Void
-        ) {
+        error: @escaping (Error) -> Void)
+    {
         let searchQuery = ["https://you-link.herokuapp.com/?url=", URL].joined()
         
         Alamofire.request(searchQuery, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Accept": "application/json"]).responseJSON
@@ -31,7 +31,6 @@ class YouTubeAPI {
                 guard json.result.isSuccess else {
                     DispatchQueue.main.async {
                         print(NSError(domain: "YT JSON Request Failed", code: 0))
-                        //print(json)
                     }
                     return
                 }
@@ -42,18 +41,12 @@ class YouTubeAPI {
                             decoder.decode([YTMP4Response].self, from: data)
                         DispatchQueue.main.async {
                             print("Success")
-                            //print(result)
-                            
-//                            if let str_data = json.data, let utf8Text = String(data: str_data, encoding: .utf8) {
-//                                print("Data \(utf8Text)")
-//                            }
-                            
                             success(result)
                         }
                     } catch let err {
                         DispatchQueue.main.async {
 //                            print("YT Error!")
-                            error(NSError(domain: "YT MP4 Parse Failed", code: 0))
+                            error(err)
                             //print(json)
                         }
                     }
