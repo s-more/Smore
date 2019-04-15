@@ -74,7 +74,7 @@ class YouTubeAPI {
 
         let search_text = text.replacingOccurrences(of: " ", with: "%20")
         
-        let searchQuery = ["https://www.googleapis.com/youtube/v3/search?part=snippet&q=", search_text, "&maxResults=", String(limit), "&key=", api_key ].joined()
+        let searchQuery = ["https://www.googleapis.com/youtube/v3/search?part=snippet&q=", search_text, "&maxResults=", String(limit), "&key=", api_key, "&videoLicense=creativeCommon&type=video"].joined()
         
         print("====== Attempting lookup ====")
         print(searchQuery)
