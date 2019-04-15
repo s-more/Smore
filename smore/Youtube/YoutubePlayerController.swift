@@ -7,27 +7,27 @@
 //
 
 import Foundation
-import WebKit
-import YoutubeKit
 import AVKit
 import AVFoundation
 
-final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
+class YoutubePlayerController: UIViewController {
     
-    private var yt_player: YTSwiftyPlayer!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     
     var vid_id: String!
+    var vid_url: URL!
     var isPlaying = false
     let avplayer = AVPlayer()
     let avcontroller = AVPlayerViewController()
     
     init(videoId id: String) {
         super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
+        self.avcontroller.player = self.avplayer
         vid_id = id
+        loadVideo(videoID: "wfF0zHeU3Zs")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,21 +36,25 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = "https://www.youtube.com/watch?v=wfF0zHeU3Zs"
+    }
+    func displayVideo(){
+        let newItem = AVPlayerItem(url: self.vid_url)
+        self.avcontroller.player?.replaceCurrentItem(with: newItem)
+        self.addChild(self.avcontroller)
+    }
+    
+    func loadVideo(videoID: String ){
+        vid_id = videoID
         
-        YouTubeAPI.getMP4(with: url, success: { data in
-            let newURL = data.first?.url
-            let newItem = AVPlayerItem(url: newURL!)
-            
-            self.avcontroller.player = self.avplayer
-            self.avcontroller.player?.replaceCurrentItem(with: newItem)
-            self.addChild(self.avcontroller)
+        let temp_vid_url = "https://www.youtube.com/watch?v=\(videoID)"
+        
+        YouTubeAPI.getMP4(with: temp_vid_url, success: { data in
+            self.vid_url = data.first?.url
+            self.displayVideo()
         }, error: { err in
             print(err)
         })
-    
     }
-    
     
     @IBAction func pressPlay(_ sender: UIButton ) {
         print("Play/Pause")
@@ -65,6 +69,7 @@ final class YoutubePlayerController: UIViewController, YTSwiftyPlayerDelegate {
     
     @IBAction func pressForward(_ sender: UIButton) {
         print("Forward")
+        loadVideo(videoID: "fYGPcfUqzL0")
     }
     
     @IBAction func pressBack(_ sender: UIButton) {
