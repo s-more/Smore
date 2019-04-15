@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PlayerProtocol: NSObject {
+protocol PlayerProtocol: NSObjectProtocol {
     var currentPlaybackTime: String { get }
     var remainingPlaybackTime: String? { get }
     var nowPlayingItemPlaybackTime: TimeInterval? { get }
