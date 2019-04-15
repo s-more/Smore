@@ -87,6 +87,7 @@ PODS:
   - SwiftMessages/App (6.0.2)
   - XLPagerTabStrip (8.1.1)
   - youtube-ios-player-helper (0.1.6)
+  - YoutubeKit (0.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -101,6 +102,7 @@ DEPENDENCIES:
   - SwiftMessages
   - XLPagerTabStrip (~> 8.1)
   - youtube-ios-player-helper (~> 0.1.4)
+  - YoutubeKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -125,6 +127,7 @@ SPEC REPOS:
     - SwiftMessages
     - XLPagerTabStrip
     - youtube-ios-player-helper
+    - YoutubeKit
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -148,7 +151,8 @@ SPEC CHECKSUMS:
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+  YoutubeKit: a00e9eebcb3cfe26d7e233c5f8591dfd0b08f7a0
 
-PODFILE CHECKSUM: f79184552d01c33c9f3dd18d864551a5470ec1e3
+PODFILE CHECKSUM: a0754bd7e5a844fb4a1822c4a9370254bf7d7eb0
 
 COCOAPODS: 1.6.1
