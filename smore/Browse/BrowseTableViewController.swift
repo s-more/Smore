@@ -29,6 +29,8 @@ class BrowseTableViewController: UITableViewController {
                            forCellReuseIdentifier: TopChartsTableViewCell.identifier)
         tableView.register(UINib(nibName: "BrowseHeader", bundle: Bundle.main),
                            forHeaderFooterViewReuseIdentifier: BrowseHeader.identifier)
+        tableView.register(UINib(nibName: "HistoryTableViewCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: HistoryTableViewCell.identifier)
         
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
@@ -40,12 +42,13 @@ class BrowseTableViewController: UITableViewController {
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        
         viewModel.fetchData(completion: { [weak self] in
             ai.stop()
             self?.tableView.reloadData()
         }, error: { error in
             ai.stop()
-            print(error.localizedDescription)
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
         })
     }
     
@@ -84,6 +87,23 @@ class BrowseTableViewController: UITableViewController {
             if let cell = cell as? TopChartsTableViewCell {
                 cell.songs = viewModel.topCharts
             }
+            return cell
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier,
+                                                     for: indexPath)
+            if let cell = cell as? HistoryTableViewCell {
+                cell.data = viewModel.recentPlayedData
+                cell.didSelectPlaylist = { [weak self] playlist in
+                    let vm = PlaylistContentViewModel(playlist: playlist)
+                    let vc = PlaylistContentViewController(viewModel: vm)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                cell.didSelectAlbum = { [weak self] album in
+                    let vc = AlbumContentViewController(album: album)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            
             return cell
         }
         return UITableViewCell()
