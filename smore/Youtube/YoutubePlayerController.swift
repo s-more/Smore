@@ -23,11 +23,13 @@ class YoutubePlayerController: UIViewController {
     let avplayer = AVPlayer()
     let avcontroller = AVPlayerViewController()
     
-    init(videoId id: String) {
+    init() {
         super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
         self.avcontroller.player = self.avplayer
-        vid_id = id
+        NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
         loadVideo(videoID: "wfF0zHeU3Zs")
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,6 +43,7 @@ class YoutubePlayerController: UIViewController {
         let newItem = AVPlayerItem(url: self.vid_url)
         self.avcontroller.player?.replaceCurrentItem(with: newItem)
         self.addChild(self.avcontroller)
+        self.avcontroller.player?.play()
     }
     
     func loadVideo(videoID: String ){
@@ -74,10 +77,32 @@ class YoutubePlayerController: UIViewController {
     
     @IBAction func pressBack(_ sender: UIButton) {
         print("Backward")
+        loadVideo(videoID: "2ZIpFytCSVc")
     }
     
     @IBAction func pressExit(_ sender: UIButton) {
         print("exiting")
+    }
+    
+    
+    func play( videoID: String ){
+        loadVideo(videoID: videoID)
+    }
+    
+    func pause(){
+         self.avcontroller.player?.pause()
+    }
+    
+    func resume(){
+         self.avcontroller.player?.play()
+    }
+    
+    func stop(){
+         self.avcontroller.player?.pause()
+    }
+    
+    @objc func endOfVideo(){
+        print("End of vid @!#!@$@#")
     }
     
 }

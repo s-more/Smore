@@ -220,6 +220,7 @@
 		6EE89D0C22494C6B00DFE580 /* SPTCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89D0B22494C6B00DFE580 /* SPTCategoryResponse.swift */; };
 		A31E77032242D417007B07DF /* LocalArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E77022242D417007B07DF /* LocalArtistTableViewController.swift */; };
 		A38909D52263F591008D1525 /* YoutubeRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38909D42263F591008D1525 /* YoutubeRemote.swift */; };
+		A38C74F322640E78009F85BF /* YTPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C74F222640E78009F85BF /* YTPlayer.swift */; };
 		A3A3A580222596680015BF6B /* BrowseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3A57F222596680015BF6B /* BrowseHeader.xib */; };
 		A3A3A582222596D30015BF6B /* BrowseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3A581222596D30015BF6B /* BrowseHeader.swift */; };
 		C6EFE55E22149F36001D18D2 /* YoutubeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE55C22149F36001D18D2 /* YoutubeLoginViewController.swift */; };
@@ -412,6 +413,7 @@
 		8C2FEB9A0B98302215DDD1BC /* Pods-smoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smoreTests/Pods-smoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		A31E77022242D417007B07DF /* LocalArtistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalArtistTableViewController.swift; sourceTree = "<group>"; };
 		A38909D42263F591008D1525 /* YoutubeRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeRemote.swift; sourceTree = "<group>"; };
+		A38C74F222640E78009F85BF /* YTPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPlayer.swift; sourceTree = "<group>"; };
 		A3A3A57F222596680015BF6B /* BrowseHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseHeader.xib; sourceTree = "<group>"; };
 		A3A3A581222596D30015BF6B /* BrowseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseHeader.swift; sourceTree = "<group>"; };
 		A6605A1570B97740143746D0 /* Pods-smore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smore.release.xcconfig"; path = "Pods/Target Support Files/Pods-smore/Pods-smore.release.xcconfig"; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				04884A38226397730035599B /* SPTPlayer.swift */,
 				04884A3A22639E160035599B /* APMPlayer.swift */,
 				04884A3C2263E9D60035599B /* NSNotification+Player.swift */,
+				A38C74F222640E78009F85BF /* YTPlayer.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				04B760C4222B8A8D0095AF33 /* APMSearchDataSource.swift in Sources */,
 				04A5D0C82223347600774489 /* BrowseViewModel.swift in Sources */,
 				04B760B1222B0F500095AF33 /* SwiftMessagesWrapper.swift in Sources */,
+				A38C74F322640E78009F85BF /* YTPlayer.swift in Sources */,
 				0460AC61223B5A0B0075D932 /* UIButton+Extensions.swift in Sources */,
 				041746FE22272F6B0044350F /* Album.swift in Sources */,
 				277EEAEE2242C31100839CFD /* LibrarySongTableViewController.swift in Sources */,
