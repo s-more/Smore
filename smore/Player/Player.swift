@@ -171,11 +171,8 @@ extension Player: SpotifyRemoteDelegate {
     func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
         if currentPositionIncremented && status {
             currentPositionIncremented = false
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-                MusicQueue.shared.currentPosition.value += 1
-                self?.currentPlayer.updateMiniPlayer()
-            }
+            MusicQueue.shared.currentPosition.value += 1
+            spotifyPlayer.updateMiniPlayer()
         }
     }
 }

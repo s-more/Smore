@@ -186,9 +186,5 @@ class APMPlayer: NSObject, PlayerProtocol {
     func setCurrentPlaybackTime(with time: TimeInterval) {
         player.currentPlaybackTime = time
     }
-    
-    func updateMiniPlayer() {
-        MiniPlayer.shared.configure(with: subQueue[player.indexOfNowPlayingItem])
-    }
 }
 
