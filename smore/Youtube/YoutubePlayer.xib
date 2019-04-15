@@ -80,6 +80,15 @@
                         <action selector="pressExit:" destination="-1" eventType="touchUpInside" id="NKb-Tv-uE0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-5T-COF">
+                    <rect key="frame" x="151" y="580" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="moreDots"/>
+                    <connections>
+                        <action selector="moreActions:" destination="-1" eventType="touchUpInside" id="OGK-cN-q9E"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -99,6 +108,7 @@
     <resources>
         <image name="PlayButtonLarge" width="211" height="211"/>
         <image name="downCaret" width="512" height="512"/>
+        <image name="moreDots" width="32" height="32"/>
         <image name="nextButton" width="211" height="211"/>
         <image name="prevButton" width="211" height="211"/>
     </resources>

@@ -59,7 +59,7 @@ class YoutubePlayerController: UIViewController {
     
     func loadVideo(videoID: String ){
         vid_id = videoID
-        
+        print("THIS IS THE VIDEO ID: \(videoID) !@#@$%$#^")
         let temp_vid_url = "https://www.youtube.com/watch?v=\(videoID)"
         
         YouTubeAPI.getMP4(with: temp_vid_url, success: { data in
@@ -94,6 +94,10 @@ class YoutubePlayerController: UIViewController {
     @IBAction func pressExit(_ sender: UIButton) {
         print("exiting")
         dismiss(animated: true)
+    }
+    
+    @IBAction func moreActions(_ sender: Any) {
+        UIAlertController.showMoreAction(from: MusicQueue.shared.currentSong, on: self)
     }
     
     
