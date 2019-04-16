@@ -10,6 +10,7 @@ import Foundation
 import AVKit
 import AVFoundation
 import Kingfisher
+import MarqueeLabel
 
 class YoutubePlayerController: UIViewController {
     
@@ -18,18 +19,23 @@ class YoutubePlayerController: UIViewController {
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var songNameLabel: MarqueeLabel!
+    @IBOutlet weak var songSubtitleLabel: MarqueeLabel!
     
     var vid_id: String!
     var vid_url: URL!
     var isPlaying = false
     let avplayer = AVPlayer()
     let avcontroller = AVPlayerViewController()
+    let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let song: Song?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     init() {
+        song = nil
         super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
         self.avcontroller.player = self.avplayer
         NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
@@ -37,11 +43,21 @@ class YoutubePlayerController: UIViewController {
     }
     
     init( videoID: String ) {
+        song = nil
         super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
         self.avcontroller.player = self.avplayer
         NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
-        loadVideo(videoID: videoID)
+        vid_id = videoID
+    }
+    
+    init(song: Song) {
+        self.avcontroller.player = self.avplayer
+        vid_id = song.playableString
+        self.song = song
+        super.init(nibName: "YoutubePlayer", bundle: Bundle.main)
+        NotificationCenter.default.addObserver(self, selector: #selector(endOfVideo),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avcontroller.player?.currentItem)
     }
     
     
@@ -53,8 +69,9 @@ class YoutubePlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         YoutubeRemote.shared.vc = self
-        
-        loadImage()
+        songNameLabel.text = song?.name
+        songSubtitleLabel.text = song?.artistName
+        loadVideo(videoID: vid_id)
     }
 
     func displayVideo(){
@@ -67,15 +84,17 @@ class YoutubePlayerController: UIViewController {
     }
     
     func loadVideo(videoID: String ){
-        vid_id = videoID
         print("THIS IS THE VIDEO ID: \(videoID) !@#@$%$#^")
         let temp_vid_url = "https://www.youtube.com/watch?v=\(videoID)"
-        
+
+        view.addSubview(activityIndicator)
         loadImage()
         
-        YouTubeAPI.getMP4(with: temp_vid_url, success: { data in
-            self.vid_url = data.first?.url
-            self.displayVideo()
+        YouTubeAPI.getMP4(with: temp_vid_url, success: { [weak self] data in
+            self?.vid_url = data.first?.url
+            self?.activityIndicator.stop()
+            self?.playButton.sendActions(for: .touchUpInside)
+            self?.displayVideo()
         }, error: { err in
             print(err)
         })
@@ -94,9 +113,11 @@ class YoutubePlayerController: UIViewController {
         if self.isPlaying == false {
             self.isPlaying = true
             self.avcontroller.player?.play()
+            playButton.setImage(PlayerState.playing.image, for: .normal)
         } else {
             self.isPlaying = false
             self.avcontroller.player?.pause()
+            playButton.setImage(PlayerState.notPlaying.image, for: .normal)
         }
     }
     
@@ -114,7 +135,9 @@ class YoutubePlayerController: UIViewController {
     
     @IBAction func pressExit(_ sender: UIButton) {
         print("exiting")
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            MiniPlayer.shared.resetLocation()
+        }
     }
     
     @IBAction func moreActions(_ sender: Any) {
