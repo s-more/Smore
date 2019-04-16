@@ -33,9 +33,9 @@ class BrowseViewModel {
                 
                 // fetch recent played data
                 AppleMusicAPI.recentPlayed(completion: { data in
-                    self?.recentPlayedData =
-                        data.compactMap { APMAlbum(recentPlayedData: $0) } +
-                        data.compactMap { APMPlaylist(recentPlayedData: $0) }
+                    let albums = data.compactMap { APMAlbum(recentPlayedData: $0) } as [Any]
+                    let playlists = data.compactMap { APMPlaylist(recentPlayedData: $0) } as [Any]
+                    self?.recentPlayedData = albums + playlists
                     self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
                     DispatchQueue.main.async { completion() }
                 }, error: { e in
