@@ -111,11 +111,17 @@ class APMPlayer: NSObject, PlayerProtocol {
         }
     }
     
-    func skipToPrev() {
-        player.skipToPreviousItem()
-        MusicQueue.shared.currentPosition.value -= 1
-        if MusicQueue.shared.currentPosition.value < 0 {
-            MusicQueue.shared.currentPosition.value = 0
+    func skipToPrev() -> Bool {
+        if player.currentPlaybackTime > 10 {
+            player.skipToBeginning()
+            return false
+        } else {
+            player.skipToPreviousItem()
+            MusicQueue.shared.currentPosition.value -= 1
+            if MusicQueue.shared.currentPosition.value < 0 {
+                MusicQueue.shared.currentPosition.value = 0
+            }
+            return true
         }
     }
     

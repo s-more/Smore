@@ -13,6 +13,7 @@ extension UserDefaults {
     private static let favGenreKey = "favGenreKey"
     private static let favArtistsKey = "favArtistsKey"
     private static let userPlaylistID = "userDefinedPlaylist"
+    private static let userTokenKey = "userTokenKey"
     
     // MARK: - First Launch
     
@@ -41,6 +42,14 @@ extension UserDefaults {
         id += 1
         standard.set(id, forKey: userPlaylistID)
         return id
+    }
+    
+    static func saveUserToken(_ token: String) {
+        standard.set(token, forKey: userTokenKey)
+    }
+    
+    static func getUserToken() -> String {
+        return standard.string(forKey: userTokenKey) ?? ""
     }
     
 }

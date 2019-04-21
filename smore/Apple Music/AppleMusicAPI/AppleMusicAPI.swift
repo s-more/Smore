@@ -14,12 +14,11 @@ import StoreKit
 /// - uses the prefix `APM`
 enum AppleMusicAPI {
     private static let developerToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlY1MjU0OUs3SzYifQ.eyJpYXQiOjE1NDkxMzM3NTgsImV4cCI6MTU2NDY4NTc1OCwiaXNzIjoiTkRCVEs5OFZMMyJ9.r3a_fQH_5mAlrI9OeLHfTZ4mU486mgXRVr3xoD0yq1mR4oSlpEiQorwhaGXORZ0ESRE0xHcQzs8TOkaYCaMoKg"
-    private static let userToken = "Ag1F1wB1M6jt5NUNg/uOZAn6lprh34jQ8D1cQ3+338y/ZhVuzwcKA0CCrpaDUOHyiR1Jh0nb2XLtLdU613d99KsVh4m4JBDWirPxLRa4XrYVkg9i2QwR0LfYx+K/RwS4kT8a3A2PGPxiTOcCZWikJjLHGmKQqkX0+o+0dFWI1iNmFUl+q/WeqPDg5KjI1DQNL2MfvcP4ZrBH6he6hUED9HqRFdOMZfpQSkd9RUoIgW9tGI0U5A=="
     private static let cloudServiceController = SKCloudServiceController()
     static let authHeaders = ["Authorization": "Bearer \(developerToken)"]
     static let authHeaderWithUserToken = [
         "Authorization": "Bearer \(developerToken)",
-        "Music-User-Token": userToken
+        "Music-User-Token": UserDefaults.getUserToken()
     ]
     static let countryCode = "us"
     
@@ -89,10 +88,26 @@ enum AppleMusicAPI {
             }
         }
     }
-    
-    static func requestCountryCode(completion: @escaping (String?, Error?) -> Void) {
-        cloudServiceController.requestStorefrontCountryCode { countryCode, error in
-            completion(countryCode, error)
+
+    /// Request Apple music auth. If successful, then request user token. Otherwise error out.
+    static func authrozeAndRequestUserToken(
+        success: @escaping () -> Void,
+        error: @escaping (Error) -> Void)
+    {
+        requestAuthorization { successful, _ in
+            if successful {
+                requestUserToken(completion: { token in
+                    UserDefaults.saveUserToken(token)
+                    DispatchQueue.main.async { success() }
+                }, error: { err in
+                    let description =  err.localizedDescription + ". Apple Music will not be available."
+                    DispatchQueue.main.async { error(NSError(domain: description, code: 0)) }
+                })
+            } else {
+                DispatchQueue.main.async {
+                    error(NSError(domain: "You did not grant access to Apple Music. Therefore Apple Music won't be available", code: 0))
+                }
+            }
         }
     }
 }

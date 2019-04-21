@@ -86,7 +86,7 @@ class SPTPlayer: NSObject, PlayerProtocol {
         }
     }
     
-    func skipToPrev() {
+    func skipToPrev() -> Bool {
         if positionInSubQueue > 0 {
             positionInSubQueue -= 1
             MusicQueue.shared.currentPosition.value -= 1
@@ -95,6 +95,7 @@ class SPTPlayer: NSObject, PlayerProtocol {
             // post notification to skip to previous queue
             NotificationCenter.default.post(name: .skipToPreviousQueue, object: nil)
         }
+        return true
     }
     
     func skipToCurrentPosition() {

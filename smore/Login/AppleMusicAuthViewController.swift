@@ -11,7 +11,6 @@ import RxSwift
 
 class AppleMusicAuthViewController: UIViewController {
     @IBOutlet weak var authorizeButton: UIButton!
-    let bag = DisposeBag()
     
     init() {
         super.init(nibName: "AppleMusicAuthViewController", bundle: Bundle.main)
@@ -35,14 +34,20 @@ class AppleMusicAuthViewController: UIViewController {
     }
     
     @IBAction func authorizeButtonTapped(_ sender: UIButton) {
-        AppleMusicAPI.rx.authorized
-            .filter { $0 == true }
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                    self?.navigationController?.pushViewController(SpotifyLoginViewController(),
-                                                                   animated: true)
+        AppleMusicAPI.authrozeAndRequestUserToken(success: { [weak self] in
+            self?.navigationController?.pushViewController(SpotifyLoginViewController(), animated: true)
+        }, error: { [weak self] error in
+            guard let strongSelf = self else { return }
+            UIAlertController.showGenericAlert(
+                title: "Error",
+                subtitle: error.localizedDescription,
+                on: strongSelf,
+                completion:
+            { _ in
+                strongSelf.navigationController?
+                    .pushViewController(SpotifyLoginViewController(), animated: true)
             })
-            .disposed(by: bag)
+        })
         
     }
     

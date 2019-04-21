@@ -36,4 +36,15 @@ extension UIAlertController {
         vc.present(actionSheet, animated: true, completion: nil)
     }
     
+    static func showGenericAlert(
+        title: String,
+        subtitle: String,
+        on vc: UIViewController,
+        completion: @escaping (UIAlertAction) -> Void = { _ in })
+    {
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
+        vc.present(alert, animated: true, completion: nil)
+    }
+    
 }

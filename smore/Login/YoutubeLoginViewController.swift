@@ -41,9 +41,7 @@ class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func skip(_ sender: UIButton) {
-        //navigationController?.pushViewController(StartupViewController(), animated: true)
-        
-        navigationController?.pushViewController(YoutubePlayerController(), animated: true)
+        navigationController?.pushViewController(StartupViewController(), animated: true)
         //YQHsXMglC9A
     }
     
