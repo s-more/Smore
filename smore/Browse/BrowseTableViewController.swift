@@ -88,11 +88,15 @@ class BrowseTableViewController: UITableViewController {
                 cell.songs = viewModel.topCharts
             }
             return cell
-        } else if indexPath.section == 2 {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier,
                                                      for: indexPath)
             if let cell = cell as? HistoryTableViewCell {
-                cell.data = viewModel.recentPlayedData
+                if indexPath.section == 2 {
+                    cell.data = viewModel.recentPlayedData
+                } else if indexPath.section == 3 {
+                    cell.data = viewModel.recommendations
+                }
                 cell.didSelectPlaylist = { [weak self] playlist in
                     let vm = PlaylistContentViewModel(playlist: playlist)
                     let vc = PlaylistContentViewController(viewModel: vm)
@@ -106,11 +110,14 @@ class BrowseTableViewController: UITableViewController {
             
             return cell
         }
-        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.headers[section]
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

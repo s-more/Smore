@@ -95,6 +95,21 @@ class APMAlbum: Album {
         guard recentPlayedData.attributes.artistName != nil else { return nil }
     }
     
+    init?(recommendationData: APMRecommendationData) {
+        guard recommendationData.type == "albums" else { return nil }
+        id = recommendationData.id
+        name = recommendationData.attributes.name
+        artistName = recommendationData.attributes.artistName ?? ""
+        playableString = recommendationData.attributes.playParams.id
+        imageLink = recommendationData.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        releaseDate = recommendationData.attributes.releaseDate ?? ""
+        description = recommendationData.attributes.editorialNotes?.standard ??
+            recommendationData.attributes.editorialNotes?.short
+        originalImageLink = recommendationData.attributes.artwork?.url
+        isSingle = recommendationData.attributes.isSingle ?? false
+        songs = []
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
             DispatchQueue.main.async { completion() }

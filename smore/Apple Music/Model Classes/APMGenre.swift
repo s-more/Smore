@@ -8,7 +8,7 @@
 
 import UIKit
 
-class APMGenre: Hashable, Equatable {
+public class APMGenre: Hashable, Equatable {
     
     let name: String
     let image: UIImage?
@@ -20,12 +20,12 @@ class APMGenre: Hashable, Equatable {
         self.catalogGenre = catalogGenre
     }
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(name)
         hasher.combine(catalogGenre)
     }
     
-    static func == (lhs: APMGenre, rhs: APMGenre) -> Bool {
+    public static func == (lhs: APMGenre, rhs: APMGenre) -> Bool {
         return lhs.name == rhs.name && lhs.catalogGenre == rhs.catalogGenre
     }
     

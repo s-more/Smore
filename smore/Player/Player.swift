@@ -144,8 +144,11 @@ class Player {
         currentPlayer.skipToNext()
     }
     
-    func skipToPrev() {
-        currentPlayer.skipToPrev()
+    /// returns true if skiping to previous item;
+    /// returns false if skipping to beginning
+    @discardableResult
+    func skipToPrev() -> Bool {
+        return currentPlayer.skipToPrev()
     }
     
     func skipToCurrentPosition() {

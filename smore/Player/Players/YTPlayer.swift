@@ -54,7 +54,7 @@ class YTPlayer: NSObject, PlayerProtocol{
         }
     }
     
-    func skipToPrev() {
+    func skipToPrev() -> Bool {
         if positionInSubQueue > 0 {
             positionInSubQueue -= 1
             YoutubeRemote.shared.play(videoID: subQueue[positionInSubQueue].playableString)
@@ -63,6 +63,7 @@ class YTPlayer: NSObject, PlayerProtocol{
             // post notification to skip to next queue
             NotificationCenter.default.post(name: .skipToPreviousQueue, object: nil)
         }
+        return true
     }
     
     func skipToCurrentPosition() {
