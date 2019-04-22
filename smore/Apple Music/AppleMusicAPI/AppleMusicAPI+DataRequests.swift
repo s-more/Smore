@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+typealias APMRecommendationData = APMRecommendationResponse.APMRecommendationWrapperData
+    .APMRecommendationRelationships.APMRecommendationContents.APMRecommendationData
 
 extension AppleMusicAPI {
     
@@ -282,29 +284,6 @@ extension AppleMusicAPI {
         }
     }
     
-    static func genreIDs(
-        for genres: [Int],
-        completion: @escaping (String) -> Void)
-    {
-        let query =
-            ["https://api.music.apple.com/v1/catalog/\(countryCode)/genres",
-            "?ids=\(genres.map { "\($0)" }.joined(separator: ","))"].joined()
-        Alamofire.request(
-            query,
-            method: .get,
-            parameters: nil,
-            encoding: JSONEncoding.default,
-            headers: authHeaders)
-            .responseJSON { json in
-                if let stringData =  json.data,
-                    let result = String(data: stringData, encoding: String.Encoding.utf8) {
-                    DispatchQueue.main.async {
-                        completion(result)
-                    }
-                }
-        }
-    }
-    
     static func recentPlayed(
         completion: @escaping ([APMRecentlyPlayedResponse.APMRecentlyPlayedResponseData]) -> Void,
         error: @escaping (Error) -> Void)
@@ -336,7 +315,7 @@ extension AppleMusicAPI {
     }
     
     static func recommendations(
-        completion: @escaping (String) -> Void,
+        completion: @escaping ([APMRecommendationData]) -> Void,
         error: @escaping (Error) -> Void)
     {
         Alamofire.request(
@@ -345,13 +324,27 @@ extension AppleMusicAPI {
             parameters: nil,
             encoding: JSONEncoding.default,
             headers: authHeaderWithUserToken)
-            .responseJSON { json in
-                if let stringData =  json.data,
-                    let result = String(data: stringData, encoding: String.Encoding.utf8) {
-                    DispatchQueue.main.async {
-                        completion(result)
-                    }
+            .responseJSON
+        { json in
+            if let err = json.error {
+                DispatchQueue.main.async { error(err) }
+                return
+            }
+            if let data = json.data {
+                do {
+                    let response = try decoder.decode(APMRecommendationResponse.self, from: data)
+                    let result: [APMRecommendationData] = response.data
+                            .compactMap { $0.relationships.contents?.data } // map to [[]]
+                            .reduce([], +) // flatten
+                    DispatchQueue.main.async { completion(result) }
+                } catch let err {
+                    DispatchQueue.main.async { error(err) }
                 }
+            } else {
+                DispatchQueue.main.async {
+                    error(NSError(domain: "Invalid JSON", code: 0, userInfo: nil))
+                }
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ class BrowseViewModel {
     var topCharts: [APMSong]
     var headers: [String] = []
     var recentPlayedData: [Any] = []
+    var recommendations: [Any] = []
     
     init() {
         self.favGenres = UserDefaults.favGenres
@@ -36,8 +37,21 @@ class BrowseViewModel {
                     let albums = data.compactMap { APMAlbum(recentPlayedData: $0) } as [Any]
                     let playlists = data.compactMap { APMPlaylist(recentPlayedData: $0) } as [Any]
                     self?.recentPlayedData = albums + playlists
-                    self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
-                    DispatchQueue.main.async { completion() }
+                    
+                    // fetch recommendations
+                    AppleMusicAPI.recommendations(completion: { recommendations in
+                        let recommendationAlbums =
+                            recommendations.compactMap { APMAlbum(recommendationData: $0) } as [Any]
+                        let recommendationPlaylists =
+                            recommendations.compactMap { APMPlaylist(recommendationData: $0) } as [Any]
+                        self?.recommendations = recommendationPlaylists + recommendationAlbums
+                        self?.headers = [
+                            "What would you like to listen to?", "Top Charts", "Recent Played", "Recommendations"
+                        ]
+                        DispatchQueue.main.async { completion() }
+                    }, error: { e2 in
+                        DispatchQueue.main.async { error(e2) }
+                    })
                 }, error: { e in
                     DispatchQueue.main.async { error(e) }
                 })
