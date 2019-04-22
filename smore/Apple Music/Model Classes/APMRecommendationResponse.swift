@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APMRecommendationResponse: Codable {
+public struct APMRecommendationResponse: Codable {
     let data: [APMRecommendationWrapperData]
     
     struct APMRecommendationWrapperData: Codable {

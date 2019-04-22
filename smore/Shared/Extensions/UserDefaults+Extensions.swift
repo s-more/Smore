@@ -37,7 +37,7 @@ extension UserDefaults {
             //.map { APMCatalogGenre(rawValue: $0)} ?? []
     }
     
-    public static func newestUserPlaylistID() -> Int {
+    static func newestUserPlaylistID() -> Int {
         var id = standard.integer(forKey: userPlaylistID)
         id += 1
         standard.set(id, forKey: userPlaylistID)
