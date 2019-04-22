@@ -49,6 +49,7 @@ class SpotifyLoginViewController: UIViewController {
 extension SpotifyLoginViewController: SpotifyRemoteDelegate {
     func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
         if status {
+            UserDefaults.FeatureFlags.setSpotifyEnabled(true)
             navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
         }
     }

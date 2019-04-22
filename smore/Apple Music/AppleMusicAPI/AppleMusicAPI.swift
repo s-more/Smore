@@ -98,6 +98,7 @@ enum AppleMusicAPI {
             if successful {
                 requestUserToken(completion: { token in
                     UserDefaults.saveUserToken(token)
+                    UserDefaults.FeatureFlags.setAppleMusicEnabled(true)
                     DispatchQueue.main.async { success() }
                 }, error: { err in
                     let description =  err.localizedDescription + ". Apple Music will not be available."

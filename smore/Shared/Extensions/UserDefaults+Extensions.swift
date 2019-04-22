@@ -44,12 +44,45 @@ extension UserDefaults {
         return id
     }
     
+    // MARK: - User Token
+    
     static func saveUserToken(_ token: String) {
         standard.set(token, forKey: userTokenKey)
     }
     
     static func getUserToken() -> String {
         return standard.string(forKey: userTokenKey) ?? ""
+    }
+    
+    // MARK: - Feature Flags
+    enum FeatureFlags {
+        private static let appleMusicEnabledKey = "appleMusicEnabled"
+        private static let spotifyEnabledKey = "spotifyEnabled"
+        private static let youtubeEnabledKey = "youtubeEnabled"
+        
+        static func setAppleMusicEnabled(_ enabled: Bool) {
+            UserDefaults.standard.set(enabled, forKey: appleMusicEnabledKey)
+        }
+        
+        static func setSpotifyEnabled(_ enabled: Bool) {
+            UserDefaults.standard.set(enabled, forKey: spotifyEnabledKey)
+        }
+        
+        static func setYoutubeEnabled(_ enabled: Bool) {
+            UserDefaults.standard.set(enabled, forKey: youtubeEnabledKey)
+        }
+        
+        static var appleMusicEnabled: Bool {
+            return UserDefaults.standard.bool(forKey: appleMusicEnabledKey)
+        }
+        
+        static var spotifyEnabled: Bool {
+            return UserDefaults.standard.bool(forKey: spotifyEnabledKey)
+        }
+        
+        static var youtubeEnabled: Bool {
+            return UserDefaults.standard.bool(forKey: youtubeEnabledKey)
+        }
     }
     
 }

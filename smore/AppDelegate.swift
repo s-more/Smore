@@ -43,8 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let welcomeNagivation = UINavigationController(rootViewController: WelcomeViewController())
             window?.rootViewController = welcomeNagivation
         } else {
-            window?.rootViewController = TabBarViewController()
-            SpotifyRemote.shared.spotifyLogin()
+            if UserDefaults.FeatureFlags.spotifyEnabled {
+                // Login before preceeding to the browse screen
+                SpotifyRemote.shared.delegate = self
+                SpotifyRemote.shared.spotifyLogin()
+            } else {
+                window?.rootViewController = TabBarViewController()
+            }
         }
         return true
     }
@@ -82,20 +87,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     //    Successful login auth callback
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if ( true ) { // TODO
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool
+    {
+        // UIApplicationOpenURLOptionsKey: com.spotify.client
+        if let key = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            key == "com.spotify.client" { // TODO
             print("successful login auth")
             SpotifyRemote.shared.sessionManager.application(app, open: url, options: options)
             SpotifyRemote.shared.delegate?.remote(spotifyRemote: SpotifyRemote.shared, didAuthenticate: true)
             first_auth = false
-            //return true
+            return true
         }
-        if ( true ) { // TODO
-            print("Youtube login auth")
-            return GIDSignIn.sharedInstance().handle(url as URL?,
-                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        }
+        
+        print("Youtube login auth")
+        return GIDSignIn.sharedInstance().handle(url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
     
     // Background fetch
@@ -113,6 +123,7 @@ extension AppDelegate: GIDSignInDelegate {
               withError error: Error!) {
         if let error = error {
             print("\(error.localizedDescription)")
+            NotificationCenter.default.post(name: .youtubeNotSignedIn, object: nil)
         } else {
             // Perform any operations on signed in user here.
             /*let userId = user.userID                  // For client-side use only!
@@ -123,6 +134,7 @@ extension AppDelegate: GIDSignInDelegate {
             let email = user.profile.email
             // */
             print("Youtube Signed in")
+            NotificationCenter.default.post(name: .youtubeSignedIn, object: nil)
         }
     }
     
@@ -133,6 +145,12 @@ extension AppDelegate: GIDSignInDelegate {
         // ...
         print("Youtube Signed Out")
     }
-    
-    
+}
+
+extension AppDelegate: SpotifyRemoteDelegate {
+    func remote(spotifyRemote: SpotifyRemote, didAuthenticate status: Bool) {
+        if status {
+            window?.rootViewController = TabBarViewController()
+        }
+    }
 }

@@ -16,12 +16,11 @@ extension UIAlertController {
         if !songExists {
             actionSheet.addAction(UIAlertAction(
                 title: "Add to Library",
-                style: .default,
-                handler:
+                style: .default)
                 { _ in
                     SongEntity.makeSong(from: song)
                     vc.view.addSubview(LottieActivityIndicator.checkmark)
-                }))
+                })
         }
         actionSheet.addAction(UIAlertAction(
             title: "Add to Playlist",
@@ -43,6 +42,7 @@ extension UIAlertController {
         completion: @escaping (UIAlertAction) -> Void = { _ in })
     {
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.view.tintColor = UIColor.themeColor
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
         vc.present(alert, animated: true, completion: nil)
     }
