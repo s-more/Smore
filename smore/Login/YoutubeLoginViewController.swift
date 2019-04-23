@@ -39,7 +39,7 @@ class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
             object: nil,
             queue: OperationQueue.main)
         { [weak self] _ in
-            UserDefaults.FeatureFlags.setYoutubeEnabled(true)
+            FeatureFlags.setYoutubeEnabled(true)
             self?.navigationController?.pushViewController(StartupViewController(), animated: true)
         }
         
