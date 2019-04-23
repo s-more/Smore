@@ -40,6 +40,15 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func skip(_ sender: UIButton) {
+//        SpotifyAPI.getTopArtists(token: SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? "", typeIsArtist: "artists", limit: 5, completion: { data in
+//            SpotifyAPI.getRecArtists(token: SpotifyRemote.shared.appRemote.connectionParameters.accessToken ?? "", artistSeeds: data.items ?? [], completion: { recData in
+//                
+//            }, error: {_ in
+//                
+//            })
+//        }, error: {_ in
+//            
+//        })
         navigationController?.pushViewController(YoutubeLoginViewController(), animated: true)
     }
     //    OnClick of Auth button, initiate spotify session

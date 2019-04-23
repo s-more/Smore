@@ -296,12 +296,16 @@
 		6E39FD292264007D000C1F3C /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409D5C9220773CA00CB4CDE /* SpotifyAPI.swift */; };
 		6E39FD2A2264007D000C1F3C /* SpotifyRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */; };
 		6E39FD2B2264007D000C1F3C /* SpotifyRemoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEC22480EF100DFE580 /* SpotifyRemoteDelegate.swift */; };
+		6E39FD2D2264E15E000C1F3C /* SPTTopArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39FD2C2264E15E000C1F3C /* SPTTopArtistResponse.swift */; };
 		6E4859282246CFCE00E0A78E /* Pods_smore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B8CE1BC763211C8D5353B /* Pods_smore.framework */; };
 		6E48592C2246D0ED00E0A78E /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E48592B2246D0ED00E0A78E /* SpotifyiOS.framework */; };
 		6E542706225FE1FF00D19ACF /* SPTPlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E542705225FE1FF00D19ACF /* SPTPlaylistResponse.swift */; };
 		6E542708225FE57200D19ACF /* SPTPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E542707225FE57200D19ACF /* SPTPlaylist.swift */; };
 		6E54270A2262ACE000D19ACF /* SPTSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5427092262ACE000D19ACF /* SPTSearchDataSource.swift */; };
 		6E54270C2263B9EF00D19ACF /* YTMP4Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54270B2263B9EF00D19ACF /* YTMP4Response.swift */; };
+		6E6D12F4226FC621004DFD15 /* SPTRecArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D12F3226FC621004DFD15 /* SPTRecArtistResponse.swift */; };
+		6E6D12F7226FD6B5004DFD15 /* SPTTopArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39FD2C2264E15E000C1F3C /* SPTTopArtistResponse.swift */; };
+		6E6D12F8226FD6BA004DFD15 /* SPTRecArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D12F3226FC621004DFD15 /* SPTRecArtistResponse.swift */; };
 		6EE89CEB22480B1C00DFE580 /* SpotifyRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */; };
 		6EE89CED22480EF100DFE580 /* SpotifyRemoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEC22480EF100DFE580 /* SpotifyRemoteDelegate.swift */; };
 		6EE89CF022486BB700DFE580 /* SPTNewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE89CEF22486BB700DFE580 /* SPTNewReleasesResponse.swift */; };
@@ -492,6 +496,7 @@
 		27919CAB22601E9F00A005B1 /* YTVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTVideo.swift; sourceTree = "<group>"; };
 		6E311091223AEBDC00314C4F /* LibraryAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryAlbumTableViewController.swift; path = smore/Library/LibraryAlbumTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6E311092223AEBDC00314C4F /* LibraryAlbumTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LibraryAlbumTableViewController.xib; path = smore/Library/LibraryAlbumTableViewController.xib; sourceTree = SOURCE_ROOT; };
+		6E39FD2C2264E15E000C1F3C /* SPTTopArtistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTTopArtistResponse.swift; sourceTree = "<group>"; };
 		6E4859292246CFFC00E0A78E /* Pods_smoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_smoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E48592B2246D0ED00E0A78E /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		6E4F0DF12214B83B005A0275 /* ListeningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -502,6 +507,7 @@
 		6E542707225FE57200D19ACF /* SPTPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTPlaylist.swift; sourceTree = "<group>"; };
 		6E5427092262ACE000D19ACF /* SPTSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTSearchDataSource.swift; sourceTree = "<group>"; };
 		6E54270B2263B9EF00D19ACF /* YTMP4Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTMP4Response.swift; sourceTree = "<group>"; };
+		6E6D12F3226FC621004DFD15 /* SPTRecArtistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTRecArtistResponse.swift; sourceTree = "<group>"; };
 		6ECF07F12246CAC700D20099 /* Smore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smore-Bridging-Header.h"; sourceTree = "<group>"; };
 		6ECF07F22246CF0A00D20099 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = smore/SpotifyiOS.framework; sourceTree = "<group>"; };
 		6EE89CEA22480B1C00DFE580 /* SpotifyRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyRemote.swift; sourceTree = "<group>"; };
@@ -1024,6 +1030,8 @@
 				6EE89D0B22494C6B00DFE580 /* SPTCategoryResponse.swift */,
 				6EE89D0D22494CAB00DFE580 /* SPTSearchResponse.swift */,
 				6E542707225FE57200D19ACF /* SPTPlaylist.swift */,
+				6E39FD2C2264E15E000C1F3C /* SPTTopArtistResponse.swift */,
+				6E6D12F3226FC621004DFD15 /* SPTRecArtistResponse.swift */,
 			);
 			path = "Model Classes";
 			sourceTree = "<group>";
@@ -1383,6 +1391,7 @@
 				27919CA0226002FB00A005B1 /* YTSearchDataSource.swift in Sources */,
 				04A366B3221B7279006B3D0A /* StartupViewController.swift in Sources */,
 				0409D5C32207672600CB4CDE /* TPKeyboardAvoidingScrollView.m in Sources */,
+				6E6D12F4226FC621004DFD15 /* SPTRecArtistResponse.swift in Sources */,
 				04A5D0E022237B4000774489 /* TopChartsTableViewCell.swift in Sources */,
 				0409D5CA220773CA00CB4CDE /* SpotifyAPI.swift in Sources */,
 				04051423225FFA3D006A71AB /* AddToPlaylistViewModel.swift in Sources */,
@@ -1466,6 +1475,7 @@
 				27919CA52260052600A005B1 /* YouTubeAPI.swift in Sources */,
 				041084B12218431C00E96574 /* APMSearchResponse.swift in Sources */,
 				0409D5B4220746E600CB4CDE /* CAGradientLayer+BackgroundColor.swift in Sources */,
+				6E39FD2D2264E15E000C1F3C /* SPTTopArtistResponse.swift in Sources */,
 				0460AC6D223C05AA0075D932 /* Utilities.swift in Sources */,
 				6EE89D04224898B800DFE580 /* SPTArtist.swift in Sources */,
 				04B760CC222B99990095AF33 /* APMPlaylist.swift in Sources */,
@@ -1488,6 +1498,7 @@
 				04C1F46D22619A0B000A6D50 /* CombinedPlaylist.swift in Sources */,
 				6E39FD252264007D000C1F3C /* SPTSong.swift in Sources */,
 				04A4174C226E12B500F9E23C /* UIColor+Common.swift in Sources */,
+				6E6D12F7226FD6B5004DFD15 /* SPTTopArtistResponse.swift in Sources */,
 				04A4176E226E147900F9E23C /* PlaylistCollectionViewCell.swift in Sources */,
 				04A41794226E153200F9E23C /* AppleMusicAuthViewController.swift in Sources */,
 				04FBBA56225BF23C001A8D75 /* TestSongEntity.swift in Sources */,
@@ -1501,6 +1512,7 @@
 				04A41758226E142700F9E23C /* AddToPlaylistViewController.swift in Sources */,
 				04B95797225AAD5300BA7D74 /* SmoreDatabase.swift in Sources */,
 				04A41759226E142A00F9E23C /* AddToPlaylistViewModel.swift in Sources */,
+				6E6D12F8226FD6BA004DFD15 /* SPTRecArtistResponse.swift in Sources */,
 				04A4177A226E14DA00F9E23C /* UserDefaults+Extensions.swift in Sources */,
 				04C3557F226FD0880097B12A /* SettingsTableViewController.swift in Sources */,
 				04A41762226E144900F9E23C /* PlaylistContentViewController.swift in Sources */,

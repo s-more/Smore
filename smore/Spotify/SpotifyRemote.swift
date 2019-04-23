@@ -57,7 +57,7 @@ class SpotifyRemote: NSObject {
     // MARK: - Public Methods
     
     func spotifyLogin() {
-        let requestedScopes: SPTScope = [.appRemoteControl]
+        let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
         sessionManager.initiateSession(with: requestedScopes, options: .default)
     }
     
