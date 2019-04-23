@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
             UIColor(red: 220/255, green: 148/255, blue: 111/255, alpha: 1),
             UIColor(red: 132/255, green: 87/255, blue: 64/255, alpha: 1)
         ]
-        view.layer.insertSublayer(CAGradientLayer.gradient(colors: colors, frame: view.frame), at: 0)
+        view.addGradient(colors: colors)
         nextButton.addRoundCorners()
         navigationController?.delegate = self
         

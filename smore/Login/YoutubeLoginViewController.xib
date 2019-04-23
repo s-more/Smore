@@ -36,7 +36,7 @@
                         <action selector="loginYoutubeUser:" destination="-1" eventType="touchUpInside" id="rqY-Tg-1Ea"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktx-ym-MpI">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktx-ym-MpI">
                     <rect key="frame" x="59" y="139" width="257" height="58"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="257" id="Nkl-Zu-esW"/>

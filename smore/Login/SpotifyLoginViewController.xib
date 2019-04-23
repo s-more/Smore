@@ -37,7 +37,7 @@
                         <action selector="loginSpotifyUser:" destination="-1" eventType="touchUpInside" id="ee8-gn-11b"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spotify" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C0-gF-nsd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spotify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C0-gF-nsd">
                     <rect key="frame" x="78.5" y="139" width="257" height="58"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="257" id="F8V-Gt-Nkb"/>
