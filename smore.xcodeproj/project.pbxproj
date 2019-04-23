@@ -173,6 +173,8 @@
 		04A41798226E156600F9E23C /* YTMP4Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54270B2263B9EF00D19ACF /* YTMP4Response.swift */; };
 		04A41799226E156B00F9E23C /* YoutubePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275750912262A532006648D9 /* YoutubePlayerController.swift */; };
 		04A4179A226E157400F9E23C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419045B222390C000EB22EC /* ViewController.swift */; };
+		04A4179E226ECBF700F9E23C /* LogoAnimation2.json in Resources */ = {isa = PBXBuildFile; fileRef = 04A4179D226ECBF700F9E23C /* LogoAnimation2.json */; };
+		04A417A2226ED42200F9E23C /* SmoreExplosion.json in Resources */ = {isa = PBXBuildFile; fileRef = 04A417A1226ED42200F9E23C /* SmoreExplosion.json */; };
 		04A5D0B222230D4100774489 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5D0B022230D4100774489 /* TabBarViewController.swift */; };
 		04A5D0B322230D4100774489 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A5D0B122230D4100774489 /* TabBarViewController.xib */; };
 		04A5D0B622230D6F00774489 /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5D0B422230D6E00774489 /* BrowseTableViewController.swift */; };
@@ -413,6 +415,8 @@
 		04A169472256A9AF00E7A71F /* LocalLibrayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibrayTableViewController.swift; sourceTree = "<group>"; };
 		04A366B1221B7279006B3D0A /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		04A366B2221B7279006B3D0A /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
+		04A4179D226ECBF700F9E23C /* LogoAnimation2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LogoAnimation2.json; sourceTree = "<group>"; };
+		04A417A1226ED42200F9E23C /* SmoreExplosion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SmoreExplosion.json; sourceTree = "<group>"; };
 		04A5D0B022230D4100774489 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04A5D0B122230D4100774489 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		04A5D0B422230D6E00774489 /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewController.swift; sourceTree = "<group>"; };
@@ -563,6 +567,8 @@
 		0409D5B22207469900CB4CDE /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				04A417A1226ED42200F9E23C /* SmoreExplosion.json */,
+				04A4179D226ECBF700F9E23C /* LogoAnimation2.json */,
 				04B957902259A8B700BA7D74 /* Checkmark.json */,
 				040A065F222C672C009B37E3 /* SlidingViewTransition.swift */,
 				045F09682212596500D7730E /* StrugglingAnt.json */,
@@ -1119,6 +1125,7 @@
 				0460AC65223B63520075D932 /* SongTableViewCell.xib in Resources */,
 				04A5D0B722230D6F00774489 /* BrowseTableViewController.xib in Resources */,
 				04B957912259A8B700BA7D74 /* Checkmark.json in Resources */,
+				04A4179E226ECBF700F9E23C /* LogoAnimation2.json in Resources */,
 				041E4CD4223F4E3B0038447C /* PlayerAlbumArtCollectionViewCell.xib in Resources */,
 				04B760C0222B796C0095AF33 /* GenericTableViewCell.xib in Resources */,
 				275750902262A4B5006648D9 /* YoutubePlayer.xib in Resources */,
@@ -1133,6 +1140,7 @@
 				04B760C8222B8F110095AF33 /* SearchTableViewCell.xib in Resources */,
 				0460AC54223AA6FE0075D932 /* LibraryContentViewController.xib in Resources */,
 				27919C9D225FDC9A00A005B1 /* GoogleService-Info.plist in Resources */,
+				04A417A2226ED42200F9E23C /* SmoreExplosion.json in Resources */,
 				0419045E222390C000EB22EC /* Main.storyboard in Resources */,
 				046540F3221B9C26003AD74D /* StartupSearchTableViewCell.xib in Resources */,
 				041E4CD0223F44D70038447C /* PlayerViewController.xib in Resources */,

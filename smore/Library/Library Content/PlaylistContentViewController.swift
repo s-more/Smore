@@ -12,7 +12,7 @@ import Kingfisher
 class PlaylistContentViewController: LibraryContentViewController {
     
     let viewModel: PlaylistContentViewModel
-    let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let ai = LottieActivityIndicator.smoreExplosion
     
     init(viewModel: PlaylistContentViewModel) {
         self.viewModel = viewModel

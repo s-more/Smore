@@ -37,7 +37,7 @@ class BrowseTableViewController: UITableViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
         
-        let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
+        let ai = LottieActivityIndicator.smoreExplosion
         tableView.addSubview(ai)
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 60

@@ -20,7 +20,7 @@ class LibraryViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var followButton: UIButton!
     
     let viewModel: LibraryViewModel
-    let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let activityIndicator = LottieActivityIndicator.smoreExplosion
     
     init(viewModel: LibraryViewModel) {
         self.viewModel = viewModel
