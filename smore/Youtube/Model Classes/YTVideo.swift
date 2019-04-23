@@ -25,7 +25,7 @@ class YTVideo: Song {
         imageLink = resource.snippet.thumbnails.default.url
         originalImageLink = resource.snippet.thumbnails.default.url.absoluteString
         id = resource.id.videoId ?? ""
-        playableString = "" // TODO
+        playableString = id
         artistName = resource.snippet.channelTitle
     }
     

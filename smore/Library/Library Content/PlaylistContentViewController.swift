@@ -12,7 +12,7 @@ import Kingfisher
 class PlaylistContentViewController: LibraryContentViewController {
     
     let viewModel: PlaylistContentViewModel
-    let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let ai = LottieActivityIndicator.smoreExplosion
     
     init(viewModel: PlaylistContentViewModel) {
         self.viewModel = viewModel
@@ -104,6 +104,10 @@ class PlaylistContentViewController: LibraryContentViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
         MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
+        let currentSong = viewModel.playlist.songs[indexPath.row]
+        if currentSong.streamingService == .youtube {
+          present(YoutubePlayerController(song: currentSong), animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

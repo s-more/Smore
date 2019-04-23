@@ -47,7 +47,7 @@ class StartupViewController: UIViewController {
         favGenreCollectionView.collectionViewLayout = FlowLayout(size: CGSize(width: 105, height: 140),
                                                                  itemSpacing: 0, lineSpacing: 10)
         
-        let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+        let activityIndicator = LottieActivityIndicator.smoreExplosion
         view.addSubview(activityIndicator)
         
         viewModel.fetchData(completion: { [weak self] in

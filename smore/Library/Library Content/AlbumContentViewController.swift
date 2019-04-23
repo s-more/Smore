@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumContentViewController: LibraryContentViewController {
     let album: Album
-    let ai = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let ai = LottieActivityIndicator.smoreExplosion
     
     init(album: Album) {
         self.album = album

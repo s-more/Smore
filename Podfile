@@ -13,9 +13,11 @@ target 'smore' do
   pod 'lottie-ios'
   pod 'Kingfisher'
   pod "youtube-ios-player-helper", "~> 0.1.4"
+  pod 'YoutubeKit'
   pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
   pod 'GoogleSignIn'
-  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
   pod 'MarqueeLabel/Swift'
   pod 'SwiftMessages'  
   pod 'XLPagerTabStrip', '~> 8.1'
@@ -23,6 +25,7 @@ target 'smore' do
   target 'smoreTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'SwiftMessages'
   end
 
 end

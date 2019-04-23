@@ -54,6 +54,19 @@ class APMPlaylist: Playlist {
         guard recentPlayedData.attributes.curatorName != nil else { return nil }
     }
     
+    init?(recommendationData: APMRecommendationData) {
+        guard recommendationData.type == "playlists" else { return nil }
+        id = recommendationData.id
+        name = recommendationData.attributes.name
+        curatorName = recommendationData.attributes.curatorName ?? ""
+        playableString = recommendationData.attributes.playParams.id
+        imageLink = recommendationData.attributes.artwork?.artworkImageURL(width: 300, height: 300)
+        description = recommendationData.attributes.description?.standard ??
+            recommendationData.attributes.description?.short
+        originalImageLink = recommendationData.attributes.artwork?.url
+        songs = []
+    }
+    
     func songs(completion: @escaping () -> Void, error: @escaping (Error) -> Void) {
         guard songs.isEmpty else {
             DispatchQueue.main.async { completion() }

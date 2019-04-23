@@ -123,7 +123,12 @@ class MiniPlayer: UIView {
                     guard let strongSelf = self else { return }
                     strongSelf.frame.origin = CGPoint(x: 0, y: -60)
                 }, completion: nil)
-                let vc = PlayerViewController()
+                var vc: UIViewController
+                if MusicQueue.shared.currentSong.streamingService == .youtube {
+                    vc = YoutubePlayerController(song: MusicQueue.shared.currentSong)
+                } else {
+                    vc = PlayerViewController()
+                }
                 (window?.rootViewController as? TabBarViewController)?.present(vc, animated: true)
                 Haptic.current.beep()
             } else {

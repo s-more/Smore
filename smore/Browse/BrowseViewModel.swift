@@ -14,6 +14,7 @@ class BrowseViewModel {
     var topCharts: [APMSong]
     var headers: [String] = []
     var recentPlayedData: [Any] = []
+    var recommendations: [Any] = []
     
     init() {
         self.favGenres = UserDefaults.favGenres
@@ -34,23 +35,34 @@ class BrowseViewModel {
 
                 // fetch recent played data
                 AppleMusicAPI.recentPlayed(completion: { data in
-                    let albumData: [APMAlbum] =  data.compactMap { APMAlbum(recentPlayedData: $0) }
-                    let playlistData: [APMPlaylist] = data.compactMap { APMPlaylist(recentPlayedData: $0) }
-                    self?.recentPlayedData = (albumData as [Any]) + (playlistData as [Any])
-                    
-                    let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken
-                    
-                    SpotifyAPI.getTopArtists(
-                        token: SPTToken ?? "",
-                        typeIsArtist: "artists",
-                        limit: 20,
-                        completion: { data in
-                            completion()
-                    }, error: {err in
-                        error(err)
+                    let albums = data.compactMap { APMAlbum(recentPlayedData: $0) } as [Any]
+                    let playlists = data.compactMap { APMPlaylist(recentPlayedData: $0) } as [Any]
+                    self?.recentPlayedData = albums + playlists
+//                    let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken
+//                    SpotifyAPI.getTopArtists(
+//                    token: SPTToken ?? "",
+//                    typeIsArtist: "artists",
+//                    limit: 20,
+//                    completion: { data in
+//                    completion()
+//                    }, error: {err in
+//                    error(err)
+//                    })
+//
+                    // fetch recommendations
+                    AppleMusicAPI.recommendations(completion: { recommendations in
+                        let recommendationAlbums =
+                            recommendations.compactMap { APMAlbum(recommendationData: $0) } as [Any]
+                        let recommendationPlaylists =
+                            recommendations.compactMap { APMPlaylist(recommendationData: $0) } as [Any]
+                        self?.recommendations = recommendationPlaylists + recommendationAlbums
+                        self?.headers = [
+                            "What would you like to listen to?", "Top Charts", "Recent Played", "Recommendations"
+                        ]
+                        DispatchQueue.main.async { completion() }
+                    }, error: { e2 in
+                        DispatchQueue.main.async { error(e2) }
                     })
-                    
-                    DispatchQueue.main.async { completion() }
                 }, error: { e in
                     DispatchQueue.main.async { error(e) }
                 })

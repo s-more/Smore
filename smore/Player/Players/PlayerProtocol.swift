@@ -20,7 +20,9 @@ protocol PlayerProtocol: NSObjectProtocol {
     
     func play(with songs: [Song])
     func skipToNext()
-    func skipToPrev()
+    /// return true if skiping to previous item;
+    /// return false if skipping to beginning
+    func skipToPrev() -> Bool
     func skipToCurrentPosition()
     func playOrPause()
     func stop()

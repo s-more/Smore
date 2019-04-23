@@ -257,7 +257,11 @@ extension PlayerViewController: UICollectionViewDelegate, UICollectionViewDataSo
             if viewModel.scrollDirectioon == .right { // scrolled right
                 Player.shared.skipToNext()
             } else if viewModel.scrollDirectioon == .left { // scrolled left
-                Player.shared.skipToPrev()
+                if !Player.shared.skipToPrev() {
+                    albumArtCollectionView.scrollToItem(
+                        at: IndexPath(row: MusicQueue.shared.currentPosition.value, section: 0),
+                        at: .centeredHorizontally, animated: true)
+                }
             }
             viewModel.horizontalPosition = scrollView.contentOffset.x
         } else if scrollView == self.scrollView {

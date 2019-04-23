@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APMRecentlyPlayedResponse: Codable {
+public struct APMRecentlyPlayedResponse: Codable {
     let next: String
     let data: [APMRecentlyPlayedResponseData]
     

@@ -108,4 +108,8 @@ extension LottieActivityIndicator {
     static let checkmark: LottieActivityIndicator = {
         return LottieActivityIndicator(animationName: "Checkmark", loop: false, stopOnCompletion: true)
     }()
+    
+    static let smoreExplosion: LottieActivityIndicator = {
+        return LottieActivityIndicator(animationName: "SmoreExplosion")
+    }()
 }

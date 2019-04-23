@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="loginButton" destination="bqz-Yy-tkQ" id="Giu-wZ-QIB"/>
                 <outlet property="view" destination="cdi-81-cpk" id="d1T-5T-DvS"/>
+                <outlet property="youtubeLabel" destination="ktx-ym-MpI" id="J4v-4o-2N2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,77 +22,51 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pth-od-j8c" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OH2-9i-mNs">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqz-Yy-tkQ">
-                                    <rect key="frame" x="59" y="568" width="257" height="68"/>
-                                    <color key="backgroundColor" red="0.99127671632124348" green="0.98521295927575292" blue="0.94698449268365148" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="68" id="YGu-Sx-Wr6"/>
-                                        <constraint firstAttribute="width" constant="257" id="mam-op-ZTa"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="AUTHORIZE"/>
-                                    <connections>
-                                        <action selector="loginYoutubeUser:" destination="-1" eventType="touchUpInside" id="rqY-Tg-1Ea"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTk-uP-gu7">
-                                    <rect key="frame" x="164.66666666666666" y="657" width="46" height="40"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
-                                    <state key="normal" title="SKIP">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="Rha-nP-rL4"/>
-                                    </connections>
-                                </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YoutubeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="7hi-Eb-Ev1">
-                                    <rect key="frame" x="59" y="40" width="257" height="130"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="130" id="0N6-xp-tlf"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="7hi-Eb-Ev1" firstAttribute="width" secondItem="bqz-Yy-tkQ" secondAttribute="width" id="HkY-qM-Mrq"/>
-                                <constraint firstAttribute="bottom" secondItem="aTk-uP-gu7" secondAttribute="bottom" constant="37" id="Udb-09-VCa"/>
-                                <constraint firstItem="bqz-Yy-tkQ" firstAttribute="centerX" secondItem="OH2-9i-mNs" secondAttribute="centerX" id="Ve4-88-E0P"/>
-                                <constraint firstItem="7hi-Eb-Ev1" firstAttribute="top" secondItem="OH2-9i-mNs" secondAttribute="top" constant="40" id="Zi2-4R-mAj"/>
-                                <constraint firstItem="aTk-uP-gu7" firstAttribute="top" secondItem="bqz-Yy-tkQ" secondAttribute="bottom" constant="21" id="jpE-Vn-XkS"/>
-                                <constraint firstItem="7hi-Eb-Ev1" firstAttribute="leading" secondItem="bqz-Yy-tkQ" secondAttribute="leading" id="l2Q-XP-pb4"/>
-                                <constraint firstItem="aTk-uP-gu7" firstAttribute="centerX" secondItem="OH2-9i-mNs" secondAttribute="centerX" id="ydS-Jd-c8l"/>
-                            </constraints>
-                        </view>
-                    </subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqz-Yy-tkQ">
+                    <rect key="frame" x="59" y="589" width="257" height="68"/>
+                    <color key="backgroundColor" red="0.89803921568627454" green="0.61960784313725492" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="OH2-9i-mNs" firstAttribute="leading" secondItem="Pth-od-j8c" secondAttribute="leading" id="14G-dX-0SX"/>
-                        <constraint firstItem="OH2-9i-mNs" firstAttribute="top" secondItem="Pth-od-j8c" secondAttribute="top" id="KkM-eH-MbM"/>
-                        <constraint firstAttribute="bottom" secondItem="OH2-9i-mNs" secondAttribute="bottom" id="LUY-IU-eiE"/>
-                        <constraint firstItem="OH2-9i-mNs" firstAttribute="centerY" secondItem="Pth-od-j8c" secondAttribute="centerY" id="Xho-y8-Yvg"/>
-                        <constraint firstItem="OH2-9i-mNs" firstAttribute="centerX" secondItem="Pth-od-j8c" secondAttribute="centerX" id="vXZ-Mg-nEn"/>
-                        <constraint firstAttribute="trailing" secondItem="OH2-9i-mNs" secondAttribute="trailing" id="xZ5-Tc-1pU"/>
+                        <constraint firstAttribute="height" constant="68" id="YGu-Sx-Wr6"/>
+                        <constraint firstAttribute="width" constant="257" id="mam-op-ZTa"/>
                     </constraints>
-                </scrollView>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="AUTHORIZE"/>
+                    <connections>
+                        <action selector="loginYoutubeUser:" destination="-1" eventType="touchUpInside" id="rqY-Tg-1Ea"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktx-ym-MpI">
+                    <rect key="frame" x="59" y="139" width="257" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="257" id="Nkl-Zu-esW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="42"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTk-uP-gu7">
+                    <rect key="frame" x="164.66666666666666" y="678" width="46" height="40"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                    <state key="normal" title="SKIP">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="skip:" destination="-1" eventType="touchUpInside" id="Rha-nP-rL4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Pth-od-j8c" secondAttribute="trailing" id="HlX-bb-o9H"/>
-                <constraint firstItem="Pth-od-j8c" firstAttribute="leading" secondItem="cdi-81-cpk" secondAttribute="leading" id="St8-Kx-UXB"/>
-                <constraint firstItem="Pth-od-j8c" firstAttribute="top" secondItem="O4I-53-QaU" secondAttribute="top" id="i4I-69-Nxr"/>
-                <constraint firstItem="Pth-od-j8c" firstAttribute="bottom" secondItem="O4I-53-QaU" secondAttribute="bottom" id="kGs-Ly-aXQ"/>
+                <constraint firstItem="O4I-53-QaU" firstAttribute="bottom" secondItem="aTk-uP-gu7" secondAttribute="bottom" constant="60" id="5cL-Ud-y0G"/>
+                <constraint firstItem="aTk-uP-gu7" firstAttribute="top" secondItem="bqz-Yy-tkQ" secondAttribute="bottom" constant="21" id="DA3-6T-fRP"/>
+                <constraint firstItem="ktx-ym-MpI" firstAttribute="centerX" secondItem="O4I-53-QaU" secondAttribute="centerX" id="M2f-wV-Teo"/>
+                <constraint firstItem="bqz-Yy-tkQ" firstAttribute="centerX" secondItem="O4I-53-QaU" secondAttribute="centerX" id="lTO-ke-SxS"/>
+                <constraint firstItem="aTk-uP-gu7" firstAttribute="centerX" secondItem="O4I-53-QaU" secondAttribute="centerX" id="nAe-5L-CPZ"/>
+                <constraint firstItem="ktx-ym-MpI" firstAttribute="top" secondItem="O4I-53-QaU" secondAttribute="top" constant="95" id="r6C-oz-Zf5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="O4I-53-QaU"/>
             <point key="canvasLocation" x="122" y="29"/>
         </view>
     </objects>
-    <resources>
-        <image name="YoutubeLogo" width="2000" height="857"/>
-    </resources>
 </document>

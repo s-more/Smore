@@ -15,6 +15,7 @@ class Player {
     private var currentPlayer: PlayerProtocol
     let appleMusicPlayer: APMPlayer
     let spotifyPlayer: SPTPlayer
+    let youtubePlayer: YTPlayer
     
     private var subQueues: [[Song]]
     
@@ -23,6 +24,7 @@ class Player {
     private init() {
         appleMusicPlayer = APMPlayer()
         spotifyPlayer = SPTPlayer()
+        youtubePlayer = YTPlayer()
         currentPlayer = appleMusicPlayer
         subQueues = []
         SpotifyRemote.shared.delegate = self
@@ -128,6 +130,10 @@ class Player {
                 SpotifyRemote.shared.reconnect()
                 currentPlayer = spotifyPlayer
                 currentPlayer.play(with: queue)
+            case .youtube:
+                currentPlayer = youtubePlayer
+                YoutubeRemote.shared.start()
+                currentPlayer.play(with: queue)
             default: break
             }
         }
@@ -138,8 +144,11 @@ class Player {
         currentPlayer.skipToNext()
     }
     
-    func skipToPrev() {
-        currentPlayer.skipToPrev()
+    /// returns true if skiping to previous item;
+    /// returns false if skipping to beginning
+    @discardableResult
+    func skipToPrev() -> Bool {
+        return currentPlayer.skipToPrev()
     }
     
     func skipToCurrentPosition() {
