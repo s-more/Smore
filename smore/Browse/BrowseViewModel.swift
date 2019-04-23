@@ -30,13 +30,26 @@ class BrowseViewModel {
                     return APMSong(response: data)
                 } ?? []
                 self?.favArtists = APMArtistEntity.favArtists()
-                
+                self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
+
                 // fetch recent played data
                 AppleMusicAPI.recentPlayed(completion: { data in
-                    self?.recentPlayedData =
-                        data.compactMap { APMAlbum(recentPlayedData: $0) } +
-                        data.compactMap { APMPlaylist(recentPlayedData: $0) }
-                    self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
+                    let albumData: [APMAlbum] =  data.compactMap { APMAlbum(recentPlayedData: $0) }
+                    let playlistData: [APMPlaylist] = data.compactMap { APMPlaylist(recentPlayedData: $0) }
+                    self?.recentPlayedData = (albumData as [Any]) + (playlistData as [Any])
+                    
+                    let SPTToken = SpotifyRemote.shared.appRemote.connectionParameters.accessToken
+                    
+                    SpotifyAPI.getTopArtists(
+                        token: SPTToken ?? "",
+                        typeIsArtist: "artists",
+                        limit: 20,
+                        completion: { data in
+                            completion()
+                    }, error: {err in
+                        error(err)
+                    })
+                    
                     DispatchQueue.main.async { completion() }
                 }, error: { e in
                     DispatchQueue.main.async { error(e) }

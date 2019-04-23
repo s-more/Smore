@@ -93,4 +93,16 @@ class SPTSong: Song {
         duration = songEntity.duration
     }
     
+    init(recTracks: SPTRecArtistResponse.SPTRecTracks) {
+        name = recTracks.name ?? ""
+        genre = ""
+        imageLink = URL(string: recTracks.album?.images?.first?.url ?? "")
+        originalImageLink = recTracks.album?.images?.first?.url ?? ""
+        id = recTracks.id ?? ""
+        playableString = recTracks.uri ?? ""
+        artistName = recTracks.artists?.first?.name ?? ""
+        trackNumber = recTracks.track_number ?? 0
+        duration = TimeInterval((recTracks.duration_ms ?? 0) / 1000)
+    }
+    
 }
