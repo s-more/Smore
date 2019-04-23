@@ -17,7 +17,11 @@ class TabBarViewController: UITabBarController {
         configureNavBar(on: browseVC)
         browseVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 0)
         
-        let searchVM = SearchViewModel(dataSources: [APMSearchDataSource(), YTSearchDataSource(), SPTSearchDataSource()])
+        var dataSources: [SearchDataSource] = []
+        if FeatureFlags.appleMusicEnabled { dataSources.append(APMSearchDataSource()) }
+        if FeatureFlags.spotifyEnabled { dataSources.append(SPTSearchDataSource()) }
+        if FeatureFlags.youtubeEnabled { dataSources.append(YTSearchDataSource()) }
+        let searchVM = SearchViewModel(dataSources: dataSources)
         let searchVC = UINavigationController(rootViewController: SearchViewController(viewModel: searchVM))
         searchVC.navigationBar.tintColor = UIColor.white
         searchVC.navigationBar.shadowImage = UIImage()
@@ -34,7 +38,12 @@ class TabBarViewController: UITabBarController {
         localLibraryNavController.tabBarItem = UITabBarItem(
             title: "Library", image: UIImage(named: "LibraryIcon"), tag: 1)
         
-        viewControllers = [browseVC, localLibraryNavController, searchVC]
+        let settingsVC = SettingsTableViewController()
+        let settingsNavController = UINavigationController(rootViewController: settingsVC)
+        configureNavBar(on: settingsNavController)
+        settingsNavController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "SettingsIcon"), tag: 3)
+        
+        viewControllers = [browseVC, localLibraryNavController, searchVC, settingsNavController]
         
         tabBar.barTintColor = UIColor.tabBarBackground
         tabBar.unselectedItemTintColor = UIColor.darkGray

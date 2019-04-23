@@ -12,6 +12,7 @@ import GoogleSignIn
 class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var loginButton: GIDSignInButton!
+    @IBOutlet weak var youtubeLabel: UILabel!
     
     init() {
         super.init(nibName: "YoutubeLoginViewController", bundle: Bundle.main)
@@ -32,14 +33,15 @@ class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
             UIColor(red: 0, green: 0, blue: 0, alpha: 1),
             UIColor(red: 255/255, green: 0, blue: 0, alpha: 1)
         ]
-        loginButton.addGradient(colors: colors)
+        view.addGradient(colors: colors)
+//        youtubeLabel.addGradient(colors: colors)
         
         NotificationCenter.default.addObserver(
             forName: .youtubeSignedIn,
             object: nil,
             queue: OperationQueue.main)
         { [weak self] _ in
-            UserDefaults.FeatureFlags.setYoutubeEnabled(true)
+            FeatureFlags.setYoutubeEnabled(true)
             self?.navigationController?.pushViewController(StartupViewController(), animated: true)
         }
         
@@ -53,8 +55,8 @@ class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
                 title: "Youtube Not Signed In",
                 subtitle: "Youtube features will not be enabled",
                 on: strongSelf)
-            { _ in
-                self?.navigationController?.pushViewController(StartupViewController(), animated: true)
+            { [weak self] _ in
+                self?.ensureOneServiceEnabled()
             }
         }
     }
@@ -64,8 +66,18 @@ class YoutubeLoginViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func skip(_ sender: UIButton) {
+        ensureOneServiceEnabled()
+    }
+    
+    private func ensureOneServiceEnabled() {
+        guard FeatureFlags.atLeastOneServiceEnabled else {
+            UIAlertController.showGenericAlert(
+                title: "Error",
+                subtitle: "At least one streaming service must be enabled.",
+                on: self)
+            return
+        }
         navigationController?.pushViewController(StartupViewController(), animated: true)
-        //YQHsXMglC9A
     }
     
     

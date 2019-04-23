@@ -27,7 +27,7 @@ class YoutubePlayerController: UIViewController {
     var isPlaying = false
     let avplayer = AVPlayer()
     let avcontroller = AVPlayerViewController()
-    let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let activityIndicator = LottieActivityIndicator.smoreExplosion
     let song: Song?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

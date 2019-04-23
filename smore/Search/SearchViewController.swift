@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     
     let viewModel: SearchViewModel
     let bag = DisposeBag()
-    let activityIndicator = LottieActivityIndicator(animationName: "StrugglingAnt")
+    let activityIndicator = LottieActivityIndicator.smoreExplosion
     
     var dataSource: Variable<SearchDataSource> = Variable(APMSearchDataSource())
     var searchHintsDataSource: Variable<SearchHintDataSource> = Variable(SearchHintDataSource(searchHints: []))

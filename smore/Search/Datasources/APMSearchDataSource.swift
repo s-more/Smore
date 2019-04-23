@@ -57,7 +57,7 @@ class APMSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = albums[indexPath.row].name
                 cell.subtitleLabel.text = albums[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = StreamingService.appleMusic.icon
             }
             return cell
         case 2: // playlists
@@ -68,7 +68,7 @@ class APMSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = playlists[indexPath.row].name
                 cell.subtitleLabel.text = playlists[indexPath.row].curatorName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = StreamingService.appleMusic.icon
             }
             return cell
         case 3: // songs
@@ -79,7 +79,7 @@ class APMSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = songs[indexPath.row].name
                 cell.subtitleLabel.text = songs[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "appleLogo")
+                cell.serviceIcon.image = StreamingService.appleMusic.icon
             }
             return cell
         default: break

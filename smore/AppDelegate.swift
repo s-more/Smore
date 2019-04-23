@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let welcomeNagivation = UINavigationController(rootViewController: WelcomeViewController())
             window?.rootViewController = welcomeNagivation
         } else {
-            if UserDefaults.FeatureFlags.spotifyEnabled {
+            if FeatureFlags.spotifyEnabled {
                 // Login before preceeding to the browse screen
                 SpotifyRemote.shared.delegate = self
                 SpotifyRemote.shared.spotifyLogin()
