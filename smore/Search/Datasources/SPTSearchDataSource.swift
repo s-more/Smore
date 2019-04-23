@@ -57,7 +57,7 @@ class SPTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = albums[indexPath.row].name
                 cell.subtitleLabel.text = albums[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "spotLogo")
+                cell.serviceIcon.image = StreamingService.spotify.icon
             }
             return cell
         case 2: // playlists
@@ -68,7 +68,7 @@ class SPTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = playlists[indexPath.row].name
                 cell.subtitleLabel.text = playlists[indexPath.row].curatorName
-                cell.serviceIcon.image = UIImage(named: "spotLogo")
+                cell.serviceIcon.image = StreamingService.spotify.icon
             }
             return cell
         case 3: // songs
@@ -79,7 +79,7 @@ class SPTSearchDataSource: NSObject, SearchDataSource {
                                              placeholder: UIImage(named: "artistPlaceholder"))
                 cell.masterLabel.text = songs[indexPath.row].name
                 cell.subtitleLabel.text = songs[indexPath.row].artistName
-                cell.serviceIcon.image = UIImage(named: "spotLogo")
+                cell.serviceIcon.image = StreamingService.spotify.icon
             }
             return cell
         default: break

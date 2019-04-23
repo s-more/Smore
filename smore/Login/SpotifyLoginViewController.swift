@@ -12,6 +12,7 @@ import RxCocoa
 
 class SpotifyLoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var spotifyLabel: UILabel!
     @IBOutlet weak var skipButton: UIButton!
     let bag = DisposeBag()
 
@@ -33,7 +34,8 @@ class SpotifyLoginViewController: UIViewController {
             UIColor(red: 0, green: 220/255, blue: 77/255, alpha: 1),
             UIColor(red: 18/255, green: 138/255, blue: 74/255, alpha: 1)
         ]
-        loginButton.addGradient(colors: colors)
+        view.addGradient(colors: colors)
+//        spotifyLabel.addGradient(colors: colors)
     }
     
     

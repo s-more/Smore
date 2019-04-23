@@ -21,13 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-music-logo" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-Ba-wTF">
-                    <rect key="frame" x="78.5" y="84" width="240" height="128"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="TBm-fu-gPD"/>
-                        <constraint firstAttribute="height" constant="128" id="gYT-CE-dfW"/>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need you to grant authorization for Apple Music to play Apple Music with this App." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="165-BW-9Vh">
                     <rect key="frame" x="78.5" y="217" width="257" height="68"/>
                     <constraints>
@@ -61,23 +54,26 @@
                         <action selector="skip:" destination="-1" eventType="touchUpInside" id="EH8-Io-EmK"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOK-Op-VuQ">
+                    <rect key="frame" x="78.5" y="139" width="254" height="58"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="42"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <constraints>
-                <constraint firstItem="l4F-Ba-wTF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="1bn-SU-h9q"/>
                 <constraint firstItem="aQO-IO-zJQ" firstAttribute="leading" secondItem="165-BW-9Vh" secondAttribute="leading" id="22D-sz-nwG"/>
                 <constraint firstItem="165-BW-9Vh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4Jf-tC-T7f"/>
-                <constraint firstItem="165-BW-9Vh" firstAttribute="top" secondItem="l4F-Ba-wTF" secondAttribute="bottom" constant="5" id="Ari-Zc-OWo"/>
                 <constraint firstItem="XT5-pr-erO" firstAttribute="top" secondItem="aQO-IO-zJQ" secondAttribute="bottom" constant="21" id="I7z-fO-Xph"/>
+                <constraint firstItem="TOK-Op-VuQ" firstAttribute="leading" secondItem="165-BW-9Vh" secondAttribute="leading" id="IPK-vo-W5m"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XT5-pr-erO" secondAttribute="bottom" constant="37" id="P9G-Am-8J3"/>
                 <constraint firstItem="XT5-pr-erO" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="eWl-Gl-DwC"/>
-                <constraint firstItem="l4F-Ba-wTF" firstAttribute="leading" secondItem="165-BW-9Vh" secondAttribute="leading" id="pIG-qe-6nC"/>
                 <constraint firstItem="aQO-IO-zJQ" firstAttribute="trailing" secondItem="165-BW-9Vh" secondAttribute="trailing" id="ptD-aC-Qr5"/>
+                <constraint firstItem="TOK-Op-VuQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="95" id="rnF-bM-vMO"/>
+                <constraint firstItem="165-BW-9Vh" firstAttribute="top" secondItem="TOK-Op-VuQ" secondAttribute="bottom" constant="20" id="vCn-9Y-rs3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <image name="apple-music-logo" width="1200" height="1200"/>
-    </resources>
 </document>
