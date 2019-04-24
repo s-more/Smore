@@ -88,28 +88,39 @@ class BrowseTableViewController: UITableViewController {
                 cell.songs = viewModel.topCharts
             }
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier,
-                                                     for: indexPath)
-            if let cell = cell as? HistoryTableViewCell {
-                if indexPath.section == 2 {
-                    cell.data = viewModel.recentPlayedData
-                } else if indexPath.section == 3 {
-                    cell.data = viewModel.recommendations
+        } else if indexPath.section == 2 || indexPath.section == 3 {
+            if FeatureFlags.appleMusicEnabled {
+                let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier,
+                                                         for: indexPath)
+                if let cell = cell as? HistoryTableViewCell {
+                    if indexPath.section == 2 {
+                        cell.data = viewModel.recentPlayedData
+                    } else if indexPath.section == 3 {
+                        cell.data = viewModel.recommendations
+                    }
+                    cell.didSelectPlaylist = { [weak self] playlist in
+                        let vm = PlaylistContentViewModel(playlist: playlist)
+                        let vc = PlaylistContentViewController(viewModel: vm)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    cell.didSelectAlbum = { [weak self] album in
+                        let vc = AlbumContentViewController(album: album)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
-                cell.didSelectPlaylist = { [weak self] playlist in
-                    let vm = PlaylistContentViewModel(playlist: playlist)
-                    let vc = PlaylistContentViewController(viewModel: vm)
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
-                cell.didSelectAlbum = { [weak self] album in
-                    let vc = AlbumContentViewController(album: album)
-                    self?.navigationController?.pushViewController(vc, animated: true)
+                return cell
+            } else {
+                if FeatureFlags.spotifyEnabled {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: TopChartsTableViewCell.identifier,
+                                                             for: indexPath)
+                    if let cell = cell as? TopChartsTableViewCell {
+                        cell.songs = viewModel.recTracks
+                    }
+                    return cell
                 }
             }
-            
-            return cell
         }
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

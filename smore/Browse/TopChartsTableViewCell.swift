@@ -12,7 +12,7 @@ class TopChartsTableViewCell: UITableViewCell {
     static let identifier = "topChartsCollectionView"
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var songs: [APMSong] = [] {
+    var songs: [Song] = [] {
         didSet {
             collectionView.reloadData()
         }
