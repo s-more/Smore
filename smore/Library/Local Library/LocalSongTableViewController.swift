@@ -49,14 +49,18 @@ class LocalSongTableViewController: LocalLibrayTableViewController {
         let song = SongEntity.standardSong(
             from: SongEntity.fetchedResultsController.object(at: indexPath))
         if let song = song, let objects = SongEntity.fetchedResultsController.fetchedObjects {
-            if song.streamingService == StreamingService.spotify {
-                Player.shared.stop()
-                SpotifyRemote.shared.appRemote.playerAPI?.play(song.playableString, callback: SpotifyRemote.shared.defaultCallback)
-            }else {
-                SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
-                MiniPlayer.shared.configure(with: song)
-                MusicQueue.shared.queue.value = Array(objects[indexPath.row ..< objects.count])
-                    .compactMap { SongEntity.standardSong(from: $0) }
+            if song.streamingService.isServiceEnabled {
+                if song.streamingService == StreamingService.spotify {
+                    Player.shared.stop()
+                    SpotifyRemote.shared.appRemote.playerAPI?.play(song.playableString, callback: SpotifyRemote.shared.defaultCallback)
+                }else {
+                    SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
+                    MiniPlayer.shared.configure(with: song)
+                    MusicQueue.shared.queue.value = Array(objects[indexPath.row ..< objects.count])
+                        .compactMap { SongEntity.standardSong(from: $0) }
+                }
+            } else {
+                SwiftMessagesWrapper.showErrorMessage(title: "Error", body: "This service is not enabled, please enable it in the setting tab.")
             }
         }
         // Array(album.songs

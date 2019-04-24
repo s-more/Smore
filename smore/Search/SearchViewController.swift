@@ -170,19 +170,24 @@ extension SearchViewController: UITableViewDelegate {
                 let vc = PlaylistContentViewController(viewModel: vm)
                 navigationController?.pushViewController(vc, animated: true)
             case 3:
-                if searchDataSource.songs[indexPath.row].streamingService == StreamingService.spotify {
-                    Player.shared.stop()
-                    SpotifyRemote.shared.appRemote.playerAPI?.play(searchDataSource.songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
-                } else if searchDataSource.songs[indexPath.row].streamingService == StreamingService.youtube {
-                    Player.shared.stop()
-                    MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
-                    present(YoutubePlayerController(song: searchDataSource.songs[indexPath.row]), animated: true)
-                    YoutubeRemote.shared.play(videoID: searchDataSource.songs[indexPath.row].playableString)
+                if searchDataSource.songs[indexPath.row].streamingService.isServiceEnabled {
+                    if searchDataSource.songs[indexPath.row].streamingService == StreamingService.spotify {
+                        Player.shared.stop()
+                        SpotifyRemote.shared.appRemote.playerAPI?.play(searchDataSource.songs[indexPath.row].playableString, callback: SpotifyRemote.shared.defaultCallback)
+                    } else if searchDataSource.songs[indexPath.row].streamingService == StreamingService.youtube {
+                        Player.shared.stop()
+                        MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
+                        present(YoutubePlayerController(song: searchDataSource.songs[indexPath.row]), animated: true)
+                        YoutubeRemote.shared.play(videoID: searchDataSource.songs[indexPath.row].playableString)
+                    } else {
+                        SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
+                        MiniPlayer.shared.configure(with: searchDataSource.songs[indexPath.row])
+                        MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
+                    }
                 } else {
-                    SpotifyRemote.shared.appRemote.playerAPI?.pause(SpotifyRemote.shared.defaultCallback)
-                    MiniPlayer.shared.configure(with: searchDataSource.songs[indexPath.row])
-                    MusicQueue.shared.queue.value = Array([searchDataSource.songs[indexPath.row]])
+                    SwiftMessagesWrapper.showErrorMessage(title: "Error", body: "This service is not enabled, please enable it in the setting tab.")
                 }
+                
             default: break
             }
         }

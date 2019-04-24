@@ -9,7 +9,7 @@
 import Foundation
 
 public struct APMRecentlyPlayedResponse: Codable {
-    let next: String
+    let next: String?
     let data: [APMRecentlyPlayedResponseData]
     
     struct APMRecentlyPlayedResponseData: Codable {

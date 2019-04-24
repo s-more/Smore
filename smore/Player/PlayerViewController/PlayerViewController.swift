@@ -241,7 +241,6 @@ extension PlayerViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: PlayerAlbumArtCollectionViewCell.identifier, for: indexPath)
-        
         if let cell = cell as? PlayerAlbumArtCollectionViewCell {
             let song = MusicQueue.shared.queue.value[indexPath.row]
             cell.albumArtImageView.kf.setImage(

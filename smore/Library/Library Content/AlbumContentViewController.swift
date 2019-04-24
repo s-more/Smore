@@ -87,8 +87,12 @@ class AlbumContentViewController: LibraryContentViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        MiniPlayer.shared.configure(with: album.songs[indexPath.row])
-        MusicQueue.shared.queue.value = Array(album.songs[indexPath.row ..< album.songs.count])
+        if album.songs[indexPath.row].streamingService.isServiceEnabled {
+            MiniPlayer.shared.configure(with: album.songs[indexPath.row])
+            MusicQueue.shared.queue.value = Array(album.songs[indexPath.row ..< album.songs.count])
+        } else {
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: "This service is not enabled, please enable it in the setting tab.")
+        }
     }
     
     // MARK - Button Taps
