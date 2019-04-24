@@ -117,7 +117,7 @@ class BrowseViewModel {
                             return APMSong(response: data)
                             } ?? []
                         self?.favArtists = APMArtistEntity.favArtists()
-                        self?.headers = ["What would you like to listen to?", "Top Charts", "Recent Played"]
+                        self?.headers = ["What would you like to listen to?", "Top Charts"]
                         
                         DispatchQueue.main.async { completion() }
                     }, error: { e in

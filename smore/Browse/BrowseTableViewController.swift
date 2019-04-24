@@ -117,7 +117,20 @@ class BrowseTableViewController: UITableViewController {
                         cell.songs = viewModel.recTracks
                     }
                     return cell
+                } else {
+                    
                 }
+            }
+        } else if indexPath.section == 4 {
+            if FeatureFlags.spotifyEnabled {
+                let cell = tableView.dequeueReusableCell(withIdentifier: TopChartsTableViewCell.identifier,
+                                                         for: indexPath)
+                if let cell = cell as? TopChartsTableViewCell {
+                    cell.songs = viewModel.recTracks
+                }
+                return cell
+            } else {
+                
             }
         }
         return UITableViewCell()

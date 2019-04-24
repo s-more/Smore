@@ -102,11 +102,15 @@ class PlaylistContentViewController: LibraryContentViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
-        MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
-        let currentSong = viewModel.playlist.songs[indexPath.row]
-        if currentSong.streamingService == .youtube {
-          present(YoutubePlayerController(song: currentSong), animated: true, completion: nil)
+        if viewModel.playlist.songs[indexPath.row].streamingService.isServiceEnabled {
+            MiniPlayer.shared.configure(with: viewModel.playlist.songs[indexPath.row])
+            MusicQueue.shared.queue.value = Array(viewModel.playlist.songs[indexPath.row ..< viewModel.playlist.songs.count])
+            let currentSong = viewModel.playlist.songs[indexPath.row]
+            if currentSong.streamingService == .youtube {
+                present(YoutubePlayerController(song: currentSong), animated: true, completion: nil)
+            }
+        } else {
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: "This service is not enabled, please enable it in the setting tab.")
         }
     }
     
@@ -127,9 +131,13 @@ class PlaylistContentViewController: LibraryContentViewController {
     }
     
     override func handlePlaybuttonTap(_ sender: UIButton) {
-        if let first = viewModel.playlist.songs.first {
-            MiniPlayer.shared.configure(with: first)
-            MusicQueue.shared.queue.value = viewModel.playlist.songs
+        if viewModel.playlist.songs.first?.streamingService.isServiceEnabled ?? false {
+            if let first = viewModel.playlist.songs.first {
+                MiniPlayer.shared.configure(with: first)
+                MusicQueue.shared.queue.value = viewModel.playlist.songs
+            }
+        } else {
+            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: "This service is not enabled, please enable it in the setting tab.")
         }
     }
     
