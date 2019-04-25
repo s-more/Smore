@@ -48,7 +48,7 @@ class BrowseTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }, error: { error in
             ai.stop()
-            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+//            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
         })
     }
     
@@ -162,7 +162,7 @@ class BrowseTableViewController: UITableViewController {
             self?.tableView.refreshControl?.endRefreshing()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
-            SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
+            //SwiftMessagesWrapper.showErrorMessage(title: "Error", body: error.localizedDescription)
         })
     }
 }
