@@ -34,9 +34,13 @@ class AppleMusicAuthViewController: UIViewController {
     }
     
     @IBAction func authorizeButtonTapped(_ sender: UIButton) {
+        let ai = LottieActivityIndicator.smoreExplosion
+        view.addSubview(ai)
         AppleMusicAPI.authrozeAndRequestUserToken(success: { [weak self] in
+            ai.stop()
             self?.navigationController?.pushViewController(SpotifyLoginViewController(), animated: true)
         }, error: { [weak self] error in
+            ai.stop()
             guard let strongSelf = self else { return }
             UIAlertController.showGenericAlert(
                 title: "Error",
